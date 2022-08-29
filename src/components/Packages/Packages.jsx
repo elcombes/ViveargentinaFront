@@ -46,8 +46,10 @@ export default function Card() {
                                 <div class="col-md-6">
                                     <h2>{e.name}</h2>
                                     <h4>{e.subTitle}</h4>
+
                                     Score:{e.score}
-                                  {/*   <ul className={styles.scorecity}>
+                                    {/* <ul className={styles.scorecity}>
+
                                         <li><i class="bi bi-star-fill" Style="color:#C49D48"></i></li>
                                         <li><i class="bi bi-star-fill" Style="color:#C49D48"></i></li>
                                         <li><i class="bi bi-star-fill" Style="color:#C49D48"></i></li>

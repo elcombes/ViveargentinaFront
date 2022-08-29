@@ -1,3 +1,4 @@
+import { isFocusable } from "@testing-library/user-event/dist/utils";
 import axios from "axios";
 
 export const GET_CITIES_BY_NAME = "GET_CITIES_BY_NAME";
@@ -18,6 +19,7 @@ export const ORDER_PACKAGES = "ORDER_PACKAGES";
 export const ORDER_EXPERIENCES = "ORDER_EXPERIENCES";
 export const FILTER_EXPERIENCES = "FILTER_EXPERIENCES";
 export const CREATE_NEW_EXPERIENCE = "CREATE_NEW_EXPERIENCE";
+
 
 // Esta ruta trae una ciudad que incluye un array con todos sus paquetes.
 // Se pasa el name,tal vez en un searchbar
@@ -270,3 +272,4 @@ export function filterExperiences(payload) {
     });
   };
 }
+

@@ -1,35 +1,48 @@
-/* import React, { useState } from "react"; */
-/* import { useDispatch } from "react-redux";
-import { getCitiesByName } from "../../redux/action"; */
+import React, { useEffect, useState } from "react"; 
+import { useDispatch} from "react-redux";
+import { useHistory } from "react-router-dom"
+import  {getCitiesByName, getPackagesByName, getExperiencesByName}  from "../../redux/action"; 
 import styles from '../SearchBar/SearchBar.module.css';
 
 export default function Search() {
 
- /*    const dispatch = useDispatch();
-    const [nameCity, setNameCities] = useState(""); */
+    const dispatch = useDispatch();
+    const history = useHistory();
+    let pathName = history.location.pathname
+    const [name, setName] = useState("")
 
-/*     function handleInput(e) {
-        setNameCities(e.target.value);
+    function handleName(e) {
+        setName(e.target.value)
     }
 
     function handleSubmit(e) {
         e.preventDefault(e);
-        if (nameCity) {
-            dispatch(getCitiesByName(nameCity));
-            setNameCities("");
+        if (name) {
+            if(pathName === "/cities") {
+                dispatch(getCitiesByName(name))
+                setName("")
+            }
+            if(pathName === "/packages") {
+                dispatch(getPackagesByName(name))
+                setName("")
+            }
+            if(pathName === "/experiences") {
+                dispatch(getExperiencesByName(name))
+                setName("")
+            }
         }
     }
- */
+ 
 
     
     return (
         <div className="container-fluid">
 
             <div className={styles.container}>
-                <form className={styles.searchbarstyle}>
+                <form className={styles.searchbarstyle} onSubmit={(e) => handleSubmit(e)}>
                     <div class="col-md-2">
                         <label class="visually-hidden" for="specificSizeInputName">Name</label>
-                        <input type="text" class="form-control input-lg" id="specificSizeInputName" placeholder="Example: Cordoba" />
+                        <input type="text" value={name} class="form-control input-lg" id="specificSizeInputName" placeholder="Example: Córdoba" onChange={(e)=>handleName(e)} />
                     </div>
                     <div class="col-md-auto">
                         <button type="submit" class="btn btn-outline-secondary btn-lg">Submit</button>

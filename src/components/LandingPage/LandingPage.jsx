@@ -16,7 +16,6 @@ function Landing() {
         </div>
             </Link>
     </Fragment>
-
   );
 }
 // a ver si se arregla la ruta
