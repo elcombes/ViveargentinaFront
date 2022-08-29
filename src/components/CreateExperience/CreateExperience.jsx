@@ -7,21 +7,23 @@ import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
-import { createNewExperience, getAllPackages } from "../../redux/action";
+import { createNewExperience, getAllPackages, getAllCategories } from "../../redux/action";
 
 
 export default function Experiences() {
   const allPackages = useSelector((state) => state.allPackages);
+  const allCategories = useSelector((state) => state.allCategories);
 
-  const [newExperience, setNewExperience] = React.useState({
+  const [newExperience, setNewExperience] = useState({
     name: "",
     subTitle: "",
     price: "",
-    decription: "",
+    description: "",
     image: "",
     video: "",
     duration: "",
-    score: "",
+    stock: "",
+    score: 4,
     categoryId: "",
     packageId: "",
   });
@@ -32,6 +34,7 @@ export default function Experiences() {
 
   React.useEffect(() => {
     dispatch(getAllPackages());
+    dispatch(getAllCategories());
   }, [dispatch]);
 
   const handleChange = (e) => {
@@ -42,12 +45,15 @@ export default function Experiences() {
   };
 
   const handleSubmit = (event) => {
+    console.log('Holaaa', newExperience)
+    event.preventDefault();
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
-      event.preventDefault();
       event.stopPropagation();
     }
     setValidated(true);
+
+    console.log(newExperience)
 
     dispatch(createNewExperience(newExperience));
     setNewExperience({
@@ -58,7 +64,7 @@ export default function Experiences() {
       image: "",
       video: "",
       duration: "",
-      score: "",
+      stock: "",
       categoryId: "",
       packageId: "",
     });
@@ -103,11 +109,9 @@ export default function Experiences() {
                     ></button>
                   </div>
                   <div className="modal-body">
-                    <Form
-                      noValidate
-                      validated={validated}
-                      onSubmit={handleSubmit}
-                    >
+                    <Form onSubmit={(e) => {
+                      handleSubmit(e)
+                    }} noValidate validated={validated} >
                       <Row className="mb-1">
                         <Form.Group
                           as={Col}
@@ -217,6 +221,9 @@ export default function Experiences() {
                             rows={3}
                             placeholder="Write a description"
                             required
+                            name="description"
+                            value={newExperience.description}
+                            onChange={(e) => handleChange(e)}
                           />
                           <Form.Control.Feedback>
                             Looks good!
@@ -237,15 +244,19 @@ export default function Experiences() {
                             onChange={(e) => handleChange(e)}
                           >
                             <option selected>Select a category</option>
-                            <option value="1">Cultural</option>
-                            <option value="2">Adventure</option>
-                            <option value="3">Landscape</option>
-                            <option value="3">Air</option>
-                            <option value="3">Nautic</option>
-                            <option value="3">Termas</option>
-                            <option value="3">Entertainment</option>
-                            <option value="3">Gastronomic</option>
-                            <option value="3">Sports</option>
+                            {allCategories && allCategories.sort((a, b) => {
+                                  if (a.name < b.name) return -1;
+                                  if (a.name > b.name) return 1;
+                                  return 0;
+                                })
+                                .map((c) => {
+                                  return (
+                                    <option value={c.id} key={c.id}>
+                                      {c.name}
+                                    </option>
+                                  );
+                                })}
+                            ;
                           </Form.Select>
                         </Form.Group>
                       </Row>
