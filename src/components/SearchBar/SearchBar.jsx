@@ -10,10 +10,18 @@ export default function Search() {
     const history = useHistory();
     let pathName = history.location.pathname
     const [name, setName] = useState("")
+    const [input, setInput] = useState(document.getElementsByClassName("form-control input-lg").placeholder)
 
     function handleName(e) {
         setName(e.target.value)
     }
+
+    useEffect(() => {
+        if(pathName === "/cities") setInput("Example: Córdoba")
+        if(pathName === "/packages") setInput("Example: Cordoba Adventure")
+        if(pathName === "/experiences") setInput("Example: City Tour Buenos Aires")
+    })
+
 
     function handleReload(e) {
             if(pathName === "/cities") {
@@ -56,7 +64,7 @@ export default function Search() {
                     <button onClick={(e)=> handleReload(e)}type="button" class="btn btn-secondary"><i class="bi bi-arrow-clockwise"></i></button>
                     <div class="col-md-2">
                         <label class="visually-hidden" for="specificSizeInputName">Name</label>
-                        <input type="text" value={name} class="form-control input-lg" id="specificSizeInputName" placeholder="Example: Córdoba" onChange={(e)=>handleName(e)} />
+                        <input type="text" value={name} className="form-control input-lg" id="specificSizeInputName" placeholder={input} onChange={(e)=>handleName(e)} />
                     </div>
                     <div class="col-md-auto">
                         <button type="submit" class="btn btn-outline-secondary btn-lg">Submit</button>
