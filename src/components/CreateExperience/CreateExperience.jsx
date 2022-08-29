@@ -9,6 +9,7 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import { createNewExperience, getAllPackages } from "../../redux/action";
 
+
 export default function Experiences() {
   const allPackages = useSelector((state) => state.allPackages);
 
@@ -210,33 +211,12 @@ export default function Experiences() {
                           md="12"
                           controlId="validationCustom06"
                         >
-                          <Form.Label>Short Description</Form.Label>
+                          <Form.Label>Description</Form.Label>
                           <Form.Control
                             as="textarea"
                             rows={3}
                             placeholder="Write a description"
                             required
-                          />
-                          <Form.Control.Feedback>
-                            Looks good!
-                          </Form.Control.Feedback>
-                        </Form.Group>
-                      </Row>
-                      <Row className="mb-1">
-                        <Form.Group
-                          as={Col}
-                          md="12"
-                          controlId="validationCustom07"
-                        >
-                          <Form.Label>Long Description</Form.Label>
-                          <Form.Control
-                            as="textarea"
-                            rows={7}
-                            placeholder="Write a description"
-                            required
-                            name="description"
-                            value={newExperience.description}
-                            onChange={(e) => handleChange(e)}
                           />
                           <Form.Control.Feedback>
                             Looks good!
@@ -307,12 +287,12 @@ export default function Experiences() {
                         </Form.Label>
                         <Form.Group
                           as={Col}
-                          md="4"
+                          md="12"
                           controlId="validationCustom09"
                         >
                           <Form.Control
                             type="text"
-                            placeholder="Link image 1"
+                            placeholder="Link image"
                             required
                             name="image"
                             value={newExperience.image}
@@ -322,34 +302,7 @@ export default function Experiences() {
                             Please provide a valid link.
                           </Form.Control.Feedback>
                         </Form.Group>
-                        <Form.Group
-                          as={Col}
-                          md="4"
-                          controlId="validationCustom10"
-                        >
-                          <Form.Control
-                            type="text"
-                            placeholder="Link image 2"
-                            required
-                          />
-                          <Form.Control.Feedback type="invalid">
-                            Please provide a valid link.
-                          </Form.Control.Feedback>
-                        </Form.Group>
-                        <Form.Group
-                          as={Col}
-                          md="4"
-                          controlId="validationCustom11"
-                        >
-                          <Form.Control
-                            type="text"
-                            placeholder="Link image 3"
-                            required
-                          />
-                          <Form.Control.Feedback type="invalid">
-                            Please provide a valid link.
-                          </Form.Control.Feedback>
-                        </Form.Group>
+
                       </Row>
                       <Row className="mb-1">
                         <Form.Label>
