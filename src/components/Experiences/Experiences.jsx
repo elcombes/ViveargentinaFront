@@ -50,11 +50,11 @@ export default function Experiences() {
                     <Navbar />
                     <SearchBar />
                     <FilterExperiences handleOrder={handleOrder} />
-                    <Paged
+                    {/* <Paged
                         experiencesPage={experiencesPage}
                         allExperiences={allExperiences.length}
                         paged={paged}
-                    />
+                    /> */}
                     <br />
                     {showExperiencesPage?.map((e) => {
                         return (
@@ -93,6 +93,11 @@ export default function Experiences() {
                             ))
                     })}
 
+                        <Paged
+                            experiencesPage={experiencesPage}
+                            allExperiences={allExperiences.length}
+                            paged={paged}
+                        />
                     <div className={styles.separator}></div>
                     <div className="container">
                         <CategoriesExperiences />
