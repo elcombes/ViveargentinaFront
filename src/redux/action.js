@@ -199,18 +199,14 @@ export function getRegionById(regionId) {
 }
 
 export function createNewExperience(newExperience) {
+  console.log('estoy en la action', newExperience)
   return async function (dispatch) {
-    let newExperienceCreated = await axios.post(
-      "https://viveargentina.herokuapp.com/experiences",
-      newExperience
-    );
+    let newExperienceCreated = await axios.post("https://viveargentina.herokuapp.com/experiences", newExperience);
     console.log(newExperienceCreated);
-    return dispatch({
-      type: CREATE_NEW_EXPERIENCE,
-      payload: newExperienceCreated.data,
-    });
+    return newExperienceCreated
   };
 }
+
 
 export function orderCities(payload) {
   return {
