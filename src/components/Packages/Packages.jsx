@@ -46,14 +46,14 @@ export default function Card() {
                                 <div class="col-md-6">
                                     <h2>{e.name}</h2>
                                     <h4>{e.subTitle}</h4>
-                                    {e.score}
-                                    <ul className={styles.scorecity}>
+                                    Score: {e.score}
+                                    {/* <ul className={styles.scorecity}>
                                         <li><i class="bi bi-star-fill" Style="color:#C49D48"></i></li>
                                         <li><i class="bi bi-star-fill" Style="color:#C49D48"></i></li>
                                         <li><i class="bi bi-star-fill" Style="color:#C49D48"></i></li>
                                         <li><i class="bi bi-star-fill" Style="color:#C49D48"></i></li>
                                         <li><i class="bi bi-star"></i></li>
-                                    </ul>
+                                    </ul> */}
                                     <p>{e.description}</p>
                                     <ul className={styles.iconscity}>
                                         <li><i class="bi bi-clock-history"></i> {e.duration}</li>
