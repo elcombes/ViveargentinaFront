@@ -1,0 +1,122 @@
+.containContact {
+  background-color: #eee;
+  max-width: 1170px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1em;
+}
+
+div.formContact {
+  background-color: #eee;
+}
+
+.contact-wrapperContact {
+  margin: auto 0;
+}
+
+.submit-btnContact {
+  float: left;
+}
+.reset-btnContact {
+  float: right;
+  
+}
+
+.form-headlineContact:after {
+  content: "";
+  display: block;
+  width: 10%;
+  padding-top: 10px;
+  border-bottom: 3px solid #C49D48;
+}
+
+.highlight-textContact {
+  color: #C49D48;
+}
+
+.hightlight-contact-infoContact {
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.5;
+}
+
+.highlight-text-greyContact {
+  font-weight: 500;
+}
+
+.email-infoContact {
+    margin-top: 20px;
+}
+
+
+.required-inputContact {
+  color: black;
+}
+@media (min-width: 600px) {
+  .containContact {
+    padding: 0;
+  }
+}
+
+h3,
+ul {
+  margin: 0;
+}
+
+h3 {
+  margin-bottom: 1rem;
+}
+
+.form-input:focus,
+textarea:focus{
+  outline: 1.5px solid #C49D48;
+}
+
+.form-input,
+textarea {
+  width: 100%;
+  border: 1px solid #bdbdbd;
+  border-radius: 5px;
+}
+
+.wrapperContact > * {
+  padding: 1em;
+}
+@media (min-width: 700px) {
+  .wrapperContact {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+  }
+  .wrapperContact > * {
+    padding: 2em 2em;
+  }
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.contactsContact {
+  color: #212d31;
+}
+
+.formContact {
+  background: #fff;
+}
+
+form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+}
+form label {
+  display: block;
+}
+form p {
+  margin: 0;
+}
+
+.full-widthContact {
+  grid-column: 1 / 3;
+}

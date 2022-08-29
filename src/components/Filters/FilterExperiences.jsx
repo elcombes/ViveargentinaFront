@@ -12,7 +12,7 @@ export default function FilterExperiencies({handleOrder}) {
         selectedPackage: false,
         selectedCategory: false
     }) 
-    const [Order, setOrder] = useState('');
+
 
 
     const dispatch = useDispatch();
