@@ -44,16 +44,6 @@ h3 {
   max-width: 1240px;
 }
 
-button {
-  border: 1px solid var(--primary-dark);
-  background-color: #ffffff;
-  padding: 1.5vh 1.8vh;
-  border-radius: 33px;
-  cursor: pointer;
-  font-family: 'Raleway', sans-serif;
-  
-
-}
 
 form#formFilter {
 
