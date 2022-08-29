@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"; 
 import { useDispatch} from "react-redux";
 import { useHistory } from "react-router-dom"
-import  {getCitiesByName, getPackagesByName, getExperiencesByName}  from "../../redux/action"; 
+import  {getCitiesByName, getPackagesByName, getExperiencesByName, getAllCities, getAllPackages, getAllExperiences}  from "../../redux/action"; 
 import styles from '../SearchBar/SearchBar.module.css';
 
 export default function Search() {
@@ -13,6 +13,18 @@ export default function Search() {
 
     function handleName(e) {
         setName(e.target.value)
+    }
+
+    function handleReload(e) {
+            if(pathName === "/cities") {
+                dispatch(getAllCities())
+            }
+            if(pathName === "/packages") {
+                dispatch(getAllPackages())
+            }
+            if(pathName === "/experiences") {
+                dispatch(getAllExperiences())
+        }
     }
 
     function handleSubmit(e) {
@@ -27,6 +39,7 @@ export default function Search() {
                 setName("")
             }
             if(pathName === "/experiences") {
+                console.log(pathName)
                 dispatch(getExperiencesByName(name))
                 setName("")
             }
@@ -40,6 +53,7 @@ export default function Search() {
 
             <div className={styles.container}>
                 <form className={styles.searchbarstyle} onSubmit={(e) => handleSubmit(e)}>
+                    <button onClick={(e)=> handleReload(e)}type="button" class="btn btn-secondary"><i class="bi bi-arrow-clockwise"></i></button>
                     <div class="col-md-2">
                         <label class="visually-hidden" for="specificSizeInputName">Name</label>
                         <input type="text" value={name} class="form-control input-lg" id="specificSizeInputName" placeholder="Example: Córdoba" onChange={(e)=>handleName(e)} />
