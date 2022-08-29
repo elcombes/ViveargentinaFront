@@ -26,27 +26,26 @@ export default function Card() {
 
     return (
         <Fragment>
-        <div>
             <div class="container-fluid">
                 <NavBar />
                 <SearchBar />
-                <FilterPackages handleOrder={handleOrder}/>
+                <FilterPackages handleOrder={handleOrder} />
                 <br />
                 {allPackages?.map((e) => {
                     return (
                         allPackages === [] ? (
-                        <div className="noPackages">
-                        <img src="../images/loading-opaque.gif" alt="Loading..." />
-                      </div>
-                    ) : (
-                        <div class="container" key={prevId++}>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <h2>{e.name}</h2>
-                                    <h4>{e.subTitle}</h4>
+                            <div className="noPackages">
+                                <img src="../images/loading-opaque.gif" alt="Loading..." />
+                            </div>
+                        ) : (
+                            <div class="container" key={prevId++}>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h2>{e.name}</h2>
+                                        <h4>{e.subTitle}</h4>
 
-                                    Score:{e.score}
-                                    {/* <ul className={styles.scorecity}>
+                                        Score:{e.score}
+                                        {/* <ul className={styles.scorecity}>
 
                                         <li><i class="bi bi-star-fill" Style="color:#C49D48"></i></li>
                                         <li><i class="bi bi-star-fill" Style="color:#C49D48"></i></li>
@@ -54,52 +53,23 @@ export default function Card() {
                                         <li><i class="bi bi-star-fill" Style="color:#C49D48"></i></li>
                                         <li><i class="bi bi-star"></i></li>
                                     </ul> */}
-                                    <p>{e.description}</p>
-                                    <ul className={styles.iconscity}>
-                                        <li><i class="bi bi-clock-history"></i> {e.duration}</li>
-                                        <li><i class="bi bi-currency-dollar"></i> {e.price}</li>
-                                    </ul>
-                                    <div className={styles.citybuttons}>
-                                        <button type="button" class="btn btn-outline-secondary btn-lg"><i class="bi bi-cart-check"></i> I want it!</button>
-                                    </div>
-                                </div>
-                            ) : (
-                                <div class="container" key={prevId++}>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <h2>{e.name}</h2>
-                                            <h4>{e.subTitle}</h4>
-                                            Score: {e.score}
-                                            {/* <ul className={styles.scorecity}>
-                                                    <li><i class="bi bi-star-fill" Style="color:#C49D48"></i></li>
-                                                    <li><i class="bi bi-star-fill" Style="color:#C49D48"></i></li>
-                                                    <li><i class="bi bi-star-fill" Style="color:#C49D48"></i></li>
-                                                    <li><i class="bi bi-star-fill" Style="color:#C49D48"></i></li>
-                                                    <li><i class="bi bi-star"></i></li>
-                                                </ul> */}
-                                            <p>{e.description}</p>
-                                            <ul className={styles.iconscity}>
-                                                <li><i class="bi bi-clock-history"></i> {e.duration}</li>
-                                                <li><i class="bi bi-currency-dollar"></i> {e.price}</li>
-                                            </ul>
-
-                                            <div className={styles.citybuttons}>
-                                                <button type="button" class="btn btn-outline-secondary btn-lg"><i class="bi bi-cart-check"></i> I want it!</button>
-                                            </div>
-
-                                        </div>
-                                        <div class="col-md-6">
-                                            <img className="img-fluid" src={e.image} alt="" />
-                                            {/* <CarouselPackage /> */}
+                                        <p>{e.description}</p>
+                                        <ul className={styles.iconscity}>
+                                            <li><i class="bi bi-clock-history"></i> {e.duration}</li>
+                                            <li><i class="bi bi-currency-dollar"></i> {e.price}</li>
+                                        </ul>
+                                        <div className={styles.citybuttons}>
+                                            <button type="button" class="btn btn-outline-secondary btn-lg"><i class="bi bi-cart-check"></i> I want it!</button>
                                         </div>
                                     </div>
-                                    <br />
                                 </div>
-
-                            ))
-                    })}
-                </div>
+                            </div>
+                        )
+                    )
+                }
+                )
+            }
             </div>
         </Fragment>
     )
-}
+        }
