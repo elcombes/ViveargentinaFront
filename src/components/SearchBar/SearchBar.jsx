@@ -45,7 +45,7 @@ export default function Search() {
                         <input type="text" value={name} class="form-control input-lg" id="specificSizeInputName" placeholder="Example: Córdoba" onChange={(e)=>handleName(e)} />
                     </div>
                     <div class="col-md-auto">
-                        <button type="submit" class="btn btn-outline-secondary btn-lg">Submit</button>
+                        <button type="submit" class="btn btn-outline-secondary btn-lg">Search</button>
                     </div>
                 </form>
             </div>
