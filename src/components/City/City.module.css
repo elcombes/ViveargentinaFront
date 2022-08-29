@@ -1,0 +1,29 @@
+
+ul.iconscity {
+    padding-left: 0;
+}
+
+.iconscity {
+    list-style: none;
+    display: inline-flex;
+    justify-content: space-between;
+    font-size: 1.5rem;
+    font-weight: bold;
+
+}
+.iconscity li i {
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 0 0 0 10px;
+}
+.scorecity {
+    list-style: none;
+    display: inline-flex;
+    justify-content: space-between;
+    padding: 0;
+
+}
+
+button {
+    margin: 0 5px 0 0;
+}

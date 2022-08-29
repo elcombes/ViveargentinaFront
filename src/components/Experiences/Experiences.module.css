@@ -1,0 +1,61 @@
+
+ul.iconsexperience {
+    padding-left: 0;
+}
+
+.iconsexperience {
+    list-style: none;
+    display: inline-flex;
+    justify-content: space-between;
+    font-size: 1.5rem;
+    font-weight: bold;
+
+}
+.iconsexperience li i {
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 0 0 0 10px;
+}
+.scoreexperience {
+    list-style: none;
+    display: inline-flex;
+    justify-content: space-between;
+    padding: 0;
+}
+button {
+    margin: 0 5px 0 0;
+}
+.experiencesbuttons {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+}
+.moreinfo {
+    background-image: url('https://images.unsplash.com/photo-1536257104079-aa99c6460a5a?auto=format&fit=crop&w=1170&q=80');
+    height: 150px;
+    width: 100%;
+    background-size: cover;
+    background-position: 0 640px;
+    display: inline-flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    margin: 40px 0;
+}
+.separator {
+    height: 50px;
+}
+
+.categoryicons {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    cursor: pointer;
+}
+.categoryicons li:hover {
+    color: #C49D48;
+}
+
+.categoryicons li i {
+    font-size: 3rem;
+}
