@@ -11,7 +11,7 @@ import { getAllExperiences, orderExperiences } from '../../redux/action';
 
 
 export default function Experiences() {
-    
+
     const dispatch = useDispatch();
     const allExperiences = useSelector((state) => state.allExperiences);
     const [Order, setOrder] = useState('');
@@ -63,12 +63,14 @@ export default function Experiences() {
                                                 <li><i className="bi bi-currency-dollar"></i>{e.price}</li>
                                             </ul>
 
-                                    <button type="button" className="btn btn-outline-secondary btn-lg"><i className="bi bi-cart-check"></i> I want it!</button>
+                                            <button type="button" className="btn btn-outline-secondary btn-lg"><i className="bi bi-cart-check"></i> I want it!</button>
                                         </div>
                                         <div className="col-md-6">
-                                            <CarouselExperiences />
+                                            <img className="img-fluid" src={e.image} alt="" />
+                                            {/* <CarouselExperiences /> */}
                                         </div>
                                     </div>
+                                    <br/>
                                 </div>
                             ))
                     })}
@@ -95,8 +97,8 @@ export default function Experiences() {
                         <CategoriesExperiences />
                     </div>
                     <div className={styles.experiencesbuttons}>
-                                                <CreateExperience />
-                                            </div>
+                        <CreateExperience />
+                    </div>
 
                     <div className={styles.separator}></div>
                 </div>
