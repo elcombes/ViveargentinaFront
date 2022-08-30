@@ -25,11 +25,11 @@ export default function Card() {
       <SearchBar />
       <div class="container-fluid">
 
-
         <br />
 
         <div className="allcities">
           {allCities?.map((e, i) => {
+            console.log(i)
             return (
               allCities === [] ? (
                 <div className="noCities">
