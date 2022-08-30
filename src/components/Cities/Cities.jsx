@@ -44,16 +44,18 @@ export default function Card() {
                         <div class="accordion accordion-flush" id="accordionFlushExample">
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="flush-heading">
-                              <button class="accordion-button collapsed" className={styles.city01} type="button" data-bs-toggle="collapse" data-bs-target={`#${e.name.split(' ').join('')}`} aria-expanded="false" aria-controls={e.name.split(' ').join('')}>
+                              <button class="accordion-button collapsed"  className={styles.city01} type="button" data-bs-toggle="collapse" data-bs-target={`#${e.name.split(' ').join('')}`} aria-expanded="false" aria-controls={e.name.split(' ').join('')}>
                                 {e.name}
                               </button>
                             </h2>
                             <div id={e.name.split(' ').join('')} class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                               <div class="accordion-body">
                                 <City
+                                  name={e.name}
                                   subtitle={e.subTitle}
                                   score={e.score}
                                   description={e.description}
+                                  image={e.image}
                                 />
                               </div>
                             </div>

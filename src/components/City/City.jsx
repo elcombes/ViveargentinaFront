@@ -14,7 +14,10 @@ export default function Card(city) {
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <CarouselCity />
+                        <CarouselCity 
+                        image={image}
+                        name={name}
+                        />
                     </div>
                     <div class="col-md-6">
 
