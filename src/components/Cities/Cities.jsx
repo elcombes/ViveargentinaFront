@@ -29,7 +29,7 @@ export default function Card() {
         <br />
 
         <div className="allcities">
-          {allCities?.map((e) => {
+          {allCities?.map((e, i) => {
             return (
               allCities === [] ? (
                 <div className="noCities">
@@ -44,12 +44,11 @@ export default function Card() {
                         <div class="accordion accordion-flush" id="accordionFlushExample">
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="flush-heading">
-                              <button class="accordion-button collapsed" className={styles.city01} type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                              <button class="accordion-button collapsed" className={styles.city01} type="button" data-bs-toggle="collapse" data-bs-target={`#${e.name.split(' ').join('')}`} aria-expanded="false" aria-controls={e.name.split(' ').join('')}>
                                 {e.name}
-
                               </button>
                             </h2>
-                            <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                            <div id={e.name.split(' ').join('')} class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                               <div class="accordion-body">
                                 <City
                                   subtitle={e.subTitle}
