@@ -2,6 +2,7 @@ import React, { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCities } from "../../redux/action";
 
+
 import City from '../City/City'
 import NavBar from '../NavBar/NavBar';
 import SearchBar from '../SearchBar/SearchBar';
@@ -18,12 +19,17 @@ export default function Card() {
     dispatch(getAllCities());
   }, [dispatch]);
 
+  
 
   return (
     <Fragment>
       <NavBar />
       <SearchBar />
+
+
+
       <div class="container-fluid">
+
 
         <br />
 
@@ -44,7 +50,7 @@ export default function Card() {
                         <div class="accordion accordion-flush" id="accordionFlushExample">
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="flush-heading">
-                              <button class="accordion-button collapsed"  className={styles.city01} type="button" data-bs-toggle="collapse" data-bs-target={`#${e.name.split(' ').join('')}`} aria-expanded="false" aria-controls={e.name.split(' ').join('')}>
+                              <button class="accordion-button collapsed"  className={styles.city01} style={{borderRadius: 80,margin: 1.5,backgroundImage: `url(${e.image.split(',')[2]})`}} type="button" data-bs-toggle="collapse" data-bs-target={`#${e.name.split(' ').join('')}`} aria-expanded="false" aria-controls={e.name.split(' ').join('')}>
                                 {e.name}
                               </button>
                             </h2>

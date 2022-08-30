@@ -1,6 +1,7 @@
 
 import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom'
+import Zoom from 'react-reveal/Zoom';
 
 import NavBar from '../NavBar/NavBar.jsx';
 import Carousel from '../Carousel/Carousel.Home'
@@ -15,6 +16,7 @@ function HomePage() {
                 <div className='firstPage'>
                     <NavBar />
                 </div>
+                <Zoom>
                 <div>
                     <h1 className='mainTitle'>
                         One Destination <br />
@@ -32,8 +34,10 @@ function HomePage() {
 
                     </Link>
                 </div>
+            </Zoom>
             </div>
             <div className='cities'>
+                <Zoom>
                 <h4 className='citiesTitle'>
                     CITIES
                 </h4>
@@ -44,6 +48,7 @@ function HomePage() {
                         <Carousel />
                     </Link>
                 </div>
+                </Zoom>
             </div>
 
         </Fragment>
