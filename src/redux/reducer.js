@@ -71,7 +71,6 @@ import { FILTER_EXPERIENCES, ORDER_EXPERIENCES, ORDER_PACKAGES, ORDER_CITIES } f
 
         case ORDER_CITIES:
           let packagesOrdered2
-  
               if(action.payload === 'sort') packagesOrdered2 = state.allCities;
               if(action.payload === 'ascendant by name') {
                 packagesOrdered2 = state.allCities.sort(function(a, b) {
@@ -149,14 +148,14 @@ import { FILTER_EXPERIENCES, ORDER_EXPERIENCES, ORDER_PACKAGES, ORDER_CITIES } f
         if(action.payload === 'sort') experiencesOrdered = state.allExperiences;
         if(action.payload === 'ascendant by name') {
           experiencesOrdered = state.allExperiences.sort(function(a, b) {
-                if(a.name > b.name) return 1;
-                else if(a.name < b.name) return -1;
+                if(a.name.toLowerCase() > b.name.toLowerCase()) return 1;
+                if(a.name.toLowerCase() < b.name.toLowerCase()) return -1;
                 else return 0;
             })} 
         else if(action.payload === 'descendant by name') {
           experiencesOrdered = state.allExperiences.sort(function(a, b) {
-                if(a.name > b.name) return -1;
-                else if(a.name < b.name) return 1;
+                if(a.name.toLowerCase() > b.name.toLowerCase()) return -1;
+                if(a.name.toLowerCase() < b.name.toLowerCase()) return 1;
                 else return 0;
             })} 
         else if(action.payload === 'ascendant by price') {
