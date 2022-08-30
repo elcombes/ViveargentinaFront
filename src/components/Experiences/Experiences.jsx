@@ -68,7 +68,7 @@ export default function Experiences() {
                                 <div className="container">
                                     <div className="row">
                                         <div className="col-md-6">
-                                            <h2>{e.name}</h2>
+                                            <h2>{e.name[0].toUpperCase() + e.name.slice(1)}</h2>
                                             <h4>{e.subTitle}</h4>
                                             Score:{e.score}
                                             {/*                         <ul className={styles.scoreexperience}>
