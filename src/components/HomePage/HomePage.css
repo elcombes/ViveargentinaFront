@@ -6,25 +6,28 @@
 }
 
 .mainTitle {
-    margin-top: 29vh;
+    margin-top: 20vh;
     margin-left: 15vh;
-    font-size: 7vh;
+    font-size: 9vh;
+    font-weight: 700;
 }
 
 .subTitle {
     margin-top: 4vh;
     margin-left: 16vh;
-    font-size: 2vh;
+    font-size: 2.8vh;
+    font-weight: 400;
 }
 
 .explore .btn-outline-secondary {
     margin-top: 4vh;
     margin-left: 16vh;
-    font-size: 1.5vh;
-    font-weight: 200;
+    font-size: 2vh;
+    font-weight: 500;
     padding: 1vh;
     color: #ffffff;
 }
+
 .cities .btn-outline-secondary {
     font-size: 1.5vh;
     font-weight: 200;
@@ -32,35 +35,39 @@
     display: flex;
     flex-direction: row;
 }
+
 .cities {
     display: flex;
     padding: 3vh;
     align-items: center;
+
+
 }
 
-.citiesTitle{
+.citiesTitle {
     font-size: 6vh;
-    margin-left: 10vh ;
+    margin-left: 10vh;
     margin-right: 10vh;
 
 }
 
-.carousel{
-    width: 100%;  
+.carousel {
+    width: 100%;
 }
 
-.cityInfos{
+.cityInfos {
     padding: 20vh 0vh 20vh 0vh;
     height: fit-content;
 
 }
-.btn btn-outline-secondary{
-        border: 1px solid var(--primary-dark);
-        background-color: #ffffff;
-        padding: 1.5vh 1.8vh;
-        border-radius: 33px;
-        cursor: pointer;
-        font-family: 'Raleway', sans-serif;
+
+.btn btn-outline-secondary {
+    border: 1px solid var(--primary-dark);
+    background-color: #ffffff;
+    padding: 1.5vh 1.8vh;
+    border-radius: 33px;
+    cursor: pointer;
+    font-family: 'Raleway', sans-serif;
 }
 
 @media screen and (max-width: 940px) {
@@ -68,4 +75,4 @@
         max-width: 275px;
     }
 
-} 
+}

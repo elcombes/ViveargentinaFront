@@ -29,14 +29,16 @@ h1 {
   font-weight: 500;
   color: #ffffff;
   text-shadow: 1px 1px 2px var(--secondary-light);
-
+  animation: fadeInDownBig; 
+  animation-duration: 1s; 
 }
 h3 {
   font-size: 2rem;
   font-weight: 300;
   color: #ffffff;
   text-shadow: 1px 1px 2px var(--secondary-light);
-
+  animation: fadeInDownBig; 
+  animation-duration: 1s
 
 }
 
