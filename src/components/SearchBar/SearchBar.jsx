@@ -24,9 +24,15 @@ export default function Search() {
 
 
     function handleReload(e) {
-            document.getElementById("alphabeticOrder").value = "sort"
-            document.getElementById("priceOrder").value = "sort"
-            document.getElementById("scoreOrder").value = "sort"
+            if (document.getElementById("alphabeticOrder")) {
+                document.getElementById("alphabeticOrder").value = "sort"
+            }
+            if (document.getElementById("priceOrder")) {
+                document.getElementById("priceOrder").value = "sort"
+            }            
+            if (document.getElementById("scoreOrder")) {
+                document.getElementById("scoreOrder").value = "sort"
+            }
             if(pathName === "/cities") {
                 dispatch(getAllCities())
             }

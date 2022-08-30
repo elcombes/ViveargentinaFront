@@ -35,14 +35,14 @@ function handleFilterByRegion(e) {
             <div> 
                 <form id='formFilter'> 
 
-                <select onChange={e => handleOrder(e)}>
+                <select id= "alphabeticOrder" onChange={e => handleOrder(e)}>
                     <option hidden>ALFABETIC</option>
                     <option value='sort'>Sort</option>
                     <option value='ascendant by name'>A - Z</option>
                     <option value='descendant by name'>Z - A</option>
                 </select>
 
-                <select onChange={e => handleOrder(e)}>
+                <select id= "scoreOrder" onChange={e => handleOrder(e)}>
                     <option hidden>SCORE</option>
                     <option value='sort'>Sort</option>
                     <option value='ascendant by score'>ASC</option>
