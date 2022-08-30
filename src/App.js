@@ -8,6 +8,7 @@ import Packages from './components/Packages/Packages.jsx';
 import Experiences from './components/Experiences/Experiences.jsx';
 import FilterCities from './components/Filters/FilterCities.jsx';
 import ContactUs from './components/ContactUs/ContactUs'
+import Error404 from './components/Error404/Error404'
 
 
     function App() {
@@ -23,6 +24,7 @@ import ContactUs from './components/ContactUs/ContactUs'
             <Route exact path="/packages"  component={Packages}/>
             <Route exact path="/experiences"  component={Experiences}/> 
             <Route exact path="/filters"  component={FilterCities}/> 
+            <Route exact path="/404" component={Error404}/>
       
           </Switch>    
         </div>
