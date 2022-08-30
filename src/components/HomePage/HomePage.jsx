@@ -23,7 +23,7 @@ function HomePage() {
                     <h3 className='subTitle'>
                         Let yourself be enchanted by every corner of this country
                     </h3>
-                    <Link to='/Packages'>
+                    <Link to='/packages'>
                         <div className='explore'>
                             <button className="btn btn-outline-secondary">
                                 EXPLORE &#62;&#62;
