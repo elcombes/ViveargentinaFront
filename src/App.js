@@ -24,7 +24,7 @@ import Error404 from './components/Error404/Error404'
             <Route exact path="/packages"  component={Packages}/>
             <Route exact path="/experiences"  component={Experiences}/> 
             <Route exact path="/filters"  component={FilterCities}/> 
-            <Route exact path="/404" component={Error404}/>
+            <Route path="*" component={Error404}/>
       
           </Switch>    
         </div>
