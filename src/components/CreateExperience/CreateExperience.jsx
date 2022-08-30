@@ -7,10 +7,12 @@ import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
+import { useHistory } from "react-router-dom";
 import { createNewExperience, getAllPackages, getAllCategories } from "../../redux/action";
 
 
 export default function Experiences() {
+  const history = useHistory()
   const allPackages = useSelector((state) => state.allPackages);
   const allCategories = useSelector((state) => state.allCategories);
 
@@ -45,29 +47,26 @@ export default function Experiences() {
   };
 
   const handleSubmit = (event) => {
-    console.log('Holaaa', newExperience)
-    event.preventDefault();
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
+      event.preventDefault();
       event.stopPropagation();
     }
     setValidated(true);
-
-    console.log(newExperience)
-
     dispatch(createNewExperience(newExperience));
-    setNewExperience({
-      name: "",
-      subTitle: "",
-      price: "",
-      decription: "",
-      image: "",
-      video: "",
-      duration: "",
-      stock: "",
-      categoryId: "",
-      packageId: "",
-    });
+    // setNewExperience({
+    //   name: "",
+    //   subTitle: "",
+    //   price: "",
+    //   description: "",
+    //   image: "",
+    //   video: "",
+    //   duration: "",
+    //   stock: "",
+    //   categoryId: "",
+    //   packageId: "",
+    // });
+    // history("/experiences")
   };
 
   return (
