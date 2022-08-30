@@ -24,6 +24,9 @@ export default function Search() {
 
 
     function handleReload(e) {
+            document.getElementById("alphabeticOrder").value = "sort"
+            document.getElementById("priceOrder").value = "sort"
+            document.getElementById("scoreOrder").value = "sort"
             if(pathName === "/cities") {
                 dispatch(getAllCities())
             }

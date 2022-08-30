@@ -56,6 +56,9 @@ function handleFilterByPackage(e) {
 
 function handleChange(e) {
     e.preventDefault();
+    document.getElementById("alphabeticOrder").value = "sort"
+    document.getElementById("priceOrder").value = "sort"
+    document.getElementById("scoreOrder").value = "sort"
     dispatch(filterExperiences({categoryId: state.selectedCategory, packageId: state.selectedPackage}))
 }
 
@@ -66,7 +69,7 @@ function handleChange(e) {
                 
                 <p> ORDER BY </p>
                 <p>ALFABETIC: 
-                <select onChange={e => handleOrder(e)}>
+                <select id= "alphabeticOrder" onChange={e => handleOrder(e)}>
                     <option value='sort'>Sort</option>
                     <option value='ascendant by name'>A - Z</option>
                     <option value='descendant by name'>Z - A</option>
@@ -74,7 +77,7 @@ function handleChange(e) {
                 </p> 
 
                 <p>PRICE: 
-                <select onChange={e => handleOrder(e)}>
+                <select id= "priceOrder" onChange={e => handleOrder(e)}>
                     <option value='sort'>Sort</option>
                     <option value='ascendant by price'>ASC</option>
                     <option value='descendant by price'>DESC</option>
@@ -82,7 +85,7 @@ function handleChange(e) {
                 </p> 
 
                 <p>SCORE: 
-                <select onChange={e => handleOrder(e)}>
+                <select id= "scoreOrder" onChange={e => handleOrder(e)}>
                     <option value='sort'>Sort</option>
                     <option value='ascendant by score'>ASC</option>
                     <option value='descendant by score'>DESC</option>
