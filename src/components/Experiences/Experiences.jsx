@@ -6,8 +6,10 @@ import Navbar from '../NavBar/NavBar';
 import SearchBar from '../SearchBar/SearchBar';
 import CreateExperience from '../CreateExperience/CreateExperience';
 import FilterExperiences from '../Filters/FilterExperiences';
+import Paged from '../Paged/Paged'
 import CategoriesExperiences from './Categories.Experiences'
 import { getAllExperiences, orderExperiences } from '../../redux/action';
+
 
 
 export default function Experiences() {
@@ -15,6 +17,20 @@ export default function Experiences() {
     const dispatch = useDispatch();
     const allExperiences = useSelector((state) => state.allExperiences);
     const [Order, setOrder] = useState('');
+
+    const [page, setPage] = useState(1);
+    const [experiencesPage, /* setExperiencesPage */] = useState(6);
+    const quantityExperiencesPage = page * experiencesPage;
+    const firstExperiencePage = quantityExperiencesPage - experiencesPage;
+
+    const showExperiencesPage = allExperiences.slice( //.slice sirve para cortar un array y mostrar solo una cantidad de elementos determinada por el parametro que le pasemos (9)
+    firstExperiencePage, 
+    quantityExperiencesPage
+  );
+
+  const paged = function (pageNumber) { 
+    setPage(pageNumber);
+  };
 
 
     function handleOrder(e) {
@@ -35,10 +51,15 @@ export default function Experiences() {
                     <Navbar />
                     <SearchBar />
                     <FilterExperiences handleOrder={handleOrder} />
+                    {/* <Paged
+                        experiencesPage={experiencesPage}
+                        allExperiences={allExperiences.length}
+                        paged={paged}
+                    /> */}
                     <br />
-                    {allExperiences?.map((e) => {
+                    {showExperiencesPage?.map((e) => {
                         return (
-                            allExperiences === [] ? (
+                            showExperiencesPage === [] ? (
                                 <div className="noExperiences">
                                     <img src="../images/loading-opaque.gif" alt="Loading..." />
                                 </div>
@@ -74,33 +95,27 @@ export default function Experiences() {
                                 </div>
                             ))
                     })}
-
-                    <div className={styles.separator}></div>
-
-                    <div className="container-fluid">
-                        <div className={styles.moreinfo}>
-                            <h3 className="text-center">MORE INFO</h3>
-                        </div>
-                    </div>
-
-                    <div className="container">
-                        <p>In the heart of the Andes Mountains, is the number one ski resort in Latin America. Combination of nature, comfort, fun, adventure and relaxation. The center has an unbeatable snow quality, international gastronomy, first class hotel facilities and a long snow season. This experience includes hotel transfers, lunch, guide and insurance.</p>
-                        <div className={styles.citybuttons}>
-                            <button type="button" className="btn btn-outline-secondary btn-lg">View + Experiences</button>
-                            <button type="button" className="btn btn-outline-secondary btn-lg"><i className="bi bi-cart-check"></i> I want it!</button>
-                        </div>
+                    <div className={styles.experiencesbuttons}>
+                        <Paged
+                            experiencesPage={experiencesPage}
+                            allExperiences={allExperiences.length}
+                            paged={paged}
+                        />
+                        <br/>
+                        <CreateExperience />
                     </div>
 
                     <div className={styles.separator}></div>
-
                     <div className="container">
                         <CategoriesExperiences />
                     </div>
+
                     <div className={styles.experiencesbuttons}>
                         <CreateExperience />
                     </div>
 
                     <div className={styles.separator}></div>
+
                 </div>
             </div>
 

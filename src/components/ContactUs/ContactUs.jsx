@@ -6,7 +6,7 @@ import Navbar from "../NavBar/NavBar";
 export default function ContactUs() {
   return(
   <Fragment>			
-           <Navbar />	
+  <Navbar />	
 <div class="containContact">
 
 <div class="wrapperContact">
@@ -44,11 +44,9 @@ export default function ContactUs() {
   <div class="contacts contact-wrapperContact">
 
     <ul>
-      <li>We've driven online revenues of over <span class="highlight-text-greyContact">$2
-          billion</span> for our clients. Ready to know
-        how we can help you?</li>
+      <li>We have connected more than 10,000 people with unforgettable experiences! how can we help you?</li>
       <span class="hightlight-contact-infoContact">
-        <li class="email-infoContact"><i class="fa fa-envelopeContact" aria-hidden="true"></i> info@demo.com</li>
+        <li class="email-infoContact"><i class="fa fa-envelopeContact" aria-hidden="true"></i> vaviveargentina@gmail.com</li>
         <li><i class="fa fa-phone" aria-hidden="true"></i> <span class="highlight-textContact">+91 11 1111 2900</span></li>
       </span>
     </ul>
