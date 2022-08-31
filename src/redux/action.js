@@ -24,7 +24,6 @@ export const CREATE_NEW_EXPERIENCE = "CREATE_NEW_EXPERIENCE";
 // Esta ruta trae una ciudad que incluye un array con todos sus paquetes.
 // Se pasa el name,tal vez en un searchbar
 export function getCitiesByName(cityName) {
-  console.log("City name en actions:", cityName);
   return async function (dispatch) {
     let citiesByName = await axios.get(
       `https://viveargentina.herokuapp.com/cities?name=${cityName}`
