@@ -39,6 +39,7 @@
     font-weight: 600;
     transition: 0.3ms;
 } 
+
 .pageBtn:hover {
     background-color: #EDB634;
     color: #fff;
