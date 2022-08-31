@@ -33,6 +33,15 @@ export default function Search({setPage}) {
             if (document.getElementById("scoreOrder")) {
                 document.getElementById("scoreOrder").value = "sort"
             }
+            if (document.getElementById("categoryFilter")) {
+                document.getElementById("categoryFilter").value = "all"
+            }
+            if (document.getElementById("packageFilter")) {
+                document.getElementById("packageFilter").value = "all"
+            }
+            if (document.getElementById("cityFilter")) {
+                document.getElementById("cityFilter").value = "all"
+            }
             if(pathName === "/cities") {
                 dispatch(getAllCities())
             }

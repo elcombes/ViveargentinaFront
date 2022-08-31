@@ -57,7 +57,7 @@ useEffect(() => {
                 
                
                 <p> CITIES </p>
-                <select onChange={e => handleFilterByCity(e)}>
+                <select id="cityFilter"onChange={e => handleFilterByCity(e)}>
                     <option value='all'>All</option>
                     {allCities && allCities.sort((a, b) => {
                         if (a.name < b.name) return -1;
