@@ -6,7 +6,7 @@ import styles from './City.module.css';
 
 export default function Card(city) {
 
-    const { name, subtitle, score, description, image } = city;
+    const { name, subtitle, score, description, image, id } = city;
 
     return (
         <div class="container-fluid">
@@ -38,9 +38,9 @@ export default function Card(city) {
 
                         </ul>
                         <p> {description}</p>
-                        <Link to='/packages'>
+                        <Link to={'/packages/'+id}>
                             <div className={styles.citybuttons}>
-                                <button type="button" class="btn btn-outline-secondary btn-lg">View all Packages</button>
+                                <button type="button" class="btn btn-outline-secondary btn-lg">View all {name} packages</button>
                             </div>
                         </Link>
                     </div>

@@ -1,13 +1,16 @@
-
+.col-md.titleh2 {
+    font-size: 7vh;
+}
 ul.iconsexperience {
-    padding-left: 0;
+    padding-right: 4vh;
+    margin: 3vh 6vh 4vh 0vh;
 }
 
 .iconsexperience {
     list-style: none;
     display: inline-flex;
     justify-content: space-between;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     font-weight: bold;
 
 }
@@ -22,9 +25,7 @@ ul.iconsexperience {
     justify-content: space-between;
     padding: 0;
 }
-button {
-    margin: 0 5px 0 0;
-}
+
 .experiencesbuttons {
     display: flex;
     flex-direction: row;
