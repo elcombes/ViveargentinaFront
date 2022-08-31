@@ -26,13 +26,8 @@ export default function Card() {
       <NavBar />
       <SearchBar />
 
-
-
       <div class="container-fluid">
-
-
         <br />
-
         <div className="allcities">
           {allCities?.map((e, i) => {
             console.log(i)
@@ -62,6 +57,8 @@ export default function Card() {
                                   score={e.score}
                                   description={e.description}
                                   image={e.image}
+                                  id= {e.id}
+        
                                 />
                               </div>
                             </div>

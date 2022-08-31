@@ -1,4 +1,4 @@
-import { GET_REGION_BY_ID, GET_CITY_BY_ID, GET_ALL_CITIES, GET_ALL_EXPERIENCES , GET_ALL_PACKAGES, GET_ALL_CATEGORIES, GET_ALL_REGIONS, GET_CITIES_BY_NAME, GET_PACKAGES_BY_NAME, GET_EXPERIENCES_BY_NAME } from "./action";
+import { GET_REGION_BY_ID, GET_CITY_BY_ID, GET_ALL_CITIES, GET_ALL_EXPERIENCES , GET_ALL_PACKAGES, GET_ALL_CATEGORIES, GET_ALL_REGIONS, GET_CITIES_BY_NAME, GET_PACKAGES_BY_NAME, GET_PACKAGE_BY_ID, GET_EXPERIENCES_BY_NAME } from "./action";
 import { FILTER_EXPERIENCES, ORDER_EXPERIENCES, ORDER_PACKAGES, ORDER_CITIES } from "./action";
   
   const initialState = {
@@ -16,17 +16,23 @@ import { FILTER_EXPERIENCES, ORDER_EXPERIENCES, ORDER_PACKAGES, ORDER_CITIES } f
         return {
           ...state,
           allCities: action.payload
-        }
+        };
       case GET_PACKAGES_BY_NAME:
         return {
           ...state,
           allPackages: action.payload
-        }
+        };
+      case GET_PACKAGE_BY_ID:
+        return {
+          ...state,
+          allExperiences: action.payload.experiences
+        };
+
       case GET_EXPERIENCES_BY_NAME:
         return {
           ...state,
           allExperiences: action.payload
-        }
+        };
       case GET_CITY_BY_ID:
         return {
           ...state,

@@ -1,27 +1,33 @@
 import React, { useState, Fragment, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import CarouselPackage from '../Carousel/Carousel.Package'
 import styles from '../Packages/Packages.module.css';
 import NavBar from '../NavBar/NavBar';
 import SearchBar from '../SearchBar/SearchBar';
 import FilterPackages from '../../components/Filters/FilterPackages';
-import { getAllPackages, orderPackages } from '../../redux/action';
+import { getAllPackages, getCityById, orderPackages } from '../../redux/action';
 
 
-export default function Card() {
+export default function Card(props) {
     let prevId = 1;
     const dispatch = useDispatch();
     const allPackages = useSelector((state) => state.allPackages);
     const [Order, setOrder] = useState('');
+    const { cityId } = props.match.params;
 
     function handleOrder(e) {
         setOrder(e.target.value)
         console.log(Order)
         dispatch(orderPackages(e.target.value))
     }
-
+    
     useEffect(() => {
-        dispatch(getAllPackages());
+        if (cityId) {
+            dispatch(getCityById(cityId))
+            
+        } else {
+            dispatch(getAllPackages());    
+        }
     }, [dispatch]);
 
     return (
@@ -56,8 +62,17 @@ export default function Card() {
                                             <ul className={styles.iconscity}>
                                                 <li><i class="bi bi-clock-history"></i> {e.duration}</li>
                                                 <li><i class="bi bi-currency-dollar"></i> {e.price}</li>
-                                            </ul>
+{/*                                                 
+                                                <li>{e.experiences[0].name}<br/></li>
+                                                <li>{e.experiences[1].name}<br/></li>
+                                                <li>{e.experiences[2].name}<br/></li> */}
 
+                                            </ul>
+                                            <Link to={'/experiences/'+e.id}>
+                                            <div className={styles.citybuttons}>
+                                                <button type="button" class="btn btn-outline-secondary btn-lg"> View all included experiences!</button>
+                                            </div>
+                                            </Link>
                                             <div className={styles.citybuttons}>
                                                 <button type="button" class="btn btn-outline-secondary btn-lg"><i class="bi bi-cart-check"></i> I want it!</button>
                                             </div>
