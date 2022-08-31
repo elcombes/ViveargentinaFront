@@ -12,7 +12,7 @@ export default function Paged({experiencesPage, allExperiences, paged, currentPa
         
         <div>
             
-            {pages.length <= 1 ? 
+            {pages.length <= 0 ? 
             <></> :
             <nav className="pagination">
                 

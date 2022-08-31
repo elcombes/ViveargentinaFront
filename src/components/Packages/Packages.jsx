@@ -61,11 +61,12 @@ export default function Card(props) {
                                             <p>{e.description}</p>
                                             <ul className={styles.iconscity}>
                                                 <li><i class="bi bi-clock-history"></i> {e.duration}</li>
-                                                <li><i class="bi bi-currency-dollar"></i> {e.price}</li>
-{/*                                                 
-                                                <li>{e.experiences[0].name}<br/></li>
-                                                <li>{e.experiences[1].name}<br/></li>
-                                                <li>{e.experiences[2].name}<br/></li> */}
+                                                <li><i class="bi bi-currency-dollar"></i> ARS{e.price}</li>
+                                                {console.log(e.experiences)}
+                                               
+                                                <li>{e.experiences?e.experiences[0].name: null} <br/></li>
+                                                <li>{e.experiences?e.experiences[1].name: null}<br/></li>
+                                                <li>{e.experiences?e.experiences[2].name: null}<br/></li>  
 
                                             </ul>
                                             <Link to={'/experiences/'+e.id}>
