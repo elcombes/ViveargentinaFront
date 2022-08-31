@@ -5,8 +5,8 @@ import Navbar from "../NavBar/NavBar";
 
 export default function ContactUs() {
   return(
-  <Fragment>			
-  <Navbar />	
+  <Fragment>	
+  <Navbar/>		
 <div class="containContact">
 
 <div class="wrapperContact">

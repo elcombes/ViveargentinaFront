@@ -11,11 +11,13 @@ import ContactUs from './components/ContactUs/ContactUs'
 import Error404 from './components/Error404/Error404'
 
 
+
     function App() {
       return (
         <BrowserRouter>
         <div className="App">    
           <Switch>
+
             <Route exact path="/" component={LandingPage}/>
             <Route path="/contact_us"  component={ContactUs}/> 
             <Route exact path="/cities"  component={Cities}/>
@@ -24,8 +26,7 @@ import Error404 from './components/Error404/Error404'
             <Route exact path="/packages"  component={Packages}/>
             <Route exact path="/experiences"  component={Experiences}/> 
             <Route exact path="/filters"  component={FilterCities}/> 
-            <Route path="*" component={Error404}/>
-      
+            <Route path="*" component={Error404}/>      
           </Switch>    
         </div>
         </BrowserRouter>
