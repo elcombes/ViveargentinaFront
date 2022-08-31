@@ -54,19 +54,6 @@ export default function Experiences() {
     }
     setValidated(true);
     dispatch(createNewExperience(newExperience));
-    // setNewExperience({
-    //   name: "",
-    //   subTitle: "",
-    //   price: "",
-    //   description: "",
-    //   image: "",
-    //   video: "",
-    //   duration: "",
-    //   stock: "",
-    //   categoryId: "",
-    //   packageId: "",
-    // });
-    // history("/experiences")
   };
 
   return (
@@ -306,29 +293,6 @@ export default function Experiences() {
                             required
                             name="image"
                             value={newExperience.image}
-                            onChange={(e) => handleChange(e)}
-                          />
-                          <Form.Control.Feedback type="invalid">
-                            Please provide a valid link.
-                          </Form.Control.Feedback>
-                        </Form.Group>
-
-                      </Row>
-                      <Row className="mb-1">
-                        <Form.Label>
-                          <i className="bi bi-play-btn-fill"></i> Video
-                        </Form.Label>
-                        <Form.Group
-                          as={Col}
-                          md="12"
-                          controlId="validationCustom09"
-                        >
-                          <Form.Control
-                            type="text"
-                            placeholder="Insert link video"
-                            required
-                            name="video"
-                            value={newExperience.video}
                             onChange={(e) => handleChange(e)}
                           />
                           <Form.Control.Feedback type="invalid">
