@@ -10,11 +10,13 @@ import FilterCities from './components/Filters/FilterCities.jsx';
 import ContactUs from './components/ContactUs/ContactUs'
 
 
+
     function App() {
       return (
         <BrowserRouter>
         <div className="App">    
           <Switch>
+
             <Route exact path="/" component={LandingPage}/>
             <Route path="/contact_us"  component={ContactUs}/> 
             <Route exact path="/cities"  component={Cities}/>
@@ -23,6 +25,7 @@ import ContactUs from './components/ContactUs/ContactUs'
             <Route exact path="/packages"  component={Packages}/>
             <Route exact path="/experiences"  component={Experiences}/> 
             <Route exact path="/filters"  component={FilterCities}/> 
+
       
           </Switch>    
         </div>
