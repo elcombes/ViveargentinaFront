@@ -65,7 +65,7 @@ export default function Experiences(props) {
                         setPage={setPage}
                     />
                     <div>
-                    <SearchBar />
+
 
                     <FilterExperiences handleOrder={handleOrder} />
                     </div>
