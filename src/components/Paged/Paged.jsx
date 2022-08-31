@@ -1,7 +1,7 @@
 import React from "react";
 import './paged.css';
  
-export default function Paged({experiencesPage, allExperiences, paged}) { 
+export default function Paged({experiencesPage, allExperiences, paged, currentPage}) { 
     
     const pages = []; 
         
@@ -19,8 +19,9 @@ export default function Paged({experiencesPage, allExperiences, paged}) {
                 <ul className="pages">
                     {pages?.map(p =>(
                         <li className="page" key={p}>
-                            <button className="pageBtn" onClick={() => paged(p)} style={{width:"30px"}}>{p}</button> 
-                            
+                            {p === currentPage ? 
+                            (<button className="pageBtn" onClick={() => paged(p)} style={{width:"30px", backgroundColor:"#b3b3b3"}}>{p}</button>) : 
+                            (<button className="pageBtn" onClick={() => paged(p)} style={{width:"30px"}}>{p}</button>)}   
                         </li> 
                     ))}
                 </ul>

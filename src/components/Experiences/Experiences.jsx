@@ -30,11 +30,11 @@ export default function Experiences() {
 
   const paged = function (pageNumber) {
     if (pageNumber !== page) {
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    })
-}
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        })
+    }
     setPage(pageNumber);
   };
 
@@ -106,6 +106,7 @@ export default function Experiences() {
                             experiencesPage={experiencesPage}
                             allExperiences={allExperiences.length}
                             paged={paged}
+                            currentPage={page}
                         />
                         <br/>
                         <CreateExperience />
