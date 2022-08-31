@@ -20,12 +20,12 @@ export default function Experiences() {
 
     const [page, setPage] = useState(1);
     const [experiencesPage, /* setExperiencesPage */] = useState(6);
-    const quantityExperiencesPage = page * experiencesPage;
-    const firstExperiencePage = quantityExperiencesPage - experiencesPage;
+    const lastExperiencePage = page * experiencesPage;
+    const firstExperiencePage = lastExperiencePage - experiencesPage;
 
     const showExperiencesPage = allExperiences.slice( //.slice sirve para cortar un array y mostrar solo una cantidad de elementos determinada por el parametro que le pasemos (9)
     firstExperiencePage, 
-    quantityExperiencesPage
+    lastExperiencePage
   );
 
   const paged = function (pageNumber) {
@@ -55,7 +55,9 @@ export default function Experiences() {
             <div>
                 <div className="container-fluid">
                     <Navbar />
-                    <SearchBar />
+                    <SearchBar 
+                        setPage={setPage}
+                    />
                     <FilterExperiences handleOrder={handleOrder} />
                     {/* <Paged
                         experiencesPage={experiencesPage}

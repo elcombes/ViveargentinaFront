@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom"
 import  {getCitiesByName, getPackagesByName, getExperiencesByName, getAllCities, getAllPackages, getAllExperiences}  from "../../redux/action"; 
 import styles from '../SearchBar/SearchBar.module.css';
 
-export default function Search() {
+export default function Search({setPage}) {
 
     const dispatch = useDispatch();
     const history = useHistory();
@@ -56,9 +56,9 @@ export default function Search() {
                 setName("")
             }
             if(pathName === "/experiences") {
-                console.log(pathName)
                 dispatch(getExperiencesByName(name))
                 setName("")
+                setPage(1)
             }
         }
     }
