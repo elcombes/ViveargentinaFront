@@ -28,7 +28,13 @@ export default function Experiences() {
     quantityExperiencesPage
   );
 
-  const paged = function (pageNumber) { 
+  const paged = function (pageNumber) {
+    if (pageNumber !== page) {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    })
+}
     setPage(pageNumber);
   };
 
