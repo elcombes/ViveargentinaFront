@@ -43,13 +43,13 @@ export default function Search({setPage}) {
                 document.getElementById("cityFilter").value = "all"
             }
             if(pathName.includes("/cities")) {
-                dispatch(getAllCities())
+                return dispatch(getAllCities())
             }
             if(pathName.includes("/packages")) {
-                dispatch(getAllPackages())
+                return dispatch(getAllPackages())
             }
             if(pathName.includes("/experiences")) {
-                dispatch(getAllExperiences())
+                return dispatch(getAllExperiences())
         }
     }
 

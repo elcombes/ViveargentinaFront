@@ -6,12 +6,16 @@ import NavBar from '../NavBar/NavBar';
 import SearchBar from '../SearchBar/SearchBar';
 import FilterPackages from '../../components/Filters/FilterPackages';
 import { getAllPackages, getCityById, orderPackages } from '../../redux/action';
+import { useHistory } from "react-router-dom"
 
 
 export default function Card(props) {
     let prevId = 1;
+    const history = useHistory();
+    let pathName = history.location.pathname
     const dispatch = useDispatch();
     const allPackages = useSelector((state) => state.allPackages);
+    
     const [Order, setOrder] = useState('');
     const { cityId } = props.match.params;
 
@@ -20,16 +24,26 @@ export default function Card(props) {
         console.log(Order)
         dispatch(orderPackages(e.target.value))
     }
-    
+
     useEffect(() => {
-        console.log(cityId)
-        if (cityId) {
-            dispatch(getCityById(cityId))
             
-        } else {
-            dispatch(getAllPackages());    
-        }
-    });
+            if(cityId) {
+                dispatch(getCityById(cityId))
+            }
+            else {
+                dispatch(getAllPackages())
+            }
+    }, [dispatch]);
+
+    
+
+    
+    // useEffect(() => {
+    //     if (cityId === "") {
+    //         console.log("Todos los paquetes")
+    //         dispatch(getAllPackages());    
+    //     }
+    // }, [dispatch]);
 
     return (
         <Fragment>

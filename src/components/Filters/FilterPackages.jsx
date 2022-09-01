@@ -14,7 +14,6 @@ const dispatch = useDispatch();
 
 useEffect(() => {
     dispatch(getAllCities())
-    dispatch(getAllPackages())
 }, [dispatch]);
 
 
