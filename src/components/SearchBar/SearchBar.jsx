@@ -17,7 +17,7 @@ export default function Search({setPage}) {
     }
 
     useEffect(() => {
-        if(pathName === "/cities") setInput("Example: Córdoba")
+        if(pathName === "/cities") setInput("Example: Cordoba")
         if(pathName === "/packages") setInput("Example: Cordoba Adventure")
         if(pathName === "/experiences") setInput("Example: City Tour Buenos Aires")
     })
