@@ -45,7 +45,13 @@ h3 {
 .container {
   max-width: 1240px;
 }
+button{
+height: 5vh;
+}
 
+.carousel-control-next, .carousel-control-prev {
+  height: auto;
+}
 
 form#formFilter {
 

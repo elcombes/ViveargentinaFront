@@ -23,9 +23,10 @@ import Error404 from './components/Error404/Error404'
             <Route exact path="/cities"  component={Cities}/>
             <Route exact path="/city"  component={City}/>
             <Route exact path="/home"  component={HomePage}/>
+            <Route path="/packages/:cityId"  component={Packages}/>
             <Route exact path="/packages"  component={Packages}/>
+            <Route path="/experiences/:packageId"  component={Experiences}/> 
             <Route exact path="/experiences"  component={Experiences}/> 
-            <Route exact path="/filters"  component={FilterCities}/> 
             <Route path="*" component={Error404}/>      
           </Switch>    
         </div>

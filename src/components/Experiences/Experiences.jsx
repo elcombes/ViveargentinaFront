@@ -1,6 +1,6 @@
 import React, { useState, Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import CarouselExperiences from '../Carousel/Carousel.Experiences'
+
 import styles from '../Experiences/Experiences.module.css';
 import Navbar from '../NavBar/NavBar';
 import SearchBar from '../SearchBar/SearchBar';
@@ -8,15 +8,16 @@ import CreateExperience from '../CreateExperience/CreateExperience';
 import FilterExperiences from '../Filters/FilterExperiences';
 import Paged from '../Paged/Paged'
 import CategoriesExperiences from './Categories.Experiences'
-import { getAllExperiences, orderExperiences } from '../../redux/action';
+import { getAllExperiences, orderExperiences, getPackageById } from '../../redux/action';
 
 
 
-export default function Experiences() {
+export default function Experiences(props) {
 
     const dispatch = useDispatch();
     const allExperiences = useSelector((state) => state.allExperiences);
     const [Order, setOrder] = useState('');
+    const { packageId } = props.match.params;
 
     const [page, setPage] = useState(1);
     const [experiencesPage, /* setExperiencesPage */] = useState(6);
@@ -45,10 +46,15 @@ export default function Experiences() {
         dispatch(orderExperiences(e.target.value))
     }
 
-    useEffect(() => {
-        dispatch(getAllExperiences());
-    }, [dispatch]);
 
+    useEffect(() => {
+        if (packageId) {
+            dispatch(getPackageById(packageId))
+            
+        } else {
+            dispatch(getAllExperiences());    
+        }
+    }, [dispatch]);
 
     return (
         <Fragment>
@@ -58,12 +64,18 @@ export default function Experiences() {
                     <SearchBar 
                         setPage={setPage}
                     />
+                    <div>
+
+
                     <FilterExperiences handleOrder={handleOrder} />
-                    {/* <Paged
-                        experiencesPage={experiencesPage}
-                        allExperiences={allExperiences.length}
-                        paged={paged}
-                    /> */}
+                    </div>
+                    <Paged 
+                            experiencesPage={experiencesPage}
+                            allExperiences={allExperiences.length}
+                            paged={paged}
+                            currentPage={page}
+                        />
+                    
                     <br />
                     {showExperiencesPage?.map((e) => {
                         return (
@@ -78,26 +90,23 @@ export default function Experiences() {
                                         <div className="col-md-6">
                                             <h2>{e.name[0].toUpperCase() + e.name.slice(1)}</h2>
                                             <h4>{e.subTitle}</h4>
-                                            Score:{e.score}
-                                            {/*                         <ul className={styles.scoreexperience}>
-                            <li><i className="bi bi-star-fill" Style="color:#C49D48"></i></li>
-                            <li><i className="bi bi-star-fill" Style="color:#C49D48"></i></li>
-                            <li><i className="bi bi-star-fill" Style="color:#C49D48"></i></li>
-                            <li><i className="bi bi-star-fill" Style="color:#C49D48"></i></li>
-                            <li><i className="bi bi-star"></i></li>
-                        </ul> */}
+                                            Score:{e.score}        
+
                                             <p>{e.description}</p>
                                             <ul className={styles.iconsexperience}>
-                                                <li><i className="bi bi-clock-history"></i> {e.duration}</li>
                                                 <li><i className="bi bi-currency-dollar"></i>{e.price}</li>
+                                                <li><i className="bi bi-clock-history"></i> {e.duration}</li>
                                             </ul>
-
                                             <button type="button" className="btn btn-outline-secondary btn-lg"><i className="bi bi-cart-check"></i> I want it!</button>
                                         </div>
-                                        <div className="col-md-6">
+                                        <div className="col-md-5">
                                             <img className="img-fluid" src={e.image} alt="" />
                                             {/* <CarouselExperiences /> */}
+                                          
                                         </div>
+                                       
+                                        <hr />
+                                        <br />
                                     </div>
                                     <br/>
                                 </div>
@@ -110,18 +119,17 @@ export default function Experiences() {
                             paged={paged}
                             currentPage={page}
                         />
-                        <br/>
-                        <CreateExperience />
-                    </div>
 
-                    <div className={styles.separator}></div>
-                    <div className="container">
-                        <CategoriesExperiences />
                     </div>
 
                     <div className={styles.experiencesbuttons}>
                         <CreateExperience />
                     </div>
+                    <div className={styles.separator}></div>
+                    <div className="container">
+                        <CategoriesExperiences />
+                    </div>
+
 
                     <div className={styles.separator}></div>
 

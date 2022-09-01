@@ -19,20 +19,15 @@ export default function Card() {
     dispatch(getAllCities());
   }, [dispatch]);
 
-  
+
 
   return (
     <Fragment>
       <NavBar />
       <SearchBar />
 
-
-
       <div class="container-fluid">
-
-
         <br />
-
         <div className="allcities">
           {allCities?.map((e, i) => {
             console.log(i)
@@ -50,7 +45,7 @@ export default function Card() {
                         <div class="accordion accordion-flush" id="accordionFlushExample">
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="flush-heading">
-                              <button class="accordion-button collapsed"  className={styles.city01} style={{borderRadius: 80,margin: 1.5,backgroundImage: `url(${e.image.split(',')[2]})`}} type="button" data-bs-toggle="collapse" data-bs-target={`#${e.name.split(' ').join('')}`} aria-expanded="false" aria-controls={e.name.split(' ').join('')}>
+                              <button class="accordion-button collapsed" className={styles.city01} style={{ borderRadius: 80, margin: 1.5, backgroundImage: `url(${e.image.split(',')[2]})` }} type="button" data-bs-toggle="collapse" data-bs-target={`#${e.name.split(' ').join('')}`} aria-expanded="false" aria-controls={e.name.split(' ').join('')}>
                                 {e.name}
                               </button>
                             </h2>
@@ -62,6 +57,7 @@ export default function Card() {
                                   score={e.score}
                                   description={e.description}
                                   image={e.image}
+                                  id={e.id}
                                 />
                               </div>
                             </div>

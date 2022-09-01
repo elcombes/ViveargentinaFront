@@ -12,7 +12,7 @@ export default function Paged({experiencesPage, allExperiences, paged, currentPa
         
         <div>
             
-            {pages.length <= 1 ? 
+            {pages.length <= 0 ? 
             <></> :
             <nav className="pagination">
                 
@@ -20,7 +20,7 @@ export default function Paged({experiencesPage, allExperiences, paged, currentPa
                     {pages?.map(p =>(
                         <li className="page" key={p}>
                             {p === currentPage ? 
-                            (<button className="pageBtn" onClick={() => paged(p)} style={{width:"30px", backgroundColor:"#b3b3b3"}}>{p}</button>) : 
+                            (<button className="pageBtn" onClick={() => paged(p)} style={{width:"30px", backgroundColor:"#C49D48"}}>{p}</button>) : 
                             (<button className="pageBtn" onClick={() => paged(p)} style={{width:"30px"}}>{p}</button>)}   
                         </li> 
                     ))}
