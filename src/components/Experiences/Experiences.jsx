@@ -54,7 +54,7 @@ export default function Experiences(props) {
         } else {
             dispatch(getAllExperiences());    
         }
-    }, [dispatch]);
+    });
 
     return (
         <Fragment>
