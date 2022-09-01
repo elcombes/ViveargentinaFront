@@ -17,9 +17,9 @@ export default function Search({setPage}) {
     }
 
     useEffect(() => {
-        if(pathName === "/cities") setInput("Example: Cordoba")
-        if(pathName === "/packages") setInput("Example: Cordoba Adventure")
-        if(pathName === "/experiences") setInput("Example: City Tour Buenos Aires")
+        if(pathName.includes("/cities")) setInput("Example: Cordoba")
+        if(pathName.includes("/packages")) setInput("Example: Cordoba Adventure")
+        if(pathName.includes("/experiences")) setInput("Example: City Tour Buenos Aires")
     })
 
 
@@ -42,13 +42,13 @@ export default function Search({setPage}) {
             if (document.getElementById("cityFilter")) {
                 document.getElementById("cityFilter").value = "all"
             }
-            if(pathName === "/cities") {
+            if(pathName.includes("/cities")) {
                 dispatch(getAllCities())
             }
-            if(pathName === "/packages") {
+            if(pathName.includes("/packages")) {
                 dispatch(getAllPackages())
             }
-            if(pathName === "/experiences") {
+            if(pathName.includes("/experiences")) {
                 dispatch(getAllExperiences())
         }
     }
@@ -56,15 +56,15 @@ export default function Search({setPage}) {
     function handleSubmit(e) {
         e.preventDefault(e);
         if (name) {
-            if(pathName === "/cities") {
+            if(pathName.includes("/cities")) {
                 dispatch(getCitiesByName(name))
                 setName("")
             }
-            if(pathName === "/packages") {
+            if(pathName.includes("/packages")) {
                 dispatch(getPackagesByName(name))
                 setName("")
             }
-            if(pathName === "/experiences") {
+            if(pathName.includes("/experiences")) {
                 dispatch(getExperiencesByName(name))
                 setName("")
                 setPage(1)
