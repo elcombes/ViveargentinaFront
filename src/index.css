@@ -49,6 +49,10 @@ button{
 height: 5vh;
 }
 
+.carousel-control-next, .carousel-control-prev {
+  height: auto;
+}
+
 form#formFilter {
 
   display: flex;
