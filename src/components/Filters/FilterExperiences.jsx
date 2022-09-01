@@ -1,11 +1,10 @@
 import React, {Fragment} from 'react';
 import {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import { getAllExperiences, getAllPackages, getAllCategories, filterExperiences, orderExperiences } from '../../redux/action';
+import { getAllPackages, getAllCategories, filterExperiences } from '../../redux/action';
 
 export default function FilterExperiencies({handleOrder}) {
 
-    const allExperiences = useSelector(state => state.allExperiences);
     const allCategories = useSelector(state => state.allCategories);
     const allPackages = useSelector(state => state.allPackages);
     const [state, setState] = useState({
@@ -18,7 +17,6 @@ export default function FilterExperiencies({handleOrder}) {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getAllExperiences())
         dispatch(getAllPackages())
         dispatch(getAllCategories())
     }, [dispatch]);
