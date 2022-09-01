@@ -22,13 +22,14 @@ export default function Card(props) {
     }
     
     useEffect(() => {
+        console.log(cityId)
         if (cityId) {
             dispatch(getCityById(cityId))
             
         } else {
             dispatch(getAllPackages());    
         }
-    }, [dispatch]);
+    });
 
     return (
         <Fragment>
