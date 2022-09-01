@@ -59,6 +59,8 @@ function handleChange(e) {
     document.getElementById("alphabeticOrder").value = "sort"
     document.getElementById("priceOrder").value = "sort"
     document.getElementById("scoreOrder").value = "sort"
+    document.getElementById("categoryFilter").value = "all"
+    document.getElementById("packageFilter").value = "all"
     dispatch(filterExperiences({categoryId: state.selectedCategory, packageId: state.selectedPackage}))
 }
 
@@ -94,7 +96,7 @@ function handleChange(e) {
                 
                 <p> FILTER RESULTS </p>
                 <p> CATEGORIES </p>
-                <select onChange={e => handleFilterByCategory(e)}>
+                <select id="categoryFilter" onChange={e => handleFilterByCategory(e)}>
                     <option value='all'>ALL</option>
                     {allCategories && allCategories.sort((a, b) => {
                         if (a.name < b.name) return -1;
@@ -111,7 +113,7 @@ function handleChange(e) {
                 </select>
 
                 <p> PACKAGES </p>
-                <select onChange={e => handleFilterByPackage(e)}>
+                <select id="packageFilter" onChange={e => handleFilterByPackage(e)}>
                     <option value='all'>ALL</option>
                     {allPackages && allPackages.sort((a, b) => {
                         if (a.name < b.name) return -1;

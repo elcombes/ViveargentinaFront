@@ -3,7 +3,7 @@
     display: flex;
     justify-content: center;
     padding: 10px 5px 5px;
-    width: 500px;
+
 
 }
 
@@ -39,8 +39,9 @@
     font-weight: 600;
     transition: 0.3ms;
 } 
+
 .pageBtn:hover {
-    background-color: #EDB634;
+    background-color: #6c757d54;
     color: #fff;
 
 }
