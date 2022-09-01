@@ -68,9 +68,12 @@ export default function Search({setPage}) {
                 setName("")
             }
             if(pathName.includes("/experiences")) {
+                e.preventDefault()
                 dispatch(getExperiencesByName(name))
                 setName("")
-                setPage(1)
+                setTimeout(() => {
+                    setPage(1) 
+                }, 180); 
             }
         }
     }
