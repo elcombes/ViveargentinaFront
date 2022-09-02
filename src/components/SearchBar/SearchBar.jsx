@@ -17,9 +17,9 @@ export default function Search({setPage}) {
     }
 
     useEffect(() => {
-        if(pathName === "/cities") setInput("Example: Córdoba")
-        if(pathName === "/packages") setInput("Example: Cordoba Adventure")
-        if(pathName === "/experiences") setInput("Example: City Tour Buenos Aires")
+        if(pathName.includes("/cities")) setInput("Example: Cordoba")
+        if(pathName.includes("/packages")) setInput("Example: Cordoba Adventure")
+        if(pathName.includes("/experiences")) setInput("Example: City Tour Buenos Aires")
     })
 
 
@@ -42,32 +42,38 @@ export default function Search({setPage}) {
             if (document.getElementById("cityFilter")) {
                 document.getElementById("cityFilter").value = "all"
             }
-            if(pathName === "/cities") {
-                dispatch(getAllCities())
+            if(pathName.includes("/cities")) {
+                pathName = "/cities"
+                return dispatch(getAllCities())
             }
-            if(pathName === "/packages") {
-                dispatch(getAllPackages())
+            if(pathName.includes("/packages")) {
+                pathName = "/packages"
+                return dispatch(getAllPackages())
             }
-            if(pathName === "/experiences") {
-                dispatch(getAllExperiences())
+            if(pathName.includes("/experiences")) {
+                pathName = "/experiences"
+                return dispatch(getAllExperiences())
         }
     }
 
     function handleSubmit(e) {
         e.preventDefault(e);
         if (name) {
-            if(pathName === "/cities") {
+            if(pathName.includes("/cities")) {
                 dispatch(getCitiesByName(name))
                 setName("")
             }
-            if(pathName === "/packages") {
+            if(pathName.includes("/packages")) {
                 dispatch(getPackagesByName(name))
                 setName("")
             }
-            if(pathName === "/experiences") {
+            if(pathName.includes("/experiences")) {
+                e.preventDefault()
                 dispatch(getExperiencesByName(name))
                 setName("")
-                setPage(1)
+                setTimeout(() => {
+                    setPage(1) 
+                }, 180); 
             }
         }
     }

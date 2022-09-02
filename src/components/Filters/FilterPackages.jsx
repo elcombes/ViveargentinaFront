@@ -19,6 +19,10 @@ export default function FilterPackages({ handleOrder }) {
     }, [dispatch]);
 
 
+useEffect(() => {
+    dispatch(getAllCities())
+}, [dispatch]);
+
 
     function handleFilterByCity(e) {
         if (e.target.value === 'all') {
