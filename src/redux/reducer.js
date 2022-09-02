@@ -1,190 +1,230 @@
-import { GET_REGION_BY_ID, GET_CITY_BY_ID, GET_ALL_CITIES, GET_ALL_EXPERIENCES , GET_ALL_PACKAGES, GET_ALL_CATEGORIES, GET_ALL_REGIONS, GET_CITIES_BY_NAME, GET_PACKAGES_BY_NAME, GET_PACKAGE_BY_ID, GET_EXPERIENCES_BY_NAME } from "./action";
-import { FILTER_EXPERIENCES, ORDER_EXPERIENCES, ORDER_PACKAGES, ORDER_CITIES } from "./action";
-  
-  const initialState = {
-    cityById: {},
-    allCities: [],
-    allPackages: [],
-    allCategories: [],
-    allExperiences: [],
-    allRegions: [],
-  };
-  
-  export default function rootReducer(state = initialState, action) {
-    switch (action.type) {
-      case GET_CITIES_BY_NAME:
-        return {
-          ...state,
-          allCities: action.payload
-        };
-      case GET_PACKAGES_BY_NAME:
-        return {
-          ...state,
-          allPackages: action.payload
-        };
-      case GET_PACKAGE_BY_ID:
-        return {
-          ...state,
-          allExperiences: action.payload.experiences
-        };
+import {
+  GET_REGION_BY_ID,
+  GET_CITY_BY_ID,
+  GET_ALL_CITIES,
+  GET_ALL_EXPERIENCES,
+  GET_ALL_PACKAGES,
+  GET_ALL_CATEGORIES,
+  GET_ALL_REGIONS,
+  GET_CITIES_BY_NAME,
+  GET_PACKAGES_BY_NAME,
+  GET_PACKAGE_BY_ID,
+  GET_EXPERIENCES_BY_NAME,
+} from "./action";
+import {
+  FILTER_EXPERIENCES,
+  ORDER_EXPERIENCES,
+  ORDER_PACKAGES,
+  ORDER_CITIES,
+  GET_USER_PROFILE,
+} from "./action";
 
-      case GET_EXPERIENCES_BY_NAME:
-        return {
-          ...state,
-          allExperiences: action.payload
-        };
-      case GET_CITY_BY_ID:
-        return {
-          ...state,
-          cityById: action.payload,
-          allPackages: action.payload.packages
-        };
-        case GET_REGION_BY_ID:
-        return {
-          ...state,
-          allCities: action.payload.cities
-        };
-        case GET_ALL_REGIONS:
-        return {
-          ...state,
-          allRegions: action.payload
-        }
-      case GET_ALL_CITIES:
-        return {
-          ...state,
-          allCities: action.payload
-        }
-      case GET_ALL_PACKAGES:
-        return {
-          ...state,
-          allPackages: action.payload,
-        }
-      case GET_ALL_CATEGORIES:
-        return {
-          ...state,
-          allCategories: action.payload
-        }
-      case GET_ALL_EXPERIENCES:
-        return {
-          ...state,
-          allExperiences: action.payload
-        }
-      case FILTER_EXPERIENCES:
-        return {
-          ...state,
-          allExperiences: action.payload
-        }
+const initialState = {
+  cityById: {},
+  allCities: [],
+  allPackages: [],
+  allCategories: [],
+  allExperiences: [],
+  allRegions: [],
+  userExperiencesBought: [],
+  userPackagesBought: [],
+  userExperiencesFavorite: [],
+  userPackagesFavorite: [],
+};
 
-        case ORDER_CITIES:
-          let packagesOrdered2
-              if(action.payload === 'sort') packagesOrdered2 = state.allCities;
-              if(action.payload === 'ascendant by name') {
-                packagesOrdered2 = state.allCities.sort(function(a, b) {
-  
-                      if(a.name > b.name) return 1;
-                      else if(a.name < b.name) return -1;
-                      else return 0;
-                  })} 
-              else if(action.payload === 'descendant by name') {
-  
-                packagesOrdered2 = state.allCities.sort(function(a, b) {
-  
-                      if(a.name > b.name) return -1;
-                      else if(a.name < b.name) return 1;
-                      else return 0;
-                  })}    
-              else if(action.payload === 'ascendant by score') {
-                packagesOrdered2 = state.allCities.sort(function(a, b) {
-                      return a.score - b.score;
-                  })}
-              else if(action.payload === 'descendant by score') {
-                packagesOrdered2 = state.allCities.sort(function(a, b) {
-  
-                      return b.score - a.score;
-                  })}
-          return {
-            ...state,
-            allCities: packagesOrdered2
-          }
+export default function rootReducer(state = initialState, action) {
+  switch (action.type) {
+    case GET_USER_PROFILE:
+      let allExperiences = action.payload.experiences;
+      let allPackages = action.payload.packages;
 
-      case ORDER_PACKAGES:
-        let packagesOrdered
+      let userExperiencesBought = allExperiences.map((e) => {
+        return e.bought === true;
+      });
+      let userPackagesBought = allPackages.map((p) => {
+        return p.bought === true;
+      });
+      let userExperiencesFavorite = allExperiences.map((e) => {
+        return e.favorite === true;
+      });
+      let userPackagesFavorite = allPackages.map((p) => {
+        return p.favorite === true;
+      });
 
-            if(action.payload === 'sort') packagesOrdered = state.allPackages;
-            if(action.payload === 'ascendant by name') {
-              packagesOrdered = state.allPackages.sort(function(a, b) {
-
-                    if(a.name > b.name) return 1;
-                    else if(a.name < b.name) return -1;
-                    else return 0;
-                })} 
-            else if(action.payload === 'descendant by name') {
-
-              packagesOrdered = state.allPackages.sort(function(a, b) {
-
-                    if(a.name > b.name) return -1;
-                    else if(a.name < b.name) return 1;
-                    else return 0;
-                })} 
-            else if(action.payload === 'ascendant by price') {
-
-              packagesOrdered = state.allPackages.sort(function(a, b) {
-                    return a.price - b.price;
-                })}
-            else if(action.payload === 'descendant by price') {
-              packagesOrdered = state.allPackages.sort(function(a, b) {
-                    return b.price - a.price;
-                })}
-            else if(action.payload === 'ascendant by score') {
-              packagesOrdered = state.allPackages.sort(function(a, b) {
-                    return a.score - b.score;
-                })}
-            else if(action.payload === 'descendant by score') {
-              packagesOrdered = state.allPackages.sort(function(a, b) {
-
-                    return b.score - a.score;
-                })}
-        return {
-          ...state,
-          allPackages: packagesOrdered
-        }
-
-      case ORDER_EXPERIENCES:
-        let experiencesOrdered
-        if(action.payload === 'sort') experiencesOrdered = state.allExperiences;
-        if(action.payload === 'ascendant by name') {
-          experiencesOrdered = state.allExperiences.sort(function(a, b) {
-                if(a.name.toLowerCase() > b.name.toLowerCase()) return 1;
-                if(a.name.toLowerCase() < b.name.toLowerCase()) return -1;
-                else return 0;
-            })} 
-        else if(action.payload === 'descendant by name') {
-          experiencesOrdered = state.allExperiences.sort(function(a, b) {
-                if(a.name.toLowerCase() > b.name.toLowerCase()) return -1;
-                if(a.name.toLowerCase() < b.name.toLowerCase()) return 1;
-                else return 0;
-            })} 
-        else if(action.payload === 'ascendant by price') {
-          experiencesOrdered = state.allExperiences.sort(function(a, b) {
-                return a.price - b.price;
-            })}
-        else if(action.payload === 'descendant by price') {
-          experiencesOrdered = state.allExperiences.sort(function(a, b) {
-                return b.price - a.price;
-            })}
-        else if(action.payload === 'ascendant by score') {
-          experiencesOrdered = state.allExperiences.sort(function(a, b) {
-                return a.score - b.score;
-            })}
-        else if(action.payload === 'descendant by score') {
-          experiencesOrdered = state.allExperiences.sort(function(a, b) {
-                return b.score - a.score;
-            })}
       return {
-      ...state,
-      allExperiences: experiencesOrdered
+        ...state,
+        userExperiencesBought: userExperiencesBought,
+        userPackagesBought: userPackagesBought,
+        userExperiencesFavorite: userExperiencesFavorite,
+        userPackagesFavorite: userPackagesFavorite,
+      };
+    case GET_CITIES_BY_NAME:
+      return {
+        ...state,
+        allCities: action.payload,
+      };
+    case GET_PACKAGES_BY_NAME:
+      return {
+        ...state,
+        allPackages: action.payload,
+      };
+    case GET_PACKAGE_BY_ID:
+      return {
+        ...state,
+        allExperiences: action.payload.experiences,
+      };
+
+    case GET_EXPERIENCES_BY_NAME:
+      return {
+        ...state,
+        allExperiences: action.payload,
+      };
+    case GET_CITY_BY_ID:
+      return {
+        ...state,
+        cityById: action.payload,
+        allPackages: action.payload.packages,
+      };
+    case GET_REGION_BY_ID:
+      return {
+        ...state,
+        allCities: action.payload.cities,
+      };
+    case GET_ALL_REGIONS:
+      return {
+        ...state,
+        allRegions: action.payload,
+      };
+    case GET_ALL_CITIES:
+      return {
+        ...state,
+        allCities: action.payload,
+      };
+    case GET_ALL_PACKAGES:
+      return {
+        ...state,
+        allPackages: action.payload,
+      };
+    case GET_ALL_CATEGORIES:
+      return {
+        ...state,
+        allCategories: action.payload,
+      };
+    case GET_ALL_EXPERIENCES:
+      return {
+        ...state,
+        allExperiences: action.payload,
+      };
+    case FILTER_EXPERIENCES:
+      return {
+        ...state,
+        allExperiences: action.payload,
+      };
+
+    case ORDER_CITIES:
+      let packagesOrdered2;
+      if (action.payload === "sort") packagesOrdered2 = state.allCities;
+      if (action.payload === "ascendant by name") {
+        packagesOrdered2 = state.allCities.sort(function (a, b) {
+          if (a.name > b.name) return 1;
+          else if (a.name < b.name) return -1;
+          else return 0;
+        });
+      } else if (action.payload === "descendant by name") {
+        packagesOrdered2 = state.allCities.sort(function (a, b) {
+          if (a.name > b.name) return -1;
+          else if (a.name < b.name) return 1;
+          else return 0;
+        });
+      } else if (action.payload === "ascendant by score") {
+        packagesOrdered2 = state.allCities.sort(function (a, b) {
+          return a.score - b.score;
+        });
+      } else if (action.payload === "descendant by score") {
+        packagesOrdered2 = state.allCities.sort(function (a, b) {
+          return b.score - a.score;
+        });
       }
-      default:
-        return state;
-    }
+      return {
+        ...state,
+        allCities: packagesOrdered2,
+      };
+
+    case ORDER_PACKAGES:
+      let packagesOrdered;
+
+      if (action.payload === "sort") packagesOrdered = state.allPackages;
+      if (action.payload === "ascendant by name") {
+        packagesOrdered = state.allPackages.sort(function (a, b) {
+          if (a.name > b.name) return 1;
+          else if (a.name < b.name) return -1;
+          else return 0;
+        });
+      } else if (action.payload === "descendant by name") {
+        packagesOrdered = state.allPackages.sort(function (a, b) {
+          if (a.name > b.name) return -1;
+          else if (a.name < b.name) return 1;
+          else return 0;
+        });
+      } else if (action.payload === "ascendant by price") {
+        packagesOrdered = state.allPackages.sort(function (a, b) {
+          return a.price - b.price;
+        });
+      } else if (action.payload === "descendant by price") {
+        packagesOrdered = state.allPackages.sort(function (a, b) {
+          return b.price - a.price;
+        });
+      } else if (action.payload === "ascendant by score") {
+        packagesOrdered = state.allPackages.sort(function (a, b) {
+          return a.score - b.score;
+        });
+      } else if (action.payload === "descendant by score") {
+        packagesOrdered = state.allPackages.sort(function (a, b) {
+          return b.score - a.score;
+        });
+      }
+      return {
+        ...state,
+        allPackages: packagesOrdered,
+      };
+
+    case ORDER_EXPERIENCES:
+      let experiencesOrdered;
+      if (action.payload === "sort") experiencesOrdered = state.allExperiences;
+      if (action.payload === "ascendant by name") {
+        experiencesOrdered = state.allExperiences.sort(function (a, b) {
+          if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
+          if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
+          else return 0;
+        });
+      } else if (action.payload === "descendant by name") {
+        experiencesOrdered = state.allExperiences.sort(function (a, b) {
+          if (a.name.toLowerCase() > b.name.toLowerCase()) return -1;
+          if (a.name.toLowerCase() < b.name.toLowerCase()) return 1;
+          else return 0;
+        });
+      } else if (action.payload === "ascendant by price") {
+        experiencesOrdered = state.allExperiences.sort(function (a, b) {
+          return a.price - b.price;
+        });
+      } else if (action.payload === "descendant by price") {
+        experiencesOrdered = state.allExperiences.sort(function (a, b) {
+          return b.price - a.price;
+        });
+      } else if (action.payload === "ascendant by score") {
+        experiencesOrdered = state.allExperiences.sort(function (a, b) {
+          return a.score - b.score;
+        });
+      } else if (action.payload === "descendant by score") {
+        experiencesOrdered = state.allExperiences.sort(function (a, b) {
+          return b.score - a.score;
+        });
+      }
+      return {
+        ...state,
+        allExperiences: experiencesOrdered,
+      };
+    default:
+      return state;
   }
+}
