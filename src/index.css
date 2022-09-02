@@ -32,6 +32,7 @@ h1 {
   animation: fadeInDownBig; 
   animation-duration: 1s; 
 }
+
 h3 {
   font-size: 2rem;
   font-weight: 300;
@@ -46,7 +47,8 @@ h3 {
   max-width: 1240px;
 }
 button{
-height: 5vh;
+  height: 40px;
+  min-width: 40px;
 }
 
 .carousel-control-next, .carousel-control-prev {
@@ -62,6 +64,21 @@ form#formFilter {
   margin: 4vh;
   font-size: 1.5vh;
   
+}
+
+select {
+    word-wrap: normal;
+    font-size: 1.3rem;
+    padding: 0.4rem;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    min-width: 90px;
+}
+
+.form-control {
+  font-size: 1.5rem;
+  min-height: 40px;
+  border-radius: 0.5rem;
 }
 
 .form-label, .form-check-label {
