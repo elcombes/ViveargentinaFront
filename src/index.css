@@ -50,7 +50,9 @@ button{
 .carousel-control-next, .carousel-control-prev {
   height: auto;
 }
-
+.modal-backdrop {
+  z-index: -1;
+}
 form#formFilter {
 
   display: flex;
@@ -83,9 +85,7 @@ select {
   font-size: 1.3rem;
   font-weight: bold;
 }
-#nav {
-  z-index: 9999;
-}
+
 
 @media screen and (max-width: 940px) {
   h1 {

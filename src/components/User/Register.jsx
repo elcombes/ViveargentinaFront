@@ -122,7 +122,7 @@ export default function Register() {
                                         </Form.Group>
 
                                         <Row className="mb-3">
-                                            <Button type="submit">Register</Button>
+                                            <Button type="submit" style={{fontSize: "2vh", fontFamily:"Raleway", backgroundColor: "#C49D48", borderColor: "#C49D48" }}>Register</Button>
                                         </Row>
 
                                     </Form>

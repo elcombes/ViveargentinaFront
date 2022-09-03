@@ -56,7 +56,7 @@ export default function Login() {
                         type="button" 
                         className="btn btn-outline-secondary btn-lg" 
                         data-bs-toggle="modal" 
-                        data-bs-target="#exampleModal"
+                        data-bs-target="#exampleModal1"
                         style = {{textTransform:"uppercase", fontFamily: "Raleway", fontWeight: "500", color:" #C49D48"}}
                         >
                             Login <i class="bi bi-box-arrow-in-right"></i>
@@ -68,12 +68,11 @@ export default function Login() {
                         
                     </div>
                     {/* Inicio modal */}
-                    <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div className="modal fade" id="exampleModal1" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div className="modal-dialog">
                             <div className="modal-content">
-
                                 <div className="modal-header">
-                                    <h5 className="modal-title" id="exampleModalLabel">Please login</h5>
+                                    <h5 className="modal-title w-100 font-weight-bold" id="exampleModalLabel">PLEASE LOGIN</h5>
                                     <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
 
@@ -120,16 +119,10 @@ export default function Login() {
                                         </Row>
 
                                         <Row className="mb-3 mt-3">
-                                            <Button type="submit">Login</Button>
+                                            <Button type="submit"style={{fontSize: "2vh", fontFamily:"Raleway", backgroundColor: "#C49D48", borderColor: "#C49D48" }}>Login</Button>
                                         </Row>
-                                        <div>
-                                            <FacebookLogin
-                                                appId="1720158145028291"
-                                                autoLoad={false}
-                                                fields="name,email,picture"
-                                                //onClick={componentClicked}
-                                                callback={responseFacebook} 
-                                            />
+                                        <div className="googleLog" style={{textAlign: "center", }}>
+
                                             <GoogleLogin
                                                 clientId={clientId}
                                                 buttonText="Sign in with Google"
