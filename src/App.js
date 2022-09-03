@@ -10,6 +10,8 @@ import Experiences from './components/Experiences/Experiences.jsx';
 import ContactUs from './components/ContactUs/ContactUs'
 import Error404 from './components/Error404/Error404'
 import Cart from './components/Cart/Cart';
+import MenuUser from './components/User/MenuUser';
+import MenuGuest from './components/User/MenuGuest';
 // import Login from './components/User/Login';
 // import Register from './components/User/Register';
 
@@ -30,7 +32,9 @@ import Cart from './components/Cart/Cart';
             <Route exact path="/packages"  component={Packages}/>
             <Route path="/experiences/:packageId"  component={Experiences}/> 
             <Route exact path="/experiences"  component={Experiences}/> 
-            <Route path="/cart" component={Cart}/>     
+            <Route path="/cart" component={Cart}/>
+            <Route path="/userlogged" component={MenuUser}/>
+            <Route path="/userguest" component={MenuGuest}/>     
             <Route path="*" component={Error404}/>     
             {/* <Route exact path="/login"  component={Login}/> 
             <Route exact path="/register"  component={Register}/> */}
