@@ -11,6 +11,7 @@ import ContactUs from './components/ContactUs/ContactUs'
 import Error404 from './components/Error404/Error404'
 import Login from './components/User/Login';
 import Register from './components/User/Register';
+import Cart from './components/Cart/Cart';
 
 
 
@@ -30,7 +31,9 @@ import Register from './components/User/Register';
             <Route exact path="/experiences"  component={Experiences}/> 
             <Route exact path="/login"  component={Login}/> 
             <Route exact path="/register"  component={Register}/>
-            <Route path="*" component={Error404}/>      
+            <Route path="/cart" component={Cart}/>     
+            <Route path="*" component={Error404}/>     
+
           </Switch>    
         </div>
         </BrowserRouter>
