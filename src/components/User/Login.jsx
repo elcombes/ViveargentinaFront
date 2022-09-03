@@ -57,7 +57,7 @@ export default function Login() {
                         className="btn btn-outline-secondary btn-lg" 
                         data-bs-toggle="modal" 
                         data-bs-target="#exampleModal1"
-                        style = {{textTransform:"uppercase", fontFamily: "Raleway", fontWeight: "500", color:" #C49D48"}}
+                        style = {{textTransform:"uppercase", borderColor:"#C49D48", fontFamily: "Raleway", color:" #C49D48"}}
                         >
                             Login <i class="bi bi-box-arrow-in-right"></i>
                         </button>

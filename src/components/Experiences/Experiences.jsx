@@ -88,14 +88,14 @@ export default function Experiences(props) {
                                 <div className="container">
                                     <div className="row">
                                         <div className="col-md-6">
-                                            <h2>{e.name[0].toUpperCase() + e.name.slice(1)}</h2>
+                                            <h2 style={{textTransform: "uppercase",fontWeight:"500", color:"#C49D48"}}>{e.name[0].toUpperCase() + e.name.slice(1)}</h2>
                                             <h4>{e.subTitle}</h4>
                                             Score:{e.score}        
 
                                             <p>{e.description}</p>
                                             <ul className={styles.iconsexperience}>
-                                                <li><i className="bi bi-currency-dollar"></i>{e.price}</li>
-                                                <li><i className="bi bi-clock-history"></i> {e.duration}</li>
+                                            <li style={{margin:"0vh 1vh 0vh 1vh"}}>ARS<i class="bi bi-currency-dollar"style={{color:"#C49D48"}}></i>{e.price}</li>
+                                                <li><i className="bi bi-clock-history" style={{color:"#C49D48"}}></i> {e.duration}</li>
                                             </ul>
                                             <button type="button" className="btn btn-outline-secondary btn-lg"><i className="bi bi-cart-check"></i> I want it!</button>
                                         </div>
