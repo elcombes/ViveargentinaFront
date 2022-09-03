@@ -40,10 +40,10 @@ useEffect(() => {
                     <div className="container">
                         <div className="row mt-5">
                             <div className="col-md-6">
-                                <h4 className="text-center mb-3"><i class="bi bi-filter-square-fill"></i> ORDER PACKAGES BY</h4>
+                                <h4 className="text-center mb-3"><i class="bi bi-filter-square-fill"style={{color:"#C49D48"}}></i> ORDER PACKAGES BY</h4>
                                 <ul className={styles.filterstyle}>
                                     <li>
-                                        <h5><i class="bi bi-sort-alpha-down"></i> ALFABETIC</h5>
+                                        <h5><i class="bi bi-sort-alpha-down"style={{color:"#C49D48"}}></i> ALFABETIC</h5>
                                         <select id="alphabeticOrder" onChange={e => handleOrder(e)}>
                                             <option hidden>ALFABETIC</option>
                                             <option value='sort'>Sort</option>
@@ -52,7 +52,7 @@ useEffect(() => {
                                         </select>
                                     </li>
                                     <li>
-                                        <h5><i class="bi bi-tags-fill"></i> PRICE</h5>
+                                        <h5><i class="bi bi-tags-fill"style={{color:"#C49D48"}}></i> PRICE</h5>
                                         <select id="priceOrder" onChange={e => handleOrder(e)}>
                                             <option hidden>PRICE</option>
                                             <option value='sort'>Sort</option>
@@ -61,7 +61,7 @@ useEffect(() => {
                                         </select>
                                     </li>
                                     <li>
-                                        <h5><i class="bi bi-star-half"></i> SCORE</h5>
+                                        <h5><i class="bi bi-star-half"style={{color:"#C49D48"}}></i> SCORE</h5>
                                         <select id="scoreOrder" onChange={e => handleOrder(e)}>
                                             <option hidden>SCORE</option>
                                             <option value='sort'>Sort</option>
@@ -73,10 +73,10 @@ useEffect(() => {
                             </div>
 
                             <div className="col-md-6">
-                                <h4 className="text-center mb-3"><i class="bi bi-funnel-fill"></i> FILTER PACKAGES BY</h4>
+                                <h4 className="text-center mb-3"><i class="bi bi-funnel-fill"style={{color:"#C49D48"}}></i> FILTER PACKAGES BY</h4>
                                 <ul className={styles.filterstyle}>
                                     <li>
-                                        <h5><i class="bi bi-geo-alt-fill"></i> CITIES</h5>
+                                        <h5><i class="bi bi-geo-alt-fill"style={{color:"#C49D48"}}></i> CITIES</h5>
                                         <select id="cityFilter" onChange={e => handleFilterByCity(e)}>
                                             <option value='all'>All</option>
                                             {allCities && allCities.sort((a, b) => {
