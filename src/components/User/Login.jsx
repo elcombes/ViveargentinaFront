@@ -28,7 +28,13 @@ export default function Login() {
 
                     {/* Inicio boton para abrir el modal */}
                     <div>
-                        <button type="button" className="btn btn-outline-secondary btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <button 
+                        type="button" 
+                        className="btn btn-outline-secondary btn-lg" 
+                        data-bs-toggle="modal" 
+                        data-bs-target="#exampleModal"
+                        style = {{textTransform:"uppercase", fontFamily: "Raleway", fontWeight: "500", color:" #C49D48"}}
+                        >
                             Login <i class="bi bi-box-arrow-in-right"></i>
                         </button>
                     </div>
