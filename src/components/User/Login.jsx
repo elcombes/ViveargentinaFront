@@ -6,12 +6,15 @@ import Row from "react-bootstrap/Row";
 import { useState, useEffect } from "react";
 import { GoogleLogin } from 'react-google-login';
 import { gapi } from 'gapi-script';
-import FacebookLogin from 'react-facebook-login';
-// import { useDispatch, useSelector } from "react-redux";
+import { getUserLogin } from "../../redux/action";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Login() {
 
     const clientId = "1027358109012-bq2hsesgqbm1av81limdn7r7bf6qmpd3.apps.googleusercontent.com"
+    const dispatch = useDispatch()
+    let userBasicInfo = useSelector((state) => state.userBasicInfo);
+    let userAuth = useSelector((state) => state.userAuth);
 
     useEffect(() => {
         const initClient = () => {
@@ -23,6 +26,17 @@ export default function Login() {
          gapi.load('client:auth2', initClient);
      });
 
+     const handleChange = (e) => {
+        setNewUser({
+          ...newUser,
+          [e.target.name]: e.target.value,
+        });
+      };
+
+    const [newUser, setNewUser] = useState({
+        email: "",
+        password: ""
+    })
     const onSuccess = (res) => {
         console.log('success:', res);
     };
@@ -32,18 +46,25 @@ export default function Login() {
 
     const [validated, setValidated] = useState(false);
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         const form = event.currentTarget;
         if (form.checkValidity() === false) {
             event.preventDefault();
             event.stopPropagation();
         }
         setValidated(true);
+        console.log(newUser)
+        await dispatch(getUserLogin({email: newUser.email, password: newUser.password})).then(()=>{
+            console.log(userAuth)
+            
+        })
     };
 
-    const responseFacebook = (response) => {
-		console.log(response);
-	}
+    // const handleLogin = (e)=>{
+    //     e.preventDefault()
+    //     if(validate){
+    //     }
+    // }
 
     return (
         <div className="container">
@@ -63,10 +84,6 @@ export default function Login() {
                         </button>
                     </div>
                     {/* Fin boton para abrir el modal */}
-                    {/* Google login */}
-                    <div>
-                        
-                    </div>
                     {/* Inicio modal */}
                     <div className="modal fade" id="exampleModal1" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div className="modal-dialog">
@@ -87,7 +104,7 @@ export default function Login() {
                                             <Form.Group as={Col} md="12" controlId="formGroupEmail">
 
                                                 <Form.Label><i class="bi bi-envelope-fill"></i> Email address</Form.Label>
-                                                <Form.Control required type="email" placeholder="name@example.com" />
+                                                <Form.Control required type="email" name="email" value={newUser.email} onChange={(e)=>handleChange(e)} placeholder="name@example.com" />
 
                                                 <Form.Control.Feedback type="invalid">
                                                     Please provide a valid email.
@@ -106,7 +123,7 @@ export default function Login() {
 
                                                 <Form.Label htmlFor="inputPassword5"><i class="bi bi-key-fill"></i> Password</Form.Label>
 
-                                                <Form.Control required type="password" id="inputPassword5" aria-describedby="passwordHelpBlock" />
+                                                <Form.Control required type="password" name="password" value={newUser.password} onChange={(e)=>handleChange(e)} id="inputPassword5" aria-describedby="passwordHelpBlock" />
                                                 <Form.Text id="passwordHelpBlock" muted>
                                                     Your password must be 8-20 characters long, contain letters and numbers,
                                                     and must not contain spaces, special characters, or emoji.
@@ -119,10 +136,10 @@ export default function Login() {
                                         </Row>
 
                                         <Row className="mb-3 mt-3">
-                                            <Button type="submit"style={{fontSize: "2vh", fontFamily:"Raleway", backgroundColor: "#C49D48", borderColor: "#C49D48" }}>Login</Button>
+                                            <Button onClick={(e)=>handleSubmit(e)} type="submit"style={{fontSize: "2vh", fontFamily:"Raleway", backgroundColor: "#C49D48", borderColor: "#C49D48" }}>Login</Button>
                                         </Row>
+                                        {/*Login de Google */}
                                         <div className="googleLog" style={{textAlign: "center", }}>
-
                                             <GoogleLogin
                                                 clientId={clientId}
                                                 buttonText="Sign in with Google"

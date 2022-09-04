@@ -20,6 +20,7 @@ export const ORDER_EXPERIENCES = "ORDER_EXPERIENCES";
 export const FILTER_EXPERIENCES = "FILTER_EXPERIENCES";
 export const CREATE_NEW_EXPERIENCE = "CREATE_NEW_EXPERIENCE";
 export const GET_USER_PROFILE = "GET_USER_PROFILE";
+export const GET_USER_LOGIN = "GET_USER_LOGIN";
 
 // Esta ruta añade un paquete a favoritos del usuario
 export function addPackageFavorite(userId, packageId) {
@@ -81,6 +82,29 @@ export function getUserProfile(userId) {
     let response = await axios.get(`https://localhost:3001/users/${userId}`);
     return dispatch({
       type: GET_USER_PROFILE,
+      payload: response.data,
+    });
+  };
+}
+
+//funcion para autenticar y obtener informacion del usuario con email + password
+export function getUserLogin({email: email, password: password}) {
+  return async function (dispatch) {
+    console.log(email)
+    let response = await axios.post(
+      "https://viveargentina.herokuapp.com/users/login",
+      {email, password}
+    );
+    console.log(response.data)
+    if(!response.data){
+      return dispatch({
+        type: GET_USER_LOGIN,
+        payload: {auth: false},  
+      })
+    }
+    window.localStorage.setItem('user', JSON.stringify(response.data))
+    return dispatch({
+      type: GET_USER_LOGIN,
       payload: response.data,
     });
   };

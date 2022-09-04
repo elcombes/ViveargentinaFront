@@ -17,6 +17,7 @@ import {
   ORDER_PACKAGES,
   ORDER_CITIES,
   GET_USER_PROFILE,
+  GET_USER_LOGIN,
 } from "./action";
 
 const initialState = {
@@ -26,6 +27,9 @@ const initialState = {
   allCategories: [],
   allExperiences: [],
   allRegions: [],
+  userAuth: false,
+  userBasicInfo: {},
+  token: "",
   userExperiencesBought: [],
   userPackagesBought: [],
   userExperiencesFavorite: [],
@@ -58,6 +62,23 @@ export default function rootReducer(state = initialState, action) {
         userExperiencesFavorite: userExperiencesFavorite,
         userPackagesFavorite: userPackagesFavorite,
       };
+    case GET_USER_LOGIN:
+      
+      return{
+        ...state,
+        token: action.payload.accessToken,
+        userAuth: true,
+        userBasicInfo: {
+          first_name: action.payload.user.first_name,
+          last_name: action.payload.user.last_name,
+          email: action.payload.user.email,
+          photo: action.payload.user.photo,
+          birth_date: action.payload.user.birth_date,
+          administrator: action.payload.user.administrator,
+          provider: action.payload.user.provider,
+          provider_requested: action.payload.user.provider_requested
+        }
+      }
     case GET_CITIES_BY_NAME:
       return {
         ...state,
