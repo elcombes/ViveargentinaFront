@@ -80,3 +80,12 @@ h2.exptitle {
     display: flex;
     justify-content: space-around;
 }
+h2.titlepackages{
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #c49d48;
+}
+
+i {
+    color: #c49d48;
+}

@@ -7,7 +7,7 @@ import Popover from "react-bootstrap/Popover";
 
 export default function Cart() {
   // Para limpiar todo el localStorage
-  //localStorage.clear();
+  // localStorage.clear();
 
   const [state, setState] = useState(true);
 

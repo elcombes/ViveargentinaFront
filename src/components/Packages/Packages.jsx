@@ -19,6 +19,45 @@ export default function Card(props) {
     const [Order, setOrder] = useState('');
     const { cityId } = props.match.params;
 
+    // Precart
+
+    const [item, setItem] = useState({
+        name: "",
+        price: 0,
+        pax: 0,
+        dates: ""
+    });
+
+    const handleChange = async (e, name, price) => {
+        console.log('Entrando a HC')
+        setItem({
+            ...item,
+            [e.target.name]: e.target.value,
+            name: name,
+            price: price
+        });
+        console.log('handle Change', item)
+    };
+
+    const handleClick = (event) => {
+        let arrayItemsStore = JSON.parse(localStorage.getItem("items"));
+        console.log('arrayItemStore', arrayItemsStore)
+        if (arrayItemsStore === null) arrayItemsStore = [];
+        console.log('handle Click', item);
+        arrayItemsStore.push(item);
+        localStorage.setItem("items", JSON.stringify(arrayItemsStore));
+    };
+
+    const handleNameAndPrice = async (name, price) => {
+        await setItem({
+            ...item,
+            name: name,
+            price: price
+        });
+    };
+
+    //   Fin Precart
+
     function handleOrder(e) {
         setOrder(e.target.value)
         console.log(Order)
@@ -34,13 +73,6 @@ export default function Card(props) {
             dispatch(getAllPackages())
         }
     }, [dispatch]);
-
-    // useEffect(() => {
-    //     if (cityId === "") {
-    //         console.log("Todos los paquetes")
-    //         dispatch(getAllPackages());    
-    //     }
-    // }, [dispatch]);
 
     return (
         <Fragment>
@@ -62,7 +94,7 @@ export default function Card(props) {
                                         <div className="col-md-6">
 
                                             <div>
-                                                <h2>{e.name}</h2>
+                                                <h2 className={styles.titlepackages}>{e.name}</h2>
                                                 <h4>{e.subTitle}</h4>
                                                 Score: {e.score}
                                                 {/* <ul className={styles.scorecity}>
@@ -87,8 +119,8 @@ export default function Card(props) {
 
                                                     <div className={styles.citybuttons}>
                                                         {/* Boton Modal */}
-                                                        <button type="button" className="btn btn-outline-secondary btn-lg" data-bs-toggle="modal" data-bs-target={`#${e.name.split(' ').join('')}`}><i className="bi bi-cart-check"></i> Add to my trips!</button>
-                                                        {/* Fin Botom Modal */}
+                                                        <button onClick={(e) => { handleNameAndPrice(e.name, e.price) }} type="button" className="btn btn-outline-secondary btn-lg" data-bs-toggle="modal" data-bs-target={`#${e.name.split(' ').join('')}`}><i className="bi bi-cart-check"></i> Add to my trips!</button>
+                                                        {/* Fin Boton Modal */}
                                                     </div>
 
 
@@ -100,21 +132,14 @@ export default function Card(props) {
                                                                 {/* Body Modal */}
                                                                 <div className="modal-body">
                                                                     <img className={`img-fluid ${styles.imgmodalpackages}`} src={e.image} alt="" />
+                                                                    <div>
+                                                                        <i class="bi bi-heart-fill"></i>
+                                                                    </div>
                                                                     <div className="mt-5">
                                                                         <h2 className="modal-title" id={`${e.id}label`}>{e.name}</h2>
                                                                         <h4>{e.subTitle}</h4>
                                                                     </div>
                                                                     <p className={styles.modaldescription}>{e.description}</p>
-                                                                    <div class="mt-5 mb-5">
-                                                                        <div className="row ">
-                                                                            <div className="col-md-8">
-                                                                                <p className="text-end">Please, choose the number of packages to buy</p>
-                                                                            </div>
-                                                                            <div className="col-md-4 text-start">
-                                                                                <input className={styles.cantpackages} min="1" type="number" defaultValue="1" />
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
                                                                     <div class="mt-5 mb-5">
                                                                         <div className="row ">
                                                                             <div className="col-md-12">
@@ -126,12 +151,42 @@ export default function Card(props) {
                                                                             </div>
                                                                         </div>
                                                                     </div>
+                                                                    <div class="mt-5 mb-5">
+                                                                        <div className="row ">
+                                                                            <div className="col-md-8">
+                                                                                <p className="text-end">Please, choose the number of passengers:</p>
+                                                                            </div>
+                                                                            <div className="col-md-4 text-start">
+                                                                                <input className={styles.cantpackages} name="pax" min="1" id="pax" type="number" value={item.pax} defaultValue="1" onChange={(event) => handleChange(event, e.name, e.price)} />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div className="row ">
+                                                                            <div className="col-md-8">
+                                                                                <p className="text-end">Please, choose date:</p>
+                                                                            </div>
+                                                                            <div className="col-md-4 text-start">
+                                                                                <select onChange={(event) => handleChange(event, e.name, e.price)} name="dates" id="dates">
+                                                                                    {e.dates.split(',').map((e) => {
+                                                                                        return <option value={e}>{e} </option>
+
+                                                                                    })}
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div className="row">
+                                                                            <div class="mt-5 mb-5 text-center">
+                                                                                <div className="col-md-12">
+                                                                                    <i className="bi bi-currency-dollar"></i> TOTAL: ARS {e.price * item.pax}
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
 
                                                                 {/* Footer Modal */}
                                                                 <div className="modal-footer">
                                                                     <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                                                    <button type="button" className="btn btn-primary"><i className="bi bi-cart-check"></i> Add to my trips!</button>
+                                                                    <button onClick={(event) => { handleClick(event) }} type="button" className="btn btn-primary"><i className="bi bi-cart-check"></i> Add to my trips!</button>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -172,11 +227,7 @@ export default function Card(props) {
                     })}
                 </div>
                 <br />
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </Fragment>
-  );
+            </div >
+        </Fragment >
+    );
 }
