@@ -1,5 +1,3 @@
-
-
 ul.iconscity {
     padding-left: 0;
 }
@@ -12,11 +10,13 @@ ul.iconscity {
     font-weight: bold;
 
 }
+
 .iconscity li i {
     font-size: 1.2rem;
     font-weight: bold;
     padding: 0 0 0 10px;
 }
+
 .scorecity {
     list-style: none;
     display: inline-flex;
@@ -36,6 +36,47 @@ ul.iconscity {
     align-items: center;
     margin: 40px 0;
 }
-.separator {
-    height: 50px;
+
+.citybuttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+h2.exptitle {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.iconsexp {
+    list-style: none;
+    font-size: 1.4rem;
+}
+
+.explist, .pricelist {
+    display: flex;
+    align-items: center;
+}
+
+.imgmodalpackages {
+    object-fit: cover;
+    object-position: center;
+    height: 300px;
+    width: 100%;
+}
+.cantpackages {
+    max-width: 100px;
+    text-align: center;
+    font-size: 1.7rem;
+    font-weight: bold;
+}
+.modaldescription {
+    font-size: 1.3rem;
+}
+.iconsmodal {
+    margin: 0 auto;
+    font-size: 2rem;
+    font-weight: bold;
+    color: green;
+    display: flex;
+    justify-content: space-around;
 }
