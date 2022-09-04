@@ -7,25 +7,9 @@ import Popover from "react-bootstrap/Popover";
 
 export default function Cart() {
   // Para limpiar todo el localStorage
-//   localStorage.clear();
-//   //Esta parte va en el componente previo
-//   let arrayItemsStore = JSON.parse(localStorage.getItem("items"));
-//   if (arrayItemsStore === null) arrayItemsStore = [];
-//   let newItem = {
-//     name: "City Tour Buenos Aires",
-//     price: 9500,
-//     pax: 4,
-//     total: 18000,
-//   };
-//   arrayItemsStore.push(newItem);
-//   let newItem2 = {
-//     name: "City Tour cordoba",
-//     price: 7000,
-//     pax: 6,
-//     total: 18000,
-//   };
-//   arrayItemsStore.push(newItem2);
-//   localStorage.setItem("items", JSON.stringify(arrayItemsStore));
+  // localStorage.clear();
+
+  const [state, setState] = useState(true);
 
   //Esta parte va aca en el carrito
   let itemsFromStore = JSON.parse(localStorage.getItem("items"));
@@ -33,6 +17,14 @@ export default function Cart() {
   useEffect(() => {
       itemsFromStore = JSON.parse(localStorage.getItem("items"));
   }, [JSON.parse(localStorage.getItem("items"))])
+
+  function changeState() {
+    if(state) {
+      setState(false)
+    } else {
+      setState(true)
+    }
+  }
 
   return (
     <div>
@@ -43,9 +35,9 @@ export default function Cart() {
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
-            {itemsFromStore.map((item) => {
+            {itemsFromStore?.map((item) => {
                 return (
-                    <ItemCart name={item.name} price={item.price} pax={item.pax} itemsFromStore={itemsFromStore}></ItemCart>
+                    <ItemCart name={item.name} price={item.price} pax={item.pax} changeState={changeState}></ItemCart>
                 )
             })}
             </div>
