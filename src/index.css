@@ -28,8 +28,6 @@ h1 {
   font-size: 3.5rem;
   font-weight: 500;
   color: #ffffff;
-  text-shadow: 1px 1px 2px var(--secondary-light);
-  animation: fadeInDownBig; 
   animation-duration: 1s; 
 }
 
@@ -37,8 +35,6 @@ h3 {
   font-size: 2rem;
   font-weight: 300;
   color: #ffffff;
-  text-shadow: 1px 1px 2px var(--secondary-light);
-  animation: fadeInDownBig; 
   animation-duration: 1s
 
 }
@@ -54,7 +50,16 @@ button{
 .carousel-control-next, .carousel-control-prev {
   height: auto;
 }
+.modal-backdrop {
+  z-index: -1;
+}
+.nav__menu{
+  z-index:1;
+}
+.nav__toggler{
+  z-index: 1;
 
+}
 form#formFilter {
 
   display: flex;
@@ -87,6 +92,7 @@ select {
   font-size: 1.3rem;
   font-weight: bold;
 }
+
 
 @media screen and (max-width: 940px) {
   h1 {

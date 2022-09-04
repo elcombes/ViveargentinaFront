@@ -1,4 +1,4 @@
-import { isFocusable } from "@testing-library/user-event/dist/utils";
+//import { isFocusable } from "@testing-library/user-event/dist/utils";
 import axios from "axios";
 
 export const GET_CITIES_BY_NAME = "GET_CITIES_BY_NAME";
@@ -19,10 +19,73 @@ export const ORDER_PACKAGES = "ORDER_PACKAGES";
 export const ORDER_EXPERIENCES = "ORDER_EXPERIENCES";
 export const FILTER_EXPERIENCES = "FILTER_EXPERIENCES";
 export const CREATE_NEW_EXPERIENCE = "CREATE_NEW_EXPERIENCE";
+export const GET_USER_PROFILE = "GET_USER_PROFILE";
 
+// Esta ruta añade un paquete a favoritos del usuario
+export function addPackageFavorite(userId, packageId) {
+  return async function () {
+    await axios.post(
+      `https://localhost:3001/favorites/packges?userId=${userId}&packageId${packageId}`
+    );
+  };
+}
 
-// Esta ruta trae una ciudad que incluye un array con todos sus paquetes.
-// Se pasa el name,tal vez en un searchbar
+// Esta ruta añade una experiencia a favoritos del usuario
+export function addExperienceFavorite(userId, experienceId) {
+  return async function () {
+    await axios.post(
+      `https://localhost:3001/favorites/experiences?userId=${userId}&experienceId${experienceId}`
+    );
+  };
+}
+
+// Esta ruta quita un paquete a favoritos del usuario
+export function removePackageFavorite(userId, packageId) {
+  return async function () {
+    await axios.put(
+      `https://localhost:3001/favorites/packges?userId=${userId}&packageId${packageId}`
+    );
+  };
+}
+
+// Esta ruta quita una experiencia a favoritos del usuario
+export function removeExperienceFavorite(userId, experienceId) {
+  return async function () {
+    await axios.put(
+      `https://localhost:3001/favorites/experiences?userId=${userId}&experienceId${experienceId}`
+    );
+  };
+}
+
+// Esta ruta añade un paquete a comprados del usuario
+export function addPackageBought(userId, packageId) {
+  return async function () {
+    await axios.post(
+      `https://localhost:3001/bought/packges?userId=${userId}&packageId${packageId}`
+    );
+  };
+}
+
+// Esta ruta añade una experiencia a comprados del usuario
+export function addExperienceBought(userId, experienceId) {
+  return async function () {
+    await axios.post(
+      `https://localhost:3001/bought/experiences?userId=${userId}&experienceId${experienceId}`
+    );
+  };
+}
+
+// Esta ruta trae todos los paquetes y experiencias comprados y favoritos por el usuario
+export function getUserProfile(userId) {
+  return async function (dispatch) {
+    let response = await axios.get(`https://localhost:3001/users/${userId}`);
+    return dispatch({
+      type: GET_USER_PROFILE,
+      payload: response.data,
+    });
+  };
+}
+
 export function getCitiesByName(cityName) {
   return async function (dispatch) {
     let citiesByName = await axios.get(
@@ -198,14 +261,16 @@ export function getRegionById(regionId) {
 }
 
 export function createNewExperience(newExperience) {
-  console.log('estoy en la action', newExperience)
+  console.log("estoy en la action", newExperience);
   return async function (dispatch) {
-    let newExperienceCreated = await axios.post("https://viveargentina.herokuapp.com/experiences", newExperience);
+    let newExperienceCreated = await axios.post(
+      "https://viveargentina.herokuapp.com/experiences",
+      newExperience
+    );
     console.log(newExperienceCreated);
-    return newExperienceCreated
+    return newExperienceCreated;
   };
 }
-
 
 export function orderCities(payload) {
   return {
@@ -267,4 +332,3 @@ export function filterExperiences(payload) {
     });
   };
 }
-

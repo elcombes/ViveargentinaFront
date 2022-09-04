@@ -72,10 +72,10 @@ export default function FilterExperiencies({ handleOrder }) {
                     <div className="container">
                         <div className="row mt-5">
                             <div className="col-md-6">
-                                <h4 className="text-center mb-3"><i class="bi bi-filter-square-fill"></i> ORDER EXPERIENCES BY</h4>
+                                <h4 className="text-center mb-3"><i class="bi bi-filter-square-fill"style={{color:"#C49D48"}}></i> SORT EXPERIENCES BY</h4>
                                 <ul className={styles.filterstyle}>
                                     <li>
-                                        <h5><i class="bi bi-sort-alpha-down"></i> ALFABETIC</h5>
+                                        <h5><i class="bi bi-sort-alpha-down"style={{color:"#C49D48"}}></i> ALFABETIC</h5>
                                         <select id="alphabeticOrder" onChange={e => handleOrder(e)}>
                                             <option value='sort'>Sort</option>
                                             <option value='ascendant by name'>A - Z</option>
@@ -83,7 +83,7 @@ export default function FilterExperiencies({ handleOrder }) {
                                         </select>
                                     </li>
                                     <li>
-                                        <h5><i class="bi bi-tags-fill"></i> PRICE</h5>
+                                        <h5><i class="bi bi-tags-fill"style={{color:"#C49D48"}}></i> PRICE</h5>
                                         <select id="priceOrder" onChange={e => handleOrder(e)}>
                                             <option value='sort'>Sort</option>
                                             <option value='ascendant by price'>ASC</option>
@@ -91,7 +91,7 @@ export default function FilterExperiencies({ handleOrder }) {
                                         </select>
                                     </li>
                                     <li>
-                                        <h5><i class="bi bi-star-half"></i> SCORE</h5>
+                                        <h5><i class="bi bi-star-half"style={{color:"#C49D48"}}></i> SCORE</h5>
                                         <select id="scoreOrder" onChange={e => handleOrder(e)}>
                                             <option value='sort'>Sort</option>
                                             <option value='ascendant by score'>ASC</option>
@@ -102,10 +102,10 @@ export default function FilterExperiencies({ handleOrder }) {
                             </div>
 
                             <div className="col-md-6">
-                                <h4 className="text-center mb-3"><i class="bi bi-funnel-fill"></i> FILTER RESULTS</h4>
+                                <h4 className="text-center mb-3"><i class="bi bi-funnel-fill"style={{color:"#C49D48"}}></i> FILTER RESULTS</h4>
                                 <ul className={styles.filterstyle}>
                                     <li>
-                                        <h5><i class="bi bi-bookmarks-fill"></i> CATEGORIES</h5>
+                                        <h5><i class="bi bi-bookmarks-fill"style={{color:"#C49D48"}}></i> CATEGORIES</h5>
                                         <select id="categoryFilter" onChange={e => handleFilterByCategory(e)}>
                                             <option value='all'>ALL</option>
                                             {allCategories && allCategories.sort((a, b) => {
@@ -123,7 +123,7 @@ export default function FilterExperiencies({ handleOrder }) {
                                         </select>
                                     </li>
                                     <li>
-                                        <h5><i class="bi bi-box-seam-fill"></i> PACKAGES</h5>
+                                        <h5><i class="bi bi-box-seam-fill"style={{color:"#C49D48"}}></i> PACKAGES</h5>
                                         <select id="packageFilter" onChange={e => handleFilterByPackage(e)}>
                                             <option value='all'>ALL</option>
                                             {allPackages && allPackages.sort((a, b) => {

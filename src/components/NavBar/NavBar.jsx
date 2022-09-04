@@ -1,6 +1,8 @@
 import React, { Fragment, useState } from "react";
 import "./NavBar.css";
 
+import Login from '../User/Login'
+import Register from '../User/Register'
 import logo from "../../assets/vive argentina.png";
 
 function Navbar() {
@@ -48,6 +50,13 @@ function Navbar() {
             CONTACT US
           </a>
         </li>
+        <li>
+        <Register/>  
+        </li>
+        <li>
+        <Login/>
+        </li>
+
       </ul>
       <div onClick={navToggle} className={icon}>
         <div className="line1"></div>

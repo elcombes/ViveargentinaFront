@@ -1,8 +1,7 @@
 
 import React, { Fragment, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import Zoom from 'react-reveal/Zoom';
-import Slide from 'react-reveal/Slide';
+
 
 
 
@@ -23,10 +22,10 @@ function HomePage() {
     return (
         <Fragment>
             <div className='containerHome'>
-                <div className='firstPage'style={{transform: `translate(${offSetY * -0.1}px)`}}>
-                    <NavBar />
+            <NavBar />
+                <div className='firstPage'>
                 </div>
-                <Zoom>
+                
                     <div>
                         <h1 className='mainTitle'style={{transform: `translate(${offSetY * -0.8}px)`}}>
                             One Destination <br />
@@ -44,10 +43,10 @@ function HomePage() {
 
                         </Link>
                     </div>
-                </Zoom>
+                
             </div>
             <div className='cities'>
-                <Slide right >
+                
                     <h4 className='citiesTitle'>
                         CITIES
                     </h4>
@@ -58,10 +57,10 @@ function HomePage() {
                             <Carousel />
                         </Link>
                     </div>
-                </Slide>
+                
             </div>
             <div className='contactUs'>
-                <Slide>
+                
                     <div class="containContact">
 
                         <div class="wrapperContact">
@@ -111,7 +110,7 @@ function HomePage() {
                     <div>
                     </div>
 
-                </Slide>
+                
             </div>
 
         </Fragment>

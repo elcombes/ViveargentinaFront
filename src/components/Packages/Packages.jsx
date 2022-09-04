@@ -1,6 +1,7 @@
 import React, { useState, Fragment, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+
 import styles from '../Packages/Packages.module.css';
 import NavBar from '../NavBar/NavBar';
 import SearchBar from '../SearchBar/SearchBar';
@@ -170,7 +171,12 @@ export default function Card(props) {
                             ))
                     })}
                 </div>
-            </div>
-        </Fragment>
-    )
+                <br />
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </Fragment>
+  );
 }
