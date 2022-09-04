@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 
-export default function ItemCart({name, pax, price}) {
+export default function ItemCart({name, pax, price, changeState}) {
 
     const [itemPax, setItemPax] = useState(pax);
     const [remove, setRemove] = useState(true);
@@ -22,6 +22,7 @@ export default function ItemCart({name, pax, price}) {
         if(!remove) setRemove(true)
         let newItemsFromStore = itemsFromStore.filter(i => i.name !== name)
         localStorage.setItem("items", JSON.stringify(newItemsFromStore));
+        changeState()
         console.log(itemsFromStore)
 
     }
