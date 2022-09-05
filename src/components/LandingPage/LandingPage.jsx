@@ -1,10 +1,18 @@
 import { Link } from "react-router-dom";
 import React, { Fragment } from "react";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { getLsUser } from "./../../redux/action.js"
 
 import "./LandingPage.css";
 import Video from '../../assets/logo corto glitch.mp4'
 
 function Landing() {
+
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(getLsUser())
+}, [])
 
   return (
     <Fragment>
