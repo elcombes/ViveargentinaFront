@@ -16,8 +16,10 @@ import {
   ORDER_EXPERIENCES,
   ORDER_PACKAGES,
   ORDER_CITIES,
-  GET_USER_PROFILE,
   GET_USER_LOGIN,
+  LOGOUT,
+  GET_LS_USER,
+  GOOGLE_LOGIN,
 } from "./action";
 
 const initialState = {
@@ -37,33 +39,29 @@ const initialState = {
 };
 
 export default function rootReducer(state = initialState, action) {
+  let allExperiences
+  let allPackages
+  let userExperiencesBought
+  let userPackagesBought
+  let userExperiencesFavorite
+  let userPackagesFavorite
   switch (action.type) {
-    case GET_USER_PROFILE:
-      let allExperiences = action.payload.experiences;
-      let allPackages = action.payload.packages;
+    case GET_USER_LOGIN:
+      allExperiences = action.payload.user.experiences;
+      allPackages = action.payload.user.packages;
 
-      let userExperiencesBought = allExperiences.map((e) => {
+      userExperiencesBought = allExperiences.map((e) => {
         return e.bought === true;
       });
-      let userPackagesBought = allPackages.map((p) => {
+      userPackagesBought = allPackages.map((p) => {
         return p.bought === true;
       });
-      let userExperiencesFavorite = allExperiences.map((e) => {
+      userExperiencesFavorite = allExperiences.map((e) => {
         return e.favorite === true;
       });
-      let userPackagesFavorite = allPackages.map((p) => {
+      userPackagesFavorite = allPackages.map((p) => {
         return p.favorite === true;
       });
-
-      return {
-        ...state,
-        userExperiencesBought: userExperiencesBought,
-        userPackagesBought: userPackagesBought,
-        userExperiencesFavorite: userExperiencesFavorite,
-        userPackagesFavorite: userPackagesFavorite,
-      };
-    case GET_USER_LOGIN:
-      
       return{
         ...state,
         token: action.payload.accessToken,
@@ -77,7 +75,63 @@ export default function rootReducer(state = initialState, action) {
           administrator: action.payload.user.administrator,
           provider: action.payload.user.provider,
           provider_requested: action.payload.user.provider_requested
-        }
+        },
+        userExperiencesBought: userExperiencesBought,
+        userPackagesBought: userPackagesBought,
+        userExperiencesFavorite: userExperiencesFavorite,
+        userPackagesFavorite: userPackagesFavorite,
+      }
+    case GET_LS_USER:
+      allExperiences = action.payload.user.experiences;
+      allPackages = action.payload.user.packages;
+
+      userExperiencesBought = allExperiences.map((e) => {
+        return e.bought === true;
+      });
+      userPackagesBought = allPackages.map((p) => {
+        return p.bought === true;
+      });
+      userExperiencesFavorite = allExperiences.map((e) => {
+        return e.favorite === true;
+      });
+      userPackagesFavorite = allPackages.map((p) => {
+        return p.favorite === true;
+      });
+      return {
+        ...state,
+        token: action.payload.accessToken,
+        userAuth: action.payload.auth,
+        userBasicInfo: action.payload.user,
+        userExperiencesBought: userExperiencesBought,
+        userPackagesBought: userPackagesBought,
+        userExperiencesFavorite: userExperiencesFavorite,
+        userPackagesFavorite: userPackagesFavorite,
+      }
+    case GOOGLE_LOGIN:
+      allExperiences = action.payload.user.experiences;
+      allPackages = action.payload.user.packages;
+
+      userExperiencesBought = allExperiences.map((e) => {
+        return e.bought === true;
+      });
+      userPackagesBought = allPackages.map((p) => {
+        return p.bought === true;
+      });
+      userExperiencesFavorite = allExperiences.map((e) => {
+        return e.favorite === true;
+      });
+      userPackagesFavorite = allPackages.map((p) => {
+        return p.favorite === true;
+      });
+      return {
+        ...state,
+        token: action.payload.accessToken,
+        userAuth: action.payload.auth,
+        userBasicInfo: action.payload.user,
+        userExperiencesBought: userExperiencesBought,
+        userPackagesBought: userPackagesBought,
+        userExperiencesFavorite: userExperiencesFavorite,
+        userPackagesFavorite: userPackagesFavorite,
       }
     case GET_CITIES_BY_NAME:
       return {
@@ -245,6 +299,13 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         allExperiences: experiencesOrdered,
       };
+    case LOGOUT:
+      return {
+        ...state,
+        token: "",
+        userAuth: false,
+        userBasicInfo: {}
+      }
     default:
       return state;
   }
