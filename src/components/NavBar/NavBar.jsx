@@ -1,8 +1,8 @@
 import React, { Fragment, useState } from "react";
 import "./NavBar.css";
 
-import Login from '../User/Login'
-import Register from '../User/Register'
+import Register from "../User/Register";
+import Login from "../User/Login";
 import logo from "../../assets/vive argentina.png";
 
 function Navbar() {
@@ -21,49 +21,57 @@ function Navbar() {
   return (
     <Fragment>
       <nav className="nav">
-      <a href="/home" className="nav__brand">
-        <img src={logo} alt="logo" name= 'vive argentina'/>
-      </a>
-      <ul className={active}>
-        <li className="nav__item">
-          <a href="/home" className="nav__link">
-            HOME
-          </a>
-        </li>
-        <li className="nav__item">
-          <a href="/cities" className="nav__link">
-            CITIES
-          </a>
-        </li>
-        <li className="nav__item">
-          <a href="/packages" className="nav__link">
-            PACKAGES
-          </a>
-        </li>
-        <li className="nav__item">
-          <a href="experiences" className="nav__link">
-            EXPERIENCES
-          </a>
-        </li>
-        <li className="nav__item">
-          <a href="contact_us" className="nav__link">
-            CONTACT US
-          </a>
-        </li>
-        <li>
-        <Register/>  
-        </li>
-        <li>
-        <Login/>
-        </li>
+        <a href="/home" className="nav__brand">
+          <img src={logo} alt="logo" name='vive argentina' />
+        </a>
+        <ul className={active}>
+          <li className="nav__item">
+            <a href="/home" className="nav__link">
+              HOME
+            </a>
+          </li>
+          <li className="nav__item">
+            <a href="/cities" className="nav__link">
+              CITIES
+            </a>
+          </li>
+          <li className="nav__item">
+            <a href="/packages" className="nav__link">
+              PACKAGES
+            </a>
+          </li>
+          <li className="nav__item">
+            <a href="experiences" className="nav__link">
+              EXPERIENCES
+            </a>
+          </li>
+          <li className="nav__item">
+            <a href="contact_us" className="nav__link">
+              CONTACT US
+            </a>
+          </li>
+          <li>
+            <Register />
+          </li>
+          <li>
 
-      </ul>
-      <div onClick={navToggle} className={icon}>
-        <div className="line1"></div>
-        <div className="line2"></div>
-        <div className="line3"></div>
-      </div>
-    </nav>
+            <Login />
+          </li>
+          <li>
+            <button style={{ backgroundColor: "transparent", borderColor: "#c49d48e3", borderRadius: "2vh" }}><i class="bi bi-cart"></i></button>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#" style={{ borderColor: "#C49D48", color: "#C49D48", fontSize:"1.8rem" }}>MY TRIPS</a>
+          </li>
+
+
+        </ul>
+        <div onClick={navToggle} className={icon}>
+          <div className="line1"></div>
+          <div className="line2"></div>
+          <div className="line3"></div>
+        </div>
+      </nav>
     </Fragment>
   );
 }

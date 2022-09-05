@@ -14,6 +14,7 @@ import PreCart from "./components/PreCart/PreCart";
 import MenuUser from "./components/User/MenuUser";
 import MenuGuest from "./components/User/MenuGuest";
 import Footer from "./components/Footer/Footer";
+import NavBar from "./components/NavBar/NavBar";
 // import Login from './components/User/Login';
 // import Register from './components/User/Register';
 
@@ -32,7 +33,6 @@ function App() {
           <Route path="/experiences/:packageId" component={Experiences} />
           <Route exact path="/experiences" component={Experiences} />
           <Route path="/cart" component={Cart} />
-          <Route path="/precart" component={PreCart} />
           <Route path="/userlogged" component={MenuUser} />
           <Route path="/userguest" component={MenuGuest} />
           <Route path="*" component={Error404} />

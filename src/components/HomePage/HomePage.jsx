@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom'
 import NavBar from '../NavBar/NavBar.jsx';
 import Carousel from '../Carousel/Carousel.Home'
 import './HomePage.css'
+import MenuGuest from '../User/MenuGuest.jsx';
 
 
 
@@ -23,6 +24,7 @@ function HomePage() {
     return (
         <Fragment>
             <div className='containerHome'>
+           
             <NavBar />
                 <div className='firstPage'>
                 </div>
