@@ -304,7 +304,11 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         token: "",
         userAuth: false,
-        userBasicInfo: {}
+        userBasicInfo: {},
+        userExperiencesBought: [],
+        userPackagesBought: [],
+        userExperiencesFavorite: [],
+        userPackagesFavorite: [],
       }
     default:
       return state;
