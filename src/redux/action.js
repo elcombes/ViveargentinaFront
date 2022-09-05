@@ -19,7 +19,6 @@ export const ORDER_PACKAGES = "ORDER_PACKAGES";
 export const ORDER_EXPERIENCES = "ORDER_EXPERIENCES";
 export const FILTER_EXPERIENCES = "FILTER_EXPERIENCES";
 export const CREATE_NEW_EXPERIENCE = "CREATE_NEW_EXPERIENCE";
-export const GET_USER_PROFILE = "GET_USER_PROFILE";
 export const GET_USER_LOGIN = "GET_USER_LOGIN";
 export const LOGOUT = "LOGOUT";
 export const GET_LS_USER = "GET_LS_USER";
@@ -77,17 +76,6 @@ export function addExperienceBought(userId, experienceId) {
     await axios.post(
       `https://localhost:3001/bought/experiences?userId=${userId}&experienceId${experienceId}`
     );
-  };
-}
-
-// Esta ruta trae todos los paquetes y experiencias comprados y favoritos por el usuario
-export function getUserProfile(userId) {
-  return async function (dispatch) {
-    let response = await axios.get(`https://localhost:3001/users/${userId}`);
-    return dispatch({
-      type: GET_USER_PROFILE,
-      payload: response.data,
-    });
   };
 }
 
