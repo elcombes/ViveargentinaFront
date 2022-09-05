@@ -1,0 +1,28 @@
+.footerstyle {
+    background-color: #020202;
+    height: 230px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+}
+
+.imgfooter {
+    max-width: 200px;
+}
+
+.descriptionfooter {
+    font-size: 1.4rem;
+}
+
+.authorsfooter {
+    font-size: 1.2rem;
+}
+
+.footerelemalign {
+    display: flex;
+    align-items: center;
+}
+.copyr {
+    font-size: 1rem;
+    text-align: center;
+}

@@ -11,6 +11,7 @@ import './HomePage.css'
 
 
 
+
 function HomePage() {
     const [offSetY, setOffSetY] = useState(0);
     const handleScroll = () => setOffSetY(window.pageYOffset)
@@ -112,7 +113,7 @@ function HomePage() {
 
                 
             </div>
-
+        
         </Fragment>
     )
 }
