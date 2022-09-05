@@ -4,6 +4,7 @@ import "./NavBar.css";
 import Register from "../User/Register";
 import Login from "../User/Login";
 import logo from "../../assets/vive argentina.png";
+import Cart from "../Cart/Cart"
 
 function Navbar() {
   const [active, setActive] = useState("nav__menu");
@@ -58,6 +59,8 @@ function Navbar() {
             <Login />
           </li>
           <li>
+            <Cart/>
+            
             <button style={{ backgroundColor: "transparent", borderColor: "#c49d48e3", borderRadius: "2vh" }}><i class="bi bi-cart"></i></button>
           </li>
           <li class="nav-item active">

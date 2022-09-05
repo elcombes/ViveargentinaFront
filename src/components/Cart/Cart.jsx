@@ -34,6 +34,7 @@ export default function Cart() {
         data-bs-toggle="offcanvas"
         data-bs-target="#offcanvasRight"
         aria-controls="offcanvasRight"
+        
       >
         Toggle right offcanvas
       </button>

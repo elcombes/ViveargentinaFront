@@ -10,13 +10,11 @@ import Experiences from "./components/Experiences/Experiences.jsx";
 import ContactUs from "./components/ContactUs/ContactUs";
 import Error404 from "./components/Error404/Error404";
 import Cart from "./components/Cart/Cart";
-import PreCart from "./components/PreCart/PreCart";
 import MenuUser from "./components/User/MenuUser";
 import MenuGuest from "./components/User/MenuGuest";
 import Footer from "./components/Footer/Footer";
 import NavBar from "./components/NavBar/NavBar";
-// import Login from './components/User/Login';
-// import Register from './components/User/Register';
+
 
 function App() {
   return (
@@ -36,8 +34,7 @@ function App() {
           <Route path="/userlogged" component={MenuUser} />
           <Route path="/userguest" component={MenuGuest} />
           <Route path="*" component={Error404} />
-          {/* <Route exact path="/login"  component={Login}/> 
-            <Route exact path="/register"  component={Register}/> */}
+
         </Switch>
         <Footer />
       </div>
