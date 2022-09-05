@@ -13,6 +13,7 @@ import Cart from "./components/Cart/Cart";
 import PreCart from "./components/PreCart/PreCart";
 import MenuUser from "./components/User/MenuUser";
 import MenuGuest from "./components/User/MenuGuest";
+import Footer from "./components/Footer/Footer";
 // import Login from './components/User/Login';
 // import Register from './components/User/Register';
 
@@ -37,8 +38,8 @@ function App() {
           <Route path="*" component={Error404} />
           {/* <Route exact path="/login"  component={Login}/> 
             <Route exact path="/register"  component={Register}/> */}
-          <Route path="*" component={Error404} />
         </Switch>
+        <Footer />
       </div>
     </BrowserRouter>
   );

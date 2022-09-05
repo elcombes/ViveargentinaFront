@@ -111,10 +111,22 @@ export default function Card(props) {
                                                 <div className={`col-md-6 ${styles.citybuttons}`}>
                                                     <ul className={styles.iconscity}>
                                                         <li><i className="bi bi-clock-history"></i> {e.duration}</li>
-                                                        <li><i className="bi bi-currency-dollar"></i> ARS {e.price}</li>
+                                                        <li><i className="bi bi-currency-dollar"></i> {e.price} ARS</li>
                                                         {console.log(e.experiences)}
                                                     </ul>
                                                 </div>
+                                                <div className="col-md-6">
+                                                    <ul className={styles.iconsexp}>
+                                                        <li className={styles.exptitle}><i className="bi bi-compass"></i> {e.experiences ? e.experiences[0].name : null} <br /></li>
+                                                        <li className={styles.exptitle}><i className="bi bi-compass"></i> {e.experiences ? e.experiences[1].name : null}<br /></li>
+                                                        <li className={styles.exptitle}><i className="bi bi-compass"></i> {e.experiences ? e.experiences[2].name : null}<br /></li>
+                                                    </ul>
+                                                </div>
+
+                                            </div>
+
+                                            <div className={`row mt-5 ${styles.explist}`}>
+
                                                 <div className="col-md-6">
 
                                                     <div className={styles.citybuttons}>
@@ -193,22 +205,15 @@ export default function Card(props) {
                                                     </div>
                                                     {/* Fin Modal */}
                                                 </div>
-                                            </div>
 
-                                            <div className={`row ${styles.explist}`}>
-                                                <div className="col-md-6">
-                                                    <h2 className={styles.exptitle}><i className="bi bi-compass"></i> Enjoy Extra Experiences!</h2>
-                                                    <ul className={styles.iconsexp}>
-                                                        <li>{e.experiences ? e.experiences[0].name : null} <br /></li>
-                                                        <li>{e.experiences ? e.experiences[1].name : null}<br /></li>
-                                                        <li>{e.experiences ? e.experiences[2].name : null}<br /></li>
-                                                    </ul>
-                                                </div>
+
+
+
                                                 <div className="col-md-6">
                                                     <div className={styles.citybuttons}>
 
                                                         <Link to={'/experiences/' + e.id}>
-                                                            <button type="button" className="btn btn-outline-secondary btn-lg"> View all experiences!</button>
+                                                            <button type="button" className="btn btn-outline-secondary btn-lg"> View all included experiences!</button>
                                                         </Link>
 
                                                     </div>
