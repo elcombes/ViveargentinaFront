@@ -24,7 +24,7 @@ export default function Card(props) {
     const [item, setItem] = useState({
         name: "",
         price: 0,
-        pax: 0,
+        pax: 1,
         dates: ""
     });
 
@@ -110,8 +110,8 @@ export default function Card(props) {
                                             <div className={`row ${styles.pricelist}`}>
                                                 <div className={`col-md-6 ${styles.citybuttons}`}>
                                                     <ul className={styles.iconscity}>
-                                                        <li><i className="bi bi-clock-history"></i> {e.duration}</li>
-                                                        <li><i className="bi bi-currency-dollar"></i> {e.price} ARS</li>
+                                                        <li style={{color: "black"}}><i className="bi bi-clock-history"></i> {e.duration}</li>
+                                                        <li style={{color: "black"}}><i className="bi bi-currency-dollar"></i> {e.price} ARS</li>
                                                         {console.log(e.experiences)}
                                                     </ul>
                                                 </div>
@@ -131,7 +131,7 @@ export default function Card(props) {
 
                                                     <div className={styles.citybuttons}>
                                                         {/* Boton Modal */}
-                                                        <button onClick={(e) => { handleNameAndPrice(e.name, e.price) }} type="button" className="btn btn-outline-secondary btn-lg" data-bs-toggle="modal" data-bs-target={`#${e.name.split(' ').join('')}`}><i className="bi bi-cart-check"></i> Add to my trips!</button>
+                                                        <button onClick={(e) => { handleNameAndPrice(e.name, e.price) }} type="button" className="btn btn-outline-secondary btn-lg" data-bs-toggle="modal" data-bs-target={`#${e.name.split(' ').join('')}`}><i className="bi bi-cart-check"></i> Add to cart!</button>
                                                         {/* Fin Boton Modal */}
                                                     </div>
 
@@ -145,10 +145,10 @@ export default function Card(props) {
                                                                 <div className="modal-body">
                                                                     <img className={`img-fluid ${styles.imgmodalpackages}`} src={e.image} alt="" />
                                                                     <div>
-                                                                        <i class="bi bi-heart-fill"></i>
+                                                                        <i class="bi bi-heart-fill" style={{fontSize:"4vh", paddingTop: "3vh"}}></i>
                                                                     </div>
                                                                     <div className="mt-5">
-                                                                        <h2 className="modal-title" id={`${e.id}label`}>{e.name}</h2>
+                                                                        <h2 className="modal-title" id={`${e.id}label`}style={{color: "#C49D48", textTransform:"uppercase"}}>{e.name}</h2>
                                                                         <h4>{e.subTitle}</h4>
                                                                     </div>
                                                                     <p className={styles.modaldescription}>{e.description}</p>
@@ -156,8 +156,8 @@ export default function Card(props) {
                                                                         <div className="row ">
                                                                             <div className="col-md-12">
                                                                                 <ul className={styles.iconsmodal}>
-                                                                                    <li><i className="bi bi-clock-history"></i> {e.duration}</li>
-                                                                                    <li><i className="bi bi-currency-dollar"></i> ARS {e.price}</li>
+                                                                                    <li style={{color: "black"}}><i className="bi bi-clock-history"></i> {e.duration}</li>
+                                                                                    <li style={{color: "black"}}><i className="bi bi-currency-dollar"></i> ARS {e.price}</li>
                                                                                     {console.log(e.experiences)}
                                                                                 </ul>
                                                                             </div>
@@ -186,9 +186,9 @@ export default function Card(props) {
                                                                             </div>
                                                                         </div>
                                                                         <div className="row">
-                                                                            <div class="mt-5 mb-5 text-center">
-                                                                                <div className="col-md-12">
-                                                                                    <i className="bi bi-currency-dollar"></i> TOTAL: ARS {e.price * item.pax}
+                                                                            <div class="mt-5 mb-5 text-center" >
+                                                                                <div className="col-md-12" style={{color: "black", fontWeight:"800"}}>
+                                                                                    TOTAL:  <i className="bi bi-currency-dollar"></i>ARS {e.price * item.pax}
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -198,7 +198,7 @@ export default function Card(props) {
                                                                 {/* Footer Modal */}
                                                                 <div className="modal-footer">
                                                                     <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                                                    <button onClick={(event) => { handleClick(event) }} type="button" className="btn btn-primary"><i className="bi bi-cart-check"></i> Add to my trips!</button>
+                                                                    <button onClick={(event) => { handleClick(event) }} type="button" className="btn btn-primary" style={{backgroundColor:"#C49D48", borderColor:"#C49D48" , fontSize:"2vh"}}><i className="bi bi-cart-check" style={{color:"black"}}></i> Add to cart!</button>
                                                                 </div>
                                                             </div>
                                                         </div>
