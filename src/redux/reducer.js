@@ -20,6 +20,7 @@ import {
   GET_USER_LOGIN,
   LOGOUT,
   GET_LS_USER,
+  GOOGLE_LOGIN,
 } from "./action";
 
 const initialState = {
@@ -82,6 +83,13 @@ export default function rootReducer(state = initialState, action) {
         }
       }
     case GET_LS_USER:
+      return {
+        ...state,
+        token: action.payload.accessToken,
+        userAuth: action.payload.auth,
+        userBasicInfo: action.payload.user
+      }
+    case GOOGLE_LOGIN:
       return {
         ...state,
         token: action.payload.accessToken,

@@ -25,7 +25,7 @@ export default function Register() {
           ...newUser,
           [e.target.name]: e.target.value,
         });
-      };
+    };
 
     const handleSubmit = (event) => {
         const form = event.currentTarget;
@@ -45,7 +45,7 @@ export default function Register() {
 
                     {/* Inicio boton para abrir el modal */}
                     <div>
-                        <button type="button" className="btn btn-outline-secondary btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal"style = {{textTransform:"uppercase", fontFamily: "Raleway", borderColor:"#C49D48",color:" #C49D48",}}>
+                        <button type="button" className="btn btn-outline-secondary btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal" style = {{textTransform:"uppercase", fontFamily: "Raleway", borderColor:"#C49D48",color:" #C49D48",}}>
                             Register <i class="bi bi-person-lines-fill"></i>
                         </button>
                     </div>
@@ -174,7 +174,7 @@ export default function Register() {
                                         </Form.Group>
 
                                         <Row className="mb-3">
-                                            <Button type="submit" onClick={(e)=>handleSubmit(e)} style={{fontSize: "2vh", fontFamily:"Raleway", backgroundColor: "#C49D48", borderColor: "#C49D48" }}>Register</Button>
+                                            <Button type="submit" onClick={(e)=>handleSubmit(e)} data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#exampleModal1" style={{fontSize: "2vh", fontFamily:"Raleway", backgroundColor: "#C49D48", borderColor: "#C49D48" }}>Register</Button>
                                         </Row>
 
                                     </Form>

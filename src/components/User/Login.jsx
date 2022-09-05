@@ -6,7 +6,7 @@ import Row from "react-bootstrap/Row";
 import { useState, useEffect } from "react";
 import { GoogleLogin } from 'react-google-login';
 import { gapi } from 'gapi-script';
-import { getUserLogin } from "../../redux/action";
+import { getUserLogin, googleLogin } from "../../redux/action";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function Login() {
@@ -39,7 +39,16 @@ export default function Login() {
     })
     const onSuccess = (res) => {
         console.log('success:', res);
-        console.log(res.profileObj.email)
+        console.log(res.profileObj.email);
+        const newUser = {
+            first_name: res.profileObj.givenName,
+            last_name: res.profileObj.familyName,
+            email: res.profileObj.email,
+            photo: res.profileObj.imageUrl,
+            password: res.googleId
+        }
+        console.log(newUser)
+        dispatch(googleLogin(newUser))
     };
     const onFailure = (err) => {
         console.log('failed:', err);
