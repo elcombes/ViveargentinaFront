@@ -9,6 +9,7 @@ export default function Cart() {
   // Para limpiar todo el localStorage
   // localStorage.clear();
 
+  let totalcart = 0
   const [state, setState] = useState(true);
 
   //Esta parte va aca en el carrito
@@ -29,14 +30,14 @@ export default function Cart() {
   return (
     <div>
       <button
-        class="btn btn-primary"
+        class="btn btn-secondary"
         type="button"
         data-bs-toggle="offcanvas"
         data-bs-target="#offcanvasRight"
         aria-controls="offcanvasRight"
         
       >
-        Toggle right offcanvas
+        <i class="bi bi-cart"></i>
       </button>
       <div
         class="offcanvas offcanvas-end"
@@ -46,7 +47,7 @@ export default function Cart() {
       >
         <div class="offcanvas-header">
           <h5 class="offcanvas-title" id="offcanvasRightLabel">
-            Offcanvas right
+            <h4><i class="bi bi-cart"></i> My Cart</h4>
           </h5>
           <button
             type="button"
@@ -57,15 +58,22 @@ export default function Cart() {
         </div>
         <div class="offcanvas-body">
           {itemsFromStore?.map((item) => {
+            totalcart = totalcart+(item.price*item.pax);
             return (
               <ItemCart
                 name={item.name}
                 price={item.price}
                 pax={item.pax}
+                image={item.image}
+                dates={item.dates}
                 changeState={changeState}
               ></ItemCart>
             );
           })}
+          <div>
+            {/* Total: {totalcart} */}
+            <button className="btn btn-secondary">COMPRAR</button>
+          </div>
         </div>
       </div>
     </div>

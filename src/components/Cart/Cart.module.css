@@ -1,0 +1,30 @@
+.buttonitemcart {
+    display: inline-flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 2rem;
+}
+.pricecart {
+    font-size: 2.5rem;
+    margin: 15px 0;
+}
+.buttonminmax {
+    font-size: 3rem;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    height: 45px;
+    width: 45px;
+}
+.itempax {
+    width: 30px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+h4.titlecart {
+    font-size: 1.8rem;
+    display: inline-flex;
+    font-weight: 700;
+}

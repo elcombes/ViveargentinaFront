@@ -28,32 +28,23 @@ export default function Card(props) {
         dates: ""
     });
 
-    const handleChange = async (e, name, price) => {
+    const handleChange = async (e, name, price, image) => {
         console.log('Entrando a HC')
         setItem({
             ...item,
             [e.target.name]: e.target.value,
             name: name,
+            image: image,
             price: price
         });
-        console.log('handle Change', item)
+        
     };
 
     const handleClick = (event) => {
         let arrayItemsStore = JSON.parse(localStorage.getItem("items"));
-        console.log('arrayItemStore', arrayItemsStore)
         if (arrayItemsStore === null) arrayItemsStore = [];
-        console.log('handle Click', item);
         arrayItemsStore.push(item);
         localStorage.setItem("items", JSON.stringify(arrayItemsStore));
-    };
-
-    const handleNameAndPrice = async (name, price) => {
-        await setItem({
-            ...item,
-            name: name,
-            price: price
-        });
     };
 
     //   Fin Precart
@@ -131,7 +122,7 @@ export default function Card(props) {
 
                                                     <div className={styles.citybuttons}>
                                                         {/* Boton Modal */}
-                                                        <button onClick={(e) => { handleNameAndPrice(e.name, e.price) }} type="button" className="btn btn-outline-secondary btn-lg" data-bs-toggle="modal" data-bs-target={`#${e.name.split(' ').join('')}`}><i className="bi bi-cart-check"></i> Add to cart!</button>
+                                                        <button type="button" className="btn btn-outline-secondary btn-lg" data-bs-toggle="modal" data-bs-target={`#${e.name.split(' ').join('')}`}><i className="bi bi-cart-check"></i> Add to my trips!</button>
                                                         {/* Fin Boton Modal */}
                                                     </div>
 
@@ -169,7 +160,7 @@ export default function Card(props) {
                                                                                 <p className="text-end">Please, choose the number of passengers:</p>
                                                                             </div>
                                                                             <div className="col-md-4 text-start">
-                                                                                <input className={styles.cantpackages} name="pax" min="1" id="pax" type="number" value={item.pax} defaultValue="1" onChange={(event) => handleChange(event, e.name, e.price)} />
+                                                                                <input className={styles.cantpackages} name="pax" min="1" id="pax" type="number" value={item.pax} defaultValue="1" onChange={(event) => handleChange(event, e.name, e.price, e.image, e.dates)} />
                                                                             </div>
                                                                         </div>
                                                                         <div className="row ">
@@ -177,7 +168,7 @@ export default function Card(props) {
                                                                                 <p className="text-end">Please, choose date:</p>
                                                                             </div>
                                                                             <div className="col-md-4 text-start">
-                                                                                <select onChange={(event) => handleChange(event, e.name, e.price)} name="dates" id="dates">
+                                                                                <select onChange={(event) => handleChange(event, e.name, e.price, e.image, e.dates)} name="dates" id="dates">
                                                                                     {e.dates.split(',').map((e) => {
                                                                                         return <option value={e}>{e} </option>
 
