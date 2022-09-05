@@ -4,11 +4,28 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import { useState } from "react";
-// import { useDispatch, useSelector } from "react-redux";
+import { registerUser } from "../../redux/action";
+import { useDispatch } from "react-redux";
 
 export default function Register() {
 
+    const dispatch = useDispatch()
     const [validated, setValidated] = useState(false);
+
+    const [newUser, setNewUser] = useState({
+        first_name: "",
+        last_name: "",
+        email: "",
+        password: "",
+        repeatPassword: ""
+    })
+
+    const handleChange = (e) => {
+        setNewUser({
+          ...newUser,
+          [e.target.name]: e.target.value,
+        });
+      };
 
     const handleSubmit = (event) => {
         const form = event.currentTarget;
@@ -16,8 +33,8 @@ export default function Register() {
             event.preventDefault();
             event.stopPropagation();
         }
-
         setValidated(true);
+        dispatch(registerUser({first_name: newUser.first_name, last_name: newUser.last_name, email: newUser.email, password: newUser.password}))
     };
 
 
@@ -40,7 +57,7 @@ export default function Register() {
                             <div className="modal-content">
 
                                 <div className="modal-header">
-                                    <h5 className="modal-title" id="exampleModalLabel">Please login</h5>
+                                    <h5 className="modal-title" id="exampleModalLabel">PLEASE LOGIN</h5>
                                     <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
 
@@ -55,7 +72,7 @@ export default function Register() {
                                             <Form.Group as={Col} md="6" controlId="validationCustom01">
 
                                                 <Form.Label>Name</Form.Label>
-                                                <Form.Control required type="text" placeholder="John" />
+                                                <Form.Control required type="text" name="first_name" value={newUser.first_name} onChange={(e)=>handleChange(e)} placeholder="John" />
 
                                                 <Form.Control.Feedback>
                                                     Looks good!
@@ -66,7 +83,7 @@ export default function Register() {
                                             <Form.Group as={Col} md="6" controlId="validationCustom02">
 
                                                 <Form.Label>Lastname</Form.Label>
-                                                <Form.Control required type="text" placeholder="Wick" />
+                                                <Form.Control required type="text" name="last_name" value={newUser.last_name} onChange={(e)=>handleChange(e)} placeholder="Wick" />
 
                                                 <Form.Control.Feedback>
                                                     Looks good!
@@ -81,7 +98,7 @@ export default function Register() {
                                             <Form.Group as={Col} md="12" controlId="validationCustom02">
 
                                                 <Form.Label><i class="bi bi-envelope-fill"></i> Email</Form.Label>
-                                                <Form.Control required type="email" placeholder="name@example.com" />
+                                                <Form.Control required type="email" name="email" value={newUser.email} onChange={(e)=>handleChange(e)} placeholder="name@example.com" />
 
                                                 <Form.Control.Feedback type="invalid">
                                                     Please provide a valid email.
@@ -94,7 +111,7 @@ export default function Register() {
                                             </Form.Group>
                                         </Row>
 
-                                        <Row className="mb-1">
+                                        {/* <Row className="mb-1">
 
                                             <Form.Group as={Col} md="12" controlId="validationCustom02">
 
@@ -110,6 +127,41 @@ export default function Register() {
                                                 </Form.Control.Feedback>
 
                                             </Form.Group>
+                                        </Row> */}
+
+                                        <Row className="mb-1">
+
+                                            <Form.Group as={Col} md="12" controlId="formGroupPassword">
+
+                                                <Form.Label htmlFor="inputPassword5"><i class="bi bi-key-fill"></i> Password</Form.Label>
+
+                                                <Form.Control required type="password" name="password" value={newUser.password} onChange={(e)=>handleChange(e)} id="inputPassword5" aria-describedby="passwordHelpBlock" />
+                                                <Form.Text id="passwordHelpBlock" muted>
+                                                    Your password must be 8-20 characters long, contain letters and numbers,
+                                                    and must not contain spaces, special characters, or emoji.
+                                                </Form.Text>
+                                                <Form.Control.Feedback>
+                                                    Looks good!
+                                                </Form.Control.Feedback>
+                                            </Form.Group>
+
+                                        </Row>
+
+                                        <Row className="mb-1">
+
+                                            <Form.Group as={Col} md="12" controlId="formGroupPassword">
+
+                                                <Form.Label htmlFor="inputPassword5"><i class="bi bi-key-fill"></i>Repeat Password</Form.Label>
+
+                                                <Form.Control required type="password" name="repeatPassword" value={newUser.repeatPassword} onChange={(e)=>handleChange(e)} id="inputPassword5" aria-describedby="passwordHelpBlock" />
+                                                <Form.Text id="passwordHelpBlock" muted>
+                                                    Your password must be the same as the one above.
+                                                </Form.Text>
+                                                <Form.Control.Feedback>
+                                                    Looks good!
+                                                </Form.Control.Feedback>
+                                            </Form.Group>
+
                                         </Row>
 
                                         <Form.Group className="mb-3">
@@ -122,7 +174,7 @@ export default function Register() {
                                         </Form.Group>
 
                                         <Row className="mb-3">
-                                            <Button type="submit" style={{fontSize: "2vh", fontFamily:"Raleway", backgroundColor: "#C49D48", borderColor: "#C49D48" }}>Register</Button>
+                                            <Button type="submit" onClick={(e)=>handleSubmit(e)} style={{fontSize: "2vh", fontFamily:"Raleway", backgroundColor: "#C49D48", borderColor: "#C49D48" }}>Register</Button>
                                         </Row>
 
                                     </Form>

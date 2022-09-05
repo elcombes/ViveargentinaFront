@@ -39,6 +39,7 @@ export default function Login() {
     })
     const onSuccess = (res) => {
         console.log('success:', res);
+        console.log(res.profileObj.email)
     };
     const onFailure = (err) => {
         console.log('failed:', err);

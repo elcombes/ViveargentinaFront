@@ -18,6 +18,8 @@ import {
   ORDER_CITIES,
   GET_USER_PROFILE,
   GET_USER_LOGIN,
+  LOGOUT,
+  GET_LS_USER,
 } from "./action";
 
 const initialState = {
@@ -78,6 +80,13 @@ export default function rootReducer(state = initialState, action) {
           provider: action.payload.user.provider,
           provider_requested: action.payload.user.provider_requested
         }
+      }
+    case GET_LS_USER:
+      return {
+        ...state,
+        token: action.payload.accessToken,
+        userAuth: action.payload.auth,
+        userBasicInfo: action.payload.user
       }
     case GET_CITIES_BY_NAME:
       return {
@@ -245,6 +254,13 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         allExperiences: experiencesOrdered,
       };
+    case LOGOUT:
+      return {
+        ...state,
+        token: "",
+        userAuth: false,
+        userBasicInfo: {}
+      }
     default:
       return state;
   }
