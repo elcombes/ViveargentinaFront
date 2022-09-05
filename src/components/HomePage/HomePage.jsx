@@ -8,7 +8,8 @@ import { Link } from 'react-router-dom'
 import NavBar from '../NavBar/NavBar.jsx';
 import Carousel from '../Carousel/Carousel.Home'
 import './HomePage.css'
-import MenuGuest from '../User/MenuGuest.jsx';
+// import MenuGuest from '../User/MenuGuest.jsx';
+import NavBarUser from '../NavBarUser/NavBarUser.jsx';
 
 
 
@@ -25,7 +26,9 @@ function HomePage() {
         <Fragment>
             <div className='containerHome'>
            
-            <NavBar />
+            <NavBarUser 
+            
+            />
                 <div className='firstPage'>
                 </div>
                 
