@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import styles from '../Packages/Packages.module.css';
 import NavBar from '../NavBar/NavBar';
+import NavBarUser from "../NavBarUser/NavBarUser";
 import SearchBar from '../SearchBar/SearchBar';
 import FilterPackages from '../../components/Filters/FilterPackages';
 import { getAllPackages, getCityById, orderPackages } from '../../redux/action';
@@ -37,7 +38,7 @@ export default function Card(props) {
             image: image,
             price: price
         });
-        
+
     };
 
     const handleClick = (event) => {
@@ -54,6 +55,8 @@ export default function Card(props) {
         console.log(Order)
         dispatch(orderPackages(e.target.value))
     }
+    let userAuth = useSelector((state) => state.userAuth)
+
 
     useEffect(() => {
 
@@ -69,7 +72,10 @@ export default function Card(props) {
         <Fragment>
             <div>
                 <div className="container-fluid">
-                    <NavBar />
+                    {userAuth === false ?
+                        <NavBar /> :
+                        <NavBarUser />
+                    }
                     <SearchBar />
                     <FilterPackages handleOrder={handleOrder} />
                     <br />
@@ -101,8 +107,8 @@ export default function Card(props) {
                                             <div className={`row ${styles.pricelist}`}>
                                                 <div className={`col-md-6 ${styles.citybuttons}`}>
                                                     <ul className={styles.iconscity}>
-                                                        <li style={{color: "black"}}><i className="bi bi-clock-history"></i> {e.duration}</li>
-                                                        <li style={{color: "black"}}><i className="bi bi-currency-dollar"></i> {e.price} ARS</li>
+                                                        <li style={{ color: "black" }}><i className="bi bi-clock-history"></i> {e.duration}</li>
+                                                        <li style={{ color: "black" }}><i className="bi bi-currency-dollar"></i> {e.price} ARS</li>
                                                         {console.log(e.experiences)}
                                                     </ul>
                                                 </div>
@@ -136,10 +142,10 @@ export default function Card(props) {
                                                                 <div className="modal-body">
                                                                     <img className={`img-fluid ${styles.imgmodalpackages}`} src={e.image} alt="" />
                                                                     <div>
-                                                                        <i class="bi bi-heart-fill" style={{fontSize:"4vh", paddingTop: "3vh"}}></i>
+                                                                        <i class="bi bi-heart-fill" style={{ fontSize: "4vh", paddingTop: "3vh" }}></i>
                                                                     </div>
                                                                     <div className="mt-5">
-                                                                        <h2 className="modal-title" id={`${e.id}label`}style={{color: "#C49D48", textTransform:"uppercase"}}>{e.name}</h2>
+                                                                        <h2 className="modal-title" id={`${e.id}label`} style={{ color: "#C49D48", textTransform: "uppercase" }}>{e.name}</h2>
                                                                         <h4>{e.subTitle}</h4>
                                                                     </div>
                                                                     <p className={styles.modaldescription}>{e.description}</p>
@@ -147,8 +153,8 @@ export default function Card(props) {
                                                                         <div className="row ">
                                                                             <div className="col-md-12">
                                                                                 <ul className={styles.iconsmodal}>
-                                                                                    <li style={{color: "black"}}><i className="bi bi-clock-history"></i> {e.duration}</li>
-                                                                                    <li style={{color: "black"}}><i className="bi bi-currency-dollar"></i> ARS {e.price}</li>
+                                                                                    <li style={{ color: "black" }}><i className="bi bi-clock-history"></i> {e.duration}</li>
+                                                                                    <li style={{ color: "black" }}><i className="bi bi-currency-dollar"></i> ARS {e.price}</li>
                                                                                     {console.log(e.experiences)}
                                                                                 </ul>
                                                                             </div>
@@ -178,7 +184,7 @@ export default function Card(props) {
                                                                         </div>
                                                                         <div className="row">
                                                                             <div class="mt-5 mb-5 text-center" >
-                                                                                <div className="col-md-12" style={{color: "black", fontWeight:"800"}}>
+                                                                                <div className="col-md-12" style={{ color: "black", fontWeight: "800" }}>
                                                                                     TOTAL:  <i className="bi bi-currency-dollar"></i>ARS {e.price * item.pax}
                                                                                 </div>
                                                                             </div>
@@ -189,7 +195,7 @@ export default function Card(props) {
                                                                 {/* Footer Modal */}
                                                                 <div className="modal-footer">
                                                                     <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                                                    <button onClick={(event) => { handleClick(event) }} type="button" className="btn btn-primary" style={{backgroundColor:"#C49D48", borderColor:"#C49D48" , fontSize:"2vh"}}><i className="bi bi-cart-check" style={{color:"black"}}></i> Add to cart!</button>
+                                                                    <button onClick={(event) => { handleClick(event) }} type="button" className="btn btn-primary" style={{ backgroundColor: "#C49D48", borderColor: "#C49D48", fontSize: "2vh" }}><i className="bi bi-cart-check" style={{ color: "black" }}></i> Add to cart!</button>
                                                                 </div>
                                                             </div>
                                                         </div>

@@ -10,6 +10,7 @@ import Carousel from '../Carousel/Carousel.Home'
 import './HomePage.css'
 // import MenuGuest from '../User/MenuGuest.jsx';
 import NavBarUser from '../NavBarUser/NavBarUser.jsx';
+import { useSelector } from 'react-redux';
 
 
 
@@ -18,6 +19,8 @@ function HomePage() {
     const [offSetY, setOffSetY] = useState(0);
     const handleScroll = () => setOffSetY(window.pageYOffset)
 
+    let userAuth= useSelector((state)=>state.userAuth)
+
     useEffect(() => {
         window.addEventListener('scroll', handleScroll)
         return () => window.removeEventListener('scroll', handleScroll)
@@ -25,10 +28,11 @@ function HomePage() {
     return (
         <Fragment>
             <div className='containerHome'>
-           
-            <NavBarUser 
+           { userAuth===false ?
+            <NavBar/>:
+            <NavBarUser/>
+           }
             
-            />
                 <div className='firstPage'>
                 </div>
                 

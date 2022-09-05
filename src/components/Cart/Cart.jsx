@@ -35,7 +35,7 @@ export default function Cart() {
         data-bs-toggle="offcanvas"
         data-bs-target="#offcanvasRight"
         aria-controls="offcanvasRight"
-        
+        style={{ backgroundColor: "transparent", borderColor: "#c49d48e3", borderRadius: "2vh" }}
       >
         <i class="bi bi-cart"></i>
       </button>

@@ -60,8 +60,8 @@ function Navbar() {
           </li>
           <li>
             <Cart/>
-            
-            <button style={{ backgroundColor: "transparent", borderColor: "#c49d48e3", borderRadius: "2vh" }}><i class="bi bi-cart"></i></button>
+
+            {/* <button style={{ backgroundColor: "transparent", borderColor: "#c49d48e3", borderRadius: "2vh" }}><i class="bi bi-cart"></i></button> */}
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="#" style={{ borderColor: "#C49D48", color: "#C49D48", fontSize:"1.8rem" }}>MY TRIPS</a>

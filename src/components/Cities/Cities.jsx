@@ -4,6 +4,7 @@ import { getAllCities } from "../../redux/action";
 
 import City from "../City/City";
 import NavBar from "../NavBar/NavBar";
+import NavBarUser from "../NavBarUser/NavBarUser";
 import SearchBar from "../SearchBar/SearchBar";
 
 import styles from "../Cities/Cities.module.css";
@@ -13,13 +14,20 @@ export default function Card() {
   const dispatch = useDispatch();
   const allCities = useSelector((state) => state.allCities);
 
+  let userAuth= useSelector((state)=>state.userAuth)
+
   useEffect(() => {
     dispatch(getAllCities());
   }, [dispatch]);
 
   return (
     <Fragment>
-      <NavBar />
+      {userAuth === false ?
+        <NavBar /> :
+        <NavBarUser />
+      }
+
+
       <SearchBar />
 
       <div class="container-fluid">
@@ -48,9 +56,8 @@ export default function Card() {
                               style={{
                                 borderRadius: 80,
                                 margin: 1.5,
-                                backgroundImage: `url(${
-                                  e.image.split(" ")[2]
-                                })`,
+                                backgroundImage: `url(${e.image.split(" ")[2]
+                                  })`,
                               }}
                               type="button"
                               data-bs-toggle="collapse"

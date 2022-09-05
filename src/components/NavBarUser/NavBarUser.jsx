@@ -1,14 +1,18 @@
 import React, { Fragment, useState } from "react";
 import "./NavBarUser.css";
 
+import { logout } from "../../redux/action";
 
 import logo from "../../assets/vive argentina.png";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import Cart from "../Cart/Cart";
 
 function NavBarUser() {
   const infoUser = useSelector((state) => state.userBasicInfo)
-  console.log(infoUser.first_name)
-
+  const dispatch= useDispatch()
+  const userLogout = () => {
+    dispatch(logout());
+  }
   const [active, setActive] = useState("nav__menu");
   const [icon, setIcon] = useState("nav__toggler");
   const navToggle = () => {
@@ -61,7 +65,7 @@ function NavBarUser() {
                 {infoUser.first_name}
               </button>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#" style={{color:"#c49d48e3", fontSize:"1rem"}}>MY PROFILE</a></li>
+                <li><a class="dropdown-item" href="#" style={{ color: "#c49d48e3", fontSize: "1rem" }}>MY PROFILE</a></li>
                 {/* <button class="dropdown-item" type="button" onClick={() => userLogout()}>LOGOUT</button> */}
               </ul>
             </div>
@@ -71,7 +75,12 @@ function NavBarUser() {
             <button style={{ backgroundColor: "transparent", borderColor: "#c49d48e3", borderRadius: "2vh" }}><i class="bi bi-heart"></i></button>
           </li>
           <li>
-            <button style={{ backgroundColor: "transparent", borderColor: "#c49d48e3", borderRadius: "2vh" }}><i class="bi bi-cart"></i></button>
+            <Cart />
+            {/* <button style={{ backgroundColor: "transparent", borderColor: "#c49d48e3", borderRadius: "2vh" }}><i class="bi bi-cart"></i></button> */}
+          </li>
+          <li>
+            <button class="dropdown-item" type="button" onClick={() => userLogout()}>LOGOUT</button>
+
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="#" style={{ borderColor: "#C49D48", color: "#C49D48", fontSize: "1.8rem" }}>MY TRIPS</a>

@@ -2,7 +2,9 @@ import React, { useState, Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import styles from '../Experiences/Experiences.module.css';
-import Navbar from '../NavBar/NavBar';
+
+import NavBarUser from "../NavBarUser/NavBarUser"
+import NavBar from "../NavBar/NavBar";
 import SearchBar from '../SearchBar/SearchBar';
 import CreateExperience from '../CreateExperience/CreateExperience';
 import FilterExperiences from '../Filters/FilterExperiences';
@@ -16,6 +18,7 @@ export default function Experiences(props) {
 
     const dispatch = useDispatch();
     const allExperiences = useSelector((state) => state.allExperiences);
+    let userAuth = useSelector((state) => state.userAuth)
     const [Order, setOrder] = useState('');
     const { packageId } = props.match.params;
 
@@ -25,19 +28,19 @@ export default function Experiences(props) {
     const firstExperiencePage = lastExperiencePage - experiencesPage;
 
     const showExperiencesPage = allExperiences.slice( //.slice sirve para cortar un array y mostrar solo una cantidad de elementos determinada por el parametro que le pasemos (9)
-    firstExperiencePage, 
-    lastExperiencePage
-  );
+        firstExperiencePage,
+        lastExperiencePage
+    );
 
-  const paged = function (pageNumber) {
-    if (pageNumber !== page) {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        })
-    }
-    setPage(pageNumber);
-  };
+    const paged = function (pageNumber) {
+        if (pageNumber !== page) {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            })
+        }
+        setPage(pageNumber);
+    };
 
 
     function handleOrder(e) {
@@ -50,9 +53,9 @@ export default function Experiences(props) {
     useEffect(() => {
         if (packageId) {
             dispatch(getPackageById(packageId))
-            
+
         } else {
-            dispatch(getAllExperiences());    
+            dispatch(getAllExperiences());
         }
     }, []);
 
@@ -60,22 +63,25 @@ export default function Experiences(props) {
         <Fragment>
             <div>
                 <div className="container-fluid">
-                    <Navbar />
-                    <SearchBar 
+                    {userAuth === false ?
+                        <NavBar /> :
+                        <NavBarUser />
+                    }
+                    <SearchBar
                         setPage={setPage}
                     />
                     <div>
 
 
-                    <FilterExperiences handleOrder={handleOrder} />
+                        <FilterExperiences handleOrder={handleOrder} />
                     </div>
-                    <Paged 
-                            experiencesPage={experiencesPage}
-                            allExperiences={allExperiences.length}
-                            paged={paged}
-                            currentPage={page}
-                        />
-                    
+                    <Paged
+                        experiencesPage={experiencesPage}
+                        allExperiences={allExperiences.length}
+                        paged={paged}
+                        currentPage={page}
+                    />
+
                     <br />
                     {showExperiencesPage?.map((e) => {
                         return (
@@ -88,27 +94,27 @@ export default function Experiences(props) {
                                 <div className="container">
                                     <div className="row">
                                         <div className="col-md-6">
-                                            <h2 style={{textTransform: "uppercase",fontWeight:"500", color:"#C49D48"}}>{e.name[0].toUpperCase() + e.name.slice(1)}</h2>
+                                            <h2 style={{ textTransform: "uppercase", fontWeight: "500", color: "#C49D48" }}>{e.name[0].toUpperCase() + e.name.slice(1)}</h2>
                                             <h4>{e.subTitle}</h4>
-                                            Score:{e.score}        
+                                            Score:{e.score}
 
                                             <p>{e.description}</p>
                                             <ul className={styles.iconsexperience}>
-                                            <li style={{margin:"0vh 1vh 0vh 1vh"}}>ARS<i class="bi bi-currency-dollar"style={{color:"#C49D48"}}></i>{e.price}</li>
-                                                <li><i className="bi bi-clock-history" style={{color:"#C49D48"}}></i> {e.duration}</li>
+                                                <li style={{ margin: "0vh 1vh 0vh 1vh" }}>ARS<i class="bi bi-currency-dollar" style={{ color: "#C49D48" }}></i>{e.price}</li>
+                                                <li><i className="bi bi-clock-history" style={{ color: "#C49D48" }}></i> {e.duration}</li>
                                             </ul>
                                             <button type="button" className="btn btn-outline-secondary btn-lg"><i className="bi bi-cart-check"></i> I want it!</button>
                                         </div>
                                         <div className="col-md-5">
                                             <img className="img-fluid" src={e.image} alt="" />
                                             {/* <CarouselExperiences /> */}
-                                          
+
                                         </div>
-                                       
+
                                         <hr />
                                         <br />
                                     </div>
-                                    <br/>
+                                    <br />
                                 </div>
                             ))
                     })}
