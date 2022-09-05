@@ -103,7 +103,7 @@ export default function Experiences(props) {
                                                 <li style={{ margin: "0vh 1vh 0vh 1vh" }}>ARS<i class="bi bi-currency-dollar" style={{ color: "#C49D48" }}></i>{e.price}</li>
                                                 <li><i className="bi bi-clock-history" style={{ color: "#C49D48" }}></i> {e.duration}</li>
                                             </ul>
-                                            <button type="button" className="btn btn-outline-secondary btn-lg"><i className="bi bi-cart-check"></i> I want it!</button>
+                                            <button type="button" className="btn btn-outline-secondary btn-lg"><i className="bi bi-cart-check"></i> Add to cart!</button>
                                         </div>
                                         <div className="col-md-5">
                                             <img className="img-fluid" src={e.image} alt="" />
