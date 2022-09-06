@@ -130,13 +130,17 @@ export function googleLogin({ first_name, last_name, email, password, photo }) {
 export function getLsUser() {
   return async function (dispatch) {
     let newUser = JSON.parse(window.localStorage.getItem("user"));
-    if (newUser === null) {
+    if (!newUser) {
       newUser = {
         accessToken: "",
-        userAuth: false,
-        userBasicInfo: {},
+        auth: false,
+        user: {
+          experiences: [],
+          packages: []
+        },
       };
     }
+    console.log(newUser)
     return dispatch({
       type: GET_LS_USER,
       payload: newUser,

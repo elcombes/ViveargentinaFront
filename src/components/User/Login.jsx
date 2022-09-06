@@ -49,6 +49,7 @@ export default function Login() {
         }
         console.log(newUser)
         dispatch(googleLogin(newUser))
+        window.location.reload(false);
     };
     const onFailure = (err) => {
         console.log('failed:', err);
@@ -66,8 +67,8 @@ export default function Login() {
         console.log(newUser)
         await dispatch(getUserLogin({email: newUser.email, password: newUser.password})).then(()=>{
             console.log(userAuth)
-            
         })
+        window.location.reload(false);
     };
 
     // const handleLogin = (e)=>{
