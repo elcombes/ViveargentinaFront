@@ -12,17 +12,17 @@ function Landing() {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getLsUser())
-}, [])
+  }, [])
 
   return (
     <Fragment>
-            <Link to="/home">
+      <Link to="/home">
         <div className="gif">
-              <video autoPlay loop id='video'>
-                <source src={Video} type='video/mp4'/>
-                </video> 
+          <video autoPlay loop id='video'>
+            <source src={Video} type='video/mp4' />
+          </video>
         </div>
-            </Link>
+      </Link>
     </Fragment>
   );
 }

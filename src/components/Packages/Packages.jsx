@@ -350,10 +350,12 @@ export default function Card(props) {
                     </div>
                   </div>
                   <div className="col-md-6">
-                    <img className="img-fluid" src={e.image} alt="" />
+                    <img className={`img-fluid ${styles.packimgstyle}`} src={e.image} alt="" />
                     {/* <CarouselPackage /> */}
                   </div>
                 </div>
+                <br />
+                <hr />
                 <br />
               </div>
             );

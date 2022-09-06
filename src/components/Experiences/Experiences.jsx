@@ -342,8 +342,8 @@ export default function Experiences(props) {
                       {/* Fin Modal */}
                     </div>
                   </div>
-                  <div className="col-md-5">
-                    <img className="img-fluid" src={e.image} alt="" />
+                  <div className="col-md-6 mb-5">
+                    <img className={`img-fluid ${styles.expimgstyle}`} src={e.image} alt="" />
                     {/* <CarouselExperiences /> */}
                   </div>
 
