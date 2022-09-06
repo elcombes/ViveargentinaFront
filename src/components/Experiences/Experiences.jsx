@@ -12,7 +12,7 @@ import CategoriesExperiences from "./Categories.Experiences";
 import {
   getAllExperiences,
   orderExperiences,
-  getPackageById,
+  getPackageById, getLsUser
 } from "../../redux/action";
 
 export default function Experiences(props) {
@@ -96,6 +96,7 @@ export default function Experiences(props) {
   }
 
   useEffect(() => {
+    dispatch(getLsUser())
     if (packageId) {
       dispatch(getPackageById(packageId));
     } else {

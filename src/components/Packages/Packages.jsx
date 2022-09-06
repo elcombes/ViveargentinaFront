@@ -9,6 +9,7 @@ import SearchBar from "../SearchBar/SearchBar";
 import FilterPackages from "../../components/Filters/FilterPackages";
 import { getAllPackages, getCityById, orderPackages } from "../../redux/action";
 import { useHistory } from "react-router-dom";
+import { getLsUser } from "./../../redux/action.js"
 
 export default function Card(props) {
   let prevId = 1;
@@ -73,6 +74,7 @@ export default function Card(props) {
   let userAuth = useSelector((state) => state.userAuth);
 
   useEffect(() => {
+    dispatch(getLsUser())
     if (cityId) {
       dispatch(getCityById(cityId));
     } else {

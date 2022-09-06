@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom'
 
 
 
-
+import { useDispatch } from "react-redux";
 import NavBar from '../NavBar/NavBar.jsx';
 import Carousel from '../Carousel/Carousel.Home'
 import './HomePage.css'
 // import MenuGuest from '../User/MenuGuest.jsx';
 import NavBarUser from '../NavBarUser/NavBarUser.jsx';
 import { useSelector } from 'react-redux';
-
+import { getLsUser } from "./../../redux/action.js"
 
 
 
@@ -20,8 +20,9 @@ function HomePage() {
     const handleScroll = () => setOffSetY(window.pageYOffset)
 
     let userAuth= useSelector((state)=>state.userAuth)
-
+    const dispatch = useDispatch()
     useEffect(() => {
+        dispatch(getLsUser())
         window.addEventListener('scroll', handleScroll)
         return () => window.removeEventListener('scroll', handleScroll)
     }, [])

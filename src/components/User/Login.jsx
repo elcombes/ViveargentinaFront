@@ -155,8 +155,9 @@ export default function Login() {
                                                 buttonText="Sign in with Google"
                                                 onSuccess={onSuccess}
                                                 onFailure={onFailure}
-                                                cookiePolicy={'single_host_origin'}
-                                                isSignedIn={true}
+                                                cookiePolicy={'none'}
+                                                isSignedIn={false}
+                                                prompt="select_account"
                                             />
                                         </div>
                                     </Form>

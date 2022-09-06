@@ -1,12 +1,27 @@
 import { Fragment } from "react";
 import './ContactUs.css';
 import Navbar from "../NavBar/NavBar";
+import { useEffect } from "react";
+import { getLsUser } from "./../../redux/action.js"
+import { useDispatch } from "react-redux";
+import NavBarUser from "../NavBarUser/NavBarUser";
+import { useSelector } from 'react-redux';
 
 
 export default function ContactUs() {
+  const dispatch = useDispatch()
+  let userAuth= useSelector((state)=>state.userAuth)
+
+  useEffect(() => {
+    dispatch(getLsUser())
+  }, [])
+
   return(
   <Fragment>	
-  <Navbar/>		
+  { userAuth===false ?
+    <Navbar/>:
+    <NavBarUser/>
+  }		
 <div class="containContact">
 
 <div class="wrapperContact">

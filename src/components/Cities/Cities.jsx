@@ -8,6 +8,7 @@ import NavBarUser from "../NavBarUser/NavBarUser";
 import SearchBar from "../SearchBar/SearchBar";
 
 import styles from "../Cities/Cities.module.css";
+import { getLsUser } from "./../../redux/action.js"
 
 export default function Card() {
   let prevId = 1;
@@ -17,6 +18,7 @@ export default function Card() {
   let userAuth= useSelector((state)=>state.userAuth)
 
   useEffect(() => {
+    dispatch(getLsUser())
     dispatch(getAllCities());
   }, [dispatch]);
 
