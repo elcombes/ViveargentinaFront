@@ -37,7 +37,7 @@ export default function Login() {
         email: "",
         password: ""
     })
-    const onSuccess = (res) => {
+    const onSuccess = async (res) => {
         console.log('success:', res);
         console.log(res.profileObj.email);
         const newUser = {
@@ -48,7 +48,7 @@ export default function Login() {
             password: res.googleId
         }
         console.log(newUser)
-        dispatch(googleLogin(newUser))
+        await dispatch(googleLogin(newUser))
         window.location.reload(false);
     };
     const onFailure = (err) => {
