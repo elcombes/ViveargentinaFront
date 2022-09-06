@@ -70,9 +70,7 @@ function NavBarUser() {
               <ul class="dropdown-menu">
 
                 <li>
-                  <Link to='/profile'>
                     <a class="dropdown-item" href="/profile" style={{ color: "#c49d48e3", fontSize: "1rem" }}>MY PROFILE</a>
-                  </Link>
                   <li>
                     <button class="dropdown-item" type="button" style={{ color: "#C49D48", fontSize: "1rem" }} onClick={() => userLogout()}>LOGOUT</button>
                   </li>
