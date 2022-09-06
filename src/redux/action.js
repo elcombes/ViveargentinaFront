@@ -23,7 +23,7 @@ export const GET_USER_LOGIN = "GET_USER_LOGIN";
 export const LOGOUT = "LOGOUT";
 export const GET_LS_USER = "GET_LS_USER";
 export const REGISTER_USER = "REGISTER_USER";
-export const GOOGLE_LOGIN = "GOOGLE_LOGIN"
+export const GOOGLE_LOGIN = "GOOGLE_LOGIN";
 
 // Esta ruta añade un paquete a favoritos del usuario
 export function addPackageFavorite(userId, packageId) {
@@ -79,29 +79,31 @@ export function addExperienceBought(userId, experienceId) {
   };
 }
 
-export function registerUser({first_name, last_name, email, password}){
+export function registerUser({ first_name, last_name, email, password }) {
   return async function () {
-    await axios.post(
-      "https://viveargentina.herokuapp.com/users/singin",
-      {email, password, first_name, last_name}
-    );
-  }
+    await axios.post("https://viveargentina.herokuapp.com/users/singin", {
+      email,
+      password,
+      first_name,
+      last_name,
+    });
+  };
 }
 
 //funcion para autenticar y obtener informacion del usuario con email + password
-export function getUserLogin({email: email, password: password}) {
+export function getUserLogin({ email: email, password: password }) {
   return async function (dispatch) {
     let response = await axios.post(
       "https://viveargentina.herokuapp.com/users/login",
-      {email, password}
+      { email, password }
     );
-    if(!response.data){
+    if (!response.data) {
       return dispatch({
         type: GET_USER_LOGIN,
-        payload: {auth: false},  
-      })
+        payload: { auth: false },
+      });
     }
-    window.localStorage.setItem('user', JSON.stringify(response.data))
+    window.localStorage.setItem("user", JSON.stringify(response.data));
     return dispatch({
       type: GET_USER_LOGIN,
       payload: response.data,
@@ -110,37 +112,36 @@ export function getUserLogin({email: email, password: password}) {
 }
 
 //esta funcion une el register y el login de un usuario que se use el google login
-export function googleLogin({first_name, last_name, email, password, photo}){
-  return async function(dispatch){
+export function googleLogin({ first_name, last_name, email, password, photo }) {
+  return async function (dispatch) {
     const googleUser = await axios.post(
       "https://viveargentina.herokuapp.com/users/google_login",
-      {email, password, first_name, last_name, photo}
+      { email, password, first_name, last_name, photo }
     );
-    window.localStorage.setItem('userGoogle', JSON.stringify(googleUser.data))
+    window.localStorage.setItem("user", JSON.stringify(googleUser.data));
     return dispatch({
       type: GOOGLE_LOGIN,
-      payload: googleUser.data
-    })
-  }
+      payload: googleUser.data,
+    });
+  };
 }
 
 //esta funcion revisa si hay informacion en el LocalStorage del usuario y la pasa al reducer
-export function getLsUser(){
-  return async function(dispatch){
-    let newUser = JSON.parse(window.localStorage.getItem('user'));
-    if(newUser === null){
+export function getLsUser() {
+  return async function (dispatch) {
+    let newUser = JSON.parse(window.localStorage.getItem("user"));
+    if (newUser === null) {
       newUser = {
         accessToken: "",
         userAuth: false,
-        userBasicInfo: {}
-      }
-    } 
+        userBasicInfo: {},
+      };
+    }
     return dispatch({
       type: GET_LS_USER,
-      payload: newUser
-    })
-  
-  }
+      payload: newUser,
+    });
+  };
 }
 
 export function getCitiesByName(cityName) {
@@ -390,12 +391,12 @@ export function filterExperiences(payload) {
   };
 }
 
-export function logout(){
-  return async function (dispatch){
-    window.localStorage.removeItem('user');
+export function logout() {
+  return async function (dispatch) {
+    window.localStorage.removeItem("user");
     return dispatch({
       type: LOGOUT,
-      payload: null
-    })
-  }
+      payload: null,
+    });
+  };
 }
