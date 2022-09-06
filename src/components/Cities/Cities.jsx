@@ -57,7 +57,7 @@ export default function Card() {
                                 borderRadius: 80,
                                 margin: 1.5,
                                 backgroundImage: `url(${e.image.split(" ")[2]
-                                  })`,
+                                  })`                            
                               }}
                               type="button"
                               data-bs-toggle="collapse"

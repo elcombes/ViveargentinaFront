@@ -2,14 +2,14 @@ import React, { Fragment, useState } from "react";
 import "./NavBarUser.css";
 
 import { logout } from "../../redux/action";
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import logo from "../../assets/vive argentina.png";
 import { useSelector, useDispatch } from "react-redux";
 import Cart from "../Cart/Cart";
 
 function NavBarUser() {
   const infoUser = useSelector((state) => state.userBasicInfo)
-  const dispatch= useDispatch()
+  const dispatch = useDispatch()
   const userLogout = () => {
     dispatch(logout());
   }
@@ -59,37 +59,38 @@ function NavBarUser() {
               CONTACT US
             </a>
           </li>
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown" style={{textTransform:"uppercase", color:"#C49D48", fontSize:"1.3rem"}}>
             <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style={{ backgroundColor: "transparent", borderColor: "#c49d48e3", borderRadius: "2vh", fontSize: "1rem" }}>
-                {infoUser.first_name}
+              <button class="btn btn-secondary dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false" style={{
+                backgroundImage: `url(${infoUser.photo})`,backgroundPosition: 'center',backgroundSize: 'cover', backgroundRepeat: 'no-repeat', borderColor: "#c49d48e3", borderRadius: "10vh"
+              }}>
               </button>
+                {infoUser.first_name}
+                 
               <ul class="dropdown-menu">
 
-              <Link to='/profile'>
                 <li>
-                  <a class="dropdown-item" href="/profile" style={{ color: "#c49d48e3", fontSize: "1rem" }}>MY PROFILE</a>
+                  <Link to='/profile'>
+                    <a class="dropdown-item" href="/profile" style={{ color: "#c49d48e3", fontSize: "1rem" }}>MY PROFILE</a>
+                  </Link>
+                  <li>
+                    <button class="dropdown-item" type="button" style={{ color: "#C49D48", fontSize: "1rem" }} onClick={() => userLogout()}>LOGOUT</button>
+                  </li>
                 </li>
-              </Link>
-                
-                {/* <button class="dropdown-item" type="button" onClick={() => userLogout()}>LOGOUT</button> */}
+
               </ul>
             </div>
           </li>
 
+          <li class="nav-item active">
+            <a class="nav-link" href="#" style={{ borderColor: "#C49D48", color: "#C49D48", fontSize: "1.3rem" }}>MY TRIPS</a>
+          </li>
+
           <li>
-            <button style={{ backgroundColor: "transparent", borderColor: "#c49d48e3", borderRadius: "2vh" }}><i class="bi bi-heart"></i></button>
+            <button class="btn btn-outline-secondary btn-lg" style={{ borderColor: "#c49d48e3", borderRadius: "2vh" }}><i class="bi bi-heart"></i></button>
           </li>
           <li>
             <Cart />
-            {/* <button style={{ backgroundColor: "transparent", borderColor: "#c49d48e3", borderRadius: "2vh" }}><i class="bi bi-cart"></i></button> */}
-          </li>
-          <li>
-            <button class="dropdown-item" type="button" onClick={() => userLogout()}>LOGOUT</button>
-
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="#" style={{ borderColor: "#C49D48", color: "#C49D48", fontSize: "1.8rem" }}>MY TRIPS</a>
           </li>
 
 
