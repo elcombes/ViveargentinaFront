@@ -56,9 +56,10 @@ export default function Cart() {
         tabindex="-1"
         id="offcanvasRight"
         aria-labelledby="offcanvasRightLabel"
+        style={{backgroundColor:"#EFD6AC"}}
       >
         <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasRightLabel">
+          <h5 class="offcanvas-title" id="offcanvasRightLabel" >
             <h4>
               <i class="bi bi-cart"></i> My Cart
             </h4>
