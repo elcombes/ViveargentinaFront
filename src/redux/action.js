@@ -116,6 +116,7 @@ export function googleLogin({first_name, last_name, email, password, photo}){
       "https://viveargentina.herokuapp.com/users/google_login",
       {email, password, first_name, last_name, photo}
     );
+    window.localStorage.setItem('userGoogle', JSON.stringify(googleUser.data))
     return dispatch({
       type: GOOGLE_LOGIN,
       payload: googleUser.data

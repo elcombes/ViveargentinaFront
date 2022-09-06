@@ -2,7 +2,7 @@ import React, { Fragment, useState } from "react";
 import "./NavBarUser.css";
 
 import { logout } from "../../redux/action";
-
+import {Link} from 'react-router-dom';
 import logo from "../../assets/vive argentina.png";
 import { useSelector, useDispatch } from "react-redux";
 import Cart from "../Cart/Cart";
@@ -66,9 +66,12 @@ function NavBarUser() {
               </button>
               <ul class="dropdown-menu">
 
+              <Link to='/profile'>
                 <li>
                   <a class="dropdown-item" href="/profile" style={{ color: "#c49d48e3", fontSize: "1rem" }}>MY PROFILE</a>
-                  </li>
+                </li>
+              </Link>
+                
                 {/* <button class="dropdown-item" type="button" onClick={() => userLogout()}>LOGOUT</button> */}
               </ul>
             </div>
