@@ -14,6 +14,7 @@ import MenuUser from "./components/User/MenuUser";
 import MenuGuest from "./components/User/MenuGuest";
 import Footer from "./components/Footer/Footer";
 import NavBar from "./components/NavBar/NavBar";
+import Profile from "./components/User/Profile"
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
       <div className="App">
         <Switch>
           <Route exact path="/" component={LandingPage} />
+          <Route exact path="/profile" component={Profile}/>
           <Route path="/contact_us" component={ContactUs} />
           <Route exact path="/cities" component={Cities} />
           <Route exact path="/city" component={City} />
@@ -34,7 +36,6 @@ function App() {
           <Route path="/userlogged" component={MenuUser} />
           <Route path="/userguest" component={MenuGuest} />
           <Route path="*" component={Error404} />
-
         </Switch>
         <Footer />
       </div>

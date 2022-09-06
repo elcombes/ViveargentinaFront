@@ -13,8 +13,8 @@ export default function Profile() {
     
     return (
         <Fragment>
-            <div className="class__profile" key={userInfo.id}>
-                <img src= {userInfo.photo ? userInfo.photo : perfil_user} alt='user photo'/>
+            <div className="class__profile" key={userInfo.id}style={{justifyContent:"center", alignItems:"center", alignContent:"center"}}>
+                <img style={{borderRadius:'50px'}} src= {userInfo.photo ? userInfo.photo : perfil_user} alt='user photo'/>
                 <h1 style={{color:'black'}}>USER PROFILE</h1>
                 <h3 style={{color:'black'}}>First Name: {userInfo.first_name}</h3>
                 <h3 style={{color:'black'}}>Last Name: {userInfo.last_name} </h3>

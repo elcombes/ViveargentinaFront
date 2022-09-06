@@ -65,7 +65,10 @@ function NavBarUser() {
                 {infoUser.first_name}
               </button>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#" style={{ color: "#c49d48e3", fontSize: "1rem" }}>MY PROFILE</a></li>
+
+                <li>
+                  <a class="dropdown-item" href="/profile" style={{ color: "#c49d48e3", fontSize: "1rem" }}>MY PROFILE</a>
+                  </li>
                 {/* <button class="dropdown-item" type="button" onClick={() => userLogout()}>LOGOUT</button> */}
               </ul>
             </div>
