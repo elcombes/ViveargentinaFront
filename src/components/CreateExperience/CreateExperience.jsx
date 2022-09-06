@@ -68,7 +68,7 @@ export default function Experiences() {
                 type="button"
                 className="btn btn-outline-secondary btn-lg"
                 data-bs-toggle="modal"
-                data-bs-target="#exampleModal"
+                data-bs-target="#cexampleModal"
               >
                 <i className="bi bi-node-plus"></i> New Experience
               </button>
@@ -76,15 +76,15 @@ export default function Experiences() {
 
             <div
               className="modal fade"
-              id="exampleModal"
+              id="cexampleModal"
               tabIndex="-1"
-              aria-labelledby="exampleModalLabel"
+              aria-labelledby="cexampleModalLabel"
               aria-hidden="true"
             >
               <div className="modal-dialog">
                 <div className="modal-content">
                   <div className="modal-header">
-                    <h5 className="modal-title" id="exampleModalLabel">
+                    <h5 className="modal-title" id="cexampleModalLabel">
                       Create a new experience
                     </h5>
                     <button
