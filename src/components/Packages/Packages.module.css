@@ -91,3 +91,10 @@ i {
     color: #c49d48;
     font-size: 1.5rem;
 }
+.packimgstyle {
+    min-height: 390px;
+    max-height: 420px;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}

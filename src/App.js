@@ -36,6 +36,7 @@ function App() {
           <Route path="/userlogged" component={MenuUser} />
           <Route path="/userguest" component={MenuGuest} />
           <Route path="*" component={Error404} />
+          
         </Switch>
         <Footer />
       </div>
