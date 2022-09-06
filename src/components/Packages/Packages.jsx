@@ -1,7 +1,7 @@
 import React, { useState, Fragment, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-
+import Swal from 'sweetalert2'
 import styles from '../Packages/Packages.module.css';
 import NavBar from '../NavBar/NavBar';
 import NavBarUser from "../NavBarUser/NavBarUser";
@@ -25,7 +25,7 @@ export default function Card(props) {
     const [item, setItem] = useState({
         name: "",
         price: 0,
-        pax: 1,
+        pax: 0,
         dates: ""
     });
 
@@ -46,6 +46,14 @@ export default function Card(props) {
         if (arrayItemsStore === null) arrayItemsStore = [];
         arrayItemsStore.push(item);
         localStorage.setItem("items", JSON.stringify(arrayItemsStore));
+        Swal.fire({
+            title: 'Added to cart successfully!',
+            text: item.name,
+            imageUrl: item.image,
+            imageWidth: 400,
+            imageHeight: 200,
+            imageAlt: 'Custom image',
+        })
     };
 
     //   Fin Precart
@@ -175,6 +183,7 @@ export default function Card(props) {
                                                                             </div>
                                                                             <div className="col-md-4 text-start">
                                                                                 <select onChange={(event) => handleChange(event, e.name, e.price, e.image, e.dates)} name="dates" id="dates">
+                                                                                    <option disabled selected>Choose</option>
                                                                                     {e.dates.split(',').map((e) => {
                                                                                         return <option value={e}>{e} </option>
 
@@ -195,7 +204,7 @@ export default function Card(props) {
                                                                 {/* Footer Modal */}
                                                                 <div className="modal-footer">
                                                                     <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                                                    <button onClick={(event) => { handleClick(event) }} type="button" className="btn btn-primary" style={{ backgroundColor: "#C49D48", borderColor: "#C49D48", fontSize: "2vh" }}><i className="bi bi-cart-check" style={{ color: "black" }}></i> Add to cart!</button>
+                                                                    <button onClick={(event) => { handleClick(event) }} type="button" className="btn btn-primary" style={{ backgroundColor: "#C49D48", borderColor: "#C49D48", fontSize: "2vh" }} data-bs-dismiss="modal"><i className="bi bi-cart-check" style={{ color: "black" }}></i> Add to cart!</button>
                                                                 </div>
                                                             </div>
                                                         </div>

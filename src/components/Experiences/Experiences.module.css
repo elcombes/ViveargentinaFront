@@ -51,3 +51,41 @@ ul.iconsexperience {
 .categoryicons li i {
     font-size: 3rem;
 }
+.priceandcart {
+    display: inline-flex;
+    align-items: baseline;
+}
+
+.imgmodalpackages {
+    object-fit: cover;
+    object-position: center;
+    height: 300px;
+    width: 100%;
+}
+.cantpackages {
+    max-width: 100px;
+    text-align: center;
+    font-size: 1.7rem;
+    font-weight: bold;
+}
+.modaldescription {
+    font-size: 1.3rem;
+}
+.iconsmodal {
+    margin: 0 auto;
+    font-size: 2rem;
+    font-weight: bold;
+    color: green;
+    display: flex;
+    justify-content: space-around;
+}
+h2.titlepackages{
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #c49d48;
+}
+
+i {
+    color: #c49d48;
+    font-size: 1.5rem;
+}
