@@ -21,7 +21,12 @@ export default function Card(city) {
                     </div>
                     <div class="col-md-6">
 
-                        <h2>{name}</h2>
+                        <h2
+                        style={{
+                        textTransform: "uppercase",
+                        fontWeight: "500",
+                        color: "#C49D48",}}>
+                        {name}</h2>
 
                         <h4>{subtitle}</h4>
 

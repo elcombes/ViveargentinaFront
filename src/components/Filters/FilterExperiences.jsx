@@ -141,7 +141,7 @@ export default function FilterExperiencies({ handleOrder }) {
                                         </select>
                                     </li>
                                     <li>
-                                        <button className="btn btn-secondary" onClick={e => handleChange(e)}><i class="bi bi-funnel"></i> FILTER</button>
+                                        <button className="btn btn-outline-secondary btn-lg" onClick={e => handleChange(e)}><i class="bi bi-funnel"></i> FILTER</button>
                                     </li>
                                 </ul>
                             </div>

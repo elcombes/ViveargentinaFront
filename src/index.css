@@ -45,6 +45,8 @@ h3 {
 button{
   height: 40px;
   min-width: 40px;
+  background-color: transparent;
+  
 }
 
 .carousel-control-next, .carousel-control-prev {

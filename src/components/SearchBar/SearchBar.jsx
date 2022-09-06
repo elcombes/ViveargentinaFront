@@ -85,13 +85,13 @@ export default function Search({setPage}) {
 
             <div className={styles.container}>
                 <form className={styles.searchbarstyle} onSubmit={(e) => handleSubmit(e)}>
-                    <button onClick={(e)=> handleReload(e)}type="button" class="btn btn-secondary" style={{backgroundColor:"white"}}><i class="bi bi-arrow-clockwise"></i></button>
+                    <button onClick={(e)=> handleReload(e)}type="button" class="btn btn-outline-secondary btn-lg"><i class="bi bi-arrow-clockwise"></i></button>
                     <div class="col-md-3">
                         <label class="visually-hidden" for="specificSizeInputName">Name</label>
                         <input type="text" value={name} className="form-control input-lg" id="specificSizeInputName" placeholder={input} onChange={(e)=>handleName(e)} />
                     </div>
                     <div class="col-md-auto">
-                        <button type="submit" class="btn btn-outline-secondary btn-lg">Search</button>
+                        <button type="submit" class="btn btn-outline-secondary btn-lg" style={{textTransform:"uppercase"}}>Search</button>
                     </div>
                 </form>
             </div>
