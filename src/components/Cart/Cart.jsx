@@ -9,7 +9,7 @@ export default function Cart() {
   // Para limpiar todo el localStorage
   // localStorage.clear();
 
-  let totalcart = 0
+  let totalcart = 0;
   const [state, setState] = useState(true);
 
   //Esta parte va aca en el carrito
@@ -27,6 +27,15 @@ export default function Cart() {
     }
   }
 
+  function clearCart() {
+    localStorage.removeItem("items");
+    if (state) {
+      setState(false);
+    } else {
+      setState(true);
+    }
+  }
+
   return (
     <div>
       <button
@@ -35,7 +44,11 @@ export default function Cart() {
         data-bs-toggle="offcanvas"
         data-bs-target="#offcanvasRight"
         aria-controls="offcanvasRight"
-        style={{ backgroundColor: "transparent", borderColor: "#c49d48e3", borderRadius: "2vh" }}
+        style={{
+          backgroundColor: "transparent",
+          borderColor: "#c49d48e3",
+          borderRadius: "2vh",
+        }}
       >
         <i class="bi bi-cart"></i>
       </button>
@@ -47,7 +60,9 @@ export default function Cart() {
       >
         <div class="offcanvas-header">
           <h5 class="offcanvas-title" id="offcanvasRightLabel">
-            <h4><i class="bi bi-cart"></i> My Cart</h4>
+            <h4>
+              <i class="bi bi-cart"></i> My Cart
+            </h4>
           </h5>
           <button
             type="button"
@@ -58,7 +73,7 @@ export default function Cart() {
         </div>
         <div class="offcanvas-body">
           {itemsFromStore?.map((item) => {
-            totalcart = totalcart+(item.price*item.pax);
+            totalcart = totalcart + item.price * item.pax;
             return (
               <ItemCart
                 name={item.name}
@@ -73,6 +88,9 @@ export default function Cart() {
           <div>
             {/* Total: {totalcart} */}
             <button className="btn btn-secondary">COMPRAR</button>
+            <button onClick={clearCart} className="btn btn-secondary">
+              Clear Cart
+            </button>
           </div>
         </div>
       </div>
