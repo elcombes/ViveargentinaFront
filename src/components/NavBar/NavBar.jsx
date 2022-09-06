@@ -42,12 +42,12 @@ function Navbar() {
             </a>
           </li>
           <li className="nav__item">
-            <a href="experiences" className="nav__link">
+            <a href="/experiences" className="nav__link">
               EXPERIENCES
             </a>
           </li>
           <li className="nav__item">
-            <a href="contact_us" className="nav__link">
+            <a href="/contact_us" className="nav__link">
               CONTACT US
             </a>
           </li>
