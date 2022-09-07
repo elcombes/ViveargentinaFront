@@ -48,7 +48,7 @@ export default function Experiences(props) {
   const [item, setItem] = useState({
     name: "",
     price: 0,
-    pax: 0,
+    pax: 1,
     dates: "",
     image: "",
   });
@@ -133,18 +133,18 @@ export default function Experiences(props) {
                     <h2
                       style={{
                         textTransform: "uppercase",
-                        fontWeight: "500",
+                        fontWeight: "600",
                         color: "#C49D48",
                       }}
                     >
                       {e.name[0].toUpperCase() + e.name.slice(1)}
                     </h2>
-                    <h4>{e.subTitle}</h4>
+                    <h4 style={{ textTransform: "uppercase", fontWeight: "700", fontFamily: "Roboto" }}>{e.subTitle}</h4>
                     Score:{e.score}
-                    <p>{e.description}</p>
+                    <p style={{ fontFamily: "Roboto", fontSize: "1.8vh", fontWeight: "300" }}>{e.description}</p>
                     <div className={styles.priceandcart}>
                       <ul className={styles.iconsexperience}>
-                        <li style={{ margin: "0vh 1vh 0vh 1vh" }}>
+                        <li style={{ color: "black", textTransform: "uppercase", fontFamily: "Roboto" }}>
                           ARS
                           <i
                             class="bi bi-currency-dollar"
@@ -152,7 +152,7 @@ export default function Experiences(props) {
                           ></i>
                           {e.price}
                         </li>
-                        <li>
+                        <li style={{ color: "black", textTransform: "uppercase", fontFamily: "Roboto" }}>
                           <i
                             className="bi bi-clock-history"
                             style={{ color: "#C49D48" }}
@@ -210,20 +210,20 @@ export default function Experiences(props) {
                                 >
                                   {e.name}
                                 </h2>
-                                <h4>{e.subTitle}</h4>
+                                <h4 style={{ textTransform: "uppercase", fontWeight: "700" }}>{e.subTitle}</h4>
                               </div>
-                              <p className={styles.modaldescription}>
+                              <p  style={{ fontFamily: "Roboto", fontSize: "1.5vh", fontWeight: "300" }}className={styles.modaldescription}>
                                 {e.description}
                               </p>
                               <div class="mt-5 mb-5">
                                 <div className="row ">
                                   <div className="col-md-12">
                                     <ul className={styles.iconsmodal}>
-                                      <li style={{ color: "black" }}>
+                                      <li style={{ color: "black", textTransform: "uppercase", fontFamily: "Roboto" }}>
                                         <i className="bi bi-clock-history"></i>{" "}
                                         {e.duration}
                                       </li>
-                                      <li style={{ color: "black" }}>
+                                      <li style={{ color: "black", fontFamily: "Roboto" }}>
                                         <i className="bi bi-currency-dollar"></i>{" "}
                                         ARS {e.price}
                                       </li>
@@ -235,7 +235,11 @@ export default function Experiences(props) {
                               <div class="mt-5 mb-5">
                                 <div className="row ">
                                   <div className="col-md-8">
-                                    <p className="text-end">
+                                    <p style={{
+                                        color: "black",
+                                        fontWeight: "200",
+                                        fontFamily: "Roboto",
+                                      }} className="text-end">
                                       Please, choose the number of passengers:
                                     </p>
                                   </div>
@@ -257,12 +261,21 @@ export default function Experiences(props) {
                                           e.dates
                                         )
                                       }
+                                      style={{
+                                        color: "black",
+                                        fontWeight: "500",
+                                        fontFamily: "Roboto",
+                                      }}
                                     />
                                   </div>
                                 </div>
                                 <div className="row ">
                                   <div className="col-md-8">
-                                    <p className="text-end">
+                                    <p  style={{
+                                        color: "black",
+                                        fontWeight: "200",
+                                        fontFamily: "Roboto",
+                                      }} className="text-end">
                                       Please, choose date:
                                     </p>
                                   </div>
@@ -279,6 +292,11 @@ export default function Experiences(props) {
                                       }
                                       name="dates"
                                       id="dates"
+                                      style={{
+                                        color: "black",
+                                        fontWeight: "500",
+                                        fontFamily: "Roboto",
+                                      }}
                                     >
                                       <option disabled selected>
                                         Choose
@@ -296,6 +314,7 @@ export default function Experiences(props) {
                                       style={{
                                         color: "black",
                                         fontWeight: "800",
+                                        fontFamily: "Roboto",
                                       }}
                                     >
                                       TOTAL:{" "}

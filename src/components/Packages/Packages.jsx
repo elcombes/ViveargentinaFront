@@ -100,8 +100,8 @@ export default function Card(props) {
                 <div className="row">
                   <div className="col-md-6">
                     <div>
-                      <h2 style={{textTransform:"uppercase", fontWeight:"600"}}className={styles.titlepackages}>{e.name}</h2>
-                      <h4 style={{textTransform:"uppercase", fontWeight:"700", fontFamily:"Roboto"}}>{e.subTitle}</h4>
+                      <h2 style={{ textTransform: "uppercase", fontWeight: "600" }} className={styles.titlepackages}>{e.name}</h2>
+                      <h4 style={{ textTransform: "uppercase", fontWeight: "700", fontFamily: "Roboto" }}>{e.subTitle}</h4>
                       Score: {e.score}
                       {/* <ul className={styles.scorecity}>
                                                     <li><i className="bi bi-star-fill" Style="color:#C49D48"></i></li>
@@ -110,30 +110,30 @@ export default function Card(props) {
                                                     <li><i className="bi bi-star-fill" Style="color:#C49D48"></i></li>
                                                     <li><i className="bi bi-star"></i></li>
                                                 </ul> */}
-                      <p style={{fontFamily: "Roboto", fontSize:"1.8vh",fontWeight:"300"}}>{e.description}</p>
+                      <p style={{ fontFamily: "Roboto", fontSize: "1.8vh", fontWeight: "300" }}>{e.description}</p>
                     </div>
 
                     <div className={`row ${styles.pricelist}`}>
                       <div className={`col-md-6 ${styles.citybuttons}`}>
                         <ul className={styles.iconscity}>
-                          <li style={{ color: "black" ,textTransform:"uppercase",fontFamily: "Roboto"}}>
+                          <li style={{ color: "black", textTransform: "uppercase", fontFamily: "Roboto" }}>
                             <i className="bi bi-clock-history"></i> {e.duration}
                           </li>
-                          <li style={{ color: "black" ,textTransform:"uppercase",fontFamily: "Roboto"}}>
+                          <li style={{ color: "black", textTransform: "uppercase", fontFamily: "Roboto" }}>
                             <i className="bi bi-currency-dollar"></i> {e.price}{" "}
                             ARS
                           </li>
-                        
+
                         </ul>
                       </div>
-                      <div className="col-md-6"style={{fontWeight:"400", fontFamily:"Roboto"}}>
+                      <div className="col-md-6" style={{ fontWeight: "400", fontFamily: "Roboto" }}>
                         <ul className={styles.iconsexp}>
                           <li className={styles.exptitle}>
                             <i className="bi bi-compass"></i>{" "}
                             {e.experiences ? e.experiences[0].name : null}{" "}
                             <br />
                           </li>
-                          <li  className={styles.exptitle}>
+                          <li className={styles.exptitle}>
                             <i className="bi bi-compass"></i>{" "}
                             {e.experiences ? e.experiences[1].name : null}
                             <br />
@@ -156,7 +156,7 @@ export default function Card(props) {
                             className="btn btn-outline-secondary btn-lg"
                             data-bs-toggle="modal"
                             data-bs-target={`#${e.name.split(" ").join("")}`}
-                            style={{fontWeight:"700"}}
+                            style={{ fontWeight: "700" }}
                           >
                             <i className="bi bi-cart-check"></i> ADD TO CART!
                           </button>
@@ -200,24 +200,24 @@ export default function Card(props) {
                                   >
                                     {e.name}
                                   </h2>
-                                  <h4 style={{textTransform:"uppercase", fontWeight:"700"}}>{e.subTitle}</h4>
+                                  <h4 style={{ textTransform: "uppercase", fontWeight: "700" }}>{e.subTitle}</h4>
                                 </div>
-                                <p className={styles.modaldescription} style={{fontFamily: "Roboto", fontSize:"1.5vh",fontWeight:"300"}}>
+                                <p className={styles.modaldescription} style={{ fontFamily: "Roboto", fontSize: "1.5vh", fontWeight: "300" }}>
                                   {e.description}
                                 </p>
                                 <div class="mt-5 mb-5">
                                   <div className="row ">
                                     <div className="col-md-12">
                                       <ul className={styles.iconsmodal}>
-                                        <li style={{ color: "black" ,textTransform:"uppercase",fontFamily: "Roboto"}}>
+                                        <li style={{ color: "black", textTransform: "uppercase", fontFamily: "Roboto" }}>
                                           <i className="bi bi-clock-history"></i>{" "}
                                           {e.duration}
                                         </li>
-                                        <li style={{ color: "black",fontFamily: "Roboto"}}>
+                                        <li style={{ color: "black", fontFamily: "Roboto" }}>
                                           <i className="bi bi-currency-dollar"></i>{" "}
                                           ARS {e.price}
                                         </li>
-                                       
+
                                       </ul>
                                     </div>
                                   </div>
@@ -225,7 +225,11 @@ export default function Card(props) {
                                 <div class="mt-5 mb-5">
                                   <div className="row ">
                                     <div className="col-md-8">
-                                      <p className="text-end">
+                                      <p style={{
+                                        color: "black",
+                                        fontWeight: "200",
+                                        fontFamily: "Roboto",
+                                      }} className="text-end">
                                         Please, choose the number of passengers:
                                       </p>
                                     </div>
@@ -247,12 +251,22 @@ export default function Card(props) {
                                             e.dates
                                           )
                                         }
+                                        style={{
+                                          color: "black",
+                                          fontWeight: "500",
+                                          fontFamily: "Roboto",
+                                        }}
                                       />
                                     </div>
                                   </div>
                                   <div className="row ">
                                     <div className="col-md-8">
-                                      <p className="text-end">
+                                      <p style={{
+                                        color: "black",
+                                        fontWeight: "200",
+                                        fontFamily: "Roboto",
+                                      }}
+                                        className="text-end">
                                         Please, choose date:
                                       </p>
                                     </div>
@@ -269,6 +283,11 @@ export default function Card(props) {
                                         }
                                         name="dates"
                                         id="dates"
+                                        style={{
+                                          color: "black",
+                                          fontWeight: "500",
+                                          fontFamily: "Roboto",
+                                        }}
                                       >
                                         <option disabled selected>
                                           Choose
@@ -341,7 +360,7 @@ export default function Card(props) {
                             <button
                               type="button"
                               className="btn btn-outline-secondary btn-lg"
-                                style={{fontWeight:"600"}}
+                              style={{ fontWeight: "600" }}
                             >
                               {" "}
                               View all included experiences!

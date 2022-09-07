@@ -28,7 +28,7 @@ export default function Card(city) {
                         color: "#C49D48",}}>
                         {name}</h2>
 
-                        <h4>{subtitle}</h4>
+                        <h4 style={{ textTransform: "uppercase", fontWeight: "500", fontFamily: "Roboto" }}>{subtitle}</h4>
 
                         <ul className={styles.scorecity}>
                             Score= {score}
@@ -42,10 +42,10 @@ export default function Card(city) {
 
 
                         </ul>
-                        <p> {description}</p>
+                        <p style={{ fontFamily: "Roboto", fontSize: "1.7vh", fontWeight: "300" }}> {description}</p>
                         <Link to={'/packages/'+id}>
                             <div className={styles.citybuttons}>
-                                <button type="button" class="btn btn-outline-secondary btn-lg">View all {name} packages</button>
+                                <button style={{ marginTop: "2vh", fontWeight: "600" }}type="button" class="btn btn-outline-secondary btn-lg">View all {name} packages</button>
                             </div>
                         </Link>
                     </div>
