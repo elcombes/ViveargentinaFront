@@ -1,30 +1,33 @@
+.container{
+    display: flex;
+    flex-direction: row;
+}
 .buttonitemcart {
     display: inline-flex;
-    width: 100%;
-    justify-content: space-between;
+    justify-content: center;
+    margin: 0vh 10vh;
     align-items: center;
     font-size: 2rem;
 }
+
 .pricecart {
     font-size: 2.5rem;
-    margin: 15px 0;
 }
-.buttonminmax {
-    font-size: 3rem;
-    text-align: center;
-    padding: 0;
-    margin: 0;
-    height: 45px;
-    width: 45px;
-}
+
+
 .itempax {
     width: 30px;
     text-align: center;
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-size: 2.5rem;
+    color: var(--secondary-dark);
+    font-weight: 400;
 }
+
 h4.titlecart {
-    font-size: 1.8rem;
-    display: inline-flex;
-    font-weight: 700;
+    font-size: 2rem;
+    color: #C49D48;
+    text-transform: uppercase;
+    justify-content: center;
+    display: flex;
+    font-weight: 400;
 }

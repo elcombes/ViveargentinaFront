@@ -1,5 +1,5 @@
 .containContact {
-  background-color: #eee;
+  background-color: var(--secondary-light);
   max-width: 1170px;
   margin-left: auto;
   margin-right: auto;
@@ -7,7 +7,7 @@
 }
 
 div.formContact {
-  background-color: #eee;
+  background-color: var(--secondary-light);
 }
 
 .contact-wrapperContact {
@@ -27,11 +27,11 @@ div.formContact {
   display: block;
   width: 10%;
   padding-top: 10px;
-  border-bottom: 3px solid #C49D48;
+  border-bottom: 3px solid var(--secondary-light);
 }
 
 .highlight-textContact {
-  color: #C49D48;
+  color: var(--secondary-light);
 }
 
 .hightlight-contact-infoContact {
@@ -50,7 +50,7 @@ div.formContact {
 
 
 .required-inputContact {
-  color: black;
+  color: var(--primary-dark);
 }
 @media (min-width: 600px) {
   .containContact {
@@ -69,13 +69,13 @@ h3 {
 
 .form-input:focus,
 textarea:focus{
-  outline: 1.5px solid #C49D48;
+  outline: 1.5px solid var(--primary-light);
 }
 
 .form-input,
 textarea {
   width: 100%;
-  border: 1px solid #bdbdbd;
+  border: 1px solid var(--secondary-light);
   border-radius: 5px;
 }
 
@@ -98,11 +98,11 @@ ul {
 }
 
 .contactsContact {
-  color: #212d31;
+  color: var(--primary-dark);
 }
 
 .formContact {
-  background: #fff;
+  background: var(--secondary-light);
 }
 
 form {

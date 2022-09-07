@@ -71,7 +71,7 @@ export default function Experiences(props) {
     localStorage.setItem("items", JSON.stringify(arrayItemsStore));
     // Alert
     Swal.fire({
-      title: "Added to cart successfully!",
+      title: "ADDED TO CART SUCCESSFULLY!",
       text: item.name,
       imageUrl: item.image,
       imageWidth: 400,
@@ -171,7 +171,7 @@ export default function Experiences(props) {
                             .split(" ")
                             .join("")}`}
                         >
-                          <i className="bi bi-cart-check"></i> Add to cart!
+                          <i className="bi bi-cart-check"></i> ADD TO CART!
                         </button>
                         {/* Fin Boton Modal */}
                       </div>
@@ -314,7 +314,7 @@ export default function Experiences(props) {
                                 className="btn btn-secondary"
                                 data-bs-dismiss="modal"
                               >
-                                Cancel
+                                CANCEL
                               </button>
                               <button
                                 onClick={(event) => {
@@ -325,15 +325,15 @@ export default function Experiences(props) {
                                 style={{
                                   backgroundColor: "#C49D48",
                                   borderColor: "#C49D48",
-                                  fontSize: "2vh",
+                                  fontSize: "1.5vh",
                                 }}
                                 data-bs-dismiss="modal"
                               >
                                 <i
                                   className="bi bi-cart-check"
-                                  style={{ color: "black" }}
+                                  style={{ color: "white" }}
                                 ></i>{" "}
-                                Add to cart!
+                                ADD TO CART!
                               </button>
                             </div>
                           </div>
