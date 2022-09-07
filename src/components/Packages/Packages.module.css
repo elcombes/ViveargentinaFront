@@ -46,6 +46,7 @@ ul.iconscity {
 h2.exptitle {
     font-size: 1.3rem;
     font-weight: bold;
+    font-family: "Roboto",
 }
 
 .iconsexp {
@@ -85,6 +86,7 @@ h2.titlepackages{
     text-transform: uppercase;
     font-weight: 500;
     color: #c49d48;
+    
 }
 
 i {
