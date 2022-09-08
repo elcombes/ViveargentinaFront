@@ -6,6 +6,7 @@ import { getLsUser } from "./../../redux/action.js"
 import { useDispatch } from "react-redux";
 import NavBarUser from "../NavBarUser/NavBarUser";
 import { useSelector } from 'react-redux';
+import Footer from "../Footer/Footer";
 
 
 export default function ContactUs() {
@@ -68,7 +69,7 @@ export default function ContactUs() {
   </div>
 </div>
 </div>
-
+<Footer/>
   </Fragment>
     )
 }

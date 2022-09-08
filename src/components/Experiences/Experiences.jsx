@@ -4,6 +4,7 @@ import styles from "../Experiences/Experiences.module.css";
 import Swal from "sweetalert2";
 import NavBarUser from "../NavBarUser/NavBarUser";
 import NavBar from "../NavBar/NavBar";
+import Footer from "../Footer/Footer";
 import SearchBar from "../SearchBar/SearchBar";
 import CreateExperience from "../CreateExperience/CreateExperience";
 import FilterExperiences from "../Filters/FilterExperiences";
@@ -139,9 +140,9 @@ export default function Experiences(props) {
                     >
                       {e.name[0].toUpperCase() + e.name.slice(1)}
                     </h2>
-                    <h4 style={{ textTransform: "uppercase", fontWeight: "700", fontFamily: "Roboto" }}>{e.subTitle}</h4>
+                    <h4 style={{ textTransform: "uppercase", fontWeight: "700", fontFamily: "Roboto"}}>{e.subTitle}</h4>
                     Score:{e.score}
-                    <p style={{ fontFamily: "Roboto", fontSize: "1.8vh", fontWeight: "300" }}>{e.description}</p>
+                    <p style={{ fontFamily: "Roboto", fontSize: "3vh", fontWeight: "300", textAlign:"justify", marginRight:"5vh" }}>{e.description}</p>
                     <div className={styles.priceandcart}>
                       <ul className={styles.iconsexperience}>
                         <li style={{ color: "black", textTransform: "uppercase", fontFamily: "Roboto" }}>
@@ -212,7 +213,7 @@ export default function Experiences(props) {
                                 </h2>
                                 <h4 style={{ textTransform: "uppercase", fontWeight: "700" }}>{e.subTitle}</h4>
                               </div>
-                              <p  style={{ fontFamily: "Roboto", fontSize: "1.5vh", fontWeight: "300" }}className={styles.modaldescription}>
+                              <p  style={{ fontFamily: "Roboto", fontSize: "3vh", fontWeight: "300", textAlign:"justify" }}className={styles.modaldescription}>
                                 {e.description}
                               </p>
                               <div class="mt-5 mb-5">
@@ -393,6 +394,7 @@ export default function Experiences(props) {
           <div className={styles.separator}></div>
         </div>
       </div>
+      <Footer/>
     </Fragment>
   );
 }

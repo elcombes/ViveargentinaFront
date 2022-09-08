@@ -56,8 +56,8 @@ useEffect(() => {
                                         <select id="priceOrder" onChange={e => handleOrder(e)}>
                                             <option hidden>PRICE</option>
                                             <option value='sort'>Sort</option>
-                                            <option value='ascendant by price'>ASC</option>
-                                            <option value='descendant by price'>DESC</option>
+                                            <option value='ascendant by price'>$</option>
+                                            <option value='descendant by price'>$$$</option>
                                         </select>
                                     </li>
                                     <li>
@@ -65,8 +65,8 @@ useEffect(() => {
                                         <select id="scoreOrder" onChange={e => handleOrder(e)}>
                                             <option hidden>SCORE</option>
                                             <option value='sort'>Sort</option>
-                                            <option value='ascendant by score'>ASC</option>
-                                            <option value='descendant by score'>DESC</option>
+                                            <option value='ascendant by score'>★</option>
+                                            <option value='descendant by score'>★★★</option>
                                         </select>
                                     </li>
                                 </ul>

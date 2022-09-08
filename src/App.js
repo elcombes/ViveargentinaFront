@@ -38,7 +38,7 @@ function App() {
           <Route path="*" component={Error404} />
           
         </Switch>
-        <Footer />
+
       </div>
     </BrowserRouter>
   );

@@ -6,6 +6,7 @@ import styles from "../Packages/Packages.module.css";
 import NavBar from "../NavBar/NavBar";
 import NavBarUser from "../NavBarUser/NavBarUser";
 import SearchBar from "../SearchBar/SearchBar";
+import Footer from "../Footer/Footer";
 import FilterPackages from "../../components/Filters/FilterPackages";
 import { getAllPackages, getCityById, orderPackages } from "../../redux/action";
 import { useHistory } from "react-router-dom";
@@ -100,7 +101,7 @@ export default function Card(props) {
                 <div className="row">
                   <div className="col-md-6">
                     <div>
-                      <h2 style={{ textTransform: "uppercase", fontWeight: "600" }} className={styles.titlepackages}>{e.name}</h2>
+                      <h2 style={{ textTransform: "uppercase", fontWeight: "600", fontSize: "3.5vh" }} className={styles.titlepackages}>{e.name}</h2>
                       <h4 style={{ textTransform: "uppercase", fontWeight: "700", fontFamily: "Roboto" }}>{e.subTitle}</h4>
                       Score: {e.score}
                       {/* <ul className={styles.scorecity}>
@@ -110,7 +111,7 @@ export default function Card(props) {
                                                     <li><i className="bi bi-star-fill" Style="color:#C49D48"></i></li>
                                                     <li><i className="bi bi-star"></i></li>
                                                 </ul> */}
-                      <p style={{ fontFamily: "Roboto", fontSize: "1.8vh", fontWeight: "300" }}>{e.description}</p>
+                      <p style={{ fontFamily: "Roboto", fontSize: "3vh", fontWeight: "300", textAlign: "justify", marginRight: "5vh" }}>{e.description}</p>
                     </div>
 
                     <div className={`row ${styles.pricelist}`}>
@@ -196,13 +197,14 @@ export default function Card(props) {
                                     style={{
                                       color: "#C49D48",
                                       textTransform: "uppercase",
+                                      textTransform: "uppercase", fontWeight: "600", fontSize: "3.5vh"
                                     }}
                                   >
                                     {e.name}
                                   </h2>
                                   <h4 style={{ textTransform: "uppercase", fontWeight: "700" }}>{e.subTitle}</h4>
                                 </div>
-                                <p className={styles.modaldescription} style={{ fontFamily: "Roboto", fontSize: "1.5vh", fontWeight: "300" }}>
+                                <p className={styles.modaldescription} style={{ fontFamily: "Roboto", fontSize: "3vh", fontWeight: "300" }}>
                                   {e.description}
                                 </p>
                                 <div class="mt-5 mb-5">
@@ -384,6 +386,7 @@ export default function Card(props) {
         </div>
         <br />
       </div>
+      <Footer/>
     </Fragment>
   );
 }

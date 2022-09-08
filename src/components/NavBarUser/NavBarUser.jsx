@@ -62,7 +62,7 @@ function NavBarUser() {
           <li class="nav-item dropdown" style={{textTransform:"uppercase", color:"#C49D48", fontSize:"1.3rem"}}>
             <div class="dropdown">
               <button class="btn btn-secondary dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false" style={{
-                backgroundImage: `url(${infoUser.photo})`,backgroundPosition: 'center',backgroundSize: 'cover', backgroundRepeat: 'no-repeat', borderColor: "#c49d48e3", borderRadius: "10vh"
+                backgroundImage: `url(${infoUser.photo})`, backgroundColor:"transparent",backgroundPosition: 'center',backgroundSize: 'cover', backgroundRepeat: 'no-repeat', borderColor: "#c49d48e3", borderRadius: "10vh"
               }}>
               </button>
                 {infoUser.first_name}

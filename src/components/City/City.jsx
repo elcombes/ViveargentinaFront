@@ -24,14 +24,15 @@ export default function Card(city) {
                         <h2
                         style={{
                         textTransform: "uppercase",
-                        fontWeight: "500",
+                        fontSize:"4vh",
+                        fontWeight: "600",
                         color: "#C49D48",}}>
                         {name}</h2>
 
                         <h4 style={{ textTransform: "uppercase", fontWeight: "500", fontFamily: "Roboto" }}>{subtitle}</h4>
 
-                        <ul className={styles.scorecity}>
-                            Score= {score}
+                        <ul style={{fontWeight: "400", fontFamily: "Roboto" }}className={styles.scorecity}>
+                            Score:{score}
                             {/*                                  
                                     <li><i class="bi bi-star-fill" Style="color:#C49D48" ></i></li>
                                     <li><i class="bi bi-star-fill"Style="color:#C49D48"></i></li>
@@ -42,7 +43,7 @@ export default function Card(city) {
 
 
                         </ul>
-                        <p style={{ fontFamily: "Roboto", fontSize: "1.7vh", fontWeight: "300" }}> {description}</p>
+                        <p style={{ fontFamily: "Roboto", fontSize: "2.7vh", fontWeight: "300", textAlign:"justify" }}> {description}</p>
                         <Link to={'/packages/'+id}>
                             <div className={styles.citybuttons}>
                                 <button style={{ marginTop: "2vh", fontWeight: "600" }}type="button" class="btn btn-outline-secondary btn-lg">View all {name} packages</button>

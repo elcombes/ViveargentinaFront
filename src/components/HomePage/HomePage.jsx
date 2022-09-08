@@ -12,6 +12,7 @@ import './HomePage.css'
 import NavBarUser from '../NavBarUser/NavBarUser.jsx';
 import { useSelector } from 'react-redux';
 import { getLsUser } from "./../../redux/action.js"
+import Footer from '../Footer/Footer.jsx';
 
 
 
@@ -123,7 +124,7 @@ function HomePage() {
 
                 
             </div>
-        
+        <Footer/>
         </Fragment>
     )
 }

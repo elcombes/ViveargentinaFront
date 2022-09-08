@@ -86,16 +86,16 @@ export default function FilterExperiencies({ handleOrder }) {
                                         <h5><i class="bi bi-tags-fill"style={{color:"#C49D48"}}></i> PRICE</h5>
                                         <select id="priceOrder" onChange={e => handleOrder(e)}>
                                             <option value='sort'>Sort</option>
-                                            <option value='ascendant by price'>ASC</option>
-                                            <option value='descendant by price'>DESC</option>
+                                            <option value='ascendant by price'>$</option>
+                                            <option value='descendant by price'>$$$</option>
                                         </select>
                                     </li>
                                     <li>
                                         <h5><i class="bi bi-star-half"style={{color:"#C49D48"}}></i> SCORE</h5>
                                         <select id="scoreOrder" onChange={e => handleOrder(e)}>
                                             <option value='sort'>Sort</option>
-                                            <option value='ascendant by score'>ASC</option>
-                                            <option value='descendant by score'>DESC</option>
+                                            <option value='ascendant by score'>★</option>
+                                            <option value='descendant by score'>★★★</option>
                                         </select>
                                     </li>
                                 </ul>
