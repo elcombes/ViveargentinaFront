@@ -30,13 +30,8 @@ export default function Profile() {
        
         }}
       >
-    
-    
-      
-      
-
         <img
-          style={{ width: "8", borderRadius: "50px", top: "2vh" }}
+          style={{borderRadius: "50px"}}
           src={
             userFromStorage.user.photo
             ? userFromStorage.user.photo
@@ -44,7 +39,7 @@ export default function Profile() {
           }
           alt="user photo"
           />
-        <h1 style={{ color: "#C49D48", top: "30vh", fontSize: "3vw" }}>MY PROFILE</h1>
+        <h1 style={{ color: "#C49D48", fontSize: "3vw" }}>MY PROFILE</h1>
         <h3 style={{ textTransform: "uppercase", color: "black", fontSize: "2vw" }}>
           First Name: {userFromStorage.user.first_name}
         </h3>
