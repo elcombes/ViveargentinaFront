@@ -101,17 +101,11 @@ export default function Card(props) {
                 <div className="row">
                   <div className="col-md-6">
                     <div>
-                      <h2 style={{ textTransform: "uppercase", fontWeight: "600", fontSize: "3.5vh" }} className={styles.titlepackages}>{e.name}</h2>
-                      <h4 style={{ textTransform: "uppercase", fontWeight: "700", fontFamily: "Roboto" }}>{e.subTitle}</h4>
+                      <h2 style={{ textTransform: "uppercase", fontWeight: "600", fontSize: "1.2vw" }} className={styles.titlepackages}>{e.name}</h2>
+                      <h4 style={{ textTransform: "uppercase", fontWeight: "700", fontFamily: "Roboto",fontSize: "0.8vw" }}>{e.subTitle}</h4>
                       Score: {e.score}
-                      {/* <ul className={styles.scorecity}>
-                                                    <li><i className="bi bi-star-fill" Style="color:#C49D48"></i></li>
-                                                    <li><i className="bi bi-star-fill" Style="color:#C49D48"></i></li>
-                                                    <li><i className="bi bi-star-fill" Style="color:#C49D48"></i></li>
-                                                    <li><i className="bi bi-star-fill" Style="color:#C49D48"></i></li>
-                                                    <li><i className="bi bi-star"></i></li>
-                                                </ul> */}
-                      <p style={{ fontFamily: "Roboto", fontSize: "3vh", fontWeight: "300", textAlign: "justify", marginRight: "5vh" }}>{e.description}</p>
+
+                      <p style={{ fontFamily: "Roboto", fontSize: "1.2vw", fontWeight: "300", textAlign: "justify", marginRight: "5vh" }}>{e.description}</p>
                     </div>
 
                     <div className={`row ${styles.pricelist}`}>
@@ -180,6 +174,7 @@ export default function Card(props) {
                                   className={`img-fluid ${styles.imgmodalpackages}`}
                                   src={e.image}
                                   alt=""
+                                  style={{borderRadius: "8px",boxShadow: "0 8px 8px 0 rgba(0, 0, 0, 0.15)"}}
                                 />
                                 <div>
                                   <i
@@ -197,14 +192,14 @@ export default function Card(props) {
                                     style={{
                                       color: "#C49D48",
                                       textTransform: "uppercase",
-                                      textTransform: "uppercase", fontWeight: "600", fontSize: "3.5vh"
+                                      textTransform: "uppercase", fontWeight: "600", fontSize: "1.2vw"
                                     }}
                                   >
                                     {e.name}
                                   </h2>
-                                  <h4 style={{ textTransform: "uppercase", fontWeight: "700" }}>{e.subTitle}</h4>
+                                  <h4 style={{ fontSize: "0.8vw",textTransform: "uppercase", fontWeight: "700" }}>{e.subTitle}</h4>
                                 </div>
-                                <p className={styles.modaldescription} style={{ fontFamily: "Roboto", fontSize: "3vh", fontWeight: "300" }}>
+                                <p className={styles.modaldescription} style={{ fontFamily: "Roboto", fontSize: "1.1vw", fontWeight: "300" }}>
                                   {e.description}
                                 </p>
                                 <div class="mt-5 mb-5">
@@ -373,7 +368,7 @@ export default function Card(props) {
                     </div>
                   </div>
                   <div className="col-md-6">
-                    <img className={`img-fluid ${styles.packimgstyle}`} src={e.image} alt="" />
+                    <img style={{borderRadius: "8px",boxShadow: "0 8px 8px 0 rgba(0, 0, 0, 0.15)"}} className={`img-fluid ${styles.packimgstyle}`} src={e.image} alt="" />
                     {/* <CarouselPackage /> */}
                   </div>
                 </div>

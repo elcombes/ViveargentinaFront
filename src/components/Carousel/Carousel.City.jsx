@@ -14,12 +14,13 @@ export default function CarouselCity({ image, name }) {
               className="carousel slide"
               data-bs-ride="true"
             >
-              <div className="carousel-inner">
+              <div className="carousel-inner" style={{borderRadius: "8px",boxShadow: "0 8px 8px 0 rgba(0, 0, 0, 0.15)"}}>
                 <div className="carousel-item active">
                   <img
                     src={images[0]}
                     className={`d-block w-100 ${styles.imgheigh}`}
                     alt={name}
+                    
                   />
                 </div>
                 <div className="carousel-item">

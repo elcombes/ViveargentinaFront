@@ -15,12 +15,11 @@ a {
 }
 
 .nav {
-  justify-content: space-evenly;
+  justify-content: space-between;
   display: flex;
-  align-items: left;
-  padding-top: 1vh;
-  margin-left: 10vh;
-  margin-right: 10vh;
+  padding-top: 1vw;
+  margin-left: 10vw;
+  margin-right: 10vw;
   
 }
 .nav img {

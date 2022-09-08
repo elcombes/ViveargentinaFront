@@ -136,13 +136,14 @@ export default function Experiences(props) {
                         textTransform: "uppercase",
                         fontWeight: "600",
                         color: "#C49D48",
+                        fontSize: "1.1vw"
                       }}
                     >
                       {e.name[0].toUpperCase() + e.name.slice(1)}
                     </h2>
-                    <h4 style={{ textTransform: "uppercase", fontWeight: "700", fontFamily: "Roboto"}}>{e.subTitle}</h4>
+                    <h4 style={{ fontSize: "0.8vw", textTransform: "uppercase", fontWeight: "700", fontFamily: "Roboto"}}>{e.subTitle}</h4>
                     Score:{e.score}
-                    <p style={{ fontFamily: "Roboto", fontSize: "3vh", fontWeight: "300", textAlign:"justify", marginRight:"5vh" }}>{e.description}</p>
+                    <p style={{ fontFamily: "Roboto", fontSize: "1.2vw", fontWeight: "300", textAlign:"justify", marginRight:"5vh" }}>{e.description}</p>
                     <div className={styles.priceandcart}>
                       <ul className={styles.iconsexperience}>
                         <li style={{ color: "black", textTransform: "uppercase", fontFamily: "Roboto" }}>
@@ -191,6 +192,7 @@ export default function Experiences(props) {
                             <div className="modal-body">
                               <img
                                 className={`img-fluid ${styles.imgmodalpackages}`}
+                                style={{borderRadius: "8px",boxShadow: "0 8px 8px 0 rgba(0, 0, 0, 0.15)"}}
                                 src={e.image}
                                 alt=""
                               />
@@ -207,13 +209,14 @@ export default function Experiences(props) {
                                   style={{
                                     color: "#C49D48",
                                     textTransform: "uppercase",
+                                    fontSize: "1.2vw"
                                   }}
                                 >
                                   {e.name}
                                 </h2>
-                                <h4 style={{ textTransform: "uppercase", fontWeight: "700" }}>{e.subTitle}</h4>
+                                <h4 style={{ fontSize: "0.8vw",textTransform: "uppercase", fontWeight: "700" }}>{e.subTitle}</h4>
                               </div>
-                              <p  style={{ fontFamily: "Roboto", fontSize: "3vh", fontWeight: "300", textAlign:"justify" }}className={styles.modaldescription}>
+                              <p  style={{ fontFamily: "Roboto", fontSize: "1.1vw", fontWeight: "300", textAlign:"justify" }}className={styles.modaldescription}>
                                 {e.description}
                               </p>
                               <div class="mt-5 mb-5">
@@ -363,7 +366,7 @@ export default function Experiences(props) {
                     </div>
                   </div>
                   <div className="col-md-6 mb-5">
-                    <img className={`img-fluid ${styles.expimgstyle}`} src={e.image} alt="" />
+                    <img style={{borderRadius: "8px",boxShadow: "0 8px 8px 0 rgba(0, 0, 0, 0.15)"}}className={`img-fluid ${styles.expimgstyle}`} src={e.image} alt="" />
                     {/* <CarouselExperiences /> */}
                   </div>
 

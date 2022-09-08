@@ -22,7 +22,7 @@ function Navbar() {
   return (
     <Fragment>
       <nav className="nav">
-        <a href="/home" className="nav__brand">
+        <a href="/home" className="nav__brand" >
           <img src={logo} alt="logo" name='vive argentina' />
         </a>
         <ul className={active}>
