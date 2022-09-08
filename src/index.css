@@ -98,7 +98,9 @@ select {
   font-size: 1.3rem;
   font-weight: bold;
 }
-
+.accordion-item {
+  border: 0;
+}
 
 @media screen and (max-width: 940px) {
   h1 {
