@@ -55,12 +55,14 @@ export default function Profile() {
                         </div>
                       </div>
                       <h6 style={{ fontSize: "15px", textTransform: "uppercase" }}>My History</h6>
+
                       <hr className="mt-0 mb-4" />
+
                       <div className="column">
-                        <Link to={MyFavs}>
+                        <Link to="/profile/#myfavs">
                             <button style={{ margin: "0vh 4vh 0vh 4vh" }} className="btn btn-outline-secondary">MY FAVS</button>
                         </Link>
-                        <Link to={MyTrips}>
+                        <Link to="/profile/#mytrips">
                           <button style={{ margin: "0vh 4vh 0vh 4vh"}} className="btn btn-outline-secondary">MY TRIPS</button>
                         </Link>
                       </div>
@@ -72,10 +74,10 @@ export default function Profile() {
           </div>
         </div>
       </section>
-      <div>
+      <div id="mytrips">
         <MyTrips/>
       </div>
-      <div>
+      <div id="myfavs">
         <MyFavs/>
       </div>
 

@@ -130,6 +130,8 @@ export default function Cart() {
           {itemsFromStore?.map((item, index) => {
             totalcart = totalcart + item.price * item.pax;
             return (
+                <div style={{maxHeight:"7vh"}}>
+
               <ItemCart
                 index={index}
                 name={item.name}
@@ -138,7 +140,9 @@ export default function Cart() {
                 image={item.image}
                 dates={item.dates}
                 changeState={changeState}
-              ></ItemCart>
+                ></ItemCart>
+                
+                </div>
             );
           })}
           <div>

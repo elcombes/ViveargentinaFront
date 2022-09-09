@@ -57,7 +57,7 @@ export default function ItemCart({
       >
         <div style={{ display: "flex" }} className="col-md-20">
           <img
-            style={{ width: "100%", borderRadius: "10px" }}
+            style={{ width: "100%", borderRadius: "10px"}}
             className="img-fluid"
             src={image}
             alt=""
@@ -66,7 +66,10 @@ export default function ItemCart({
 
         <div className="row mt-3 mb-4">
           <div className="mb-1">
-            <h4 className={styles.titlecart}>{name} </h4> {dates}
+            <h4 className={styles.titlecart}>{name} </h4> 
+              <h4 style={{ fontFamily:"Roboto", fontSize:"25px", justifyContent:"center", display:"flex"}}>
+                {dates}
+                </h4>
           </div>
           <div className="col-md-11" style={{ justifyContent: "center" }}>
             <ul className={styles.buttonitemcart}>
@@ -79,7 +82,7 @@ export default function ItemCart({
                     class="bi bi-dash-circle"
                     style={{
                       color: "black",
-                      fontSize: "2vh",
+                      fontSize: "20px",
                       lineHeight: "1vh",
                     }}
                   ></i>
@@ -89,9 +92,10 @@ export default function ItemCart({
                 <div
                   style={{
                     color: "black",
-                    fontSize: "3vh",
+                    fontSize: "20px",
                     textAlign: "center",
                     fontFamily: "Roboto",
+                    margin:"10px"
                   }}
                   className={styles.itempax}
                 >
@@ -107,7 +111,7 @@ export default function ItemCart({
                     class="bi bi-plus-circle"
                     style={{
                       color: "black",
-                      fontSize: "2vh",
+                      fontSize: "20px",
                       lineHeight: "1vh",
                     }}
                   ></i>
@@ -118,8 +122,8 @@ export default function ItemCart({
               style={{
                 color: "black",
                 fontFamily: "Roboto",
-                fontSize: "3vh",
-                fontWeight: "300",
+                fontSize: "30px",
+                fontWeight: "500",
                 textAlign: "center",
               }}
               className={styles.pricecart}
@@ -127,7 +131,7 @@ export default function ItemCart({
               ARS$ {price * itemPax}
             </h4>
             <button
-              className="btn btn-outline-secondary btn-lg"
+              className="btn btn-outline-secondary"
               onClick={() => onRemove()}
               style={{ justifyContent: "right" }}
             >

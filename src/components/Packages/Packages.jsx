@@ -200,7 +200,7 @@ export default function Card(props) {
                             data-bs-target={`#${e.name.split(" ").join("")}`}
                             style={{ fontWeight: "700" }}
                           >
-                            <i className="bi bi-cart-check"></i> Add to Cart!
+                            <i className="bi bi-cart-check"></i> ADD TO CART!
                           </button>
                           {/* Fin Boton Modal */}
                         </div>
