@@ -12,11 +12,16 @@ function Verify() {
     const dispatch = useDispatch()
     useEffect(()=>{
         dispatch(verifyUser(id,token)).then(()=>{
-            history.push("/home")
+            console.log("Token: "+token)
+            console.log("ID: "+id)
         })
     },[])
     return (
-        <div>{id}</div>
+        <div>
+            <h1>Email verification</h1>
+            <p>Token: {token}</p>
+            <p>ID: {id}</p>
+        </div>
     )
 }
 
