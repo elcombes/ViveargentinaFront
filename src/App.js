@@ -18,7 +18,7 @@ import Profile from "./components/User/Profile"
 import MyTrips from "./components/User/MyTrips";
 import MyFavs from './components/User/MyFavs.jsx';
 import Verify from "./components/User/Verify";
-
+import AdminDashboard from './components/Admin/AdminDashboard.jsx';
 
 function App() {
   return (
@@ -41,6 +41,7 @@ function App() {
           <Route path="/userguest" component={MenuGuest} />
           <Route path="/mytrips" component={MyTrips} />
           <Route path="/myfavs" component={MyFavs} />
+          <Route path="/admin" component={AdminDashboard} />
           <Route path="*" component={Error404} />
           
         </Switch>
