@@ -16,9 +16,7 @@ import Footer from "./components/Footer/Footer";
 import NavBar from "./components/NavBar/NavBar";
 import Profile from "./components/User/Profile"
 import MyTrips from "./components/User/MyTrips";
-import MyFavs from './components/User/MyFavs.jsx';
-import AdminDashboard from "./components/Admin/AdminDashboard";
-
+import MyFavs from './components/User/MyFavs.jsx'
 
 
 function App() {
@@ -41,7 +39,10 @@ function App() {
           <Route path="/userguest" component={MenuGuest} />
           <Route path="/mytrips" component={MyTrips} />
           <Route path="/myfavs" component={MyFavs} />
+<<<<<<< HEAD
           <Route path="/admin" component={AdminDashboard} />
+=======
+>>>>>>> a8bc43f2312349795bffc413cce25de21cc7e3cc
           <Route path="*" component={Error404} />
           
         </Switch>

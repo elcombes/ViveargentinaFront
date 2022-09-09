@@ -24,6 +24,20 @@ export const LOGOUT = "LOGOUT";
 export const GET_LS_USER = "GET_LS_USER";
 export const REGISTER_USER = "REGISTER_USER";
 export const GOOGLE_LOGIN = "GOOGLE_LOGIN";
+export const BUY_IN_MERCADOPAGO = "BUY_IN_MERCADOPAGO";
+
+// Esta ruta envía una compra a la pasarela de mercadopago
+export function buyInMercadoPago(itemsFromStore) {
+  console.log(itemsFromStore);
+  return async function () {
+    let response = await axios.post(
+      "https://viveargentina.herokuapp.com/mercadopago",
+      itemsFromStore
+    );
+    console.log(response);
+    return;
+  };
+}
 
 // Esta ruta añade un paquete a favoritos del usuario
 export function addPackageFavorite(userId, packageId) {
@@ -136,11 +150,11 @@ export function getLsUser() {
         auth: false,
         user: {
           experiences: [],
-          packages: []
+          packages: [],
         },
       };
     }
-    console.log(newUser)
+    console.log(newUser);
     return dispatch({
       type: GET_LS_USER,
       payload: newUser,
@@ -323,7 +337,6 @@ export function getRegionById(regionId) {
 }
 
 export function createNewExperience(newExperience) {
-  console.log("estoy en la action", newExperience);
   return async function (dispatch) {
     let newExperienceCreated = await axios.post(
       "https://viveargentina.herokuapp.com/experiences",
