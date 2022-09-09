@@ -45,8 +45,8 @@ function handleFilterByRegion(e) {
                 <select id= "scoreOrder" onChange={e => handleOrder(e)}>
                     <option hidden>SCORE</option>
                     <option value='sort'>Sort</option>
-                    <option value='ascendant by score'>ASC</option>
-                    <option value='descendant by score'>DESC</option>
+                    <option value='ascendant by score'>★</option>
+                    <option value='descendant by score'>★★★</option>
                 </select>
                 
                 <p> FILTER RESULTS </p>

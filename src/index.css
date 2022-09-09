@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 :root {
-  --primary-dark: #04151F;
-  --secondary-dark: #278BC9;
+  --primary-dark: #634100;
+  --secondary-dark: #005B4C;
   --primary-light: #C49D48;
-  --secondary-light: #EFD6AC;
+  --secondary-light: #DFE0DF;
 }
 
 * {
@@ -31,14 +31,14 @@ a {
 h1 {
   font-size: 3.5rem;
   font-weight: 500;
-  color: #ffffff;
+  color: var(--secondary-light);
   animation-duration: 1s; 
 }
 
 h3 {
   font-size: 2rem;
   font-weight: 300;
-  color: #ffffff;
+  color: var(--secondary-light);
   animation-duration: 1s
 
 }
@@ -98,7 +98,9 @@ select {
   font-size: 1.3rem;
   font-weight: bold;
 }
-
+.accordion-item {
+  border: 0;
+}
 
 @media screen and (max-width: 940px) {
   h1 {
