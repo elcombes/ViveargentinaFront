@@ -27,28 +27,80 @@ export default function Card(props) {
   const [item, setItem] = useState({
     name: "",
     price: 0,
-    pax: 0,
+    pax: 1,
     dates: "",
     image: "",
   });
 
-  const handleChange = async (e, name, price, image) => {
-    console.log("Entrando a HC");
+  const handleChange = (e, name, price, image) => {
     setItem({
       ...item,
       [e.target.name]: e.target.value,
-      name: name,
-      image: image,
-      price: price,
+      name,
+      price,
+      image
     });
   };
 
-  const handleClick = (event) => {
+  const handleClickPreCart = (name, price, image) => {
+    setItem({
+      ...item,
+      name: name,
+      image: image,
+      price: price,
+    })
+  }
+
+  const handleClick = () => {
+    if (document.getElementById(`${item.name} passengers`).value <= 0) {
+      return Swal.fire({
+        title: "You must add at least one passenger",
+        text: item.name,
+        imageUrl: item.image,
+        imageWidth: 400,
+        imageHeight: 200,
+        imageAlt: "Custom image",
+      });
+    }
+    if (document.getElementById(`${item.name} dates`).value === 'select') {
+      return Swal.fire({
+        title: "You must select a date to continue",
+        text: item.name,
+        imageUrl: item.image,
+        imageWidth: 400,
+        imageHeight: 200,
+        imageAlt: "Custom image",
+      });
+    }
+
     let arrayItemsStore = JSON.parse(localStorage.getItem("items"));
+    // console.log(document.getElementById('dates').value)
     if (arrayItemsStore === null) arrayItemsStore = [];
+    if (arrayItemsStore.find(e => e.name === item.name && e.dates === item.dates)) {
+      document.getElementById(`${item.name} dates`).value = 'select'
+      return Swal.fire({
+        title: "You already have this item in your cart",
+        text: item.name,
+        imageUrl: item.image,
+        imageWidth: 400,
+        imageHeight: 200,
+        imageAlt: "Custom image",
+      });
+      
+    }
+    if (!arrayItemsStore.find(e => e.name === item.name && e.dates === item.dates)) {
     arrayItemsStore.push(item);
     localStorage.setItem("items", JSON.stringify(arrayItemsStore));
-    Swal.fire({
+    // Alert
+    document.getElementById(`${item.name} dates`).value = 'select'
+    setItem({
+      name: "",
+      price: 0,
+      pax: 1,
+      dates: "",
+      image: "",
+    });
+    return Swal.fire({
       title: "Added to cart successfully!",
       text: item.name,
       imageUrl: item.image,
@@ -56,14 +108,8 @@ export default function Card(props) {
       imageHeight: 200,
       imageAlt: "Custom image",
     });
-    setItem({
-      name: "",
-      price: 0,
-      pax: 0,
-      dates: "",
-      image: "",
-    });
-  };
+  }
+};
 
   //   Fin Precart
 
@@ -148,12 +194,13 @@ export default function Card(props) {
                           {/* Boton Modal */}
                           <button
                             type="button"
+                            onClick={() => handleClickPreCart(e.name, e.price, e.image)}
                             className="btn btn-outline-secondary btn-lg"
                             data-bs-toggle="modal"
                             data-bs-target={`#${e.name.split(" ").join("")}`}
                             style={{ fontWeight: "700" }}
                           >
-                            <i className="bi bi-cart-check"></i> ADD TO CART!
+                            <i className="bi bi-cart-check"></i> Add to Cart!
                           </button>
                           {/* Fin Boton Modal */}
                         </div>
@@ -227,7 +274,7 @@ export default function Card(props) {
                                         fontWeight: "200",
                                         fontFamily: "Roboto",
                                       }} className="text-end">
-                                        Please, choose the number of passengers:
+                                        Please, select the number of passengers:
                                       </p>
                                     </div>
                                     <div className="col-md-4 text-start">
@@ -235,7 +282,7 @@ export default function Card(props) {
                                         className={styles.cantpackages}
                                         name="pax"
                                         min="1"
-                                        id="pax"
+                                        id={`${item.name} passengers`}
                                         type="number"
                                         value={item.pax}
                                         defaultValue="1"
@@ -245,7 +292,6 @@ export default function Card(props) {
                                             e.name,
                                             e.price,
                                             e.image,
-                                            e.dates
                                           )
                                         }
                                         style={{
@@ -264,7 +310,7 @@ export default function Card(props) {
                                         fontFamily: "Roboto",
                                       }}
                                         className="text-end">
-                                        Please, choose date:
+                                        Please, select a date:
                                       </p>
                                     </div>
                                     <div className="col-md-4 text-start">
@@ -275,24 +321,22 @@ export default function Card(props) {
                                             e.name,
                                             e.price,
                                             e.image,
-                                            e.dates
                                           )
                                         }
                                         name="dates"
-                                        id="dates"
+                                        id={`${e.name} dates`}
+
                                         style={{
                                           color: "black",
                                           fontWeight: "500",
                                           fontFamily: "Roboto",
                                         }}
                                       >
-                                        <option disabled selected>
-                                          Choose
+                                        <option value="select" disabled selected>
+                                          Select
                                         </option>
-                                        {e.dates.split(",").map((e) => {
-                                          return (
-                                            <option value={e}>{e} </option>
-                                          );
+                                        {e.dates?.split(",").map((e) => {
+                                          return <option value={e}>{e} </option>;
                                         })}
                                       </select>
                                     </div>
@@ -310,7 +354,7 @@ export default function Card(props) {
                                       >
                                         TOTAL:{" "}
                                         <i className="bi bi-currency-dollar"></i>
-                                        ARS {e.price * item.pax}
+                                        ARS {e.price * item.pax < 0 ? 0 : e.price * item.pax}
                                       </div>
                                     </div>
                                   </div>
@@ -327,8 +371,8 @@ export default function Card(props) {
                                   Cancel
                                 </button>
                                 <button
-                                  onClick={(event) => {
-                                    handleClick(event);
+                                  onClick={() => {
+                                    handleClick();
                                   }}
                                   type="button"
                                   className="btn btn-primary"

@@ -21,6 +21,11 @@ export default function ItemCart({
     localStorage.setItem("items", JSON.stringify(itemsFromStore));
   }
 
+
+    function onClickNeg() {
+        if(itemPax !== 1) setItemPax(parseInt(itemPax) - 1)
+    }
+
   function onClickPos() {
     setItemPax(parseInt(itemPax) + 1);
     itemsFromStore = JSON.parse(localStorage.getItem("items"));
@@ -28,13 +33,13 @@ export default function ItemCart({
     localStorage.setItem("items", JSON.stringify(itemsFromStore));
   }
 
-  function onRemove() {
-    if (remove) setRemove(false);
-    if (!remove) setRemove(true);
-    let newItemsFromStore = itemsFromStore.filter((i) => i.name !== name);
-    localStorage.setItem("items", JSON.stringify(newItemsFromStore));
-    changeState();
-  }
+    function onRemove() {
+        if (remove) setRemove(false)
+        if (!remove) setRemove(true)
+        let newItemsFromStore = itemsFromStore.filter(i => i.name !== name || i.dates !== dates)
+        localStorage.setItem("items", JSON.stringify(newItemsFromStore));
+        changeState()   
+    }
 
   return (
     <div>
