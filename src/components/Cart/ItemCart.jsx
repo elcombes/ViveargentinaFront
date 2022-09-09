@@ -1,15 +1,15 @@
-import React, { useState, useRef, useEffect } from "react";
 import styles from './Cart.module.css'
+import React, { useState, useRef, useEffect } from "react";
 export default function ItemCart({ name, pax, price, changeState, image, dates }) {
     console.log('soy dates', dates )
-    const [itemPax, setItemPax] = useState(pax);
+    const [itemPax, setItemPax] = useState(parseInt(pax));
     const [remove, setRemove] = useState(true);
-
+    
     let itemsFromStore = JSON.parse(localStorage.getItem("items"));
 
 
     function onClickNeg() {
-        setItemPax(parseInt(itemPax) - 1)
+        if(itemPax !== 1) setItemPax(parseInt(itemPax) - 1)
     }
 
     function onClickPos() {
@@ -20,9 +20,9 @@ export default function ItemCart({ name, pax, price, changeState, image, dates }
         console.log(itemsFromStore)
         if (remove) setRemove(false)
         if (!remove) setRemove(true)
-        let newItemsFromStore = itemsFromStore.filter(i => i.name !== name)
+        let newItemsFromStore = itemsFromStore.filter(i => i.name !== name || i.dates !== dates)
         localStorage.setItem("items", JSON.stringify(newItemsFromStore));
-        changeState()
+        changeState()   
         console.log(itemsFromStore)
 
     }
