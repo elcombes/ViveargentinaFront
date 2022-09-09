@@ -71,7 +71,7 @@ export default function Cart() {
         <div class="offcanvas-header">
           <h5 class="offcanvas-title" id="offcanvasRightLabel" >
             <h4>
-              <i class="bi bi-cart"></i> My Cart
+              <i class="bi bi-cart"></i> MY CART
             </h4>
           </h5>
           <button
