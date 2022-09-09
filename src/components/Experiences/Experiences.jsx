@@ -136,14 +136,16 @@ export default function Experiences(props) {
                         textTransform: "uppercase",
                         fontWeight: "600",
                         color: "#C49D48",
-                        fontSize: "1.1vw"
+                        fontSize: "24px"
                       }}
                     >
                       {e.name[0].toUpperCase() + e.name.slice(1)}
                     </h2>
-                    <h4 style={{ fontSize: "0.8vw", textTransform: "uppercase", fontWeight: "700", fontFamily: "Roboto"}}>{e.subTitle}</h4>
+                    <h4 style={{ fontSize: "18px", textTransform: "uppercase", fontWeight: "500", fontFamily: "Roboto"}}>{e.subTitle}</h4>
+                    <h4 style={{ color:"#C49D48",fontWeight: "700", fontFamily: "Roboto",fontSize: "18px" }}>
                     Score:{e.score}
-                    <p style={{ fontFamily: "Roboto", fontSize: "1.2vw", fontWeight: "300", textAlign:"justify", marginRight:"5vh" }}>{e.description}</p>
+                      </h4>
+                    <p style={{ fontFamily: "Roboto", fontSize: "20px", fontWeight: "300", textAlign:"justify", marginRight:"5vh" }}>{e.description}</p>
                     <div className={styles.priceandcart}>
                       <ul className={styles.iconsexperience}>
                         <li style={{ color: "black", textTransform: "uppercase", fontFamily: "Roboto" }}>
@@ -209,14 +211,14 @@ export default function Experiences(props) {
                                   style={{
                                     color: "#C49D48",
                                     textTransform: "uppercase",
-                                    fontSize: "1.2vw"
+                                    fontSize: "20px"
                                   }}
                                 >
                                   {e.name}
                                 </h2>
-                                <h4 style={{ fontSize: "0.8vw",textTransform: "uppercase", fontWeight: "700" }}>{e.subTitle}</h4>
+                                <h4 style={{ fontSize: "16px",textTransform: "uppercase", fontWeight: "600" }}>{e.subTitle}</h4>
                               </div>
-                              <p  style={{ fontFamily: "Roboto", fontSize: "1.1vw", fontWeight: "300", textAlign:"justify" }}className={styles.modaldescription}>
+                              <p  style={{ fontFamily: "Roboto", fontSize: "16px", fontWeight: "300", textAlign:"justify" }}className={styles.modaldescription}>
                                 {e.description}
                               </p>
                               <div class="mt-5 mb-5">
@@ -319,6 +321,7 @@ export default function Experiences(props) {
                                         color: "black",
                                         fontWeight: "800",
                                         fontFamily: "Roboto",
+                                        fontSize:"18px"
                                       }}
                                     >
                                       TOTAL:{" "}

@@ -1,17 +1,14 @@
-import React from "react";
-import NavBarUser from "../NavBarUser/NavBarUser";
+import React, { Fragment } from "react";
 import styles from './User.module.css'
-import Footer from '../Footer/Footer.jsx';
-import { Link } from 'react-router-dom'
+
 
 export default function MyTrips() {
     return (
-        <div>
-            <div className={`container-fluid ${styles.mytripspage}`}>
-                <NavBarUser />
+        <Fragment>
+            <div style={{margin:"10vh"}} className={`container-fluid ${styles.mytripspage}`}>
                 <div className="container">
                     <div className="row mb-3">
-                        <h2 className="text-center"><i className={`bi bi-airplane-fill ${styles.tripicon}`}></i> My trips list</h2>
+                        <h2 className="text-center"><i className={`bi bi-airplane-fill ${styles.tripicon}`}></i> MY TRIPS LIST</h2>
                     </div>
                     {/* INICIO ITEM TRIP */}
                     <div className={`row ${styles.itemmytrips}`}>
@@ -80,22 +77,8 @@ export default function MyTrips() {
                         <hr />
                     </div>
                     {/* FIN ITEM TRIP 2*/}
-
-                    <div className="row">
-                        <div className="col-md-12 text-center mt-5">
-
-                            <div className={styles.citybuttons}>
-                                <Link to='/home'>
-                                    <button className={`btn btn-light ${styles.button404}`} type="button">Back to Home</button>
-                                </Link>
-                            </div>
-
-                        </div>
-                    </div>
-
                 </div>
             </div>
-            <Footer />
-        </div>
+        </Fragment>
     )
 }

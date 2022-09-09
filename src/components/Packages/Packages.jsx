@@ -101,11 +101,11 @@ export default function Card(props) {
                 <div className="row">
                   <div className="col-md-6">
                     <div>
-                      <h2 style={{ textTransform: "uppercase", fontWeight: "600", fontSize: "1.2vw" }} className={styles.titlepackages}>{e.name}</h2>
-                      <h4 style={{ textTransform: "uppercase", fontWeight: "700", fontFamily: "Roboto",fontSize: "0.8vw" }}>{e.subTitle}</h4>
-                      Score: {e.score}
+                      <h2 style={{ textTransform: "uppercase", fontWeight: "600", fontSize: "24px" }} className={styles.titlepackages}>{e.name}</h2>
+                      <h4 style={{ textTransform: "uppercase", fontWeight: "700", fontFamily: "Roboto",fontSize: "18px" }}>{e.subTitle}</h4>
+                      <h4 style={{ color:"#C49D48",fontWeight: "700", fontFamily: "Roboto",fontSize: "18px" }}>Score: {e.score}</h4>
 
-                      <p style={{ fontFamily: "Roboto", fontSize: "1.2vw", fontWeight: "300", textAlign: "justify", marginRight: "5vh" }}>{e.description}</p>
+                      <p style={{ fontFamily: "Roboto", fontSize: "18px", fontWeight: "300", textAlign: "justify", marginRight: "5vh" }}>{e.description}</p>
                     </div>
 
                     <div className={`row ${styles.pricelist}`}>
@@ -180,8 +180,8 @@ export default function Card(props) {
                                   <i
                                     class="bi bi-heart-fill"
                                     style={{
-                                      fontSize: "4vh",
-                                      paddingTop: "3vh",
+                                      fontSize: "20px",
+                                      paddingTop: "2vh",
                                     }}
                                   ></i>
                                 </div>
@@ -192,14 +192,14 @@ export default function Card(props) {
                                     style={{
                                       color: "#C49D48",
                                       textTransform: "uppercase",
-                                      textTransform: "uppercase", fontWeight: "600", fontSize: "1.2vw"
+                                      textTransform: "uppercase", fontWeight: "600", fontSize: "20px"
                                     }}
                                   >
                                     {e.name}
                                   </h2>
-                                  <h4 style={{ fontSize: "0.8vw",textTransform: "uppercase", fontWeight: "700" }}>{e.subTitle}</h4>
+                                  <h4 style={{ fontSize: "14px",textTransform: "uppercase", fontWeight: "700" }}>{e.subTitle}</h4>
                                 </div>
-                                <p className={styles.modaldescription} style={{ fontFamily: "Roboto", fontSize: "1.1vw", fontWeight: "300" }}>
+                                <p className={styles.modaldescription} style={{ fontFamily: "Roboto", fontSize: "14px", fontWeight: "300" }}>
                                   {e.description}
                                 </p>
                                 <div class="mt-5 mb-5">
@@ -305,6 +305,7 @@ export default function Card(props) {
                                           color: "black",
                                           fontWeight: "800",
                                           fontFamily: "Roboto",
+                                          fontSize:"20px"
                                         }}
                                       >
                                         TOTAL:{" "}
