@@ -19,9 +19,8 @@ function Verify() {
                 'Content-Type': 'application/json',
                 'Authorization': token
             }
-        }).then((response)=>{
-            console.log("response: "+ response.data)
-        })
+        }).then((response) => response.json())
+        .then((data) => console.log(data))
     },[])
     return (
         <div>
