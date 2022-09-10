@@ -17,7 +17,7 @@ function Verify() {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-                'Authorization': token
+                'Authorization': `token ${token}`
             }
         }).then((response) => response.json())
         .then((data) => console.log(data))
