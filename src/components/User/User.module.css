@@ -1,5 +1,5 @@
 .mytripspage {
-    min-height: 100vh;
+    /* min-height: 100vh; */
 }
 .itemmytrips {
     display: inline-flex;
@@ -17,4 +17,14 @@
 
 .favheart {
     font-size: 2rem;
+}
+
+.registerbutton, .loginbutton {
+    display: inline-flex;
+    align-items: center;
+    text-transform: uppercase;
+    font-family: Raleway;
+    border-color: #C49D48;
+    color:#C49D48;
+    font-size: 15px;
 }

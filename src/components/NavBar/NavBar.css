@@ -15,9 +15,9 @@ a {
 }
 
 .nav {
-  justify-content: space-between;
   display: flex;
-  padding-top: 1vw;
+  justify-content: space-around;
+  padding-top: 1%;
 
   
 }
@@ -26,17 +26,15 @@ a {
 }
 
 .nav__menu {
-    display: flex;
+
+  display: flex;
     align-items: center;
     justify-content: space-evenly;
-    grid-gap: 2%;
     gap: 5%;
 }
-
 .nav__toggler {
   display: none;
 }
-
 .nav__toggler div {
   width: 2.5rem;
   height: 0.2rem;

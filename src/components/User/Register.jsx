@@ -6,6 +6,7 @@ import Row from "react-bootstrap/Row";
 import { useState } from "react";
 import { registerUser } from "../../redux/action";
 import { useDispatch } from "react-redux";
+import styles from './User.module.css'
 
 export default function Register() {
 
@@ -45,7 +46,7 @@ export default function Register() {
 
                     {/* Inicio boton para abrir el modal */}
                     <div>
-                        <button type="button" className="btn btn-outline-secondary btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal" style = {{textTransform:"uppercase", fontFamily: "Raleway", borderColor:"#C49D48",color:" #C49D48",fontSize: "18px" }}>
+                        <button type="button" className={`btn btn-outline-secondary btn-lg ${styles.registerbutton}`} data-bs-toggle="modal" data-bs-target="#exampleModal">
                             Register <i class="bi bi-person-lines-fill"></i>
                         </button>
                     </div>

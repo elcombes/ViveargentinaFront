@@ -8,6 +8,7 @@ import { GoogleLogin } from 'react-google-login';
 import { gapi } from 'gapi-script';
 import { getUserLogin, googleLogin } from "../../redux/action";
 import { useDispatch, useSelector } from "react-redux";
+import styles from './User.module.css'
 
 export default function Login() {
 
@@ -85,12 +86,7 @@ export default function Login() {
                     {/* Inicio boton para abrir el modal */}
                     <div>
                         <button 
-                        type="button" 
-                        className="btn btn-outline-secondary btn-lg" 
-                        data-bs-toggle="modal" 
-                        data-bs-target="#exampleModal1"
-                        style = {{textTransform:"uppercase", borderColor:"#C49D48", fontFamily: "Raleway", color:" #C49D48",fontSize: "18px" }}
-                        >
+                        type="button" className={`btn btn-outline-secondary btn-lg ${styles.loginbutton}`}  data-bs-toggle="modal" data-bs-target="#exampleModal1">
                             LOGIN <i class="bi bi-box-arrow-in-right"></i>
                         </button>
                     </div>

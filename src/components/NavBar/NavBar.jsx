@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-import "./NavBar.css";
+import styles from "./NavBar.css";
 
 import Register from "../User/Register";
 import Login from "../User/Login";
