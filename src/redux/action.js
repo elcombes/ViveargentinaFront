@@ -29,14 +29,15 @@ export const VERIFY_USER = "VERIFY_USER";
 
 // Esta ruta envía una compra a la pasarela de mercadopago
 export function buyInMercadoPago(itemsFromStore) {
-  console.log(itemsFromStore);
-  return async function () {
+  return async function (dispatch) {
     let response = await axios.post(
-      "https://viveargentina.herokuapp.com/mercadopago",
+      "http://localhost:3001/mercadopago",
       itemsFromStore
     );
-    console.log(response);
-    return;
+    return dispatch({
+      type: BUY_IN_MERCADOPAGO,
+      payload: response.data,
+    });
   };
 }
 
@@ -120,7 +121,7 @@ export function registerUser({ first_name, last_name, email, password }) {
 }
 
 //funcion para autenticar y obtener informacion del usuario con email + password
-export function getUserLogin({ email: email, password: password }) {
+export function getUserLogin({ email, password }) {
   return async function (dispatch) {
     let response = await axios.post(
       "https://viveargentina.herokuapp.com/users/login",
@@ -169,7 +170,7 @@ export function getLsUser() {
         },
       };
     }
-    console.log(newUser);
+
     return dispatch({
       type: GET_LS_USER,
       payload: newUser,

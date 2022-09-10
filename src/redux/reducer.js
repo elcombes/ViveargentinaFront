@@ -20,6 +20,7 @@ import {
   LOGOUT,
   GET_LS_USER,
   GOOGLE_LOGIN,
+  BUY_IN_MERCADOPAGO,
 } from "./action";
 
 const initialState = {
@@ -36,16 +37,22 @@ const initialState = {
   userPackagesBought: [],
   userExperiencesFavorite: [],
   userPackagesFavorite: [],
+  preferenceMercadoPagoId: "",
 };
 
 export default function rootReducer(state = initialState, action) {
-  let allExperiences
-  let allPackages
-  let userExperiencesBought
-  let userPackagesBought
-  let userExperiencesFavorite
-  let userPackagesFavorite
+  let allExperiences;
+  let allPackages;
+  let userExperiencesBought;
+  let userPackagesBought;
+  let userExperiencesFavorite;
+  let userPackagesFavorite;
   switch (action.type) {
+    case BUY_IN_MERCADOPAGO:
+      return {
+        ...state,
+        preferenceMercadoPagoId: action.payload,
+      };
     case GET_USER_LOGIN:
       allExperiences = action.payload.user.experiences;
       allPackages = action.payload.user.packages;
@@ -62,7 +69,7 @@ export default function rootReducer(state = initialState, action) {
       userPackagesFavorite = allPackages.map((p) => {
         return p.favorite === true;
       });
-      return{
+      return {
         ...state,
         token: action.payload.accessToken,
         userAuth: true,
@@ -74,13 +81,13 @@ export default function rootReducer(state = initialState, action) {
           birth_date: action.payload.user.birth_date,
           administrator: action.payload.user.administrator,
           provider: action.payload.user.provider,
-          provider_requested: action.payload.user.provider_requested
+          provider_requested: action.payload.user.provider_requested,
         },
         userExperiencesBought: userExperiencesBought,
         userPackagesBought: userPackagesBought,
         userExperiencesFavorite: userExperiencesFavorite,
         userPackagesFavorite: userPackagesFavorite,
-      }
+      };
     case GET_LS_USER:
       allExperiences = action.payload.user.experiences;
       allPackages = action.payload.user.packages;
@@ -106,7 +113,7 @@ export default function rootReducer(state = initialState, action) {
         userPackagesBought: userPackagesBought,
         userExperiencesFavorite: userExperiencesFavorite,
         userPackagesFavorite: userPackagesFavorite,
-      }
+      };
     case GOOGLE_LOGIN:
       allExperiences = action.payload.user.experiences;
       allPackages = action.payload.user.packages;
@@ -132,7 +139,7 @@ export default function rootReducer(state = initialState, action) {
         userPackagesBought: userPackagesBought,
         userExperiencesFavorite: userExperiencesFavorite,
         userPackagesFavorite: userPackagesFavorite,
-      }
+      };
     case GET_CITIES_BY_NAME:
       return {
         ...state,
@@ -309,7 +316,7 @@ export default function rootReducer(state = initialState, action) {
         userPackagesBought: [],
         userExperiencesFavorite: [],
         userPackagesFavorite: [],
-      }
+      };
     default:
       return state;
   }

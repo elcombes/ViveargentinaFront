@@ -1,8 +1,10 @@
 import Dropdown from "react-bootstrap/Dropdown";
 import React, { useState, useRef, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ItemCart from "./ItemCart";
+import MercadoPago from "./MercadoPago";
 import { buyInMercadoPago } from "./../../redux/action.js";
+
 import Button from "react-bootstrap/Button";
 import Overlay from "react-bootstrap/Overlay";
 import Popover from "react-bootstrap/Popover";
@@ -13,6 +15,8 @@ export default function Cart() {
 
   let totalcart = 0;
   const [state, setState] = useState(true);
+  const [buy, setBuy] = useState(false);
+
   const dispatch = useDispatch();
 
   //Esta parte va aca en el carrito
@@ -38,8 +42,14 @@ export default function Cart() {
       setState(true);
     }
   }
+
+
+  function setBuyInFalse() {
+    setBuy(false);
+  }
   
   function onClickBuy() {
+    setBuy(true);
     itemsFromStore = JSON.parse(localStorage.getItem("items"));
     dispatch(buyInMercadoPago(itemsFromStore));
   }
@@ -134,6 +144,7 @@ export default function Cart() {
 
               <ItemCart
                 index={index}
+                setBuyInFalse={setBuyInFalse}
                 name={item.name}
                 price={item.price}
                 pax={item.pax}
@@ -149,6 +160,7 @@ export default function Cart() {
             {/* Total: {totalcart} */}
 
             <button
+              id="mercadoPago"
               onClick={onClickBuy}
               className="btn btn-outline-secondary btn-lg"
               style={{
@@ -178,6 +190,7 @@ export default function Cart() {
             >
               CLEAR <i class="bi bi-cart" />
             </button>
+            {buy ? <MercadoPago /> : null}
           </div>
         </div>
       </div>
