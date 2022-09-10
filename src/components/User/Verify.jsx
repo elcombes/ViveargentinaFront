@@ -10,14 +10,13 @@ function Verify() {
     let id = pathName[pathName.length-2]
     let token = pathName[pathName.length-1]
     const dispatch = useDispatch()
-    useEffect(()=>{
-        dispatch(verifyUser(id,token))
+    useEffect(async()=>{
+        await dispatch(verifyUser(id,token))
+        history.push("/home")
     },[])
     return (
         <div>
             <h1>Email verification</h1>
-            <p>Token: {token}</p>
-            <p>ID: {id}</p>
         </div>
     )
 }
