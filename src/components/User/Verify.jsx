@@ -11,9 +11,16 @@ function Verify() {
     let token = pathName[pathName.length-1]
     const dispatch = useDispatch()
     useEffect(()=>{
-        dispatch(verifyUser(id,token)).then(()=>{
-            console.log("Token: "+token)
-            console.log("ID: "+id)
+        dispatch(verifyUser(id,token))
+        fetch(`https://viveargentina.herokuapp.com/verify/${id}`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': token
+            }
+        }).then((response)=>{
+            console.log("response: "+ response)
         })
     },[])
     return (
