@@ -12,15 +12,6 @@ function Verify() {
     const dispatch = useDispatch()
     useEffect(()=>{
         dispatch(verifyUser(id,token))
-        fetch(`https://viveargentina.herokuapp.com/verify/${id}`, {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': `token ${token}`
-            }
-        }).then((response) => response.json())
-        .then((data) => console.log(data))
     },[])
     return (
         <div>
