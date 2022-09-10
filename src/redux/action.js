@@ -26,6 +26,7 @@ export const REGISTER_USER = "REGISTER_USER";
 export const GOOGLE_LOGIN = "GOOGLE_LOGIN";
 export const BUY_IN_MERCADOPAGO = "BUY_IN_MERCADOPAGO";
 export const VERIFY_USER = "VERIFY_USER";
+export const CONTACTUS = "CONTACTUS"
 
 // Esta ruta envía una compra a la pasarela de mercadopago
 export function buyInMercadoPago(itemsFromStore) {
@@ -116,6 +117,28 @@ export function registerUser({ first_name, last_name, email, password }) {
       password,
       first_name,
       last_name,
+    });
+  };
+}
+
+//Esta funcion envia un correo electronico a vaviveargentina@gmail.com con la info de contactUs
+export function contactUs({name, lastName, email, message}) {
+  return async function () {
+    console.log({name, lastName, email, message})
+    await fetch(`https://viveargentina.herokuapp.com/contactus/`, {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: name,
+        lastName: lastName,
+        email: email,
+        message: message
+      })
+    }).then((response)=>{
+      console.log(response)
     });
   };
 }

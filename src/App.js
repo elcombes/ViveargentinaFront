@@ -19,6 +19,7 @@ import MyTrips from "./components/User/MyTrips";
 import MyFavs from './components/User/MyFavs.jsx';
 import Verify from "./components/User/Verify";
 import AdminDashboard from './components/Admin/AdminDashboard.jsx';
+import UsersTable from "./components/User/UsersTable";
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
           <Route path="/mytrips" component={MyTrips} />
           <Route path="/myfavs" component={MyFavs} />
           <Route path="/admin" component={AdminDashboard} />
+          <Route path="/table" component={UsersTable} />
           <Route path="*" component={Error404} />
           
         </Switch>
