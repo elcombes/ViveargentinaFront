@@ -51,8 +51,8 @@ export default function Cart() {
 
   function onClickBuy() {
     setBuy(true);
-    let user = JSON.parse(localStorage.getItem("user"));
-    console.log(user.user.id);
+    let userId = JSON.parse(localStorage.getItem("user"));
+
     itemsFromStore = JSON.parse(localStorage.getItem("items"));
     dispatch(buyInMercadoPago(itemsFromStore));
   }
