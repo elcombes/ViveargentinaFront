@@ -1,13 +1,8 @@
-.container{
-    display: flex;
-    flex-direction: row;
-}
+
 .buttonitemcart {
     display: inline-flex;
     justify-content: center;
-    margin: 0vh 10vh;
     align-items: center;
-    font-size: 2rem;
 }
 
 .pricecart {
@@ -17,7 +12,6 @@
 
 .itempax {
     width: 30px;
-    text-align: center;
     font-size: 2.5rem;
     color: var(--secondary-dark);
     font-weight: 400;

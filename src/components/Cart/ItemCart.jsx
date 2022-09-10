@@ -58,11 +58,11 @@ export default function ItemCart({
           backdropFilter: "blur(5px)",
           webkitBackdropFilter: "blur(5px)",
           border: "1px solid rgba(255, 255, 255, 0.3)",
-          padding: "10px",
-          margin: "0vh 0vh 2vh",
+   
+
         }}
       >
-        <div style={{ display: "flex" }} className="col-md-20">
+        <div className="row mt-1">
           <img
             style={{ width: "100%", borderRadius: "10px"}}
             className="img-fluid"
@@ -74,12 +74,12 @@ export default function ItemCart({
         <div className="row mt-3 mb-4">
           <div className="mb-1">
             <h4 className={styles.titlecart}>{name} </h4> 
-              <h4 style={{ fontFamily:"Roboto", fontSize:"25px", justifyContent:"center", display:"flex"}}>
+              <h4 style={{ fontFamily:"Roboto", fontSize:"15px", justifyContent:"center", display:"flex", textTransform:"uppercase"}}>
                 {dates}
                 </h4>
           </div>
-          <div className="col-md-11" style={{ justifyContent: "center" }}>
-            <ul className={styles.buttonitemcart}>
+          <div className="row mt-1">
+            <ul className={styles.buttonitemcart} >
               <li>
                 <button
                   style={{ borderColor: "transparent" }}
@@ -102,7 +102,6 @@ export default function ItemCart({
                     fontSize: "20px",
                     textAlign: "center",
                     fontFamily: "Roboto",
-                    margin:"10px"
                   }}
                   className={styles.itempax}
                 >
@@ -129,7 +128,7 @@ export default function ItemCart({
               style={{
                 color: "black",
                 fontFamily: "Roboto",
-                fontSize: "30px",
+                fontSize: "20px",
                 fontWeight: "500",
                 textAlign: "center",
               }}
@@ -138,9 +137,9 @@ export default function ItemCart({
               ARS$ {price * itemPax}
             </h4>
             <button
-              className="btn btn-outline-secondary"
+              className="btn btn-outline-secondary mt-1"
               onClick={() => onRemove()}
-              style={{ justifyContent: "right" }}
+              style={{ margin:"4px"}}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

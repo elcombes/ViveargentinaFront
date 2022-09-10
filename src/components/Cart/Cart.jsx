@@ -165,10 +165,7 @@ export default function Cart() {
               className="btn btn-outline-secondary btn-lg"
               style={{
                 width: "100%",
-                marginBottom: "2vh",
                 color: "#C49D48",
-                fontSize: "2vh",
-                fontWeight: "500",
               }}
             >
               BUY
