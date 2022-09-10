@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import styles from "./Cart.module.css";
+
 export default function ItemCart({
   name,
   pax,
@@ -8,6 +9,7 @@ export default function ItemCart({
   image,
   dates,
   index,
+  setBuyInFalse,
 }) {
   const [itemPax, setItemPax] = useState(pax);
   const [remove, setRemove] = useState(true);
@@ -15,20 +17,23 @@ export default function ItemCart({
   let itemsFromStore = JSON.parse(localStorage.getItem("items"));
 
   function onClickNeg() {
+    setBuyInFalse();
     setItemPax(parseInt(itemPax) - 1);
     itemsFromStore = JSON.parse(localStorage.getItem("items"));
-    itemsFromStore[index].pax = itemsFromStore[index].pax - 1;
+    itemsFromStore[index].pax = parseInt(itemsFromStore[index].pax) - 1;
     localStorage.setItem("items", JSON.stringify(itemsFromStore));
   }
 
   function onClickPos() {
+    setBuyInFalse();
     setItemPax(parseInt(itemPax) + 1);
     itemsFromStore = JSON.parse(localStorage.getItem("items"));
-    itemsFromStore[index].pax = itemsFromStore[index].pax + 1;
+    itemsFromStore[index].pax = parseInt(itemsFromStore[index].pax) + 1;
     localStorage.setItem("items", JSON.stringify(itemsFromStore));
   }
 
   function onRemove() {
+    setBuyInFalse();
     if (remove) setRemove(false);
     if (!remove) setRemove(true);
     let newItemsFromStore = itemsFromStore.filter((i) => i.name !== name);
