@@ -13,7 +13,8 @@ import CategoriesExperiences from "./Categories.Experiences";
 import {
   getAllExperiences,
   orderExperiences,
-  getPackageById, getLsUser
+  getPackageById,
+  getLsUser,
 } from "../../redux/action";
 
 export default function Experiences(props) {
@@ -34,8 +35,6 @@ export default function Experiences(props) {
     lastExperiencePage
   );
 
-
-
   const paged = function (pageNumber) {
     if (pageNumber !== page) {
       window.scrollTo({
@@ -54,6 +53,7 @@ export default function Experiences(props) {
     pax: 1,
     dates: "",
     image: "",
+    tipe: "experience",
   });
 
   const handleChange = (e) => {
@@ -69,8 +69,9 @@ export default function Experiences(props) {
       name: name,
       image: image,
       price: price,
-    })
-  }
+      tipe: "experience",
+    });
+  };
 
   const handleClick = () => {
     if (document.getElementById(`${item.name} passengers`).value <= 0) {
@@ -83,7 +84,7 @@ export default function Experiences(props) {
         imageAlt: "Custom image",
       });
     }
-    if (document.getElementById(`${item.name} dates`).value === 'select') {
+    if (document.getElementById(`${item.name} dates`).value === "select") {
       return Swal.fire({
         title: "You must select a date to continue",
         text: item.name,
@@ -96,8 +97,12 @@ export default function Experiences(props) {
 
     let arrayItemsStore = JSON.parse(localStorage.getItem("items"));
     if (arrayItemsStore === null) arrayItemsStore = [];
-    if (arrayItemsStore.find(e => e.name === item.name && e.dates === item.dates)) {
-      document.getElementById(`${item.name} dates`).value = 'select'
+    if (
+      arrayItemsStore.find(
+        (e) => e.name === item.name && e.dates === item.dates
+      )
+    ) {
+      document.getElementById(`${item.name} dates`).value = "select";
       return Swal.fire({
         title: "You already have this item in your cart",
         text: item.name,
@@ -106,32 +111,36 @@ export default function Experiences(props) {
         imageHeight: 200,
         imageAlt: "Custom image",
       });
-      
     }
-    if (!arrayItemsStore.find(e => e.name === item.name && e.dates === item.dates)) {
-      console.log(document.getElementById(`${item.name} dates`).value)
-    arrayItemsStore.push(item);
-    localStorage.setItem("items", JSON.stringify(arrayItemsStore));
-    // Alert
+    if (
+      !arrayItemsStore.find(
+        (e) => e.name === item.name && e.dates === item.dates
+      )
+    ) {
+      console.log(document.getElementById(`${item.name} dates`).value);
+      arrayItemsStore.push(item);
+      localStorage.setItem("items", JSON.stringify(arrayItemsStore));
+      // Alert
 
-    document.getElementById(`${item.name} dates`).value = 'select'
-    setItem({
-      name: "",
-      price: 0,
-      pax: 1,
-      dates: "",
-      image: "",
-    });
-    return Swal.fire({
-      title: "Added to cart successfully!",
-      text: item.name,
-      imageUrl: item.image,
-      imageWidth: 400,
-      imageHeight: 200,
-      imageAlt: "Custom image",
-    });
-  }
-};
+      document.getElementById(`${item.name} dates`).value = "select";
+      setItem({
+        name: "",
+        price: 0,
+        pax: 1,
+        dates: "",
+        image: "",
+        tipe: "experience",
+      });
+      return Swal.fire({
+        title: "Added to cart successfully!",
+        text: item.name,
+        imageUrl: item.image,
+        imageWidth: 400,
+        imageHeight: 200,
+        imageAlt: "Custom image",
+      });
+    }
+  };
 
   //   Fin Precart
 
@@ -142,8 +151,8 @@ export default function Experiences(props) {
   }
 
   useEffect(() => {
-    window.scrollTo({top: 0, behavior: 'smooth'})
-    dispatch(getLsUser())
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    dispatch(getLsUser());
     if (packageId) {
       dispatch(getPackageById(packageId));
     } else {
@@ -182,19 +191,51 @@ export default function Experiences(props) {
                         textTransform: "uppercase",
                         fontWeight: "600",
                         color: "#C49D48",
-                        fontSize: "24px"
+                        fontSize: "24px",
                       }}
                     >
                       {e.name[0].toUpperCase() + e.name.slice(1)}
                     </h2>
-                    <h4 style={{ fontSize: "18px", textTransform: "uppercase", fontWeight: "500", fontFamily: "Roboto"}}>{e.subTitle}</h4>
-                    <h4 style={{ color:"#C49D48",fontWeight: "700", fontFamily: "Roboto",fontSize: "18px" }}>
-                    Score:{e.score}
-                      </h4>
-                    <p style={{ fontFamily: "Roboto", fontSize: "20px", fontWeight: "300", textAlign:"justify", marginRight:"5vh" }}>{e.description}</p>
+                    <h4
+                      style={{
+                        fontSize: "18px",
+                        textTransform: "uppercase",
+                        fontWeight: "500",
+                        fontFamily: "Roboto",
+                      }}
+                    >
+                      {e.subTitle}
+                    </h4>
+                    <h4
+                      style={{
+                        color: "#C49D48",
+                        fontWeight: "700",
+                        fontFamily: "Roboto",
+                        fontSize: "18px",
+                      }}
+                    >
+                      Score:{e.score}
+                    </h4>
+                    <p
+                      style={{
+                        fontFamily: "Roboto",
+                        fontSize: "20px",
+                        fontWeight: "300",
+                        textAlign: "justify",
+                        marginRight: "5vh",
+                      }}
+                    >
+                      {e.description}
+                    </p>
                     <div className={styles.priceandcart}>
                       <ul className={styles.iconsexperience}>
-                        <li style={{ color: "black", textTransform: "uppercase", fontFamily: "Roboto" }}>
+                        <li
+                          style={{
+                            color: "black",
+                            textTransform: "uppercase",
+                            fontFamily: "Roboto",
+                          }}
+                        >
                           ARS
                           <i
                             class="bi bi-currency-dollar"
@@ -202,7 +243,13 @@ export default function Experiences(props) {
                           ></i>
                           {e.price}
                         </li>
-                        <li style={{ color: "black", textTransform: "uppercase", fontFamily: "Roboto" }}>
+                        <li
+                          style={{
+                            color: "black",
+                            textTransform: "uppercase",
+                            fontFamily: "Roboto",
+                          }}
+                        >
                           <i
                             className="bi bi-clock-history"
                             style={{ color: "#C49D48" }}
@@ -214,7 +261,9 @@ export default function Experiences(props) {
                         {/* Boton Modal */}
                         <button
                           type="button"
-                          onClick={() => handleClickPreCart(e.name, e.price, e.image)}
+                          onClick={() =>
+                            handleClickPreCart(e.name, e.price, e.image)
+                          }
                           className="btn btn-outline-secondary btn-lg"
                           data-bs-toggle="modal"
                           data-bs-target={`#${e.name
@@ -241,7 +290,10 @@ export default function Experiences(props) {
                             <div className="modal-body">
                               <img
                                 className={`img-fluid ${styles.imgmodalpackages}`}
-                                style={{borderRadius: "8px",boxShadow: "0 8px 8px 0 rgba(0, 0, 0, 0.15)"}}
+                                style={{
+                                  borderRadius: "8px",
+                                  boxShadow: "0 8px 8px 0 rgba(0, 0, 0, 0.15)",
+                                }}
                                 src={e.image}
                                 alt=""
                               />
@@ -258,25 +310,52 @@ export default function Experiences(props) {
                                   style={{
                                     color: "#C49D48",
                                     textTransform: "uppercase",
-                                    fontSize: "20px"
+                                    fontSize: "20px",
                                   }}
                                 >
                                   {e.name}
                                 </h2>
-                                <h4 style={{ fontSize: "16px",textTransform: "uppercase", fontWeight: "600" }}>{e.subTitle}</h4>
+                                <h4
+                                  style={{
+                                    fontSize: "16px",
+                                    textTransform: "uppercase",
+                                    fontWeight: "600",
+                                  }}
+                                >
+                                  {e.subTitle}
+                                </h4>
                               </div>
-                              <p  style={{ fontFamily: "Roboto", fontSize: "16px", fontWeight: "300", textAlign:"justify" }}className={styles.modaldescription}>
+                              <p
+                                style={{
+                                  fontFamily: "Roboto",
+                                  fontSize: "16px",
+                                  fontWeight: "300",
+                                  textAlign: "justify",
+                                }}
+                                className={styles.modaldescription}
+                              >
                                 {e.description}
                               </p>
                               <div class="mt-5 mb-5">
                                 <div className="row ">
                                   <div className="col-md-12">
                                     <ul className={styles.iconsmodal}>
-                                      <li style={{ color: "black", textTransform: "uppercase", fontFamily: "Roboto" }}>
+                                      <li
+                                        style={{
+                                          color: "black",
+                                          textTransform: "uppercase",
+                                          fontFamily: "Roboto",
+                                        }}
+                                      >
                                         <i className="bi bi-clock-history"></i>{" "}
                                         {e.duration}
                                       </li>
-                                      <li style={{ color: "black", fontFamily: "Roboto" }}>
+                                      <li
+                                        style={{
+                                          color: "black",
+                                          fontFamily: "Roboto",
+                                        }}
+                                      >
                                         <i className="bi bi-currency-dollar"></i>{" "}
                                         ARS {e.price}
                                       </li>
@@ -288,14 +367,15 @@ export default function Experiences(props) {
                               <div class="mt-5 mb-5">
                                 <div className="row ">
                                   <div className="col-md-8">
-
-                                    <p style={{
+                                    <p
+                                      style={{
                                         color: "black",
                                         fontWeight: "200",
                                         fontFamily: "Roboto",
-                                      }} className="text-end">
+                                      }}
+                                      className="text-end"
+                                    >
                                       Please, select the number of passengers:
-
                                     </p>
                                   </div>
                                   <div className="col-md-4 text-start">
@@ -318,12 +398,14 @@ export default function Experiences(props) {
                                 </div>
                                 <div className="row ">
                                   <div className="col-md-8">
-
-                                    <p  style={{
+                                    <p
+                                      style={{
                                         color: "black",
                                         fontWeight: "200",
                                         fontFamily: "Roboto",
-                                      }} className="text-end">
+                                      }}
+                                      className="text-end"
+                                    >
                                       Please, select date:
                                     </p>
                                   </div>
@@ -355,12 +437,15 @@ export default function Experiences(props) {
                                         color: "black",
                                         fontWeight: "800",
                                         fontFamily: "Roboto",
-                                        fontSize:"18px"
+                                        fontSize: "18px",
                                       }}
-                                    > 
+                                    >
                                       TOTAL:{" "}
                                       <i className="bi bi-currency-dollar"></i>
-                                      ARS {e.price * item.pax < 0 ? 0 : e.price * item.pax}
+                                      ARS{" "}
+                                      {e.price * item.pax < 0
+                                        ? 0
+                                        : e.price * item.pax}
                                     </div>
                                   </div>
                                 </div>
@@ -403,7 +488,15 @@ export default function Experiences(props) {
                     </div>
                   </div>
                   <div className="col-md-6 mb-5">
-                    <img style={{borderRadius: "8px",boxShadow: "0 8px 8px 0 rgba(0, 0, 0, 0.15)"}}className={`img-fluid ${styles.expimgstyle}`} src={e.image} alt="" />
+                    <img
+                      style={{
+                        borderRadius: "8px",
+                        boxShadow: "0 8px 8px 0 rgba(0, 0, 0, 0.15)",
+                      }}
+                      className={`img-fluid ${styles.expimgstyle}`}
+                      src={e.image}
+                      alt=""
+                    />
                     {/* <CarouselExperiences /> */}
                   </div>
 
@@ -434,7 +527,7 @@ export default function Experiences(props) {
           <div className={styles.separator}></div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </Fragment>
   );
 }
