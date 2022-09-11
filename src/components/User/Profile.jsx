@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect } from "react";
 import { Link } from "react-router-dom";
 import perfil_user from "../../assets/perfil_user.png";
-
+import NavBarUser from "../NavBarUser/NavBarUser"
 import MyTrips from "../User/MyTrips";
 import MyFavs from "../User/MyFavs";
 
@@ -19,11 +19,13 @@ export default function Profile() {
 
   return (
     <Fragment>
+
       <section className="vh-100" style={{
         backgroundImage: "url(" + "https://wallpaperaccess.com/full/5775649.jpg" + ")",
         backgroundPosition: 'center',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
+        
       }}>
         <div className="container py-5 h-100" >
           <div className="row d-flex justify-content-center align-items-center h-100">
@@ -36,9 +38,10 @@ export default function Profile() {
                       ? userFromStorage.user.photo
                       : perfil_user}
                       alt="user photo" className="img-fluid my-5" style={{ borderRadius: "50px", width: "80px" }} />
-                    <h5 style={{ fontSize: "20px", color: "black", textTransform: "uppercase", marginBottom:"10px" }}>{userFromStorage.user.first_name}</h5>
-                    <h5 style={{ fontSize: "20px", color: "black", textTransform: "uppercase",marginBottom:"20px" }}>{userFromStorage.user.last_name}</h5>
+                    <h5 style={{ fontSize: "20px", color: "black", textTransform: "uppercase", marginBottom: "10px" }}>{userFromStorage.user.first_name}</h5>
+                    <h5 style={{ fontSize: "20px", color: "black", textTransform: "uppercase", marginBottom: "20px" }}>{userFromStorage.user.last_name}</h5>
                     <i className="far fa-edit mb-5"></i>
+
                   </div>
                   <div className="col-md-8">
                     <div className="card-body p-4">
@@ -53,15 +56,19 @@ export default function Profile() {
                           <h6 style={{ fontSize: "10px", textTransform: "uppercase" }}>Phone</h6>
                           <p style={{ fontSize: "15px", fontFamily: "Roboto" }} className="text-muted">123 456 789</p>
                         </div>
+
                       </div>
 
 
                       <hr className="mt-0 mb-4" />
 
                       <div className="column-2">
-                     
+
                         <button className="btn btn-outline-secondary"> <a href="#mytrips">CLICK ME TO SEE YOUR TRIPS</a></button>
                         <button className="btn btn-outline-secondary"> <a href="#myfavs">CLICK ME TO SEE YOUR FAVS</a></button>
+                        <Link to="/home">
+                        <button className="btn btn-outline-secondary"> <a href="#myfavs"> HOME</a></button>
+                        </Link>
                       </div>
                     </div>
                   </div>

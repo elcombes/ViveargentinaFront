@@ -13,11 +13,11 @@ export default function MyFavs() {
                         </div>
                         {/* INICIO ITEM FAV */}
                         <div className={`row ${styles.itemmyfavs}`}>
-                            <div className="col-md-8">
+                            <div className="col-md-12">
                                 <div className={`row mt-3 mb-3 ${styles.itemmyfavs}`}>
 
                                     {/* IMAGEN */}
-                                    <div className="col-md-2">
+                                    <div className="col-md-1">
                                         <img src="https://res.cloudinary.com/dblc1bzmx/image/upload/c_scale,h_720,q_50/v1661696412/VivaArg/SALTA/PAQUETES/IMPERDIBLES-SALTA/cafayate-salta-argentina-shutterstock_193704581_50e93ff9b4_zj59gz.jpg" alt="" className="img-fluid" />
                                     </div>
 
@@ -41,11 +41,11 @@ export default function MyFavs() {
 
                         {/* INICIO ITEM FAV 2*/}
                         <div className={`row ${styles.itemmyfavs}`}>
-                            <div className="col-md-8">
+                            <div className="col-md-12">
                                 <div className={`row mt-3 mb-3 ${styles.itemmyfavs}`}>
 
                                     {/* IMAGEN */}
-                                    <div className="col-md-2">
+                                    <div className="col-md-1">
                                         <img src="https://res.cloudinary.com/dblc1bzmx/image/upload/c_scale,h_720,q_50/v1661696412/VivaArg/SALTA/PAQUETES/IMPERDIBLES-SALTA/cafayate-salta-argentina-shutterstock_193704581_50e93ff9b4_zj59gz.jpg" alt="" className="img-fluid" />
                                     </div>
 
@@ -58,7 +58,7 @@ export default function MyFavs() {
                                     {/* BOTONES */}
                                     <div className="col-md-4 text-end">
                                         <button type="button" className="btn btn-outline-secondary"><i className={`bi bi-heart-fill ${styles.favheart}`}></i></button>
-                                        <button type="button" className="btn btn-outline-secondary"><i className="bi bi-trash3-fill"></i> Delete</button>
+                                        <button type="button" className="btn btn-outline-secondary"><i className="bi bi-trash3-fill"></i> DELETE</button>
                                     </div>
 
                                 </div>
