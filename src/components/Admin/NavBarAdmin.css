@@ -8,3 +8,6 @@
     width: 100%;
     color: white;
 }
+.usernavbaritem {
+    display: inline-flex;
+}
