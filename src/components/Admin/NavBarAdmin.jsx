@@ -1,6 +1,6 @@
 import React from 'react';
 import Login from '../User/Login.jsx';
-import styles from './NavBarAdmin.css';
+import './NavBarAdmin.css';
 
 export default function NavBarAdmin() {
     return (
@@ -12,7 +12,7 @@ export default function NavBarAdmin() {
                             <span className='nav-item'>ADMIN DASHBBOARD</span>
                             <ul className="navbar-nav">
                                 <li className="nav-item">
-                                    <a href="/home" class="nav-link"> Home </a>
+                                    <a href="/home" class="nav-link"> HOME </a>
                                 </li>
                                 <li className="nav-item">
                                     <Login />

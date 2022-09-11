@@ -2,7 +2,18 @@
 .itemmytrips {
     display: inline-flex;
 }
-
+.date{
+    font-family: Roboto;
+    text-transform: uppercase;
+}
+.price{
+    font-family: Roboto;
+    text-transform: uppercase;
+}
+.status{
+    font-family: Roboto;
+    text-transform: uppercase;
+}
 .itemmyfavs {
     display: inline-flex;
     align-items: center;

@@ -1,5 +1,7 @@
 
-
+.offcanvas-title .mycartName{
+    font-size: 30px;
+}
 .itemcart {
     
     padding: 5px 20px;
@@ -54,6 +56,7 @@ h4.titlecart {
     text-transform: uppercase;
     display: flex;
     font-weight: 500;
+
 }
 
 h4.datescart {
@@ -73,13 +76,15 @@ h4.datescart {
     object-position: center;
     height: 70px;
     width: 90% !important;
-    border-radius: 5px;
+    border-radius: 8px;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
 }
 
 .buttonmercadopago {
     width: 100%;
-    color: #C49D48;
-    font-size: 1.25rem;
+    color: white;
+    background-color: grey;
+    font-size: 2rem;
     font-weight: 500;
     margin-bottom: 5px;
 }

@@ -56,7 +56,7 @@ function NavBarUser() {
           </li>
           <li className="nav__item">
             <a href="contact_us" className="nav__link">
-              CONTACT US
+              CONTACT
             </a>
           </li>
           <li class="nav-item dropdown" style={{textTransform:"uppercase", color:"#C49D48", fontSize:"1.3rem"}}>

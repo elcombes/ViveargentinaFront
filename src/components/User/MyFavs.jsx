@@ -30,7 +30,7 @@ export default function MyFavs() {
                                     {/* BOTONES */}
                                     <div className="col-md-4 text-end">
                                         <button type="button" className="btn btn-outline-secondary"><i className={`bi bi-heart-fill ${styles.favheart}`}></i></button>
-                                        <button type="button" className="btn btn-outline-secondary"><i className="bi bi-trash3-fill"></i> Delete</button>
+                                        <button type="button" className="btn btn-outline-secondary"><i className="bi bi-trash3-fill"></i> DELETE</button>
                                     </div>
 
                                 </div>
@@ -57,7 +57,7 @@ export default function MyFavs() {
 
                                     {/* BOTONES */}
                                     <div className="col-md-4 text-end">
-                                        <button type="button" className="btn btn-outline-secondary"><i className={`bi bi-heart ${styles.favheart}`}></i></button>
+                                        <button type="button" className="btn btn-outline-secondary"><i className={`bi bi-heart-fill ${styles.favheart}`}></i></button>
                                         <button type="button" className="btn btn-outline-secondary"><i className="bi bi-trash3-fill"></i> Delete</button>
                                     </div>
 

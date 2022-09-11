@@ -6,18 +6,18 @@ import './SalesTable.css';
 //Ruta de prueba agregar en App => '/table'
 export default function SalesTable() {
     return (
-        <div class="container mt-5">
-            <div class="d-flex justify-content-center row">
+        <div class="container mt-5 ">
+            <div class="d-flex justify-content-center row ">
                 <div class="col-md-10">
                     <div class="rounded">
                         <div class="table-responsive table-borderless">
                             <span> FILTER </span>
-                            <select>
+                            <select className='selectBtn'>
                                 <option value="bought">COMPRADA</option>
                                 <option value="cancelled">CANCELLED</option>
                             </select>
                             <br />
-                            <table class="table">
+                            <table class="table ">
                                 {/* Encabezado de columnas */}
                                 <thead>
                                     <tr>
@@ -37,7 +37,7 @@ export default function SalesTable() {
                                         <td>CLASSIC MENDOZA</td>
                                         <td>70000</td>
                                         <td>COMPRADA</td>
-                                        <td><select>
+                                        <td><select className='statusChange'>
                                             <option value="bought">COMPRADA</option>
                                             <option value="cancelled">CANCELLED</option>
                                         </select>
@@ -50,7 +50,7 @@ export default function SalesTable() {
                                         <td>TO LAS LEÑAS</td>
                                         <td>7700</td>
                                         <td>COMPRADA</td>
-                                        <td><select>
+                                        <td><select className="statusChange">
                                             <option value="bought">COMPRADA</option>
                                             <option value="cancelled">CANCELLED</option>
                                         </select>

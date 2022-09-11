@@ -4,7 +4,7 @@ import './UsersTable.css';
 //Ruta de prueba agregada en App => '/table'
 export default function UsersTable() {
     return (
-        <div class="container mt-5">
+        <div class="container mt-5 ">
             <div class="d-flex justify-content-center row">
                 <div class="col-md-10">
                     <div class="rounded">

@@ -1,20 +1,18 @@
-
-body {
-    background: #eee;
-    font-family: Assistant, sans-serif;
-  }
-  
-  .cell-1 {
+ .cell-1 {
     border-collapse: separate;
     border-spacing: 0 4em;
-    background: #fff;
     border-bottom: 5px solid transparent;
-    /*background-color: gold;*/
+    background-color: #DFE0DF;
     background-clip: padding-box;
+
   }
-  
+  .table-body{
+    font-family: Roboto;
+    font-weight: 300;
+  }
   thead {
-    background: #dddcdc;
+    background: #634100;
+    color: white;
   }
   
   .toggle-btn {
@@ -47,4 +45,8 @@ body {
   
   .toggle-btn.active > .inner-circle {
     margin-left: 19px;
+  }
+  
+  .statusChange{
+    margin-right: 30px;
   }

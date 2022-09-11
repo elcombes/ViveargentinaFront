@@ -36,8 +36,8 @@ export default function Profile() {
                       ? userFromStorage.user.photo
                       : perfil_user}
                       alt="user photo" className="img-fluid my-5" style={{ borderRadius: "50px", width: "80px" }} />
-                    <h5 style={{ fontSize: "20px", color: "black", textTransform: "uppercase" }}>{userFromStorage.user.first_name}</h5>
-                    <h5 style={{ fontSize: "20px", color: "black", textTransform: "uppercase" }}>{userFromStorage.user.last_name}</h5>
+                    <h5 style={{ fontSize: "20px", color: "black", textTransform: "uppercase", marginBottom:"10px" }}>{userFromStorage.user.first_name}</h5>
+                    <h5 style={{ fontSize: "20px", color: "black", textTransform: "uppercase",marginBottom:"20px" }}>{userFromStorage.user.last_name}</h5>
                     <i className="far fa-edit mb-5"></i>
                   </div>
                   <div className="col-md-8">
@@ -54,17 +54,14 @@ export default function Profile() {
                           <p style={{ fontSize: "15px", fontFamily: "Roboto" }} className="text-muted">123 456 789</p>
                         </div>
                       </div>
-                      <h6 style={{ fontSize: "15px", textTransform: "uppercase" }}>My History</h6>
+
 
                       <hr className="mt-0 mb-4" />
 
-                      <div className="column">
-                        <Link to="/profile/#myfavs">
-                            <button style={{ margin: "0vh 4vh 0vh 4vh" }} className="btn btn-outline-secondary">MY FAVS</button>
-                        </Link>
-                        <Link to="/profile/#mytrips">
-                          <button style={{ margin: "0vh 4vh 0vh 4vh"}} className="btn btn-outline-secondary">MY TRIPS</button>
-                        </Link>
+                      <div className="column-2">
+                     
+                        <button className="btn btn-outline-secondary"> <a href="#mytrips">CLICK ME TO SEE YOUR TRIPS</a></button>
+                        <button className="btn btn-outline-secondary"> <a href="#myfavs">CLICK ME TO SEE YOUR FAVS</a></button>
                       </div>
                     </div>
                   </div>
@@ -74,11 +71,13 @@ export default function Profile() {
           </div>
         </div>
       </section>
+
       <div id="mytrips">
-        <MyTrips/>
+        <MyTrips />
       </div>
+
       <div id="myfavs">
-        <MyFavs/>
+        <MyFavs />
       </div>
 
     </Fragment>

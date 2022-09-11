@@ -6,6 +6,9 @@
   --primary-light: #C49D48;
   --secondary-light: #DFE0DF;
 }
+html {
+  scroll-behavior: smooth;
+}
 
 * {
   box-sizing: border-box;

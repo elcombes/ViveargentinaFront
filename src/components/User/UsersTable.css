@@ -2,14 +2,14 @@
 .cell-1 {
   border-collapse: separate;
   border-spacing: 0 4em;
-  background: #fff;
   border-bottom: 5px solid transparent;
-  /*background-color: gold;*/
+  background-color: #DFE0DF;
   background-clip: padding-box;
 }
 
 thead {
-  background: #dddcdc;
+  background: #634100;
+  color: white;
 }
 
 .toggle-btn {
@@ -37,9 +37,13 @@ thead {
 }
 
 .toggle-btn.active {
-  background: blue;
+  background: #C49D48;
 }
 
 .toggle-btn.active > .inner-circle {
   margin-left: 19px;
+}
+a:hover{
+  color:#C49D48
+
 }

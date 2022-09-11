@@ -86,8 +86,8 @@ export default function Cart() {
         >
           <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="offcanvasRightLabel">
-              <h4>
-                <i class="bi bi-cart"></i> MY CART
+              <h4 style={{fontSize:"30px", color:"white"}}>
+                <i class="bi bi-cart"style={{fontSize:"30px",margin:"20px"}}></i> MY CART
               </h4>
             </h5>
             <button
@@ -129,9 +129,9 @@ export default function Cart() {
           }}
         >
           <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasRightLabel">
-              <h4>
-                <img src="" alt="" />
+          <h5 class="offcanvas-title" id="offcanvasRightLabel">
+              <h4 style={{fontSize:"30px", color:"white"}}>
+                <i class="bi bi-cart"style={{fontSize:"30px",margin:"20px"}}></i> MY CART
               </h4>
             </h5>
             <button
