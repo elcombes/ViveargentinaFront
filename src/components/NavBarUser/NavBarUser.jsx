@@ -55,7 +55,7 @@ function NavBarUser() {
             </a>
           </li>
           <li className="nav__item">
-            <a href="contact_us" className="nav__link">
+            <a href="#contact" className="nav__link">
               CONTACT
             </a>
           </li>
@@ -81,7 +81,7 @@ function NavBarUser() {
           </li>
 
           <li class="nav-item active">
-            <a class="nav-link" href="#" style={{ borderColor: "#C49D48", color: "#C49D48", fontSize: "18px" }}>MY TRIPS</a>
+            <a class="nav-link" href="/profile#mytrips" style={{ borderColor: "#C49D48", color: "#C49D48", fontSize: "18px" }}>MY TRIPS</a>
           </li>
 
           <li>

@@ -64,7 +64,7 @@ function HomePage() {
                     <h1 style={{ transform: `translate(${offSetY * 0.2}px)` }}>Our popular cities</h1>
                     <p style={{ transform: `translate(${offSetY * -0.1}px)` }}>We are a team of humans with the strategy, the tools and the solutions for you to travel as you deserve.</p>
                 </div>
-                <Link to="/experiences">
+                <Link to="/packages/e1fa7baf-6de2-4e58-abfa-129d3269cc6e">
                     <div class="owl-carousel owl-theme">
                         <div class="item">
                             <img src="https://res.cloudinary.com/dblc1bzmx/image/upload/v1662392610/VivaArg/Cordoba%20%28SEGUNDO%29/cordoba_2_hmvohj.jpg" alt="" />
