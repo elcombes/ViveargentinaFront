@@ -26,7 +26,7 @@
     font-weight: 400;
     color: #ffffff;
 }
-
+/* CITIES----------------------- */
 .cities .btn-outline-secondary {
     font-size: 1.5vh;
     font-weight: 200;
@@ -34,7 +34,6 @@
     display: flex;
     flex-direction: row;
 }
-
 .cities {
     display: flex;
     width: min(980px, 85%);
@@ -68,7 +67,6 @@
     line-height: 1.6;
     color: #565656;
 }
-
 .cityInfos {
     padding: 20vh 0vh 20vh 0vh;
     height: fit-content;
@@ -116,7 +114,7 @@
     padding: 10px 20px;
     display: inline-block;
   }
-
+/* EXPERIENCES----------------------- */
   .expExplore{
     display: flex;
     flex-direction: column;
@@ -159,8 +157,19 @@
     color: #565656;
 }
 
+/* CONTACT----------------------- */
 
+.contactUs{
+    display: flex;
+    background-color: #dfe0df;
+    width: min(100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
   
+}
+
 
 @media screen and (max-width: 940px) {
     .form input[type=text] {

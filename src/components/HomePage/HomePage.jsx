@@ -59,56 +59,61 @@ function HomePage() {
             </div>
             <div className='cities' id='cities'>
                 <div class="citiesHeader">
-                
+
                     <span style={{ transform: `translate(${offSetY * 0.3}px)` }}>top cities</span>
-                    <h1 style= {{ transform: `translate(${offSetY * 0.2}px)` }}>Our popular cities</h1>
-                    <p style={{ transform: `translate(${offSetY *  -0.1}px)` }}>We are a team of humans with the strategy, the tools and the solutions for you to travel as you deserve.</p>
+                    <h1 style={{ transform: `translate(${offSetY * 0.2}px)` }}>Our popular cities</h1>
+                    <p style={{ transform: `translate(${offSetY * -0.1}px)` }}>We are a team of humans with the strategy, the tools and the solutions for you to travel as you deserve.</p>
                 </div>
                 <Link to="/experiences">
-                <div class="owl-carousel owl-theme">
-                    <div class="item">
-                        <img src="https://res.cloudinary.com/dblc1bzmx/image/upload/v1662392610/VivaArg/Cordoba%20%28SEGUNDO%29/cordoba_2_hmvohj.jpg" alt="" />
-                        <div class="overlay">
-                            <span>Córdoba</span>
-                            <div>
-                                <h2>Córdoba</h2>
-                                <p>12 Popular places</p>
+                    <div class="owl-carousel owl-theme">
+                        <div class="item">
+                            <img src="https://res.cloudinary.com/dblc1bzmx/image/upload/v1662392610/VivaArg/Cordoba%20%28SEGUNDO%29/cordoba_2_hmvohj.jpg" alt="" />
+                            <div class="overlay">
+                                <span>Córdoba</span>
+                                <div>
+                                    <h2>Córdoba</h2>
+                                    <p>12 Popular places</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 </Link>
                 <div className='expExplore'>
-                        <button className="btn btn-outline-secondary">
-                            <a href="#experiences"><span></span>SCROLL </a>
-                        </button>
-                    </div>
+                    <button className="btn btn-outline-secondary">
+                        <a href="#experiences"><span></span>SCROLL </a>
+                    </button>
+                </div>
             </div>
-          
+
             <div className='experiences' id='experiences'>
                 <div class="experiencesHeader">
-                
+
                     <span style={{ transform: `translate(${offSetY * 0.3}px)` }}>top experiences</span>
                     <h1 style={{ transform: `translate(${offSetY * 0.2}px)` }}>Our popular experiences</h1>
-                    <p  style={{ transform: `translate(${offSetY * 0.1}px)` }}>Choose a city, we organize the rest of your trip.</p>
+                    <p style={{ transform: `translate(${offSetY * 0.1}px)` }}>Choose a city, we organize the rest of your trip.</p>
                 </div>
                 <Link to="/experiences">
-                <div class="owl-carousel owl-theme">
-                    <div class="item">
-                        <img src="https://res.cloudinary.com/dblc1bzmx/image/upload/c_scale,h_720,q_50/v1661639589/VivaArg/BARILOCHE/pexels-mati-mango-3193767_ruyclw.jpg" alt="" />
-                        <div class="overlay">
-                            <span>Excursion to the Cerro Catedral</span>
-                            <div>
-                                <h2>The place that everyone want to go.</h2>
-                                <p>Click me for more info</p>
+                    <div class="owl-carousel owl-theme">
+                        <div class="item">
+                            <img src="https://res.cloudinary.com/dblc1bzmx/image/upload/c_scale,h_720,q_50/v1661639589/VivaArg/BARILOCHE/pexels-mati-mango-3193767_ruyclw.jpg" alt="" />
+                            <div class="overlay">
+                                <span>Excursion to the Cerro Catedral</span>
+                                <div>
+                                    <h2>The place that everyone want to go.</h2>
+                                    <p>Click me for more info</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 </Link>
+                <div className='expExplore'>
+                    <button className="btn btn-outline-secondary">
+                        <a href="#contact"><span></span>CONTACT US </a>
+                    </button>
+                </div>
             </div>
             <hr />
-            <div className='contactUs'>
+            <div className='contactUs'id='contact'>
 
                 <div class="containContact">
 
@@ -156,12 +161,8 @@ function HomePage() {
                         </div>
                     </div>
                 </div>
-                <div>
-                </div>
-
-
             </div>
-            <Footer />
+                <Footer />
         </Fragment>
     )
 }
