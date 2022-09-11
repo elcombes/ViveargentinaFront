@@ -33,7 +33,7 @@ function HomePage() {
 
     return (
         <Fragment>
-            <div className='containerHome'>
+            <div className='containerHome'id="firstpage">
                 {userAuth === false ?
                     <NavBar /> :
                     <NavBarUser />
@@ -41,7 +41,7 @@ function HomePage() {
 
                 <div className='firstPage'>
                 </div>
-                <div>
+                <div >
                     <h1 className='mainTitle' style={{ transform: `translate(${offSetY * -0.8}px)` }}>
                         One Destination <br />
                         Thousand Experiences
@@ -88,9 +88,9 @@ function HomePage() {
             <div className='experiences' id='experiences'>
                 <div class="experiencesHeader">
 
-                    <span style={{ transform: `translate(${offSetY * 0.3}px)` }}>top experiences</span>
-                    <h1 style={{ transform: `translate(${offSetY * 0.2}px)` }}>Our popular experiences</h1>
-                    <p style={{ transform: `translate(${offSetY * 0.1}px)` }}>Choose a city, we organize the rest of your trip.</p>
+                    <span style={{ transform: `translate(${offSetY * -0.1}px)` }}>top experiences</span>
+                    <h1 style={{ transform: `translate(${offSetY * -0.2}px)` }}>Our popular experiences</h1>
+                    <p style={{ transform: `translate(${offSetY * -0.1}px)` }}>Choose a city, we organize the rest of your trip.</p>
                 </div>
                 <Link to="/experiences">
                     <div class="owl-carousel owl-theme">
@@ -112,7 +112,7 @@ function HomePage() {
                     </button>
                 </div>
             </div>
-            <hr />
+     
             <div className='contactUs'id='contact'>
 
                 <div class="containContact">
@@ -143,7 +143,7 @@ function HomePage() {
                                     <input type="checkbox" id="checkbox" name="checkbox" checked /> Yes, I would like to receive information about discounts, promotions, packages and experiences available..
                                 </p>
                                 <p class="full-width">
-                                    <input type="submit" class="submit-btnContact" value="Submit" onclick="checkValidations()" />
+                                    <input type="submit" class="btn btn-outline-secondary btn-lg " value="SEND" onclick="checkValidations()" />
 
                                 </p>
                             </form>
@@ -162,7 +162,12 @@ function HomePage() {
                     </div>
                 </div>
             </div>
-                <Footer />
+            <a href="#firstPage"><span></span> 
+            
+                <Footer/>
+          
+           
+            </a>
         </Fragment>
     )
 }

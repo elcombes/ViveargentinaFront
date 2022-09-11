@@ -1,13 +1,8 @@
 .containContact {
-  background-color: var(--secondary-light);
   max-width: 1170px;
   margin-left: auto;
   margin-right: auto;
   padding: 1em;
-}
-
-div.formContact {
-  background-color: var(--secondary-light);
 }
 
 .contact-wrapperContact {
@@ -27,12 +22,9 @@ div.formContact {
   display: block;
   width: 10%;
   padding-top: 10px;
-  border-bottom: 3px solid var(--secondary-light);
 }
 
-.highlight-textContact {
-  color: var(--secondary-light);
-}
+
 
 .hightlight-contact-infoContact {
   font-weight: 700;
@@ -49,9 +41,6 @@ div.formContact {
 }
 
 
-.required-inputContact {
-  color: var(--primary-dark);
-}
 @media (min-width: 600px) {
   .containContact {
     padding: 0;
@@ -101,14 +90,11 @@ ul {
   color: var(--primary-dark);
 }
 
-.formContact {
-  background: var(--secondary-light);
-}
 
 form {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 20px;
+  grid-gap: 15px;
 }
 form label {
   display: block;

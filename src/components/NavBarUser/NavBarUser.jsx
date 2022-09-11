@@ -55,7 +55,7 @@ function NavBarUser() {
             </a>
           </li>
           <li className="nav__item">
-            <a href="#contact" className="nav__link">
+            <a href="/contact_us" className="nav__link">
               CONTACT
             </a>
           </li>
