@@ -72,12 +72,11 @@ export function verifyUser(token) {
 
 // Esta ruta añade un paquete a favoritos del usuario
 export function addPackageFavorite(packageId, userId) {
-
   return async function () {
-    let responde= await axios.post(
-      `https://viveargentina.herokuapp.com/favorites/packages?userId=${userId}&packageId${packageId}`
+    let responde = await axios.post(
+      `http://localhost:3001/favorites/packages?packageId=${packageId}&userId=${userId}`
     );
-    console.log(responde)
+    console.log(responde);
   };
 }
 
