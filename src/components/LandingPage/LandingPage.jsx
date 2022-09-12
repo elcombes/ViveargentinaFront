@@ -18,7 +18,7 @@ function Landing() {
     <Fragment>
       <Link to="/home">
         <div className="gif">
-          <video autoPlay loop id='video'>
+          <video autoPlay muted id='video'>
             <source src={Video} type='video/mp4' />
           </video>
         </div>

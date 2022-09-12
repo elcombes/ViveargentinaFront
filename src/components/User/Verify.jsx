@@ -7,11 +7,10 @@ import { useDispatch } from "react-redux";
 function Verify() {
     const history = useHistory();
     let pathName = history.location.pathname.split('/');
-    let id = pathName[pathName.length-2]
     let token = pathName[pathName.length-1]
     const dispatch = useDispatch()
     useEffect(async()=>{
-        await dispatch(verifyUser(id,token))
+        await dispatch(verifyUser(token))
         history.push("/home")
     },[])
     return (

@@ -34,14 +34,19 @@ export default function ContactUs() {
   };
 
   const handleSubmit =(e)=>{
+    const form = e.currentTarget;
     e.preventDefault();
-    dispatch(contactUs({
-      name: state.name,
-      lastName: state.lastName,
-      email: state.email,
-      message: state.message
-    }))
-    history.push("/home")
+    if (form.checkValidity() === true) {
+        e.stopPropagation();
+        dispatch(contactUs({
+          name: state.name,
+          lastName: state.lastName,
+          email: state.email,
+          message: state.message
+        }))
+        history.push("/home")
+    }
+    e.preventDefault();
   }
 
   return(

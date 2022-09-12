@@ -43,9 +43,9 @@ export function buyInMercadoPago(itemsFromStore) {
 }
 
 //Esta ruta verifica el usuario despues de si registro
-export function verifyUser(id, token) {
+export function verifyUser(token) {
   return async function () {
-    fetch(`https://viveargentina.herokuapp.com/users/verify/${id}`, {
+    fetch(`https://viveargentina.herokuapp.com/users/verify/`, {
       method: "POST",
       headers: {
         Accept: "application/json",
