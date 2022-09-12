@@ -91,15 +91,19 @@ export function resetPasswordRequest(email){
 }
 
 //esta funcion cambia la contraseña del usuario logeado. necesita la contraseña actual, la nueva y el accessToken
-export function changePassword(token, password, newPassword){
+export function changePassword({token, password, newPassword}){
   return async function(){
     const headers = {
       Accept: "application/json",
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     }
+    console.log("token"+token);
+    console.log("old pass: "+password)
+    console.log("new pass: "+newPassword)
     const response = await axios.post('https://viveargentina.herokuapp.com/users/change_password',{password, newPassword}, {headers})
     console.log("response: "+response);
+    return response
   }
 }
 
