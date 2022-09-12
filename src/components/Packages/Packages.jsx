@@ -61,7 +61,8 @@ export default function Card(props) {
     if (document.getElementById(`${item.name} passengers`).value <= 0) {
       return Swal.fire({
         title: "YOU MUST ADD AT LEAST ONE PASSENGER",
-        imageUrl: "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663003831/VivaArg/Alerts/2_wsn0oa.png",
+        imageUrl:
+          "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663003831/VivaArg/Alerts/2_wsn0oa.png",
         imageWidth: 350,
         imageHeight: 300,
         confirmButtonColor: "#C49D48",
@@ -71,7 +72,8 @@ export default function Card(props) {
     if (document.getElementById(`${item.name} dates`).value === "select") {
       return Swal.fire({
         title: "YOU MUST SELECT A DATE TO CONTINUE",
-        imageUrl: "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663003830/VivaArg/Alerts/1_yrqksk.png",
+        imageUrl:
+          "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663003830/VivaArg/Alerts/1_yrqksk.png",
         imageWidth: 350,
         imageHeight: 300,
         confirmButtonColor: "#C49D48",
@@ -90,7 +92,8 @@ export default function Card(props) {
       document.getElementById(`${item.name} dates`).value = "select";
       return Swal.fire({
         title: "YOU ALREADY HAVE THIS ITEM IN YOUR CART",
-        imageUrl: "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663003831/VivaArg/Alerts/3_zmfk4m.png",
+        imageUrl:
+          "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663003831/VivaArg/Alerts/3_zmfk4m.png",
         imageWidth: 350,
         imageHeight: 300,
         confirmButtonColor: "#C49D48",
@@ -130,9 +133,8 @@ export default function Card(props) {
     let user = JSON.parse(localStorage.getItem("user"));
     let userId = user.user.id;
 
-    dispatch(addPackageFavorite(packageId, userId))
-  }
-
+    dispatch(addPackageFavorite(packageId, userId));
+  };
 
   //   Fin Precart
 
@@ -304,10 +306,18 @@ export default function Card(props) {
                                   }}
                                 />
                                 <div>
-                                  <button style={{ marginTop: "10px", borderColor: "transparent" }} onClick={(()=> addPackagesFavorites(e.id))}>
-                                    <i class="bi bi-heart-fill" style={{
-                                      fontSize: "20px",
+                                  <button
+                                    style={{
+                                      marginTop: "10px",
+                                      borderColor: "transparent",
                                     }}
+                                    onClick={() => addPackagesFavorites(e.id)}
+                                  >
+                                    <i
+                                      class="bi bi-heart-fill"
+                                      style={{
+                                        fontSize: "20px",
+                                      }}
                                     ></i>
                                   </button>
                                 </div>
@@ -517,7 +527,7 @@ export default function Card(props) {
                         {/* Fin Modal */}
                       </div>
 
-                      <div className="col-md-6" >
+                      <div className="col-md-6">
                         <div className={styles.citybuttons}>
                           <Link to={"/experiences/" + e.id}>
                             <button
