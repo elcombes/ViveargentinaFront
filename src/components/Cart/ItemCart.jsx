@@ -11,29 +11,38 @@ export default function ItemCart({
   index,
   setBuyInFalse,
 }) {
+
   const [itemPax, setItemPax] = useState(pax);
   const [remove, setRemove] = useState(true);
 
   let itemsFromStore = JSON.parse(localStorage.getItem("items"));
 
-  function onClickNeg() {
+  // useEffect(() => {
+  //   itemsFromStore = JSON.parse(localStorage.getItem("items"));
+  // }, [JSON.parse(localStorage.getItem("items"))]);
+
+  const onClickNeg = async () => {
+    // console.log(itemsFromStore)
     setBuyInFalse();
-    setItemPax(parseInt(itemPax) - 1);
+    if(itemPax !== 1) {
+      setItemPax(parseInt(itemPax - 1))
+    }
+    console.log(itemPax)
     itemsFromStore = JSON.parse(localStorage.getItem("items"));
     itemsFromStore[index].pax = parseInt(itemsFromStore[index].pax) - 1;
+    // console.log(itemsFromStore[index].pax)
+    // console.log(itemsFromStore)
     localStorage.setItem("items", JSON.stringify(itemsFromStore));
   }
 
-
-  function onClickNeg() {
-    if (itemPax !== 1) setItemPax(parseInt(itemPax) - 1)
-  }
-
   function onClickPos() {
+    // console.log(itemsFromStore)
     setBuyInFalse();
     setItemPax(parseInt(itemPax) + 1);
     itemsFromStore = JSON.parse(localStorage.getItem("items"));
     itemsFromStore[index].pax = parseInt(itemsFromStore[index].pax) + 1;
+    // console.log(itemsFromStore[index].pax)
+    // console.log(itemsFromStore)
     localStorage.setItem("items", JSON.stringify(itemsFromStore));
   }
 
@@ -42,6 +51,8 @@ export default function ItemCart({
     setBuyInFalse();
     if (remove) setRemove(false);
     if (!remove) setRemove(true);
+    itemsFromStore = JSON.parse(localStorage.getItem("items"));
+    console.log(itemsFromStore)
     let newItemsFromStore = itemsFromStore.filter(i => i.name !== name || i.dates !== dates)
     localStorage.setItem("items", JSON.stringify(newItemsFromStore));
     changeState();
@@ -71,7 +82,7 @@ export default function ItemCart({
               </button>
             </li>
             <li>
-              <div className={styles.itempax} > {itemPax} </div>
+              <div className={styles.itempax} > {itemsFromStore[index].pax} </div>
             </li>
             <li>
               <button onClick={() => onClickPos()} >
