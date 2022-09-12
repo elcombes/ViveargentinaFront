@@ -16,11 +16,11 @@ export default function MyFavs({ packages, experiences }) {
   return (
     <Fragment>
       <div
-        style={{ margin: "10vh" }}
+        
         className={`container-fluid ${styles.mytripspage}`}
       >
         <div className="container">
-          <div className="row mb-3">
+          <div className="row mb-3 mt-5">
             <h2 className="text-center">
               <i className={`bi bi-heart-fill ${styles.favheart}`}></i> MY
               FAVORITES TRIPS
