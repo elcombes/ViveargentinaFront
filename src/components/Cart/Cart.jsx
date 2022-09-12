@@ -1,6 +1,6 @@
 import Dropdown from "react-bootstrap/Dropdown";
-import React, { useState, useRef, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import ItemCart from "./ItemCart";
 import MercadoPago from "./MercadoPago";
 import {
@@ -58,6 +58,7 @@ export default function Cart() {
     let user = JSON.parse(localStorage.getItem("user"));
     let userId = user.user.id;
     itemsFromStore = JSON.parse(localStorage.getItem("items"));
+
     itemsFromStore.forEach((i) => {
       if (i.tipe === "package") {
         dispatch(addPackageBought(userId, i));
@@ -65,7 +66,7 @@ export default function Cart() {
         dispatch(addExperienceBought(userId, i));
       }
     });
-    dispatch(buyInMercadoPago(itemsFromStore));
+    // dispatch(buyInMercadoPago(itemsFromStore));
   }
 
   if (!itemsFromStore || itemsFromStore.length === 0) {

@@ -1,84 +1,124 @@
-import React, { Fragment } from "react";
-import styles from './User.module.css'
+import React, { Fragment, useEffect } from "react";
 
+import styles from "./User.module.css";
 
-export default function MyTrips() {
-    return (
-        <Fragment>
-            <div style={{margin:"10vh"}} className={`container-fluid ${styles.mytripspage}`}>
-                <div className="container">
-                    <div className="row mb-3">
-                        <h2 className="text-center"><i className={`bi bi-airplane-fill ${styles.tripicon}`}></i> MY TRIPS LIST</h2>
-                    </div>
-                    {/* INICIO ITEM TRIP */}
-                    <div className={`row ${styles.itemmytrips}`}>
-                        <div className="col-md-6">
-                            <div className="row mt-3 mb-3">
-                                <div className="col-sm-2">
-                                    <img src="https://res.cloudinary.com/dblc1bzmx/image/upload/c_scale,h_720,q_50/v1661696412/VivaArg/SALTA/PAQUETES/IMPERDIBLES-SALTA/cafayate-salta-argentina-shutterstock_193704581_50e93ff9b4_zj59gz.jpg" alt="" className="img-fluid" />
-                                </div>
-                                <div className="col-sm-6">
-                                    <h2 className="titlepackages">NOT TO BE MISSED IN SALTA</h2>
-                                    <h4>WHAT YOU CAN'T MISS</h4>
-                                </div>
-                                <div className={`col-md-3 text-center ${styles.date}`}>
-                                    <p>13-oct-2022</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-6">
-                            <div className="row mt-3 mb-6">
-                                <div className={`col-md-3 text-center ${styles.price}`}>
-                                    <p>$ 43.000</p>
-                                </div>
-                                <div className={`col-md-3 text-center ${styles.status}`}>
-                                    <p>Paid</p>
-                                </div>
-                                <div className="col-md-6 text-center">
-                                    <button type="button" className="btn btn-outline-secondary"><i className="bi bi-trash3-fill"></i> DELETE</button>
-                                    <button type="button" className="btn btn-secondary"><i className="bi bi-cart"></i> BUY AGAIN!</button>
-                                </div>
-                            </div>
-                        </div>
-                        <hr />
-                    </div>
-                    {/* FIN ITEM TRIP */}
+export default function MyTrips({ packages, experiences }) {
+  console.log(packages);
+  console.log(experiences);
 
-                    {/* INICIO ITEM TRIP 2*/}
-                    <div className={`row ${styles.itemmytrips}`}>
-                        <div className="col-md-6">
-                            <div className="row mt-3 mb-3">
-                                <div className="col-md-2">
-                                    <img src="https://res.cloudinary.com/dblc1bzmx/image/upload/c_scale,h_720,q_50/v1661696412/VivaArg/SALTA/PAQUETES/IMPERDIBLES-SALTA/cafayate-salta-argentina-shutterstock_193704581_50e93ff9b4_zj59gz.jpg" alt="" className="img-fluid" />
-                                </div>
-                                <div className="col-md-6">
-                                    <h2 className="titlepackages">NOT TO BE MISSED IN SALTA</h2>
-                                    <h4>WHAT YOU CAN'T MISS</h4>
-                                </div>
-                                <div className={`col-md-3 text-center ${styles.date}`}>
-                                    <p>13-oct-2022</p>
-                                </div>
-                            </div>
+  return (
+    <Fragment>
+      <div
+        style={{ margin: "10vh" }}
+        className={`container-fluid ${styles.mytripspage}`}
+      >
+        <div className="container">
+          <div className="row mb-3">
+            <h2 className="text-center">
+              <i className={`bi bi-airplane-fill ${styles.tripicon}`}></i> MY
+              TRIPS LIST
+            </h2>
+          </div>
+
+          {
+            /* INICIO ITEM PACKAGES */
+            packages &&
+              packages.map((p) => {
+                return (
+                  <div className={`row ${styles.itemmytrips}`}>
+                    <div className="col-md-6">
+                      <div className="row mt-3 mb-3">
+                        <div className="col-sm-2">
+                          <img src={p.image} alt="" className="img-fluid" />
                         </div>
-                        <div className="col-md-6">
-                            <div className="row mt-3 mb-3">
-                                <div className={`col-md-3 text-center ${styles.price}`}>
-                                    <p>$ 43.000</p>
-                                </div>
-                                <div className={`col-md-3 text-center ${styles.status}`}>
-                                    <p>Paid</p>
-                                </div>
-                                <div className="col-md-6 text-center">
-                                    <button type="button" className="btn btn-outline-secondary"><i className="bi bi-trash3-fill"></i> DELETE</button>
-                                    <button type="button" className="btn btn-secondary"><i className="bi bi-cart"></i> BUY AGAIN!</button>
-                                </div>
-                            </div>
+                        <div className="col-sm-6">
+                          <h2 className="titlepackages">{p.name}</h2>
+                          <h4>{p.subTitle}</h4>
                         </div>
-                        <hr />
+                        <div className={`col-md-3 text-center ${styles.date}`}>
+                          <p>{p.reservation_package.dates}</p>
+                        </div>
+                      </div>
                     </div>
-                    {/* FIN ITEM TRIP 2*/}
-                </div>
-            </div>
-        </Fragment>
-    )
+                    <div className="col-md-6">
+                      <div className="row mt-3 mb-6">
+                        <div className={`col-md-3 text-center ${styles.price}`}>
+                          <p>$ {p.reservation_package.total}</p>
+                        </div>
+                        <div
+                          className={`col-md-3 text-center ${styles.status}`}
+                        >
+                          <p>{p.reservation_package.status}</p>
+                        </div>
+                        <div className="col-md-6 text-center">
+                          <button
+                            type="button"
+                            className="btn btn-outline-secondary"
+                          >
+                            <i className="bi bi-trash3-fill"></i> DELETE
+                          </button>
+                          <button type="button" className="btn btn-secondary">
+                            <i className="bi bi-cart"></i> BUY AGAIN!
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <hr />
+                  </div>
+                );
+              })
+          }
+
+          {
+            /* INICIO ITEM PACKAGES */
+            experiences &&
+              experiences.map((e) => {
+                return (
+                  <div className={`row ${styles.itemmytrips}`}>
+                    <div className="col-md-6">
+                      <div className="row mt-3 mb-3">
+                        <div className="col-sm-2">
+                          <img src={e.image} alt="" className="img-fluid" />
+                        </div>
+                        <div className="col-sm-6">
+                          <h2 className="titlepackages">{e.name}</h2>
+                          <h4>{e.subTitle}</h4>
+                        </div>
+                        <div className={`col-md-3 text-center ${styles.date}`}>
+                          <p>{e.reservation_experience.dates}</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="col-md-6">
+                      <div className="row mt-3 mb-6">
+                        <div className={`col-md-3 text-center ${styles.price}`}>
+                          <p>$ {e.reservation_experience.total}</p>
+                        </div>
+                        <div
+                          className={`col-md-3 text-center ${styles.status}`}
+                        >
+                          <p>{e.reservation_experience.status}</p>
+                        </div>
+                        <div className="col-md-6 text-center">
+                          <button
+                            type="button"
+                            className="btn btn-outline-secondary"
+                          >
+                            <i className="bi bi-trash3-fill"></i> DELETE
+                          </button>
+                          <button type="button" className="btn btn-secondary">
+                            <i className="bi bi-cart"></i> BUY AGAIN!
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <hr />
+                  </div>
+                );
+              })
+          }
+        </div>
+      </div>
+    </Fragment>
+  );
 }
