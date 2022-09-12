@@ -2,20 +2,21 @@
 .nav-item {
     width: 100%;
     color: white;
+    display: flex;
+    justify-content: left;
+    text-transform: uppercase;
+    font-size: large;
+    font-weight: 400;
+
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
-.nav-link {
-    width: 100%;
-    color: white;
+.nav-item-img{
+    border-radius: 50px;
+    margin-left: 50px;
+    max-height: 6vh;
 }
 .usernavbaritem {
     display: inline-flex;
-}
-.nav-item{
-    font-size:large;
-    font-weight: 600;
-    margin-left: 40px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-
 }
