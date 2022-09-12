@@ -49,7 +49,7 @@ export default function Card(props) {
   const handleClickPreCart = (name, price, image, packageId) => {
     setItem({
       ...item,
-      packageId: packageId
+      packageId: packageId,
       name: name,
       image: image,
       price: price,
