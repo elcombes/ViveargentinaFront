@@ -60,7 +60,7 @@ function NavBarUser() {
             </a>
           </li>
           <li class="nav-item dropdown" style={{textTransform:"uppercase", color:"#C49D48", fontSize:"1.3rem"}}>
-            <div class="dropdown">
+            <div class="dropdown" style={{textAlign:"center" }}>
               <button class="btn btn-secondary dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false" style={{
                 backgroundImage: `url(${infoUser.photo})`, backgroundColor:"transparent",backgroundPosition: 'center',backgroundSize: 'cover', backgroundRepeat: 'no-repeat', borderColor: "#c49d48e3", borderRadius: "10vh"
               }}>
@@ -70,9 +70,9 @@ function NavBarUser() {
               <ul class="dropdown-menu">
 
                 <li>
-                    <a class="dropdown-item" href="/profile" style={{ color: "#c49d48e3", fontSize: "18px" }}>MY PROFILE</a>
+                    <a class="dropdown-item" href="/profile" style={{ color: "#c49d48e3", fontSize: "15px" }}>MY PROFILE</a>
                   <li>
-                    <button class="dropdown-item" type="button" style={{ color: "#C49D48", fontSize: "18px" }} onClick={() => userLogout()}>LOGOUT</button>
+                    <button class="dropdown-item" type="button" style={{ color: "#C49D48", fontSize: "15px" }} onClick={() => userLogout()}>LOGOUT</button>
                   </li>
                 </li>
 
@@ -81,7 +81,7 @@ function NavBarUser() {
           </li>
 
           <li class="nav-item active">
-            <a class="nav-link" href="/profile#mytrips" style={{ borderColor: "#C49D48", color: "#C49D48", fontSize: "18px" }}>MY TRIPS</a>
+            <a class="nav-link" href="/profile#mytrips" style={{ borderColor: "#C49D48", color: "#C49D48", fontSize: "15px", textAlign:"center" }}>MY TRIPS</a>
           </li>
 
           <li>

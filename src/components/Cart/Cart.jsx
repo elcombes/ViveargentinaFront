@@ -112,7 +112,7 @@ export default function Cart() {
             ></button>
           </div>
           <div class="offcanvas-body">
-            You have no items in your cart yet <i class="bi bi-emoji-frown"></i>
+            YOU HAVE NO ITEMS IN YOUR CART YET
           </div>
         </div>
       </div>

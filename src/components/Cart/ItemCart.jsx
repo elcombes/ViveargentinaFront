@@ -51,9 +51,6 @@ export default function ItemCart({
   return (
 
     <div className={`"container" ${styles.itemcart}`} >
-
-
-
       <div className={`"row mt-3 mb-4" ${styles.rowimgtitle}`}>
         <div className="col-md-4 mb-1">
           <img className={`"img-fluid" ${styles.imgitemcart}`} src={image} alt="" />

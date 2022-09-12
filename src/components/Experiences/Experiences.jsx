@@ -301,12 +301,17 @@ export default function Experiences(props) {
                                 src={e.image}
                                 alt=""
                               />
-                              <div>
-                                <i
-                                  class="bi bi-heart-fill"
-                                  style={{ fontSize: "4vh", paddingTop: "3vh" }}
-                                ></i>
-                              </div>
+                                <div>
+                                <button className="btn btn-outline-secondary" style={{ marginTop: "10px", borderColor:"transparent"}}>
+                                    <i
+                                      class="bi bi-heart-fill"
+                                      style={{
+                                        fontSize: "20px",
+                                        paddingTop: "2vh",
+                                      }}
+                                    ></i>
+                                  </button>
+                                </div>
                               <div className="mt-5">
                                 <h2
                                   className="modal-title"

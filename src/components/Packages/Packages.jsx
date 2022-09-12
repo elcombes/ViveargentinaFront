@@ -64,7 +64,7 @@ export default function Card(props) {
         imageUrl: "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663003831/VivaArg/Alerts/2_wsn0oa.png",
         imageWidth: 350,
         imageHeight: 300,
-        confirmButtonColor:"#C49D48",
+        confirmButtonColor: "#C49D48",
         imageAlt: "Custom image",
       });
     }
@@ -297,13 +297,15 @@ export default function Card(props) {
                                   }}
                                 />
                                 <div>
-                                  <i
-                                    class="bi bi-heart-fill"
-                                    style={{
-                                      fontSize: "20px",
-                                      paddingTop: "2vh",
-                                    }}
-                                  ></i>
+                                  <button className="btn btn-outline-secondary" style={{ marginTop: "10px", borderColor:"transparent"}}>
+                                    <i
+                                      class="bi bi-heart-fill"
+                                      style={{
+                                        fontSize: "20px",
+                                       
+                                      }}
+                                    ></i>
+                                  </button>
                                 </div>
                                 <div className="mt-5">
                                   <h2
@@ -511,7 +513,7 @@ export default function Card(props) {
                         {/* Fin Modal */}
                       </div>
 
-                      <div className="col-md-6">
+                      <div className="col-md-6" >
                         <div className={styles.citybuttons}>
                           <Link to={"/experiences/" + e.id}>
                             <button
