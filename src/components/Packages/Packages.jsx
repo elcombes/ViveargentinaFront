@@ -10,7 +10,7 @@ import Footer from "../Footer/Footer";
 import FilterPackages from "../../components/Filters/FilterPackages";
 import { getAllPackages, getCityById, orderPackages } from "../../redux/action";
 import { useHistory } from "react-router-dom";
-import { getLsUser } from "./../../redux/action.js";
+import { getLsUser, addPackageFavorite } from "./../../redux/action.js";
 
 export default function Card(props) {
   let prevId = 1;
@@ -126,6 +126,13 @@ export default function Card(props) {
       });
     }
   };
+  const addPackagesFavorites = (packageId) => {
+    let user = JSON.parse(localStorage.getItem("user"));
+    let userId = user.user.id;
+
+    dispatch(addPackageFavorite(packageId, userId))
+  }
+
 
   //   Fin Precart
 
@@ -297,13 +304,10 @@ export default function Card(props) {
                                   }}
                                 />
                                 <div>
-                                  <button className="btn btn-outline-secondary" style={{ marginTop: "10px", borderColor:"transparent"}}>
-                                    <i
-                                      class="bi bi-heart-fill"
-                                      style={{
-                                        fontSize: "20px",
-                                       
-                                      }}
+                                  <button style={{ marginTop: "10px", borderColor: "transparent" }} onClick={(()=> addPackagesFavorites(e.id))}>
+                                    <i class="bi bi-heart-fill" style={{
+                                      fontSize: "20px",
+                                    }}
                                     ></i>
                                   </button>
                                 </div>
