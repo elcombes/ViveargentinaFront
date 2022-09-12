@@ -53,6 +53,7 @@ export default function Experiences(props) {
     pax: 1,
     dates: "",
     image: "",
+    experienceId: "",
     tipe: "experience",
   });
 
@@ -63,9 +64,10 @@ export default function Experiences(props) {
     });
   };
 
-  const handleClickPreCart = (name, price, image) => {
+  const handleClickPreCart = (name, price, image, experienceId) => {
     setItem({
       ...item,
+      experienceId: experienceId,
       name: name,
       image: image,
       price: price,
@@ -129,6 +131,7 @@ export default function Experiences(props) {
         pax: 1,
         dates: "",
         image: "",
+        experienceId: "",
         tipe: "experience",
       });
       return Swal.fire({
@@ -262,7 +265,12 @@ export default function Experiences(props) {
                         <button
                           type="button"
                           onClick={() =>
-                            handleClickPreCart(e.name, e.price, e.image)
+                            handleClickPreCart(
+                              e.name,
+                              e.price,
+                              e.image,
+                              e.experienceId
+                            )
                           }
                           className="btn btn-outline-secondary btn-lg"
                           data-bs-toggle="modal"
