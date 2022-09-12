@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './SideBar.css';
 
 export default function SideBar() {
@@ -7,15 +8,25 @@ export default function SideBar() {
             <div className="container__sidebar">
                 <ul className="sidebar">
                     <br />
-                    <li><i class="bi bi-airplane-fill"></i> PACKS</li>
+                    <li>
+                        <Link to='/admin/packs'><i class="bi bi-airplane-fill"></i> PACKS</Link>
+                    </li>
                     <br />
-                    <li><i class="bi bi-compass"></i> EXPERIENCES</li>
+                    <li>
+                        <Link to='/admin/experiences'><i class="bi bi-compass"></i> EXPERIENCES</Link>
+                    </li>
                     <br />
-                    <li><i class="bi bi-cart4"></i> SALES</li>
+                    <li>
+                        <Link to='/admin/sales'><i class="bi bi-cart4"></i> SALES</Link>
+                    </li>
                     <br />
-                    <li><i class="bi bi-person-circle"></i> USERS</li>
+                    <li>
+                        <Link to='/admin/users'><i class="bi bi-person-circle"></i> USERS</Link>
+                    </li>
                     <br />
-                    <li><i class="bi bi-bell-fill"></i> NOTIFICATIONS</li>
+                    <li>
+                        <Link to='/admin/notifications'><i class="bi bi-bell-fill"></i> NOTIFICATIONS</Link>
+                    </li>
                 </ul>
             </div>
         </div>
