@@ -85,7 +85,7 @@ export default function Experiences() {
                 <div className="modal-content">
                   <div className="modal-header">
                     <h5 className="modal-title" id="cexampleModalLabel">
-                      Create a new experience
+                      CREATE A NEW EXPERIENCE
                     </h5>
                     <button
                       type="button"
@@ -104,7 +104,7 @@ export default function Experiences() {
                           md="12"
                           controlId="validationCustom01"
                         >
-                          <Form.Label>Title</Form.Label>
+                          <Form.Label>TITLE</Form.Label>
                           <Form.Control
                             required
                             type="text"
@@ -125,7 +125,7 @@ export default function Experiences() {
                           md="12"
                           controlId="validationCustom02"
                         >
-                          <Form.Label>Subtitle</Form.Label>
+                          <Form.Label>SUBTITLE</Form.Label>
                           <Form.Control
                             required
                             type="text"
@@ -145,7 +145,7 @@ export default function Experiences() {
                           md="4"
                           controlId="validationCustom03"
                         >
-                          <Form.Label>Price $</Form.Label>
+                          <Form.Label>PRICE $</Form.Label>
                           <Form.Control
                             type="number"
                             placeholder="Ex: 7.500"
@@ -163,7 +163,7 @@ export default function Experiences() {
                           md="4"
                           controlId="validationCustom04"
                         >
-                          <Form.Label>Duration</Form.Label>
+                          <Form.Label>DURATION</Form.Label>
                           <Form.Control
                             type="text"
                             placeholder="Ex: 3 hours"
@@ -181,7 +181,7 @@ export default function Experiences() {
                           md="4"
                           controlId="validationCustom05"
                         >
-                          <Form.Label>Stock</Form.Label>
+                          <Form.Label>STOCK</Form.Label>
                           <Form.Control
                             type="number"
                             placeholder="Ex: 3"
@@ -201,7 +201,7 @@ export default function Experiences() {
                           md="12"
                           controlId="validationCustom06"
                         >
-                          <Form.Label>Description</Form.Label>
+                          <Form.Label>DESCRIPTION</Form.Label>
                           <Form.Control
                             as="textarea"
                             rows={3}
@@ -229,7 +229,7 @@ export default function Experiences() {
                             value={newExperience.categoryId}
                             onChange={(e) => handleChange(e)}
                           >
-                            <option selected>Select a category</option>
+                            <option selected>SELECT A CATEGORY</option>
                             {allCategories && allCategories.sort((a, b) => {
                                   if (a.name < b.name) return -1;
                                   if (a.name > b.name) return 1;
@@ -259,7 +259,7 @@ export default function Experiences() {
                             value={newExperience.packageId}
                             onChange={(e) => handleChange(e)}
                           >
-                            <option selected>Select a package</option>
+                            <option selected>SELECT A PACKAGE</option>
                             {allPackages &&
                               allPackages
                                 .sort((a, b) => {
@@ -280,7 +280,7 @@ export default function Experiences() {
                       </Row>
                       <Row className="mb-1">
                         <Form.Label>
-                          <i className="bi bi-card-image"></i> Images
+                          <i className="bi bi-card-image"></i> IMAGES
                         </Form.Label>
                         <Form.Group
                           as={Col}
@@ -303,12 +303,12 @@ export default function Experiences() {
                       <Form.Group className="mb-3">
                         <Form.Check
                           required
-                          label="Agree to terms and conditions"
+                          label="AGREE TO TERMS AND CONDITIONS"
                           feedback="You must agree before submitting."
                           feedbackType="invalid"
                         />
                       </Form.Group>
-                      <Button type="submit">Submit form</Button>
+                      <Button style={{backgroundColor:"#C49D48", fontSize:"15px"}}className="btn btn-outline-secondary"type="submit">CREATE EXPERIENCE</Button>
                     </Form>
                   </div>
                 </div>

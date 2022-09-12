@@ -82,7 +82,7 @@ export default function Experiences(props) {
         imageUrl: "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663003831/VivaArg/Alerts/2_wsn0oa.png",
         imageWidth: 350,
         imageHeight: 300,
-        confirmButtonColor:"#C49D48",
+        confirmButtonColor: "#C49D48",
         imageAlt: "Custom image",
       });
     }
@@ -301,17 +301,17 @@ export default function Experiences(props) {
                                 src={e.image}
                                 alt=""
                               />
-                                <div>
-                                <button className="btn btn-outline-secondary" style={{ marginTop: "10px", borderColor:"transparent"}}>
-                                    <i
-                                      class="bi bi-heart-fill"
-                                      style={{
-                                        fontSize: "20px",
-                                        paddingTop: "2vh",
-                                      }}
-                                    ></i>
-                                  </button>
-                                </div>
+                              <div>
+                                <button className="btn btn-outline-secondary" style={{ marginTop: "10px", borderColor: "transparent" }}>
+                                  <i
+                                    class="bi bi-heart-fill"
+                                    style={{
+                                      fontSize: "20px",
+                                      paddingTop: "2vh",
+                                    }}
+                                  ></i>
+                                </button>
+                              </div>
                               <div className="mt-5">
                                 <h2
                                   className="modal-title"
@@ -523,10 +523,6 @@ export default function Experiences(props) {
               paged={paged}
               currentPage={page}
             />
-          </div>
-
-          <div className={styles.experiencesbuttons}>
-            <CreateExperience />
           </div>
           <div className={styles.separator}></div>
           <div className="container">
