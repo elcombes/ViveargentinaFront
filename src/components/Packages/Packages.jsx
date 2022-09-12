@@ -60,21 +60,21 @@ export default function Card(props) {
   const handleClick = () => {
     if (document.getElementById(`${item.name} passengers`).value <= 0) {
       return Swal.fire({
-        title: "You must add at least one passenger",
-        text: item.name,
-        imageUrl: item.image,
-        imageWidth: 400,
-        imageHeight: 200,
+        title: "YOU MUST ADD AT LEAST ONE PASSENGER",
+        imageUrl: "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663003831/VivaArg/Alerts/2_wsn0oa.png",
+        imageWidth: 350,
+        imageHeight: 300,
+        confirmButtonColor:"#C49D48",
         imageAlt: "Custom image",
       });
     }
     if (document.getElementById(`${item.name} dates`).value === "select") {
       return Swal.fire({
-        title: "You must select a date to continue",
-        text: item.name,
-        imageUrl: item.image,
-        imageWidth: 400,
-        imageHeight: 200,
+        title: "YOU MUST SELECT A DATE TO CONTINUE",
+        imageUrl: "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663003830/VivaArg/Alerts/1_yrqksk.png",
+        imageWidth: 350,
+        imageHeight: 300,
+        confirmButtonColor: "#C49D48",
         imageAlt: "Custom image",
       });
     }
@@ -89,11 +89,11 @@ export default function Card(props) {
     ) {
       document.getElementById(`${item.name} dates`).value = "select";
       return Swal.fire({
-        title: "You already have this item in your cart",
-        text: item.name,
-        imageUrl: item.image,
-        imageWidth: 400,
-        imageHeight: 200,
+        title: "YOU ALREADY HAVE THIS ITEM IN YOUR CART",
+        imageUrl: "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663003831/VivaArg/Alerts/3_zmfk4m.png",
+        imageWidth: 350,
+        imageHeight: 300,
+        confirmButtonColor: "#C49D48",
         imageAlt: "Custom image",
       });
     }
@@ -116,11 +116,12 @@ export default function Card(props) {
         tipe: "package",
       });
       return Swal.fire({
-        title: "Added to cart successfully!",
+        title: "ADDED TO CART SUCCESSFULLY!",
         text: item.name,
         imageUrl: item.image,
         imageWidth: 400,
         imageHeight: 200,
+        confirmButtonColor: "#C49D48",
         imageAlt: "Custom image",
       });
     }
