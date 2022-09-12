@@ -26,7 +26,7 @@ export const REGISTER_USER = "REGISTER_USER";
 export const GOOGLE_LOGIN = "GOOGLE_LOGIN";
 export const BUY_IN_MERCADOPAGO = "BUY_IN_MERCADOPAGO";
 export const VERIFY_USER = "VERIFY_USER";
-export const CONTACTUS = "CONTACTUS"
+export const CONTACTUS = "CONTACTUS";
 
 // Esta ruta envía una compra a la pasarela de mercadopago
 export function buyInMercadoPago(itemsFromStore) {
@@ -93,20 +93,32 @@ export function removeExperienceFavorite(userId, experienceId) {
 }
 
 // Esta ruta añade un paquete a comprados del usuario
-export function addPackageBought(userId, packageId) {
+export function addPackageBought(userId, package1) {
   return async function () {
-    await axios.post(
-      `https://localhost:3001/bought/packges?userId=${userId}&packageId${packageId}`
-    );
+    try {
+      let response = await axios.post(
+        `http://localhost:3001/bought/packages?userId=${userId}`,
+        package1
+      );
+      return console.log(response.data);
+    } catch (e) {
+      console.log(e);
+    }
   };
 }
 
 // Esta ruta añade una experiencia a comprados del usuario
-export function addExperienceBought(userId, experienceId) {
+export function addExperienceBought(userId, experience) {
   return async function () {
-    await axios.post(
-      `https://localhost:3001/bought/experiences?userId=${userId}&experienceId${experienceId}`
-    );
+    try {
+      let response = await axios.post(
+        `http://localhost:3001/bought/experiences?userId=${userId}`,
+        experience
+      );
+      return console.log(response.data);
+    } catch (e) {
+      console.log(e);
+    }
   };
 }
 
@@ -122,23 +134,23 @@ export function registerUser({ first_name, last_name, email, password }) {
 }
 
 //Esta funcion envia un correo electronico a vaviveargentina@gmail.com con la info de contactUs
-export function contactUs({name, lastName, email, message}) {
+export function contactUs({ name, lastName, email, message }) {
   return async function () {
-    console.log({name, lastName, email, message})
+    console.log({ name, lastName, email, message });
     await fetch(`https://viveargentina.herokuapp.com/contactus/`, {
       method: "POST",
       headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        Accept: "application/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         name: name,
         lastName: lastName,
         email: email,
-        message: message
-      })
-    }).then((response)=>{
-      console.log(response)
+        message: message,
+      }),
+    }).then((response) => {
+      console.log(response);
     });
   };
 }

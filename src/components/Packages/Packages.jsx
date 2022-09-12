@@ -30,13 +30,15 @@ export default function Card(props) {
     pax: 1,
     dates: "",
     image: "",
+    packageId: "",
     tipe: "package",
   });
 
-  const handleChange = (e, name, price, image) => {
+  const handleChange = (e, name, price, image, id) => {
     setItem({
       ...item,
       [e.target.name]: e.target.value,
+      packageId: id,
       name,
       price,
       image,
@@ -44,9 +46,10 @@ export default function Card(props) {
     });
   };
 
-  const handleClickPreCart = (name, price, image) => {
+  const handleClickPreCart = (name, price, image, id) => {
     setItem({
       ...item,
+      packageId: id,
       name: name,
       image: image,
       price: price,
@@ -109,6 +112,7 @@ export default function Card(props) {
         pax: 1,
         dates: "",
         image: "",
+        packageId: "",
         tipe: "package",
       });
       return Swal.fire({
@@ -257,7 +261,7 @@ export default function Card(props) {
                           <button
                             type="button"
                             onClick={() =>
-                              handleClickPreCart(e.name, e.price, e.image)
+                              handleClickPreCart(e.name, e.price, e.image, e.id)
                             }
                             className="btn btn-outline-secondary btn-lg"
                             data-bs-toggle="modal"
@@ -389,7 +393,8 @@ export default function Card(props) {
                                             event,
                                             e.name,
                                             e.price,
-                                            e.image
+                                            e.image,
+                                            e.id
                                           )
                                         }
                                         style={{
@@ -420,7 +425,8 @@ export default function Card(props) {
                                             event,
                                             e.name,
                                             e.price,
-                                            e.image
+                                            e.image,
+                                            e.id
                                           )
                                         }
                                         name="dates"
