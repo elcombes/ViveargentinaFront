@@ -1,11 +1,13 @@
-
-
 import Dropdown from "react-bootstrap/Dropdown";
 import React, { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ItemCart from "./ItemCart";
 import MercadoPago from "./MercadoPago";
-import { buyInMercadoPago } from "./../../redux/action.js";
+import {
+  buyInMercadoPago,
+  addExperienceBought,
+  addPackageBought,
+} from "./../../redux/action.js";
 import styles from "./Cart.module.css";
 
 import Button from "react-bootstrap/Button";
@@ -53,9 +55,16 @@ export default function Cart() {
 
   function onClickBuy() {
     setBuy(true);
-    let userId = JSON.parse(localStorage.getItem("user"));
-
+    let user = JSON.parse(localStorage.getItem("user"));
+    let userId = user.user.id;
     itemsFromStore = JSON.parse(localStorage.getItem("items"));
+    itemsFromStore.forEach((i) => {
+      if (i.tipe === "package") {
+        dispatch(addPackageBought(userId, i));
+      } else if (i.tipe === "experience") {
+        dispatch(addExperienceBought(userId, i));
+      }
+    });
     dispatch(buyInMercadoPago(itemsFromStore));
   }
 
@@ -86,8 +95,12 @@ export default function Cart() {
         >
           <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="offcanvasRightLabel">
-              <h4 style={{fontSize:"30px", color:"white"}}>
-                <i class="bi bi-cart"style={{fontSize:"30px",margin:"20px"}}></i> MY CART
+              <h4 style={{ fontSize: "30px", color: "white" }}>
+                <i
+                  class="bi bi-cart"
+                  style={{ fontSize: "30px", margin: "20px" }}
+                ></i>{" "}
+                MY CART
               </h4>
             </h5>
             <button
@@ -129,9 +142,13 @@ export default function Cart() {
           }}
         >
           <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasRightLabel">
-              <h4 style={{fontSize:"30px", color:"white"}}>
-                <i class="bi bi-cart"style={{fontSize:"30px",margin:"20px"}}></i> MY CART
+            <h5 class="offcanvas-title" id="offcanvasRightLabel">
+              <h4 style={{ fontSize: "30px", color: "white" }}>
+                <i
+                  class="bi bi-cart"
+                  style={{ fontSize: "30px", margin: "20px" }}
+                ></i>{" "}
+                MY CART
               </h4>
             </h5>
             <button
