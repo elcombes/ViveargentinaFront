@@ -105,11 +105,13 @@ export function changePassword(token, password, newPassword){
 }
 
 // Esta ruta añade un paquete a favoritos del usuario
-export function addPackageFavorite(userId, packageId) {
+export function addPackageFavorite(packageId, userId) {
+
   return async function () {
-    await axios.post(
-      `https://localhost:3001/favorites/packges?userId=${userId}&packageId${packageId}`
+    let responde= await axios.post(
+      `https://viveargentina.herokuapp.com/favorites/packages?userId=${userId}&packageId${packageId}`
     );
+    console.log(responde)
   };
 }
 
@@ -117,7 +119,7 @@ export function addPackageFavorite(userId, packageId) {
 export function addExperienceFavorite(userId, experienceId) {
   return async function () {
     await axios.post(
-      `https://localhost:3001/favorites/experiences?userId=${userId}&experienceId${experienceId}`
+      `https://viveargentina.herokuapp.com/favorites/experiences?userId=${userId}&experienceId${experienceId}`
     );
   };
 }
@@ -126,7 +128,7 @@ export function addExperienceFavorite(userId, experienceId) {
 export function removePackageFavorite(userId, packageId) {
   return async function () {
     await axios.put(
-      `https://localhost:3001/favorites/packges?userId=${userId}&packageId${packageId}`
+      `https://viveargentina.herokuapp.com/favorites/packges?userId=${userId}&packageId${packageId}`
     );
   };
 }
@@ -135,7 +137,7 @@ export function removePackageFavorite(userId, packageId) {
 export function removeExperienceFavorite(userId, experienceId) {
   return async function () {
     await axios.put(
-      `https://localhost:3001/favorites/experiences?userId=${userId}&experienceId${experienceId}`
+      `https://viveargentina.herokuapp.com/favorites/experiences?userId=${userId}&experienceId${experienceId}`
     );
   };
 }
@@ -145,7 +147,7 @@ export function addPackageBought(userId, package1) {
   return async function () {
     try {
       let response = await axios.post(
-        `http://localhost:3001/bought/packages?userId=${userId}`,
+        `http://viveargentina.herokuapp.com/bought/packages?userId=${userId}`,
         package1
       );
       return console.log(response.data);
@@ -160,7 +162,7 @@ export function addExperienceBought(userId, experience) {
   return async function () {
     try {
       let response = await axios.post(
-        `http://localhost:3001/bought/experiences?userId=${userId}`,
+        `http://viveargentina.herokuapp.com/bought/experiences?userId=${userId}`,
         experience
       );
       return console.log(response.data);
