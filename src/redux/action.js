@@ -71,15 +71,14 @@ export function verifyUser(token) {
 }
 
 //
-export function passwordReset(token, password){
+export function passwordReset({token, password}){
   return async function(){
     const headers = {
       Accept: "application/json",
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     }
-    const response = await axios.post("https://viveargentina.herokuapp.com/users/password_reset", {password}, headers)
-    console.log("response: "+response);
+    const response = await axios.post("https://viveargentina.herokuapp.com/users/password_reset/", {password}, {headers})
   }
 }
 
@@ -99,7 +98,7 @@ export function changePassword(token, password, newPassword){
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     }
-    const response = await axios.post('https://viveargentina.herokuapp.com/users/change_password',{password, newPassword}, headers)
+    const response = await axios.post('https://viveargentina.herokuapp.com/users/change_password',{password, newPassword}, {headers})
     console.log("response: "+response);
   }
 }

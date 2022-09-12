@@ -15,13 +15,17 @@ function ResetPassword() {
         alert: ""
     })
     
-    const handleSubmit = (e)=>{
+    const handleSubmit = async (e)=>{
         e.preventDefault();
-        console.log("New Password: "+state.newPassword)
+        if(validate()){
+            await dispatch(passwordReset({token: token, password: state.newPassword}))
+            history.push("/home")
+        }
     }
 
     const validate = ()=>{
-        if(state.newPassword === ""){
+        console.log(state)
+        if(state.newPassword.length<1){
             setState({
                 ...state,
                 alert: "please enter the new password"
@@ -46,7 +50,7 @@ function ResetPassword() {
             ...state,
             [e.target.name]: e.target.value,
         });
-        validate()
+        // validate()
     };
 
     return(
@@ -56,11 +60,13 @@ function ResetPassword() {
                 <form onSubmit={handleSubmit}>
                     <div>
                         <label>New Password: </label>
-                        <input type="password" name="newPassword" onChange={(e)=>handleChange(e)}/>
+                        <input type="password" name="newPassword" value={state.newPassword} onChange={(e)=>handleChange(e)} placeholder="Entert password"/>
+                        <p>{state.newPassword}</p>
                     </div>
                     <div>
                         <label>Repeat New Password: </label>
-                        <input type="password" name="repeatPassword" onChange={(e)=>handleChange(e)}/>
+                        <input type="password" name="repeatPassword" value={state.repeatPassword} onChange={(e)=>handleChange(e)} placeholder="Entert password"/>
+                        <p>{state.repeatPassword}</p>
                     </div>
                     <div>
                         <button type='submit' onClick={(e)=>handleSubmit(e)}>Submit</button>
