@@ -164,7 +164,10 @@ export default function Profile() {
       </div>
 
       <div id="myfavs">
-        <MyFavs />
+        <MyFavs
+          packages={userById.packages}
+          experiences={userById.experiences}
+        />
       </div>
     </Fragment>
   );
