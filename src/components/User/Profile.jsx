@@ -1,73 +1,150 @@
 import React, { Fragment, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import perfil_user from "../../assets/perfil_user.png";
-import NavBarUser from "../NavBarUser/NavBarUser"
+import NavBarUser from "../NavBarUser/NavBarUser";
 import MyTrips from "../User/MyTrips";
 import MyFavs from "../User/MyFavs";
-
-
-
+import { getUserById } from "./../../redux/action.js";
 
 // Ruta agregada en App. js --> Route path="/userprofile"
 // Agrego un Link de Prueba en NavBar.jsx para entrar a Profile y probar el state de User Info
 export default function Profile() {
+  const userById = useSelector((state) => state.userById);
+  const dispatch = useDispatch();
+
   let userFromStorage = JSON.parse(localStorage.getItem("user"));
 
   useEffect(() => {
     userFromStorage = JSON.parse(localStorage.getItem("user"));
+    let userId = userFromStorage.user.id;
+    dispatch(getUserById(userId));
   }, []);
 
   return (
     <Fragment>
-
-      <section className="vh-100" style={{
-        backgroundImage: "url(" + "https://wallpaperaccess.com/full/5775649.jpg" + ")",
-        backgroundPosition: 'center',
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat',
-        
-      }}>
-        <div className="container py-5 h-100" >
+      <section
+        className="vh-100"
+        style={{
+          backgroundImage:
+            "url(" + "https://wallpaperaccess.com/full/5775649.jpg" + ")",
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        <div className="container py-5 h-100">
           <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col col-lg-6 mb-4 mb-lg-0">
-              <div className="card mb-3" style={{ borderRadius: "8px", boxShadow: "0 8px 8px 0 rgba(0, 0, 0, 0.15)" }}>
+              <div
+                className="card mb-3"
+                style={{
+                  borderRadius: "8px",
+                  boxShadow: "0 8px 8px 0 rgba(0, 0, 0, 0.15)",
+                }}
+              >
                 <div className="row g-0">
-                  <div className="col-md-4 gradient-custom text-center text-white"
-                    style={{ borderTopLeftRadius: ".5rem", borderBottomLeftRadius: ".5rem", borderColor: "#C49D48", background: "linear-gradient(to top,  #ffffff 0%,#C49D48 100%)" }}>
-                    <img src={userFromStorage.user.photo
-                      ? userFromStorage.user.photo
-                      : perfil_user}
-                      alt="user photo" className="img-fluid my-5" style={{ borderRadius: "50px", width: "80px" }} />
-                    <h5 style={{ fontSize: "20px", color: "black", textTransform: "uppercase", marginBottom: "10px" }}>{userFromStorage.user.first_name}</h5>
-                    <h5 style={{ fontSize: "20px", color: "black", textTransform: "uppercase", marginBottom: "20px" }}>{userFromStorage.user.last_name}</h5>
+                  <div
+                    className="col-md-4 gradient-custom text-center text-white"
+                    style={{
+                      borderTopLeftRadius: ".5rem",
+                      borderBottomLeftRadius: ".5rem",
+                      borderColor: "#C49D48",
+                      background:
+                        "linear-gradient(to top,  #ffffff 0%,#C49D48 100%)",
+                    }}
+                  >
+                    <img
+                      src={
+                        userFromStorage.user.photo
+                          ? userFromStorage.user.photo
+                          : perfil_user
+                      }
+                      alt="user photo"
+                      className="img-fluid my-5"
+                      style={{ borderRadius: "50px", width: "80px" }}
+                    />
+                    <h5
+                      style={{
+                        fontSize: "20px",
+                        color: "black",
+                        textTransform: "uppercase",
+                        marginBottom: "10px",
+                      }}
+                    >
+                      {userFromStorage.user.first_name}
+                    </h5>
+                    <h5
+                      style={{
+                        fontSize: "20px",
+                        color: "black",
+                        textTransform: "uppercase",
+                        marginBottom: "20px",
+                      }}
+                    >
+                      {userFromStorage.user.last_name}
+                    </h5>
                     <i className="far fa-edit mb-5"></i>
-
                   </div>
                   <div className="col-md-8">
                     <div className="card-body p-4">
-                      <h6 style={{ fontSize: "15px", textTransform: "uppercase" }}>My Info</h6>
+                      <h6
+                        style={{ fontSize: "15px", textTransform: "uppercase" }}
+                      >
+                        My Info
+                      </h6>
                       <hr className="mt-0 mb-4" />
                       <div className="row pt-1">
                         <div className="col-6 mb-3">
-                          <h6 style={{ fontSize: "10px", textTransform: "uppercase" }}>Email</h6>
-                          <p className="text-muted" style={{ fontSize: "15px", fontFamily: "Roboto" }}>{userFromStorage.user.email}</p>
+                          <h6
+                            style={{
+                              fontSize: "10px",
+                              textTransform: "uppercase",
+                            }}
+                          >
+                            Email
+                          </h6>
+                          <p
+                            className="text-muted"
+                            style={{ fontSize: "15px", fontFamily: "Roboto" }}
+                          >
+                            {userFromStorage.user.email}
+                          </p>
                         </div>
                         <div className="col-6 mb-3">
-                          <h6 style={{ fontSize: "10px", textTransform: "uppercase" }}>Phone</h6>
-                          <p style={{ fontSize: "15px", fontFamily: "Roboto" }} className="text-muted">123 456 789</p>
+                          <h6
+                            style={{
+                              fontSize: "10px",
+                              textTransform: "uppercase",
+                            }}
+                          >
+                            Phone
+                          </h6>
+                          <p
+                            style={{ fontSize: "15px", fontFamily: "Roboto" }}
+                            className="text-muted"
+                          >
+                            123 456 789
+                          </p>
                         </div>
-
                       </div>
-
 
                       <hr className="mt-0 mb-4" />
 
                       <div className="column-2">
-
-                        <button className="btn btn-outline-secondary"> <a href="#mytrips">CLICK ME TO SEE YOUR TRIPS</a></button>
-                        <button className="btn btn-outline-secondary"> <a href="#myfavs">CLICK ME TO SEE YOUR FAVS</a></button>
+                        <button className="btn btn-outline-secondary">
+                          {" "}
+                          <a href="#mytrips">CLICK ME TO SEE YOUR TRIPS</a>
+                        </button>
+                        <button className="btn btn-outline-secondary">
+                          {" "}
+                          <a href="#myfavs">CLICK ME TO SEE YOUR FAVS</a>
+                        </button>
                         <Link to="/home">
-                        <button className="btn btn-outline-secondary"> <a href="#myfavs"> HOME</a></button>
+                          <button className="btn btn-outline-secondary">
+                            {" "}
+                            <a href="#myfavs"> HOME</a>
+                          </button>
                         </Link>
                       </div>
                     </div>
@@ -80,13 +157,15 @@ export default function Profile() {
       </section>
 
       <div id="mytrips">
-        <MyTrips />
+        <MyTrips
+          packages={userById.packages}
+          experiences={userById.experiences}
+        />
       </div>
 
       <div id="myfavs">
         <MyFavs />
       </div>
-
     </Fragment>
   );
 }

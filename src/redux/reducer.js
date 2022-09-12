@@ -21,9 +21,11 @@ import {
   GET_LS_USER,
   GOOGLE_LOGIN,
   BUY_IN_MERCADOPAGO,
+  GET_USER_BY_ID,
 } from "./action";
 
 const initialState = {
+  userById: {},
   cityById: {},
   allCities: [],
   allPackages: [],
@@ -48,6 +50,11 @@ export default function rootReducer(state = initialState, action) {
   let userExperiencesFavorite;
   let userPackagesFavorite;
   switch (action.type) {
+    case GET_USER_BY_ID:
+      return {
+        ...state,
+        userById: action.payload,
+      };
     case BUY_IN_MERCADOPAGO:
       return {
         ...state,
