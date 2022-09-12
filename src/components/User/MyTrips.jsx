@@ -3,27 +3,30 @@ import React, { Fragment, useEffect } from "react";
 import styles from "./User.module.css";
 
 export default function MyTrips({ packages, experiences }) {
-  console.log(packages);
-  console.log(experiences);
+  let packagesBought =
+    packages &&
+    packages.filter((p) => {
+      return p.reservation_package.bought === true;
+    });
+  let experiencesBought =
+    experiences &&
+    experiences.filter((e) => {
+      return e.reservation_experience.bought === true;
+    });
 
   return (
     <Fragment>
-      <div
-        style={{ margin: "10vh" }}
-        className={`container-fluid ${styles.mytripspage}`}
-      >
+      <div className="container-fluid">
         <div className="container">
-          <div className="row mb-3">
+          <div className="row mb-3 mt-5">
             <h2 className="text-center">
-              <i className={`bi bi-airplane-fill ${styles.tripicon}`}></i> MY
-              TRIPS LIST
-            </h2>
+              <i className={`bi bi-airplane-fill ${styles.tripicon}`}></i> MY TRIPS LIST </h2>
           </div>
 
           {
             /* INICIO ITEM PACKAGES */
-            packages &&
-              packages.map((p) => {
+            packagesBought &&
+              packagesBought.map((p) => {
                 return (
                   <div className={`row ${styles.itemmytrips}`}>
                     <div className="col-md-6">
@@ -51,12 +54,6 @@ export default function MyTrips({ packages, experiences }) {
                           <p>{p.reservation_package.status}</p>
                         </div>
                         <div className="col-md-6 text-center">
-                          <button
-                            type="button"
-                            className="btn btn-outline-secondary"
-                          >
-                            <i className="bi bi-trash3-fill"></i> DELETE
-                          </button>
                           <button type="button" className="btn btn-secondary">
                             <i className="bi bi-cart"></i> BUY AGAIN!
                           </button>
@@ -71,8 +68,8 @@ export default function MyTrips({ packages, experiences }) {
 
           {
             /* INICIO ITEM PACKAGES */
-            experiences &&
-              experiences.map((e) => {
+            experiencesBought &&
+              experiencesBought.map((e) => {
                 return (
                   <div className={`row ${styles.itemmytrips}`}>
                     <div className="col-md-6">
@@ -100,12 +97,6 @@ export default function MyTrips({ packages, experiences }) {
                           <p>{e.reservation_experience.status}</p>
                         </div>
                         <div className="col-md-6 text-center">
-                          <button
-                            type="button"
-                            className="btn btn-outline-secondary"
-                          >
-                            <i className="bi bi-trash3-fill"></i> DELETE
-                          </button>
                           <button type="button" className="btn btn-secondary">
                             <i className="bi bi-cart"></i> BUY AGAIN!
                           </button>
