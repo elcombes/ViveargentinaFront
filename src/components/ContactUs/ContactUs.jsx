@@ -83,7 +83,7 @@ export default function ContactUs() {
         <input type="checkbox" id="checkbox" name="checkbox" checked/> Yes, I would like to receive information about discounts, promotions, packages and experiences available..
       </p>
       <p class="full-width">
-        <input type="submit" class="submit-btnContact" value="Submit" onClick={(e)=>handleSubmit(e)}/>
+        <input type="submit" class="btn btn-outline-secondary" value="Submit" onClick={(e)=>handleSubmit(e)}/>
       </p>
     </form>
   </div>
@@ -100,7 +100,6 @@ export default function ContactUs() {
   </div>
 </div>
 </div>
-<Footer/>
   </Fragment>
     )
 }

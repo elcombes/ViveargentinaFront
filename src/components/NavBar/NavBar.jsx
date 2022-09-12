@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-import "./NavBar.css";
+import styles from "./NavBar.css";
 
 import Register from "../User/Register";
 import Login from "../User/Login";
@@ -48,7 +48,7 @@ function Navbar() {
           </li>
           <li className="nav__item">
             <a href="/contact_us" className="nav__link">
-              CONTACT US
+              CONTACT 
             </a>
           </li>
           <li>
@@ -59,7 +59,7 @@ function Navbar() {
             <Login />
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#" style={{ borderColor: "#C49D48", color: "#C49D48", fontSize: "18px" }}>MY TRIPS</a>
+            <a class="nav-link" href="#" style={{ borderColor: "#C49D48", color: "#C49D48", fontSize: "15px" }}>MY TRIPS</a>
           </li>
           <li>
             <Cart/>

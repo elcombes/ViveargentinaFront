@@ -1,0 +1,52 @@
+ .cell-1 {
+    border-collapse: separate;
+    border-spacing: 0 4em;
+    border-bottom: 5px solid transparent;
+    background-color: #DFE0DF;
+    background-clip: padding-box;
+
+  }
+  .table-body{
+    font-family: Roboto;
+    font-weight: 300;
+  }
+  thead {
+    background: #634100;
+    color: white;
+  }
+  
+  .toggle-btn {
+    width: 40px;
+    height: 21px;
+    background: grey;
+    border-radius: 50px;
+    padding: 3px;
+    cursor: pointer;
+    -webkit-transition: all 0.3s 0.1s ease-in-out;
+    -moz-transition: all 0.3s 0.1s ease-in-out;
+    -o-transition: all 0.3s 0.1s ease-in-out;
+    transition: all 0.3s 0.1s ease-in-out;
+  }
+  
+  .toggle-btn > .inner-circle {
+    width: 15px;
+    height: 15px;
+    background: #fff;
+    border-radius: 50%;
+    -webkit-transition: all 0.3s 0.1s ease-in-out;
+    -moz-transition: all 0.3s 0.1s ease-in-out;
+    -o-transition: all 0.3s 0.1s ease-in-out;
+    transition: all 0.3s 0.1s ease-in-out;
+  }
+  
+  .toggle-btn.active {
+    background: blue;
+  }
+  
+  .toggle-btn.active > .inner-circle {
+    margin-left: 19px;
+  }
+  
+  .statusChange{
+    margin-right: 30px;
+  }

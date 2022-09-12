@@ -14,7 +14,7 @@ export default function Footer() {
                             <p className={styles.descriptionfooter}>"Vive Argentina" is an app made for the final project of Soy Henry's FullStack career. It is developed with software tools such as JS, React, Redux, Axios for the Front end and Node JS and a connection with a postgres DB via Sequelize for Back end.</p>
                         </div>
                         <div className="col-md-4 text-center">
-                            <Link to={'/home'} >
+                            <Link to= "#firstpage" >
                                 <img className={styles.imgfooter} src={logo} alt="logo" name='vive argentina' />
                             </Link>
                         </div>

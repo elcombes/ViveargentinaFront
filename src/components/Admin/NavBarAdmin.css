@@ -8,3 +8,14 @@
     width: 100%;
     color: white;
 }
+.usernavbaritem {
+    display: inline-flex;
+}
+.nav-item{
+    font-size:large;
+    font-weight: 600;
+    margin-left: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}

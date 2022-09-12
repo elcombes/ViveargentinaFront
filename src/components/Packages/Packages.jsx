@@ -10,7 +10,7 @@ import Footer from "../Footer/Footer";
 import FilterPackages from "../../components/Filters/FilterPackages";
 import { getAllPackages, getCityById, orderPackages } from "../../redux/action";
 import { useHistory } from "react-router-dom";
-import { getLsUser } from "./../../redux/action.js"
+import { getLsUser } from "./../../redux/action.js";
 
 export default function Card(props) {
   let prevId = 1;
@@ -30,6 +30,7 @@ export default function Card(props) {
     pax: 1,
     dates: "",
     image: "",
+    tipe: "package",
   });
 
   const handleChange = (e, name, price, image) => {
@@ -38,7 +39,8 @@ export default function Card(props) {
       [e.target.name]: e.target.value,
       name,
       price,
-      image
+      image,
+      tipe: "package",
     });
   };
 
@@ -48,8 +50,9 @@ export default function Card(props) {
       name: name,
       image: image,
       price: price,
-    })
-  }
+      tipe: "package",
+    });
+  };
 
   const handleClick = () => {
     if (document.getElementById(`${item.name} passengers`).value <= 0) {
@@ -62,7 +65,7 @@ export default function Card(props) {
         imageAlt: "Custom image",
       });
     }
-    if (document.getElementById(`${item.name} dates`).value === 'select') {
+    if (document.getElementById(`${item.name} dates`).value === "select") {
       return Swal.fire({
         title: "You must select a date to continue",
         text: item.name,
@@ -76,8 +79,12 @@ export default function Card(props) {
     let arrayItemsStore = JSON.parse(localStorage.getItem("items"));
     // console.log(document.getElementById('dates').value)
     if (arrayItemsStore === null) arrayItemsStore = [];
-    if (arrayItemsStore.find(e => e.name === item.name && e.dates === item.dates)) {
-      document.getElementById(`${item.name} dates`).value = 'select'
+    if (
+      arrayItemsStore.find(
+        (e) => e.name === item.name && e.dates === item.dates
+      )
+    ) {
+      document.getElementById(`${item.name} dates`).value = "select";
       return Swal.fire({
         title: "You already have this item in your cart",
         text: item.name,
@@ -86,30 +93,34 @@ export default function Card(props) {
         imageHeight: 200,
         imageAlt: "Custom image",
       });
-      
     }
-    if (!arrayItemsStore.find(e => e.name === item.name && e.dates === item.dates)) {
-    arrayItemsStore.push(item);
-    localStorage.setItem("items", JSON.stringify(arrayItemsStore));
-    // Alert
-    document.getElementById(`${item.name} dates`).value = 'select'
-    setItem({
-      name: "",
-      price: 0,
-      pax: 1,
-      dates: "",
-      image: "",
-    });
-    return Swal.fire({
-      title: "Added to cart successfully!",
-      text: item.name,
-      imageUrl: item.image,
-      imageWidth: 400,
-      imageHeight: 200,
-      imageAlt: "Custom image",
-    });
-  }
-};
+    if (
+      !arrayItemsStore.find(
+        (e) => e.name === item.name && e.dates === item.dates
+      )
+    ) {
+      arrayItemsStore.push(item);
+      localStorage.setItem("items", JSON.stringify(arrayItemsStore));
+      // Alert
+      document.getElementById(`${item.name} dates`).value = "select";
+      setItem({
+        name: "",
+        price: 0,
+        pax: 1,
+        dates: "",
+        image: "",
+        tipe: "package",
+      });
+      return Swal.fire({
+        title: "Added to cart successfully!",
+        text: item.name,
+        imageUrl: item.image,
+        imageWidth: 400,
+        imageHeight: 200,
+        imageAlt: "Custom image",
+      });
+    }
+  };
 
   //   Fin Precart
 
@@ -121,7 +132,7 @@ export default function Card(props) {
   let userAuth = useSelector((state) => state.userAuth);
 
   useEffect(() => {
-    dispatch(getLsUser())
+    dispatch(getLsUser());
     if (cityId) {
       dispatch(getCityById(cityId));
     } else {
@@ -147,27 +158,78 @@ export default function Card(props) {
                 <div className="row">
                   <div className="col-md-6">
                     <div>
-                      <h2 style={{ textTransform: "uppercase", fontWeight: "600", fontSize: "24px" }} className={styles.titlepackages}>{e.name}</h2>
-                      <h4 style={{ textTransform: "uppercase", fontWeight: "700", fontFamily: "Roboto",fontSize: "18px" }}>{e.subTitle}</h4>
-                      <h4 style={{ color:"#C49D48",fontWeight: "700", fontFamily: "Roboto",fontSize: "18px" }}>Score: {e.score}</h4>
+                      <h2
+                        style={{
+                          textTransform: "uppercase",
+                          fontWeight: "600",
+                          fontSize: "24px",
+                        }}
+                        className={styles.titlepackages}
+                      >
+                        {e.name}
+                      </h2>
+                      <h4
+                        style={{
+                          textTransform: "uppercase",
+                          fontWeight: "700",
+                          fontFamily: "Roboto",
+                          fontSize: "18px",
+                        }}
+                      >
+                        {e.subTitle}
+                      </h4>
+                      <h4
+                        style={{
+                          color: "#C49D48",
+                          fontWeight: "700",
+                          fontFamily: "Roboto",
+                          fontSize: "18px",
+                        }}
+                      >
+                        Score: {e.score}
+                      </h4>
 
-                      <p style={{ fontFamily: "Roboto", fontSize: "18px", fontWeight: "300", textAlign: "justify", marginRight: "5vh" }}>{e.description}</p>
+                      <p
+                        style={{
+                          fontFamily: "Roboto",
+                          fontSize: "18px",
+                          fontWeight: "300",
+                          textAlign: "justify",
+                          marginRight: "5vh",
+                        }}
+                      >
+                        {e.description}
+                      </p>
                     </div>
 
                     <div className={`row ${styles.pricelist}`}>
                       <div className={`col-md-6 ${styles.citybuttons}`}>
                         <ul className={styles.iconscity}>
-                          <li style={{ color: "black", textTransform: "uppercase", fontFamily: "Roboto" }}>
+                          <li
+                            style={{
+                              color: "black",
+                              textTransform: "uppercase",
+                              fontFamily: "Roboto",
+                            }}
+                          >
                             <i className="bi bi-clock-history"></i> {e.duration}
                           </li>
-                          <li style={{ color: "black", textTransform: "uppercase", fontFamily: "Roboto" }}>
+                          <li
+                            style={{
+                              color: "black",
+                              textTransform: "uppercase",
+                              fontFamily: "Roboto",
+                            }}
+                          >
                             <i className="bi bi-currency-dollar"></i> {e.price}{" "}
                             ARS
                           </li>
-
                         </ul>
                       </div>
-                      <div className="col-md-6" style={{ fontWeight: "400", fontFamily: "Roboto" }}>
+                      <div
+                        className="col-md-6"
+                        style={{ fontWeight: "400", fontFamily: "Roboto" }}
+                      >
                         <ul className={styles.iconsexp}>
                           <li className={styles.exptitle}>
                             <i className="bi bi-compass"></i>{" "}
@@ -194,7 +256,9 @@ export default function Card(props) {
                           {/* Boton Modal */}
                           <button
                             type="button"
-                            onClick={() => handleClickPreCart(e.name, e.price, e.image)}
+                            onClick={() =>
+                              handleClickPreCart(e.name, e.price, e.image)
+                            }
                             className="btn btn-outline-secondary btn-lg"
                             data-bs-toggle="modal"
                             data-bs-target={`#${e.name.split(" ").join("")}`}
@@ -221,7 +285,11 @@ export default function Card(props) {
                                   className={`img-fluid ${styles.imgmodalpackages}`}
                                   src={e.image}
                                   alt=""
-                                  style={{borderRadius: "8px",boxShadow: "0 8px 8px 0 rgba(0, 0, 0, 0.15)"}}
+                                  style={{
+                                    borderRadius: "8px",
+                                    boxShadow:
+                                      "0 8px 8px 0 rgba(0, 0, 0, 0.15)",
+                                  }}
                                 />
                                 <div>
                                   <i
@@ -239,29 +307,56 @@ export default function Card(props) {
                                     style={{
                                       color: "#C49D48",
                                       textTransform: "uppercase",
-                                      textTransform: "uppercase", fontWeight: "600", fontSize: "20px"
+                                      textTransform: "uppercase",
+                                      fontWeight: "600",
+                                      fontSize: "20px",
                                     }}
                                   >
                                     {e.name}
                                   </h2>
-                                  <h4 style={{ fontSize: "14px",textTransform: "uppercase", fontWeight: "700" }}>{e.subTitle}</h4>
+                                  <h4
+                                    style={{
+                                      fontSize: "14px",
+                                      textTransform: "uppercase",
+                                      fontWeight: "700",
+                                    }}
+                                  >
+                                    {e.subTitle}
+                                  </h4>
                                 </div>
-                                <p className={styles.modaldescription} style={{ fontFamily: "Roboto", fontSize: "14px", fontWeight: "300" }}>
+                                <p
+                                  className={styles.modaldescription}
+                                  style={{
+                                    fontFamily: "Roboto",
+                                    fontSize: "14px",
+                                    fontWeight: "300",
+                                  }}
+                                >
                                   {e.description}
                                 </p>
                                 <div class="mt-5 mb-5">
                                   <div className="row ">
                                     <div className="col-md-12">
                                       <ul className={styles.iconsmodal}>
-                                        <li style={{ color: "black", textTransform: "uppercase", fontFamily: "Roboto" }}>
+                                        <li
+                                          style={{
+                                            color: "black",
+                                            textTransform: "uppercase",
+                                            fontFamily: "Roboto",
+                                          }}
+                                        >
                                           <i className="bi bi-clock-history"></i>{" "}
                                           {e.duration}
                                         </li>
-                                        <li style={{ color: "black", fontFamily: "Roboto" }}>
+                                        <li
+                                          style={{
+                                            color: "black",
+                                            fontFamily: "Roboto",
+                                          }}
+                                        >
                                           <i className="bi bi-currency-dollar"></i>{" "}
                                           ARS {e.price}
                                         </li>
-
                                       </ul>
                                     </div>
                                   </div>
@@ -269,11 +364,14 @@ export default function Card(props) {
                                 <div class="mt-5 mb-5">
                                   <div className="row ">
                                     <div className="col-md-8">
-                                      <p style={{
-                                        color: "black",
-                                        fontWeight: "200",
-                                        fontFamily: "Roboto",
-                                      }} className="text-end">
+                                      <p
+                                        style={{
+                                          color: "black",
+                                          fontWeight: "200",
+                                          fontFamily: "Roboto",
+                                        }}
+                                        className="text-end"
+                                      >
                                         Please, select the number of passengers:
                                       </p>
                                     </div>
@@ -291,7 +389,7 @@ export default function Card(props) {
                                             event,
                                             e.name,
                                             e.price,
-                                            e.image,
+                                            e.image
                                           )
                                         }
                                         style={{
@@ -304,12 +402,14 @@ export default function Card(props) {
                                   </div>
                                   <div className="row ">
                                     <div className="col-md-8">
-                                      <p style={{
-                                        color: "black",
-                                        fontWeight: "200",
-                                        fontFamily: "Roboto",
-                                      }}
-                                        className="text-end">
+                                      <p
+                                        style={{
+                                          color: "black",
+                                          fontWeight: "200",
+                                          fontFamily: "Roboto",
+                                        }}
+                                        className="text-end"
+                                      >
                                         Please, select a date:
                                       </p>
                                     </div>
@@ -320,23 +420,28 @@ export default function Card(props) {
                                             event,
                                             e.name,
                                             e.price,
-                                            e.image,
+                                            e.image
                                           )
                                         }
                                         name="dates"
                                         id={`${e.name} dates`}
-
                                         style={{
                                           color: "black",
                                           fontWeight: "500",
                                           fontFamily: "Roboto",
                                         }}
                                       >
-                                        <option value="select" disabled selected>
+                                        <option
+                                          value="select"
+                                          disabled
+                                          selected
+                                        >
                                           Select
                                         </option>
                                         {e.dates?.split(",").map((e) => {
-                                          return <option value={e}>{e} </option>;
+                                          return (
+                                            <option value={e}>{e} </option>
+                                          );
                                         })}
                                       </select>
                                     </div>
@@ -349,12 +454,15 @@ export default function Card(props) {
                                           color: "black",
                                           fontWeight: "800",
                                           fontFamily: "Roboto",
-                                          fontSize:"20px"
+                                          fontSize: "20px",
                                         }}
                                       >
                                         TOTAL:{" "}
                                         <i className="bi bi-currency-dollar"></i>
-                                        ARS {e.price * item.pax < 0 ? 0 : e.price * item.pax}
+                                        ARS{" "}
+                                        {e.price * item.pax < 0
+                                          ? 0
+                                          : e.price * item.pax}
                                       </div>
                                     </div>
                                   </div>
@@ -413,7 +521,15 @@ export default function Card(props) {
                     </div>
                   </div>
                   <div className="col-md-6">
-                    <img style={{borderRadius: "8px",boxShadow: "0 8px 8px 0 rgba(0, 0, 0, 0.15)"}} className={`img-fluid ${styles.packimgstyle}`} src={e.image} alt="" />
+                    <img
+                      style={{
+                        borderRadius: "8px",
+                        boxShadow: "0 8px 8px 0 rgba(0, 0, 0, 0.15)",
+                      }}
+                      className={`img-fluid ${styles.packimgstyle}`}
+                      src={e.image}
+                      alt=""
+                    />
                     {/* <CarouselPackage /> */}
                   </div>
                 </div>
@@ -426,7 +542,7 @@ export default function Card(props) {
         </div>
         <br />
       </div>
-      <Footer/>
+      <Footer />
     </Fragment>
   );
 }

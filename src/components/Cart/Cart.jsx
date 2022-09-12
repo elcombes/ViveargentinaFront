@@ -1,3 +1,5 @@
+
+
 import Dropdown from "react-bootstrap/Dropdown";
 import React, { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -36,6 +38,7 @@ export default function Cart() {
   }
 
   function clearCart() {
+    setBuy(false);
     localStorage.removeItem("items");
     if (state) {
       setState(false);
@@ -44,29 +47,35 @@ export default function Cart() {
     }
   }
 
-
   function setBuyInFalse() {
     setBuy(false);
   }
 
   function onClickBuy() {
     setBuy(true);
+    let userId = JSON.parse(localStorage.getItem("user"));
+
     itemsFromStore = JSON.parse(localStorage.getItem("items"));
     dispatch(buyInMercadoPago(itemsFromStore));
   }
 
-
   if (!itemsFromStore || itemsFromStore.length === 0) {
     return (
       <div>
-
-        <button class="btn btn-outline-secondary btn-lg" type="button" data-bs-toggle="offcanvas" 
-          data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" 
+        <button
+          class="btn btn-outline-secondary btn-lg"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasRight"
+          aria-controls="offcanvasRight"
           style={{
             borderColor: "#c49d48e3",
             borderRadius: "50%",
           }}
-        > <i class="bi bi-cart"></i> </button>
+        >
+          {" "}
+          <i class="bi bi-cart"></i>{" "}
+        </button>
 
         <div
           class="offcanvas offcanvas-end"
@@ -76,9 +85,9 @@ export default function Cart() {
           style={{ backgroundColor: "#EFD6AC" }}
         >
           <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasRightLabel" >
-              <h4>
-                <i class="bi bi-cart"></i> MY CART
+            <h5 class="offcanvas-title" id="offcanvasRightLabel">
+              <h4 style={{fontSize:"30px", color:"white"}}>
+                <i class="bi bi-cart"style={{fontSize:"30px",margin:"20px"}}></i> MY CART
               </h4>
             </h5>
             <button
@@ -93,9 +102,8 @@ export default function Cart() {
           </div>
         </div>
       </div>
-    )
-  }
-  else {
+    );
+  } else {
     return (
       <div>
         <button
@@ -121,9 +129,9 @@ export default function Cart() {
           }}
         >
           <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasRightLabel">
-              <h4>
-                <img src="" alt="" />
+          <h5 class="offcanvas-title" id="offcanvasRightLabel">
+              <h4 style={{fontSize:"30px", color:"white"}}>
+                <i class="bi bi-cart"style={{fontSize:"30px",margin:"20px"}}></i> MY CART
               </h4>
             </h5>
             <button
@@ -138,7 +146,6 @@ export default function Cart() {
               totalcart = totalcart + item.price * item.pax;
               return (
                 <div>
-
                   <ItemCart
                     index={index}
                     setBuyInFalse={setBuyInFalse}
@@ -150,14 +157,17 @@ export default function Cart() {
                     changeState={changeState}
                   ></ItemCart>
                   <br />
-
                 </div>
               );
             })}
             <div>
               {/* Total: {totalcart} */}
 
-              <button id="mercadoPago" onClick={onClickBuy} className={`btn btn-outline-secondary btn-lg ${styles.buttonmercadopago}`} >
+              <button
+                id="mercadoPago"
+                onClick={onClickBuy}
+                className={`btn btn-outline-secondary btn-lg ${styles.buttonmercadopago}`}
+              >
                 BUY
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -182,6 +192,6 @@ export default function Cart() {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }

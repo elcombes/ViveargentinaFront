@@ -21,22 +21,22 @@ export default function MyTrips() {
                                     <h2 className="titlepackages">NOT TO BE MISSED IN SALTA</h2>
                                     <h4>WHAT YOU CAN'T MISS</h4>
                                 </div>
-                                <div className="col-sm-3 text-center">
+                                <div className={`col-md-3 text-center ${styles.date}`}>
                                     <p>13-oct-2022</p>
                                 </div>
                             </div>
                         </div>
                         <div className="col-md-6">
                             <div className="row mt-3 mb-6">
-                                <div className="col-md-3 text-center">
+                                <div className={`col-md-3 text-center ${styles.price}`}>
                                     <p>$ 43.000</p>
                                 </div>
-                                <div className="col-md-3 text-center">
+                                <div className={`col-md-3 text-center ${styles.status}`}>
                                     <p>Paid</p>
                                 </div>
                                 <div className="col-md-6 text-center">
-                                    <button type="button" className="btn btn-outline-secondary"><i className="bi bi-trash3-fill"></i> Delete</button>
-                                    <button type="button" className="btn btn-secondary"><i className="bi bi-cart"></i> Buy again!</button>
+                                    <button type="button" className="btn btn-outline-secondary"><i className="bi bi-trash3-fill"></i> DELETE</button>
+                                    <button type="button" className="btn btn-secondary"><i className="bi bi-cart"></i> BUY AGAIN!</button>
                                 </div>
                             </div>
                         </div>
@@ -55,22 +55,22 @@ export default function MyTrips() {
                                     <h2 className="titlepackages">NOT TO BE MISSED IN SALTA</h2>
                                     <h4>WHAT YOU CAN'T MISS</h4>
                                 </div>
-                                <div className="col-md-3 text-center">
+                                <div className={`col-md-3 text-center ${styles.date}`}>
                                     <p>13-oct-2022</p>
                                 </div>
                             </div>
                         </div>
                         <div className="col-md-6">
                             <div className="row mt-3 mb-3">
-                                <div className="col-md-3 text-center">
+                                <div className={`col-md-3 text-center ${styles.price}`}>
                                     <p>$ 43.000</p>
                                 </div>
-                                <div className="col-md-3 text-center">
+                                <div className={`col-md-3 text-center ${styles.status}`}>
                                     <p>Paid</p>
                                 </div>
                                 <div className="col-md-6 text-center">
-                                    <button type="button" className="btn btn-outline-secondary"><i className="bi bi-trash3-fill"></i> Delete</button>
-                                    <button type="button" className="btn btn-secondary"><i className="bi bi-cart"></i> Buy again!</button>
+                                    <button type="button" className="btn btn-outline-secondary"><i className="bi bi-trash3-fill"></i> DELETE</button>
+                                    <button type="button" className="btn btn-secondary"><i className="bi bi-cart"></i> BUY AGAIN!</button>
                                 </div>
                             </div>
                         </div>

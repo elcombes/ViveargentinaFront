@@ -1,10 +1,19 @@
-.mytripspage {
-    min-height: 100vh;
-}
+
 .itemmytrips {
     display: inline-flex;
 }
-
+.date{
+    font-family: Roboto;
+    text-transform: uppercase;
+}
+.price{
+    font-family: Roboto;
+    text-transform: uppercase;
+}
+.status{
+    font-family: Roboto;
+    text-transform: uppercase;
+}
 .itemmyfavs {
     display: inline-flex;
     align-items: center;
@@ -17,4 +26,14 @@
 
 .favheart {
     font-size: 2rem;
+}
+
+.registerbutton, .loginbutton {
+    display: inline-flex;
+    align-items: center;
+    text-transform: uppercase;
+    font-family: Raleway;
+    border-color: #C49D48;
+    color:#C49D48;
+    font-size: 15px;
 }

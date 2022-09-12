@@ -6,6 +6,9 @@
   --primary-light: #C49D48;
   --secondary-light: #DFE0DF;
 }
+html {
+  scroll-behavior: smooth;
+}
 
 * {
   box-sizing: border-box;
@@ -101,7 +104,9 @@ select {
 .accordion-item {
   border: 0;
 }
-
+.mt-5{
+  margin-top: 0rem !important;
+}
 @media screen and (max-width: 940px) {
   h1 {
     font-size: 2.5rem;

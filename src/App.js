@@ -6,19 +6,18 @@ import Cities from "./components/Cities/Cities.jsx";
 import City from "./components/City/City.jsx";
 import Packages from "./components/Packages/Packages.jsx";
 import Experiences from "./components/Experiences/Experiences.jsx";
-// import FilterCities from './components/Filters/FilterCities.jsx';
 import ContactUs from "./components/ContactUs/ContactUs";
 import Error404 from "./components/Error404/Error404";
 import Cart from "./components/Cart/Cart";
 import MenuUser from "./components/User/MenuUser";
 import MenuGuest from "./components/User/MenuGuest";
-import Footer from "./components/Footer/Footer";
 import NavBar from "./components/NavBar/NavBar";
 import Profile from "./components/User/Profile"
 import MyTrips from "./components/User/MyTrips";
 import MyFavs from './components/User/MyFavs.jsx';
 import Verify from "./components/User/Verify";
 import AdminDashboard from './components/Admin/AdminDashboard.jsx';
+import UsersTable from "./components/User/UsersTable";
 
 function App() {
   return (
@@ -42,6 +41,7 @@ function App() {
           <Route path="/mytrips" component={MyTrips} />
           <Route path="/myfavs" component={MyFavs} />
           <Route path="/admin" component={AdminDashboard} />
+          <Route path="/table" component={UsersTable} />
           <Route path="*" component={Error404} />
           
         </Switch>

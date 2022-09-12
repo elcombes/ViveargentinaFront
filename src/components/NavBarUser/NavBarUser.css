@@ -1,24 +1,4 @@
 
-html {
-  font-size: 62.5%;
-}
-body {
-  font-size: 1vw;
-}
-li {
-  list-style: none;
-  
-}
-
-
-.nav {
-  justify-content: space-evenly;
-  display: flex;
-  align-items: left;
-  padding-top: 1vh;
-
-  
-}
 .nav img {
     width: 20vh;
     margin-top: 1vh;
