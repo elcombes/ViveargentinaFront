@@ -34,11 +34,11 @@ export default function Card(props) {
     tipe: "package",
   });
 
-  const handleChange = (e, name, price, image, packageId) => {
+  const handleChange = (e, name, price, image, id) => {
     setItem({
       ...item,
       [e.target.name]: e.target.value,
-      packageId,
+      packageId: id,
       name,
       price,
       image,
@@ -46,10 +46,10 @@ export default function Card(props) {
     });
   };
 
-  const handleClickPreCart = (name, price, image, packageId) => {
+  const handleClickPreCart = (name, price, image, id) => {
     setItem({
       ...item,
-      packageId: packageId,
+      packageId: id,
       name: name,
       image: image,
       price: price,
@@ -261,7 +261,7 @@ export default function Card(props) {
                           <button
                             type="button"
                             onClick={() =>
-                              handleClickPreCart(e.name, e.price, e.image)
+                              handleClickPreCart(e.name, e.price, e.image, e.id)
                             }
                             className="btn btn-outline-secondary btn-lg"
                             data-bs-toggle="modal"
@@ -394,7 +394,7 @@ export default function Card(props) {
                                             e.name,
                                             e.price,
                                             e.image,
-                                            e.packageId
+                                            e.id
                                           )
                                         }
                                         style={{
@@ -426,7 +426,7 @@ export default function Card(props) {
                                             e.name,
                                             e.price,
                                             e.image,
-                                            e.packageId
+                                            e.id
                                           )
                                         }
                                         name="dates"

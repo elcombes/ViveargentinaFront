@@ -64,10 +64,10 @@ export default function Experiences(props) {
     });
   };
 
-  const handleClickPreCart = (name, price, image, experienceId) => {
+  const handleClickPreCart = (name, price, image, id) => {
     setItem({
       ...item,
-      experienceId: experienceId,
+      experienceId: id,
       name: name,
       image: image,
       price: price,
@@ -265,12 +265,7 @@ export default function Experiences(props) {
                         <button
                           type="button"
                           onClick={() =>
-                            handleClickPreCart(
-                              e.name,
-                              e.price,
-                              e.image,
-                              e.experienceId
-                            )
+                            handleClickPreCart(e.name, e.price, e.image, e.id)
                           }
                           className="btn btn-outline-secondary btn-lg"
                           data-bs-toggle="modal"
