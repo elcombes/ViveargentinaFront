@@ -379,7 +379,7 @@ export default function Experiences(props) {
                                     <p
                                       style={{
                                         color: "black",
-                                        fontWeight: "200",
+                                        fontWeight: "300",
                                         fontFamily: "Roboto",
                                       }}
                                       className="text-end"
@@ -410,7 +410,7 @@ export default function Experiences(props) {
                                     <p
                                       style={{
                                         color: "black",
-                                        fontWeight: "200",
+                                        fontWeight: "300",
                                         fontFamily: "Roboto",
                                       }}
                                       className="text-end"
