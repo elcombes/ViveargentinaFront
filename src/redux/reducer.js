@@ -22,9 +22,11 @@ import {
   GOOGLE_LOGIN,
   BUY_IN_MERCADOPAGO,
   GET_USER_BY_ID,
+  GET_ALL_USERS,
 } from "./action";
 
 const initialState = {
+  allUsers: [],
   userById: {},
   cityById: {},
   allCities: [],
@@ -50,6 +52,11 @@ export default function rootReducer(state = initialState, action) {
   let userExperiencesFavorite;
   let userPackagesFavorite;
   switch (action.type) {
+    case GET_ALL_USERS:
+      return {
+        ...state,
+        allUsers: action.payload,
+      };
     case GET_USER_BY_ID:
       return {
         ...state,
