@@ -1,0 +1,22 @@
+.homestart {
+  padding: 0 !important;
+}
+
+.imgfooter {
+  max-width: 190px;
+}
+
+.fondocontact{
+  min-height: 70vh;
+  background-color: #dedcd9;
+  display: flex;
+  align-items: center;
+}
+
+.aligncontactitems {
+  display: flex;
+  align-items: center;
+}
+.boldcontact {
+  font-weight: 600;
+}
