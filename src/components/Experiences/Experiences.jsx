@@ -15,6 +15,7 @@ import {
   orderExperiences,
   getPackageById,
   getLsUser,
+  addExperienceFavorite,
 } from "../../redux/action";
 
 export default function Experiences(props) {
@@ -79,7 +80,8 @@ export default function Experiences(props) {
     if (document.getElementById(`${item.name} passengers`).value <= 0) {
       return Swal.fire({
         title: "YOU MUST ADD AT LEAST ONE PASSENGER",
-        imageUrl: "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663003831/VivaArg/Alerts/2_wsn0oa.png",
+        imageUrl:
+          "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663003831/VivaArg/Alerts/2_wsn0oa.png",
         imageWidth: 350,
         imageHeight: 300,
         confirmButtonColor: "#C49D48",
@@ -89,7 +91,8 @@ export default function Experiences(props) {
     if (document.getElementById(`${item.name} dates`).value === "select") {
       return Swal.fire({
         title: "YOU MUST SELECT A DATE TO CONTINUE",
-        imageUrl: "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663003830/VivaArg/Alerts/1_yrqksk.png",
+        imageUrl:
+          "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663003830/VivaArg/Alerts/1_yrqksk.png",
         imageWidth: 350,
         imageHeight: 300,
         confirmButtonColor: "#C49D48",
@@ -107,7 +110,8 @@ export default function Experiences(props) {
       document.getElementById(`${item.name} dates`).value = "select";
       return Swal.fire({
         title: "YOU ALREADY HAVE THIS ITEM IN YOUR CART",
-        imageUrl: "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663003831/VivaArg/Alerts/3_zmfk4m.png",
+        imageUrl:
+          "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663003831/VivaArg/Alerts/3_zmfk4m.png",
         imageWidth: 350,
         imageHeight: 300,
         confirmButtonColor: "#C49D48",
@@ -144,6 +148,13 @@ export default function Experiences(props) {
         imageAlt: "Custom image",
       });
     }
+  };
+
+  const addExperiencesFavorites = (experienceId) => {
+    let user = JSON.parse(localStorage.getItem("user"));
+    let userId = user.user.id;
+
+    dispatch(addExperienceFavorite(experienceId, userId));
   };
 
   //   Fin Precart
@@ -302,7 +313,16 @@ export default function Experiences(props) {
                                 alt=""
                               />
                               <div>
-                                <button className="btn btn-outline-secondary" style={{ marginTop: "10px", borderColor: "transparent" }}>
+
+                                <button
+                                  onClick={() => addExperiencesFavorites(e.id)}
+                                  style={{
+                                    marginTop: "10px",
+                                    borderColor: "transparent",
+                                  }}
+                                >
+
+                          
                                   <i
                                     class="bi bi-heart-fill"
                                     style={{
