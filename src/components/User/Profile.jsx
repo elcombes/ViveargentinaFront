@@ -147,13 +147,19 @@ export default function Profile() {
                           {" "}
                           <a href="#myfavs">CLICK ME TO SEE YOUR FAVS</a>
                         </button>
-                        <button
-                          onClick={() => toggleCP()}
-                          className="btn btn-outline-secondary"
-                        >
-                          {" "}
-                          CHANGE PASSWORD
-                        </button>
+                        {
+                          userFromStorage.user.birth_date === "active"? 
+                          (
+                            <button
+                              onClick={() => toggleCP()}
+                              className="btn btn-outline-secondary"
+                            >
+                              {" "}
+                              CHANGE PASSWORD
+                            </button>
+                          )  
+                          : null
+                        }
                         <Link to="/home">
                           <button className="btn btn-outline-secondary">
                             {" "}
