@@ -163,7 +163,7 @@ function HomePage() {
             <div className="col-md-2 text-center">
               <img className={`img-fluid ${styles.imgfooter}`} src={logo} alt="logo" name='vive argentina' />
             </div>
-            <div className="col-md-6">
+            <div id="contact" className="col-md-6">
               <div class="formContact">
                 <h4>GET IN TOUCH</h4>
                 <h2 class="form-headlineContact">Send us a message</h2>
