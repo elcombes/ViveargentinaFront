@@ -14,9 +14,9 @@ export default function UsersTable() {
                                 <thead>
                                     <tr>
                                         <th>BLOCK</th>
+                                        <th>EMAIL</th>
                                         <th>NAME</th>
                                         <th>ROLE</th>
-                                        <th>EMAIL</th>
                                         <th>SHOPPING</th>
                                         <th>ADMIN</th>
                                         <th>PASS RESET</th>
@@ -31,9 +31,9 @@ export default function UsersTable() {
                                                 <div class="inner-circle"></div>
                                             </div>
                                         </td>
+                                        <td>google@+yezidfortich@gmail.com</td>
                                         <td>Cristian Fortich</td>
                                         <td>Customer</td>
-                                        <td>google@+yezidfortich@gmail.com</td>
                                         <td><a href='#'>VIEW</a></td>
                                         <td><input class="form-check-input" type="checkbox"></input></td>
                                         <td><button className="btn btn-outline-secondary"><i class="bi bi-key-fill"></i></button></td>
@@ -45,9 +45,9 @@ export default function UsersTable() {
                                                 <div class="inner-circle"></div>
                                             </div>
                                         </td>
+                                        <td>romina.ponce@gmail.com</td>
                                         <td>Romina Ponce</td>
                                         <td>Provider</td>
-                                        <td>romina.ponce@gmail.com</td>
                                         <td> X </td>
                                         <td><input class="form-check-input" type="checkbox"></input></td>
                                         <td><button className="btn btn-outline-secondary"><i class="bi bi-key-fill"></i></button></td>
