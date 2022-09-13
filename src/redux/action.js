@@ -73,19 +73,19 @@ export function verifyUser(token) {
 // Esta ruta añade un paquete a favoritos del usuario
 export function addPackageFavorite(packageId, userId) {
   return async function () {
-    let responde = await axios.post(
-      `http://localhost:3001/favorites/packages?packageId=${packageId}&userId=${userId}`
+    let response = await axios.post(
+      `http://viveargentina.herokuapp.com/favorites/packages?packageId=${packageId}&userId=${userId}`
     );
-    console.log(responde);
   };
 }
 
 // Esta ruta añade una experiencia a favoritos del usuario
-export function addExperienceFavorite(userId, experienceId) {
+export function addExperienceFavorite(experienceId, userId) {
   return async function () {
-    await axios.post(
-      `https://viveargentina.herokuapp.com/favorites/experiences?userId=${userId}&experienceId${experienceId}`
+    let response = await axios.post(
+      `http://viveargentina.herokuapp.com/favorites/experiences?userId=${userId}&experienceId=${experienceId}`
     );
+    console.log(response);
   };
 }
 

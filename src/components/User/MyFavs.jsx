@@ -87,14 +87,6 @@ export default function MyFavs({ packages, experiences }) {
                             type="button"
                             className="btn btn-outline-secondary"
                           >
-                            <i
-                              className={`bi bi-heart-fill ${styles.favheart}`}
-                            ></i>
-                          </button>
-                          <button
-                            type="button"
-                            className="btn btn-outline-secondary"
-                          >
                             <i className="bi bi-trash3-fill"></i> DELETE
                           </button>
                         </div>
