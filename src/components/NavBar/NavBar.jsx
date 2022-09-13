@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 import styles from "./NavBar.css";
-
+import Login2 from "../User/Login2/Login2"
 import Login from "../User/Login";
 import logo from "../../assets/vive argentina.png";
 import Cart from "../Cart/Cart"
@@ -56,7 +56,7 @@ function Navbar() {
           </li>
           <li>
 
-            <Login />
+            <Login2 />
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="" style={{ borderColor: "#C49D48", color: "#C49D48", fontSize: "15px", textAlign:"center" }}>MY TRIPS</a>
