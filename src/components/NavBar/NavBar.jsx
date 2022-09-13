@@ -1,10 +1,10 @@
 import React, { Fragment, useState } from "react";
 import styles from "./NavBar.css";
-
-import Register from "../User/Register";
+import Login2 from "../User/Login2/Login2"
 import Login from "../User/Login";
 import logo from "../../assets/vive argentina.png";
 import Cart from "../Cart/Cart"
+import SignUp from "../User/SignUp/SignUp";
 
 function Navbar() {
   const [active, setActive] = useState("nav__menu");
@@ -52,14 +52,14 @@ function Navbar() {
             </a>
           </li>
           <li>
-            <Register />
+            <SignUp/>
           </li>
           <li>
 
-            <Login />
+            <Login2 />
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#" style={{ borderColor: "#C49D48", color: "#C49D48", fontSize: "10px" }}>MY TRIPS</a>
+            <a class="nav-link" href="" style={{ borderColor: "#C49D48", color: "#C49D48", fontSize: "15px", textAlign:"center" }}>MY TRIPS</a>
           </li>
           <li>
             <Cart/>

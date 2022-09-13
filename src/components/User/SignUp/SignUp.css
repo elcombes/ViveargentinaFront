@@ -1,0 +1,40 @@
+#errors {
+    font-size: 16px;
+    padding-left: 3px;
+    padding-top: 3px;
+    color: #DC3545;
+}
+
+.validMessage{
+    font-size: 16px;
+    padding-left: 3px;
+    padding-top: 3px;
+    color: #198754;
+}
+
+.infoLabel{
+    font-size: 16px;
+    padding-top: 3px;
+    padding-left: 3px;
+}
+
+.infoInput{
+    width: 100%;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.invalidInput{
+    width: 100%;
+    border-radius: 5px;
+    padding: 5px;
+    border-color: #DC3545;
+}
+
+.validInput{
+    width: 100%;
+    border-radius: 5px;
+    padding: 5px;
+    border-color: #198754;
+}
+
