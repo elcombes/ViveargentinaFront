@@ -24,7 +24,7 @@ export default function AdminDashboard() {
                     <div className="col-md-2">
                         <SideBar />
                     </div>
-            <Switch> 
+            
                     <div className="col-md-10">
                         <div className="container">
         
@@ -39,7 +39,7 @@ export default function AdminDashboard() {
                             </div>
                         </div>
                     </div>
-            </Switch>
+           
                 </div>
             </div>
         </div>
