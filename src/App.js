@@ -6,6 +6,7 @@ import Cities from "./components/Cities/Cities.jsx";
 import City from "./components/City/City.jsx";
 import Packages from "./components/Packages/Packages.jsx";
 import Experiences from "./components/Experiences/Experiences.jsx";
+import CreateExperience from "./components/CreateExperience/CreateExperience"
 import ContactUs from "./components/ContactUs/ContactUs";
 import Error404 from "./components/Error404/Error404";
 import Cart from "./components/Cart/Cart";
@@ -46,6 +47,7 @@ function App() {
           <Route path="/myfavs" component={MyFavs} />
           <Route path="/admin" component={AdminDashboard} />
           <Route path="/table" component={UsersTable} />
+          <Route path="/create" component={CreateExperience}/>
           <Route path="*" component={Error404} />
           
         </Switch>

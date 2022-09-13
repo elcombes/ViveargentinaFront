@@ -100,7 +100,6 @@ export default function Login2() {
             e.stopPropagation()
             errorMessagesArray.forEach(e => e.hidden = false)
         }
-        console.log(newUser)
         await dispatch(getUserLogin({email: newUser.email, password: newUser.password})).then(()=>{
             console.log(userAuth)
         })
