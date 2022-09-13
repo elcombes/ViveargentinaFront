@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import NavBarAdmin from './NavBarAdmin.jsx';
 import SideBar from './SideBar.jsx';
 import './AdminDashboard.css';
@@ -15,7 +15,7 @@ export default function AdminDashboard() {
 
     return (
         <BrowserRouter>
-
+        
         <div>
             <NavBarAdmin />
             <div className="container-fluid">
@@ -24,40 +24,26 @@ export default function AdminDashboard() {
                     <div className="col-md-2">
                         <SideBar />
                     </div>
-        <Switch>
+        
                     <div className="col-md-10">
                         <div className="container">
+        
                             <div className="row">
                                 <div className="col-md-12">
                                     <Route exact path='/admin/packages' component={PackagesTable}/>
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="col-md-12">
                                     <Route exact path='/admin/experiences' component={ExperiencesTable}/>
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="col-md-12">
                                     <Route exact path='/admin/sales' component={SalesTable} />
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="col-md-12">
                                     <Route exact path='/admin/users' component={UsersTable}/>
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="col-md-12">
-                                    <Route exact path='/admin/notifications'/> 
+                                    <Route exact path='/admin/reviews'/>
                                 </div>
                             </div>
                         </div>
                     </div>
-        </Switch>
+        
                 </div>
             </div>
         </div>
+        
         </BrowserRouter>
     )
 }
