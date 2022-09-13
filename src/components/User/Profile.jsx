@@ -16,7 +16,7 @@ export default function Profile() {
 
   let userFromStorage = JSON.parse(localStorage.getItem("user"));
 
-  const [changePassword, setChangePassword] = useState(false)
+  const [changePassword, setChangePassword] = useState(false);
 
   useEffect(() => {
     userFromStorage = JSON.parse(localStorage.getItem("user"));
@@ -24,9 +24,9 @@ export default function Profile() {
     dispatch(getUserById(userId));
   }, []);
 
-  const toggleCP = ()=>{
-    setChangePassword(changePassword?false:true)
-  }
+  const toggleCP = () => {
+    setChangePassword(changePassword ? false : true);
+  };
 
   return (
     <Fragment>
@@ -147,19 +147,26 @@ export default function Profile() {
                           {" "}
                           <a href="#myfavs">CLICK ME TO SEE YOUR FAVS</a>
                         </button>
-                        <button onClick={()=>toggleCP()} className="btn btn-outline-secondary">
-                          {" "}
-                          CHANGE PASSWORD
-                        </button>
+                        {
+                          userFromStorage.user.birth_date === "active"? 
+                          (
+                            <button
+                              onClick={() => toggleCP()}
+                              className="btn btn-outline-secondary"
+                            >
+                              {" "}
+                              CHANGE PASSWORD
+                            </button>
+                          )  
+                          : null
+                        }
                         <Link to="/home">
                           <button className="btn btn-outline-secondary">
                             {" "}
                             <a href="#myfavs"> HOME</a>
                           </button>
                         </Link>
-                        {
-                          changePassword?<ChangePassword/>: null
-                        }
+                        {changePassword ? <ChangePassword /> : null}
                       </div>
                     </div>
                   </div>

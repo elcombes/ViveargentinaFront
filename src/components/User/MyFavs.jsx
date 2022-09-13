@@ -1,8 +1,16 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import styles from "./User.module.css";
 import Footer from "../Footer/Footer.jsx";
+import { useDispatch } from "react-redux";
+import {
+  removeExperienceFavorite,
+  removePackageFavorite,
+} from "./../../redux/action.js";
 
 export default function MyFavs({ packages, experiences }) {
+  const [state, setState] = useState(false);
+  const dispatch = useDispatch();
+
   let packagesfavorites =
     packages &&
     packages.filter((p) => {
@@ -13,12 +21,26 @@ export default function MyFavs({ packages, experiences }) {
     experiences.filter((e) => {
       return e.reservation_experience.favorite === true;
     });
+
+  function removeExperienceFromFavorite(experienceId) {
+    let user = JSON.parse(localStorage.getItem("user"));
+    let userId = user.user.id;
+    dispatch(removeExperienceFavorite(experienceId, userId));
+    if (state === false) setState(true);
+    else if (state === true) setState(false);
+  }
+
+  function removePackageFromFavorite(packageId) {
+    let user = JSON.parse(localStorage.getItem("user"));
+    let userId = user.user.id;
+    dispatch(removePackageFavorite(packageId, userId));
+    if (state === false) setState(true);
+    else if (state === true) setState(false);
+  }
+
   return (
     <Fragment>
-      <div
-        
-        className={`container-fluid ${styles.mytripspage}`}
-      >
+      <div className={`container-fluid ${styles.mytripspage}`}>
         <div className="container">
           <div className="row mb-3 mt-5">
             <h2 className="text-center">
@@ -50,6 +72,7 @@ export default function MyFavs({ packages, experiences }) {
                           <button
                             type="button"
                             className="btn btn-outline-secondary"
+                            onClick={() => removePackageFromFavorite(p.id)}
                           >
                             <i className="bi bi-trash3-fill"></i> DELETE
                           </button>
@@ -86,6 +109,7 @@ export default function MyFavs({ packages, experiences }) {
                           <button
                             type="button"
                             className="btn btn-outline-secondary"
+                            onClick={() => removeExperienceFromFavorite(e.id)}
                           >
                             <i className="bi bi-trash3-fill"></i> DELETE
                           </button>

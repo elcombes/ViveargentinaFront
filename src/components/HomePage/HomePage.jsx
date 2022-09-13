@@ -3,6 +3,7 @@ import React, { Fragment, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux';
 import { useDispatch } from "react-redux";
+import ReactPlayer from 'react-player';
 
 import { getLsUser } from "./../../redux/action.js";
 
@@ -33,7 +34,7 @@ function HomePage() {
 
     return (
         <Fragment>
-            <div className='containerHome'id="firstpage">
+            <div className='containerHome' id="firstpage">
                 {userAuth === false ?
                     <NavBar /> :
                     <NavBarUser />
@@ -51,8 +52,10 @@ function HomePage() {
                     </h3>
 
                     <div className='explore'>
-                        <button className="btn btn-outline-secondary">
-                            <a href="#cities"><span></span>EXPLORE</a>
+                        <button className="btn">
+                            <a href="#cities"><span></span><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-down-circle-fill " viewBox="0 0 16 16">
+                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z" />
+                            </svg></a>
                         </button>
                     </div>
                 </div>
@@ -60,8 +63,8 @@ function HomePage() {
             <div className='cities' id='cities'>
                 <div class="citiesHeader">
 
-                    <span style={{ transform: `translate(${offSetY * 0.3}px)` }}>top cities</span>
-                    <h1 style={{ transform: `translate(${offSetY * 0.2}px)` }}>Our popular cities</h1>
+                    <span style={{ transform: `translate(${offSetY * 0.3}px)` }}>top Packages</span>
+                    <h1 style={{ transform: `translate(${offSetY * 0.2}px)` }}>Our popular packages</h1>
                     <p style={{ transform: `translate(${offSetY * -0.1}px)` }}>We are a team of humans with the strategy, the tools and the solutions for you to travel as you deserve.</p>
                 </div>
                 <Link to="/packages/e1fa7baf-6de2-4e58-abfa-129d3269cc6e">
@@ -78,25 +81,26 @@ function HomePage() {
                         </div>
                     </div>
                 </Link>
-                <div className='expExplore'>
-                    <button className="btn btn-outline-secondary">
-                        <a href="#experiences"><span></span>SCROLL </a>
+                <div className='explore'>
+                    <button className="btn">
+                        <a href="#packages"><span></span><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-down-circle-fill " viewBox="0 0 16 16">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z" />
+                        </svg></a>
                     </button>
                 </div>
             </div>
-
             <div className='experiences' id='experiences'>
                 <div class="experiencesHeader">
 
-                    <span style={{ transform: `translate(${offSetY * -0.1}px)` }}>top experiences</span>
-                    <h1 style={{ transform: `translate(${offSetY * -0.2}px)` }}>Our popular experiences</h1>
-                    <p style={{ transform: `translate(${offSetY * -0.1}px)` }}>Choose a city, we organize the rest of your trip.</p>
+                    <span style={{ transform: `translate(${offSetY * 0.1}px)` }}>top experiences</span>
+                    <h1 style={{ transform: `translate(${offSetY * -0.07}px)` }}>Our popular experiences</h1>
+                    <p style={{ transform: `translate(${offSetY * -0}px)` }}>Choose a city, we organize the rest of your trip.</p>
                 </div>
                 <Link to="/experiences">
                     <div class="owl-carousel owl-theme">
                         <div class="item">
                             <img src="https://res.cloudinary.com/dblc1bzmx/image/upload/c_scale,h_720,q_50/v1661639589/VivaArg/BARILOCHE/pexels-mati-mango-3193767_ruyclw.jpg" alt="" />
-                            <div class="overlay">
+                            <div class="overlay2">
                                 <span>Excursion to the Cerro Catedral</span>
                                 <div>
                                     <h2>The place that everyone want to go.</h2>
@@ -106,14 +110,38 @@ function HomePage() {
                         </div>
                     </div>
                 </Link>
-                <div className='expExplore'>
-                    <button className="btn btn-outline-secondary">
-                        <a href="#contact"><span></span>CONTACT US </a>
+                <div className='explore'>
+                    <button className="btn">
+                        <a href="#videos"><span></span><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-down-circle-fill " viewBox="0 0 16 16">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z" />
+                        </svg></a>
                     </button>
                 </div>
             </div>
-     
-            <div className='contactUs'id='contact'>
+            <div className='videos' id='videos'>
+                <div class="videosHeader">
+
+                    <span style={{ transform: `translate(${offSetY * 0.02}px)` }}>EXPLORE</span>
+                    <h1 style={{ transform: `translate(${offSetY * 0.03}px)` }}>Our cities</h1>
+                    <p style={{ transform: `translate(${offSetY * 0.04}px)` }}>Choose a city, we organize the rest of your trip.</p>
+                </div>
+
+                <div >
+                    <div class="player-wrapper">
+                        <ReactPlayer url={'https://res.cloudinary.com/dblc1bzmx/video/upload/v1661639581/VivaArg/BUENOS%20AIRES/Buenos_Aires_1_ixmanf.mp4'} controls loop className='react-player' width="100%" height="100%"/>
+                    </div>
+                </div>
+
+                <div className='explore'>
+                    <button className="btn">
+                        <a href="#contact"><span></span><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-down-circle-fill " viewBox="0 0 16 16">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z" />
+                        </svg></a>
+                    </button>
+                </div>
+            </div>
+
+            <div className='contactUs' id='contact'>
 
                 <div class="containContact">
 
@@ -162,11 +190,11 @@ function HomePage() {
                     </div>
                 </div>
             </div>
-            <a href="#firstPage"><span></span> 
-            
-                <Footer/>
-          
-           
+            <a href="#firstPage"><span></span>
+
+                <Footer />
+
+
             </a>
         </Fragment>
     )

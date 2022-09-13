@@ -13,7 +13,7 @@ export default function SalesTable() {
                         <div class="table-responsive table-borderless">
                             <span> FILTER </span>
                             <select className='selectBtn'>
-                                <option value="bought">COMPRADA</option>
+                                <option value="bought">BOUGHT</option>
                                 <option value="cancelled">CANCELLED</option>
                             </select>
                             <br />
@@ -36,12 +36,12 @@ export default function SalesTable() {
                                         <td>10/09/22</td>
                                         <td>CLASSIC MENDOZA</td>
                                         <td>70000</td>
-                                        <td>COMPRADA</td>
+                                        <td>BOUGHT</td>
                                         <td><select className='statusChange'>
-                                            <option value="bought">COMPRADA</option>
+                                            <option value="bought">BOUGHT</option>
                                             <option value="cancelled">CANCELLED</option>
                                         </select>
-                                            <button className="btn btn-outline-secondary"><i class="bi bi-check-circle-fill"></i></button>
+                                            
                                         </td>
                                     </tr>
                                     <tr class="cell-1">
@@ -49,12 +49,12 @@ export default function SalesTable() {
                                         <td>10/09/22</td>
                                         <td>TO LAS LEÑAS</td>
                                         <td>7700</td>
-                                        <td>COMPRADA</td>
+                                        <td>BOUGHT</td>
                                         <td><select className="statusChange">
-                                            <option value="bought">COMPRADA</option>
+                                            <option value="bought">BOUGHT</option>
                                             <option value="cancelled">CANCELLED</option>
                                         </select>
-                                            <button className="btn btn-outline-secondary"><i class="bi bi-check-circle-fill"></i></button>
+                                            
                                         </td>
                                     </tr>
                                 </tbody>

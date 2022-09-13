@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
+import { animatedScroll as scroll } from "react-scroll";
 import React, { Fragment } from "react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getLsUser } from "./../../redux/action.js"
 
 import "./LandingPage.css";
-import Video from '../../assets/logo corto glitch.mp4'
+import Video from '../../assets/vive argentina.mp4'
 
 function Landing() {
 
@@ -16,13 +17,13 @@ function Landing() {
 
   return (
     <Fragment>
-      <Link to="/home">
-        <div className="gif">
-          <video autoPlay muted id='video'>
+      <div className="gif">
+        <Link to="/home">
+          <video autoPlay muted loop id='video'>
             <source src={Video} type='video/mp4' />
           </video>
-        </div>
-      </Link>
+        </Link>
+      </div>
     </Fragment>
   );
 }

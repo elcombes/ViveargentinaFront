@@ -67,7 +67,6 @@ function ChangePassword() {
 
     return (
         <div>
-            <div><h1>Change Password</h1></div>
             <div>
                 <form onSubmit={handleSubmit}>
                     <div>
@@ -86,7 +85,7 @@ function ChangePassword() {
                         <p>{state.repeatPassword}</p>
                     </div>
                     <div>
-                        <button type='submit' onClick={(e)=>handleSubmit(e)}>Submit</button>
+                        <button className= "btn btn-outline-secondary"type='submit' onClick={(e)=>handleSubmit(e)}>Submit</button>
                     </div>
                 </form>
                 {
