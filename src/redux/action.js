@@ -70,6 +70,43 @@ export function verifyUser(token) {
   };
 }
 
+//
+export function passwordReset({token, password}){
+  return async function(){
+    const headers = {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    }
+    const response = await axios.post("https://viveargentina.herokuapp.com/users/password_reset/", {password}, {headers})
+  }
+}
+
+//esta funcion envia una solicitud de cambio de contraseña al correo indicado
+export function resetPasswordRequest(email){
+  return async function(){
+    const response = await axios.post("https://viveargentina.herokuapp.com/users/reset_password_request", {email})
+    console.log("response: "+response)
+  }
+}
+
+//esta funcion cambia la contraseña del usuario logeado. necesita la contraseña actual, la nueva y el accessToken
+export function changePassword({token, password, newPassword}){
+  return async function(){
+    const headers = {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    }
+    console.log("token"+token);
+    console.log("old pass: "+password)
+    console.log("new pass: "+newPassword)
+    const response = await axios.post('https://viveargentina.herokuapp.com/users/change_password',{password, newPassword}, {headers})
+    console.log("response: "+response);
+    return response
+  }
+}
+
 // Esta ruta añade un paquete a favoritos del usuario
 export function addPackageFavorite(packageId, userId) {
   return async function () {

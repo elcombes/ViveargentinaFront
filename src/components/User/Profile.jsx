@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import perfil_user from "../../assets/perfil_user.png";
@@ -6,6 +6,7 @@ import NavBarUser from "../NavBarUser/NavBarUser";
 import MyTrips from "../User/MyTrips";
 import MyFavs from "../User/MyFavs";
 import { getUserById } from "./../../redux/action.js";
+import ChangePassword from "../User/ChangePassword";
 
 // Ruta agregada en App. js --> Route path="/userprofile"
 // Agrego un Link de Prueba en NavBar.jsx para entrar a Profile y probar el state de User Info
@@ -15,11 +16,17 @@ export default function Profile() {
 
   let userFromStorage = JSON.parse(localStorage.getItem("user"));
 
+  const [changePassword, setChangePassword] = useState(false)
+
   useEffect(() => {
     userFromStorage = JSON.parse(localStorage.getItem("user"));
     let userId = userFromStorage.user.id;
     dispatch(getUserById(userId));
   }, []);
+
+  const toggleCP = ()=>{
+    setChangePassword(changePassword?false:true)
+  }
 
   return (
     <Fragment>
@@ -140,12 +147,19 @@ export default function Profile() {
                           {" "}
                           <a href="#myfavs">CLICK ME TO SEE YOUR FAVS</a>
                         </button>
+                        <button onClick={()=>toggleCP()} className="btn btn-outline-secondary">
+                          {" "}
+                          CHANGE PASSWORD
+                        </button>
                         <Link to="/home">
                           <button className="btn btn-outline-secondary">
                             {" "}
                             <a href="#myfavs"> HOME</a>
                           </button>
                         </Link>
+                        {
+                          changePassword?<ChangePassword/>: null
+                        }
                       </div>
                     </div>
                   </div>

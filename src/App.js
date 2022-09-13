@@ -18,6 +18,7 @@ import MyFavs from './components/User/MyFavs.jsx';
 import Verify from "./components/User/Verify";
 import AdminDashboard from './components/Admin/AdminDashboard.jsx';
 import UsersTable from "./components/User/UsersTable";
+import ResetPassword from "./components/User/ResetPassword";
 
 function App() {
   return (
@@ -31,7 +32,8 @@ function App() {
           <Route exact path="/city" component={City} />
           <Route exact path="/home" component={HomePage} />
           <Route path="/packages/:cityId" component={Packages} />
-          <Route path="/verify/:id" component={Verify} />
+          <Route path="/verify/:token" component={Verify} />
+          <Route path="/reset_password/:token" component={ResetPassword} />
           <Route exact path="/packages" component={Packages} />
           <Route path="/experiences/:packageId" component={Experiences} />
           <Route exact path="/experiences" component={Experiences} />

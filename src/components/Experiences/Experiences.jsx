@@ -313,6 +313,7 @@ export default function Experiences(props) {
                                 alt=""
                               />
                               <div>
+
                                 <button
                                   onClick={() => addExperiencesFavorites(e.id)}
                                   style={{
@@ -320,6 +321,8 @@ export default function Experiences(props) {
                                     borderColor: "transparent",
                                   }}
                                 >
+
+                          
                                   <i
                                     class="bi bi-heart-fill"
                                     style={{
@@ -540,10 +543,6 @@ export default function Experiences(props) {
               paged={paged}
               currentPage={page}
             />
-          </div>
-
-          <div className={styles.experiencesbuttons}>
-            <CreateExperience />
           </div>
           <div className={styles.separator}></div>
           <div className="container">

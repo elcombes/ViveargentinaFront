@@ -103,9 +103,7 @@ select {
 .accordion-item {
   border: 0;
 }
-.mt-5{
-  margin-top: 0rem !important;
-}
+
 @media screen and (max-width: 940px) {
   h1 {
     font-size: 2.5rem;

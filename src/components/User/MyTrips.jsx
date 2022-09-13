@@ -16,16 +16,11 @@ export default function MyTrips({ packages, experiences }) {
 
   return (
     <Fragment>
-      <div
-        style={{ margin: "10vh" }}
-        className={`container-fluid ${styles.mytripspage}`}
-      >
+      <div className="container-fluid">
         <div className="container">
-          <div className="row mb-3">
+          <div className="row mb-3 mt-5">
             <h2 className="text-center">
-              <i className={`bi bi-airplane-fill ${styles.tripicon}`}></i> MY
-              TRIPS LIST
-            </h2>
+              <i className={`bi bi-airplane-fill ${styles.tripicon}`}></i> MY TRIPS LIST </h2>
           </div>
 
           {
