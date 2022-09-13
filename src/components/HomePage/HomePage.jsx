@@ -129,13 +129,6 @@ function HomePage() {
                 <div >
                     <div class="player-wrapper">
                         <ReactPlayer url={'https://res.cloudinary.com/dblc1bzmx/video/upload/v1661639581/VivaArg/BUENOS%20AIRES/Buenos_Aires_1_ixmanf.mp4'} controls loop className='react-player' width="100%" height="100%"/>
-                        <div class="overlay3">
-                            <span>Buenos Aires</span>
-                            <div>
-                                <h2>The place that everyone want to go.</h2>
-                                <p>Click me for more info</p>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
