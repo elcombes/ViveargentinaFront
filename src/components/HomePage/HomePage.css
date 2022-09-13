@@ -51,6 +51,7 @@
 }
 .citiesHeader {
     margin-bottom: 55px;
+    overflow: hidden;
 }
 .citiesHeader h1{
     font-weight: 500;

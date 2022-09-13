@@ -1,6 +1,6 @@
 .footerstyle {
     background-color: #020202;
-    height: 230px;
+    min-height: 230px;
     color: #fff;
     display: flex;
     align-items: center;
