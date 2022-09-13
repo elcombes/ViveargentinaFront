@@ -1,6 +1,7 @@
 //import { isFocusable } from "@testing-library/user-event/dist/utils";
 import axios from "axios";
 
+export const GET_ALL_USERS = "GET_ALL_USERS";
 export const GET_USER_BY_ID = "GET_USER_BY_ID";
 export const GET_CITIES_BY_NAME = "GET_CITIES_BY_NAME";
 export const GET_CITY_BY_ID = "GET_CITY_BY_ID";
@@ -29,8 +30,21 @@ export const BUY_IN_MERCADOPAGO = "BUY_IN_MERCADOPAGO";
 export const VERIFY_USER = "VERIFY_USER";
 export const CONTACTUS = "CONTACTUS";
 
-// Esta ruta envía una compra a la pasarela de mercadopago
 
+// Esta ruta trae un array con todo los usuarios. 
+export function getAllUsers() {
+  return async function (dispatch) {
+    let allUsers = await axios.get(
+      `https://viveargentina.herokuapp.com/users`
+    );
+    return dispatch({
+      type: GET_ALL_USERS,
+      payload: allUsers.data,
+    });
+  };
+}
+
+// Esta ruta trae un usuario por ID
 export function getUserById(userId) {
   return async function (dispatch) {
     let userById = await axios.get(
@@ -43,6 +57,7 @@ export function getUserById(userId) {
   };
 }
 
+// Esta ruta envía una compra a la pasarela de mercadopago
 export function buyInMercadoPago(itemsFromStore) {
   return async function (dispatch) {
     let response = await axios.post(
