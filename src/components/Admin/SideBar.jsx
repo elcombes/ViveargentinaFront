@@ -9,7 +9,7 @@ export default function SideBar() {
                 <ul className="sidebar">
                     <br />
                     <li>
-                        <Link to='/admin/packs'><i class="bi bi-airplane-fill"></i> PACKS</Link>
+                        <Link to='/admin/packages'><i class="bi bi-airplane-fill"></i> PACKS</Link>
                     </li>
                     <br />
                     <li>
