@@ -71,48 +71,61 @@ export function verifyUser(token) {
 }
 
 //
-export function passwordReset({token, password}){
-  return async function(){
+export function passwordReset({ token, password }) {
+  return async function () {
     const headers = {
       Accept: "application/json",
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
-    }
-    const response = await axios.post("https://viveargentina.herokuapp.com/users/password_reset/", {password}, {headers})
-  }
+    };
+    const response = await axios.post(
+      "https://viveargentina.herokuapp.com/users/password_reset/",
+      { password },
+      { headers }
+    );
+    console.log(response);
+  };
 }
 
 //esta funcion envia una solicitud de cambio de contraseña al correo indicado
-export function resetPasswordRequest(email){
-  return async function(){
-    const response = await axios.post("https://viveargentina.herokuapp.com/users/reset_password_request", {email})
-    console.log("response: "+response)
-  }
+export function resetPasswordRequest(email) {
+  return async function () {
+    const response = await axios.post(
+      "https://viveargentina.herokuapp.com/users/reset_password_request",
+      { email }
+    );
+    console.log("response: " + response);
+  };
 }
 
 //esta funcion cambia la contraseña del usuario logeado. necesita la contraseña actual, la nueva y el accessToken
-export function changePassword({token, password, newPassword}){
-  return async function(){
+export function changePassword({ token, password, newPassword }) {
+  return async function () {
     const headers = {
       Accept: "application/json",
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
-    }
-    console.log("token"+token);
-    console.log("old pass: "+password)
-    console.log("new pass: "+newPassword)
-    const response = await axios.post('https://viveargentina.herokuapp.com/users/change_password',{password, newPassword}, {headers})
-    console.log("response: "+response);
-    return response
-  }
+    };
+    console.log("token" + token);
+    console.log("old pass: " + password);
+    console.log("new pass: " + newPassword);
+    const response = await axios.post(
+      "https://viveargentina.herokuapp.com/users/change_password",
+      { password, newPassword },
+      { headers }
+    );
+    console.log("response: " + response);
+    return response;
+  };
 }
 
 // Esta ruta añade un paquete a favoritos del usuario
 export function addPackageFavorite(packageId, userId) {
   return async function () {
     let response = await axios.post(
-      `http://viveargentina.herokuapp.com/favorites/packages?packageId=${packageId}&userId=${userId}`
+      `https://viveargentina.herokuapp.com/favorites/packages?packageId=${packageId}&userId=${userId}`
     );
+    console.log(response);
   };
 }
 
@@ -120,27 +133,29 @@ export function addPackageFavorite(packageId, userId) {
 export function addExperienceFavorite(experienceId, userId) {
   return async function () {
     let response = await axios.post(
-      `http://viveargentina.herokuapp.com/favorites/experiences?userId=${userId}&experienceId=${experienceId}`
+      `https://viveargentina.herokuapp.com/favorites/experiences?userId=${userId}&experienceId=${experienceId}`
     );
     console.log(response);
   };
 }
 
 // Esta ruta quita un paquete a favoritos del usuario
-export function removePackageFavorite(userId, packageId) {
+export function removePackageFavorite(packageId, userId) {
   return async function () {
-    await axios.put(
-      `https://viveargentina.herokuapp.com/favorites/packges?userId=${userId}&packageId${packageId}`
+    let response = await axios.put(
+      `https://viveargentina.herokuapp.com/favorites/packages?userId=${userId}&packageId=${packageId}`
     );
+    console.log(response);
   };
 }
 
 // Esta ruta quita una experiencia a favoritos del usuario
-export function removeExperienceFavorite(userId, experienceId) {
+export function removeExperienceFavorite(experienceId, userId) {
   return async function () {
-    await axios.put(
-      `https://viveargentina.herokuapp.com/favorites/experiences?userId=${userId}&experienceId${experienceId}`
+    let response = await axios.put(
+      `https://viveargentina.herokuapp.com/favorites/experiences?userId=${userId}&experienceId=${experienceId}`
     );
+    console.log(response);
   };
 }
 
