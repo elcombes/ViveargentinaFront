@@ -70,39 +70,92 @@ export function verifyUser(token) {
   };
 }
 
-// Esta ruta añade un paquete a favoritos del usuario
-export function addPackageFavorite(userId, packageId) {
+//
+export function passwordReset({ token, password }) {
   return async function () {
-    await axios.post(
-      `https://localhost:3001/favorites/packges?userId=${userId}&packageId${packageId}`
+    const headers = {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    };
+    const response = await axios.post(
+      "https://viveargentina.herokuapp.com/users/password_reset/",
+      { password },
+      { headers }
     );
+    console.log(response);
+  };
+}
+
+//esta funcion envia una solicitud de cambio de contraseña al correo indicado
+export function resetPasswordRequest(email) {
+  return async function () {
+    const response = await axios.post(
+      "https://viveargentina.herokuapp.com/users/reset_password_request",
+      { email }
+    );
+    console.log("response: " + response);
+  };
+}
+
+//esta funcion cambia la contraseña del usuario logeado. necesita la contraseña actual, la nueva y el accessToken
+export function changePassword({ token, password, newPassword }) {
+  return async function () {
+    const headers = {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    };
+    console.log("token" + token);
+    console.log("old pass: " + password);
+    console.log("new pass: " + newPassword);
+    const response = await axios.post(
+      "https://viveargentina.herokuapp.com/users/change_password",
+      { password, newPassword },
+      { headers }
+    );
+    console.log("response: " + response);
+    return response;
+  };
+}
+
+// Esta ruta añade un paquete a favoritos del usuario
+export function addPackageFavorite(packageId, userId) {
+  return async function () {
+    let response = await axios.post(
+      `https://viveargentina.herokuapp.com/favorites/packages?packageId=${packageId}&userId=${userId}`
+    );
+    console.log(response);
   };
 }
 
 // Esta ruta añade una experiencia a favoritos del usuario
-export function addExperienceFavorite(userId, experienceId) {
+export function addExperienceFavorite(experienceId, userId) {
   return async function () {
-    await axios.post(
-      `https://localhost:3001/favorites/experiences?userId=${userId}&experienceId${experienceId}`
+    let response = await axios.post(
+      `https://viveargentina.herokuapp.com/favorites/experiences?userId=${userId}&experienceId=${experienceId}`
     );
+    console.log(response);
   };
 }
 
 // Esta ruta quita un paquete a favoritos del usuario
-export function removePackageFavorite(userId, packageId) {
+export function removePackageFavorite(packageId, userId) {
   return async function () {
-    await axios.put(
-      `https://localhost:3001/favorites/packges?userId=${userId}&packageId${packageId}`
+    let response = await axios.put(
+      `https://viveargentina.herokuapp.com/favorites/packages?userId=${userId}&packageId=${packageId}`
     );
+    console.log(response);
   };
 }
 
 // Esta ruta quita una experiencia a favoritos del usuario
-export function removeExperienceFavorite(userId, experienceId) {
+export function removeExperienceFavorite(experienceId, userId) {
   return async function () {
-    await axios.put(
-      `https://localhost:3001/favorites/experiences?userId=${userId}&experienceId${experienceId}`
+    let response = await axios.put(
+      `https://viveargentina.herokuapp.com/favorites/experiences?userId=${userId}&experienceId=${experienceId}`
     );
+    console.log(response);
   };
 }
 
@@ -111,7 +164,7 @@ export function addPackageBought(userId, package1) {
   return async function () {
     try {
       let response = await axios.post(
-        `http://localhost:3001/bought/packages?userId=${userId}`,
+        `http://viveargentina.herokuapp.com/bought/packages?userId=${userId}`,
         package1
       );
       return console.log(response.data);
@@ -126,7 +179,7 @@ export function addExperienceBought(userId, experience) {
   return async function () {
     try {
       let response = await axios.post(
-        `http://localhost:3001/bought/experiences?userId=${userId}`,
+        `http://viveargentina.herokuapp.com/bought/experiences?userId=${userId}`,
         experience
       );
       return console.log(response.data);

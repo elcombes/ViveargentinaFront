@@ -59,7 +59,7 @@ function Navbar() {
             <Login />
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#" style={{ borderColor: "#C49D48", color: "#C49D48", fontSize: "10px" }}>MY TRIPS</a>
+            <a class="nav-link" href="" style={{ borderColor: "#C49D48", color: "#C49D48", fontSize: "15px", textAlign:"center" }}>MY TRIPS</a>
           </li>
           <li>
             <Cart/>

@@ -6,7 +6,7 @@ import Row from "react-bootstrap/Row";
 import { useState, useEffect } from "react";
 import { GoogleLogin } from 'react-google-login';
 import { gapi } from 'gapi-script';
-import { getUserLogin, googleLogin } from "../../redux/action";
+import { getUserLogin, googleLogin, resetPasswordRequest } from "../../redux/action";
 import { useDispatch, useSelector } from "react-redux";
 import styles from './User.module.css'
 
@@ -38,6 +38,9 @@ export default function Login() {
         email: "",
         password: ""
     })
+
+    const [forgot, setForgot] = useState("Forgot your Password?")
+
     const onSuccess = async (res) => {
         console.log('success:', res);
         console.log(res.profileObj.email);
@@ -57,6 +60,21 @@ export default function Login() {
     };
 
     const [validated, setValidated] = useState(false);
+
+    const requestPasswordChange = (e)=>{
+        if(validateEmail(newUser.email)){
+            dispatch(resetPasswordRequest(newUser.email))
+            setForgot("Check your email")
+        }else{
+            setForgot("Enter a valid email")
+        }
+    }
+
+    const validateEmail = (email) => {
+        return String(email)
+          .toLowerCase()
+          .match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+      };
 
     const handleSubmit = async (event) => {
         const form = event.currentTarget;
@@ -145,6 +163,7 @@ export default function Login() {
                                         <Row className="mb-3 mt-3">
                                             <Button onClick={(e)=>handleSubmit(e)} type="submit"style={{fontSize: "2vh", fontFamily:"Raleway", backgroundColor: "#C49D48", borderColor: "#C49D48" }}>LOGIN</Button>
                                         </Row>
+                                        <button onClick={(e)=>requestPasswordChange(e)}>{forgot}</button>
                                         {/*Login de Google */}
                                         <div className="googleLog" style={{textAlign: "center", }}>
                                             <GoogleLogin

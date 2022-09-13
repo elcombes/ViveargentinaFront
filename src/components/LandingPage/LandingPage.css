@@ -1,14 +1,11 @@
 #video{
-display: flex;
-height: 70%;
-width: 70%;
-background-color: rgba(250, 255, 250, 0.792);
-top: 0;
-left: 0;
-margin: 0 auto;
-}
-
-.gif {
-    width: 100%;
-    height: 100vh;
+    filter: grayscale(100%);   
+    position: fixed;
+    top: 50%; left: 50%;
+    z-index: 1;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
 }
