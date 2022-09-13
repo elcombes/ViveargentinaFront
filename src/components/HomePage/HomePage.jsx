@@ -124,19 +124,19 @@ function HomePage() {
                             <h2 class="form-headlineContact">Send us a message</h2>
                             <form id="submit-form" action="">
                                 <p>
-                                    <input id="name" class="form-inputContact" type="text" placeholder="Your Name*" />
+                                    <input id="name" class="form-control form-inputContact" type="text" placeholder="Your Name*" />
                                     <small class="name-error"></small>
                                 </p>
                                 <p>
-                                    <input id="email" class="form-inputContact" type="email" placeholder="Your Email*" />
+                                    <input id="email" class="form-control form-inputContact" type="email" placeholder="Your Email*" />
                                     <small class="name-error"></small>
                                 </p>
                                 <p class="full-width">
-                                    <input id="company-name" class="form-inputContact" type="text" placeholder="Your Lastname*" required />
+                                    <input id="company-name" class="form-control form-inputContact" type="text" placeholder="Your Lastname*" required />
                                     <small></small>
                                 </p>
                                 <p class="full-width">
-                                    <textarea minlength="20" id="message" cols="30" rows="7" placeholder="Your Message*" required></textarea>
+                                    <textarea class="form-control" minlength="20" id="message" cols="30" rows="7" placeholder="Your Message*" required></textarea>
                                     <small></small>
                                 </p>
                                 <p class="full-width">
