@@ -25,16 +25,17 @@ export default function MyFavs({ packages, experiences }) {
   function removeExperienceFromFavorite(experienceId) {
     let user = JSON.parse(localStorage.getItem("user"));
     let userId = user.user.id;
-    setState(true);
     dispatch(removeExperienceFavorite(experienceId, userId));
-    console.log(state);
+    if (state === false) setState(true);
+    else if (state === true) setState(false);
   }
 
   function removePackageFromFavorite(packageId) {
     let user = JSON.parse(localStorage.getItem("user"));
     let userId = user.user.id;
     dispatch(removePackageFavorite(packageId, userId));
-    setState(true);
+    if (state === false) setState(true);
+    else if (state === true) setState(false);
   }
 
   return (
