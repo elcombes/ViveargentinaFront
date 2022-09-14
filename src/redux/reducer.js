@@ -26,6 +26,7 @@ import {
 } from "./action";
 
 const initialState = {
+  boughtUsers: [],
   allUsers: [],
   userById: {},
   cityById: {},
@@ -53,9 +54,26 @@ export default function rootReducer(state = initialState, action) {
   let userPackagesFavorite;
   switch (action.type) {
     case GET_ALL_USERS:
+      const boughtUsers = action.payload.filter((u) => {
+        return u.experiences.length >= 1 || u.packages.length >= 1
+    })
+    
+    boughtUsers.forEach(u => {
+        let boughtExperiences = u.experiences.filter(e => {
+            return e.reservation_experience.bought === true
+        })
+               
+        let boughtPackages = u.packages.filter(e => {
+            return e.reservation_package.bought === true
+        })
+        let allBoughtItems = boughtExperiences.concat(boughtPackages)
+        u.allBoughtItems =  allBoughtItems;
+
+    });
       return {
         ...state,
         allUsers: action.payload,
+        boughtUsers: boughtUsers,
       };
     case GET_USER_BY_ID:
       return {

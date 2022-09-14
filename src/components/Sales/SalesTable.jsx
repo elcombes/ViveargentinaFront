@@ -1,27 +1,37 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import  { useSelector, useDispatch }  from "react-redux";
-import { getAllUsers } from "../../redux/action";
+import { getAllUsers, putExperiencesStatus, putPackagesStatus } from "../../redux/action";
 import './SalesTable.css';
 
 
 export default function SalesTable() {
 
     const dispatch = useDispatch();
-    const allUsers = useSelector((state) => state.allUsers);
-    
-    const boughtUsers = allUsers.filter((u) => {
-        return u.experiences.length >= 1
-    })
-    
-    boughtUsers.forEach(u => {
-        let boughtExperiences = u.experiences.filter(e => {
-            return e.reservation_experience.bought === true
-        })
-        u.boughtExperiences =  boughtExperiences;
-        console.log('boughtExperiences', boughtExperiences)
-    });
+    const allBoughtUsers = useSelector((state) => state.boughtUsers);
+    const [state, setState] = useState(false);
 
-    //console.log('allUsers', allUsers)
+    function handleUpdateStatus(event, userId, itemId, item) {
+        let newStatus= event.target.value
+        let status = {status: newStatus,
+                      userId: userId,
+                      experienceId: itemId,
+                      packageId: itemId}
+       
+        if(item === 'experience') {
+            dispatch(putExperiencesStatus(status))
+        } else if(item === 'package') {
+            dispatch(putPackagesStatus(status))
+        }
+        if (state) {
+            console.log('entre al if')
+            setState(false);
+          } else {
+            console.log('entre al if else')
+            setState(true);
+          }
+    }
+
+    
   
     /* const orderUsers = allUsers.sort(function (a, b) {
         if (a.email.toLowerCase() > b.email.toLowerCase()) return 1;
@@ -32,7 +42,8 @@ export default function SalesTable() {
 
     useEffect(() => {
         dispatch(getAllUsers());
-    },[])
+        
+    },[state])
 
     return (
         <div class="container mt-5 ">
@@ -42,8 +53,11 @@ export default function SalesTable() {
                         <div class="table-responsive table-borderless">
                             <span> FILTER </span>
                             <select className='selectBtn'>
-                                <option value="bought">BOUGHT</option>
+                                <option disable >Select Status</option>
+                                <option value="pending">PENDING PAYMENT</option>
+                                <option value="confirmed">CONFIRMED</option>
                                 <option value="cancelled">CANCELLED</option>
+                                <option value="done">DONE</option>
                             </select>
                             <br />
                             <table class="table ">
@@ -62,22 +76,27 @@ export default function SalesTable() {
 
                                 {/* Contenido - Filas */}
                                 <tbody class="table-body">
-                                {boughtUsers?.map((u) => {
+                                {allBoughtUsers?.map((u) => {
                                     return (
                                                               
-                                        u.boughtExperiences?.map((e) => {
+                                        u.allBoughtItems?.map((e) => {
                                             return (
                                             <Fragment> 
                                             <tr class="cell-1">
                                                 <td>{u.first_name + ' ' + u.last_name}</td>
-                                                <td>{e.reservation_experience.createdAt.slice(0,9)}</td>
+                                                <td>{e.reservation_experience ? e.reservation_experience.createdAt.slice(0,9) :
+                                                     e.reservation_package.createdAt.slice(0,9)}</td>
                                                 <td>{e.name}</td>
-                                                <td>{e.reservation_experience.passengers}</td>
-                                                <td>{e.reservation_experience.total}</td>
-                                                <td>{e.reservation_experience.status}</td>
+                                                <td>{e.reservation_experience ? e.reservation_experience.passengers :
+                                                     e.reservation_package.passengers}</td>
+                                                <td>{e.reservation_experience ? e.reservation_experience.total :
+                                                     e.reservation_package.total}</td>
+                                                <td>{e.reservation_experience ? e.reservation_experience.status :
+                                                     e.reservation_package.status}</td>
                                                 <td>
-                                                <select className='statusChange'>
-                                                    <option value="pending">PENDING PAYMENT</option>
+                                                <select onChange={(event) => handleUpdateStatus(event, u.id, e.id, e.reservation_experience ? 'experience': 'package' )} className='statusChange'>
+                                                    <option disable >Select Status</option>
+                                                    <option value="pending payment">PENDING PAYMENT</option>
                                                     <option value="confirmed">CONFIRMED</option>
                                                     <option value="cancelled">CANCELLED</option>
                                                     <option value="done">DONE</option>
@@ -85,10 +104,8 @@ export default function SalesTable() {
                                                 </td>
                                             </tr>
                                             </Fragment>   
-                                        
                                             )
                                         })
-                                    
                                     )   
                                         
                                 })}
