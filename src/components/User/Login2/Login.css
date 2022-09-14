@@ -1,4 +1,9 @@
 .forgotButton{
     border: none;
     cursor: pointer;
+    color: #C49D48;
+    font-size: 13px;
+}
+.modal-body input {
+    font-size: 13px;
 }

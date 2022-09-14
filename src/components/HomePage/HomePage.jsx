@@ -133,8 +133,8 @@ function HomePage() {
             <div className='videos' id='videos'>
               <div class="videosHeader">
 
-                <span style={{ transform: `translate(${offSetY * 0.02}px)` }}>EXPLORE</span>
-                <h1 style={{ transform: `translate(${offSetY * 0.03}px)` }}>Our cities</h1>
+                <span style={{ transform: `translate(${offSetY * 0.09}px)` }}>EXPLORE</span>
+                <h1 style={{ transform: `translate(${offSetY * 0.08}px)` }}>Our cities</h1>
                 <p style={{ transform: `translate(${offSetY * 0.04}px)` }}>Choose a city, we organize the rest of your trip.</p>
               </div>
 

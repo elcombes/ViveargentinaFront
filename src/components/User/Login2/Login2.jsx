@@ -132,7 +132,7 @@ export default function Login2() {
                             }}>
 
                                 <div style={{ background: "white" }} className="modal-header">
-                                    <h5 style={{ fontSize: "15px", color: "#C49D48" }} className="modal-title" id="exampleModalLabel">PLEASE LOG IN</h5>
+                                    <h5 style={{ fontSize: "15px", color: "#C49D48" }} className="modal-title" id="exampleModalLabel">Hello! To continue, enter your email and password</h5>
                                     <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
 
@@ -142,7 +142,7 @@ export default function Login2() {
                                             <div class="col">
                                                 <label className="infoLabel"> <i class="bi bi-envelope"></i> E-MAIL</label>
                                                 <input
-                                                    className="infoInput"
+                                                    class="form-control form-inputContact"
                                                     type="text"
                                                     value={newUser.email}
                                                     name="email"
@@ -158,7 +158,7 @@ export default function Login2() {
                                             <div class="col">
                                                 <label className="infoLabel"> <i class="bi bi-key"></i> PASSWORD</label>
                                                 <input
-                                                    className="infoInput"
+                                                    class="form-control form-inputContact"
                                                     type="password"
                                                     value={newUser.password}
                                                     name="password"
@@ -178,7 +178,7 @@ export default function Login2() {
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <button className="btn btn-outline-secondary" style={{
-                                                    fontSize: "10px", fontFamily: "Raleway",
+                                                    fontSize: "15px", fontFamily: "Raleway",
                                                     background: "#C49D48",
                                                     borderColor: "transparent"
                                                 }} type="submit" >LOG IN</button>
