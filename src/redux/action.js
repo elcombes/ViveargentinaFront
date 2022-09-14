@@ -138,9 +138,6 @@ export function changePassword({ token, password, newPassword }) {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     };
-    console.log("token" + token);
-    console.log("old pass: " + password);
-    console.log("new pass: " + newPassword);
     const response = await axios.post(
       "https://viveargentina.herokuapp.com/users/change_password",
       { password, newPassword },
@@ -148,6 +145,24 @@ export function changePassword({ token, password, newPassword }) {
     );
     console.log("response: " + response);
     return response;
+  };
+}
+
+
+export function softDelete({ token, userId }) {
+  return async function () {
+    const headers = {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    };
+    const response = await axios.put(
+      "https://viveargentina.herokuapp.com/users/soft_delete",
+      { userId },
+      { headers }
+    );
+    console.log("response: " + response);
+    return response.data;
   };
 }
 
@@ -561,6 +576,7 @@ export function filterExperiences(payload) {
 export function logout() {
   return async function (dispatch) {
     window.localStorage.removeItem("user");
+    window.localStorage.removeItem("items");
     return dispatch({
       type: LOGOUT,
       payload: null,
