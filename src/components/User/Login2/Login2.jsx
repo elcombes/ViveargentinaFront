@@ -102,9 +102,8 @@ export default function Login2() {
             errorMessagesArray.forEach(e => e.hidden = false)
         }
         console.log(newUser)
-        await dispatch(getUserLogin({ email: newUser.email, password: newUser.password })).then(() => {
-            console.log(userAuth)
-        })
+        const response = await dispatch(getUserLogin({ email: newUser.email, password: newUser.password }))
+        console.log(response)
         window.location.reload(false);
     };
 

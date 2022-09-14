@@ -82,7 +82,6 @@ export default function SignUp() {
             errorMessagesArray.forEach(e => e.hidden = false)
         } else {
             dispatch(registerUser(newUser))
-            // history.push('/home')
             Swal.fire({
                 title: "rodri",
                 imageUrl: "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663003831/VivaArg/Alerts/2_wsn0oa.png",
