@@ -32,6 +32,7 @@ export default function PackagesTable() {
                             <table class="table">
                                 {/* Encabezado de columnas */}
                                 <thead>
+                                    <tr>PACKAGES</tr>
                                     <tr>
                                         <th>CITY</th>
                                         <th>PACKAGE</th>
@@ -42,7 +43,7 @@ export default function PackagesTable() {
                                         <th>ACTIONS</th>
                                     </tr>
                                 </thead>
-
+                                
                                 {/* Contenido - Filas */}
 
                                 {orderPackages?.map((p) => {

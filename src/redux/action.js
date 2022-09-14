@@ -30,6 +30,29 @@ export const BUY_IN_MERCADOPAGO = "BUY_IN_MERCADOPAGO";
 export const VERIFY_USER = "VERIFY_USER";
 export const CONTACTUS = "CONTACTUS";
 
+//Esta action cambia el estado de una venta de Experiencias
+export function putExperiencesStatus(status) {
+
+  return async function (dispatch) {
+    let response = await axios.put(
+      "https://viveargentina.herokuapp.com/bought/experiences",
+      status
+    );
+    
+  }
+}
+
+//Esta action cambia el estado de una venta de Paquetes
+export function putPackagesStatus(status) {
+  
+  return async function (dispatch) {
+    let response = await axios.put(
+      "https://viveargentina.herokuapp.com/bought/packages",
+      status
+    );
+    
+  }
+}
 
 // Esta ruta trae un array con todo los usuarios. 
 export function getAllUsers() {
