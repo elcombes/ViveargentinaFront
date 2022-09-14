@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import perfil_user from "../../assets/perfil_user.png";
-import NavBarUser from "../NavBarUser/NavBarUser";
+//import NavBarUser from "../NavBarUser/NavBarUser";
 import MyTrips from "../User/MyTrips";
 import MyFavs from "../User/MyFavs";
 import { getUserById } from "./../../redux/action.js";
@@ -147,19 +147,15 @@ export default function Profile() {
                           {" "}
                           <a href="#myfavs">CLICK ME TO SEE YOUR FAVS</a>
                         </button>
-                        {
-                          userFromStorage.user.birth_date === "active"? 
-                          (
-                            <button
-                              onClick={() => toggleCP()}
-                              className="btn btn-outline-secondary"
-                            >
-                              {" "}
-                              CHANGE PASSWORD
-                            </button>
-                          )  
-                          : null
-                        }
+                        {userFromStorage.user.birth_date === "active" ? (
+                          <button
+                            onClick={() => toggleCP()}
+                            className="btn btn-outline-secondary"
+                          >
+                            {" "}
+                            CHANGE PASSWORD
+                          </button>
+                        ) : null}
                         <Link to="/home">
                           <button className="btn btn-outline-secondary">
                             {" "}

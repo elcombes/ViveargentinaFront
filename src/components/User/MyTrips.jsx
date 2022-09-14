@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment } from "react";
 
 import styles from "./User.module.css";
 
@@ -20,7 +20,9 @@ export default function MyTrips({ packages, experiences }) {
         <div className="container">
           <div className="row mb-3 mt-5">
             <h2 className="text-center">
-              <i className={`bi bi-airplane-fill ${styles.tripicon}`}></i> MY TRIPS LIST </h2>
+              <i className={`bi bi-airplane-fill ${styles.tripicon}`}></i> MY
+              TRIPS LIST{" "}
+            </h2>
           </div>
 
           {
