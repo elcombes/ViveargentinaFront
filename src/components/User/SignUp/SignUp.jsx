@@ -83,8 +83,8 @@ export default function SignUp() {
         } else {
             dispatch(registerUser(newUser))
             Swal.fire({
-                title: "rodri",
-                imageUrl: "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663003831/VivaArg/Alerts/2_wsn0oa.png",
+                title: "THANKS FOR SIGNING UP!",
+                imageUrl: "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663188984/VivaArg/Alerts/passagerAlert_hxpidz.png",
                 imageWidth: 350,
                 imageHeight: 300,
                 confirmButtonColor: "#C49D48",
