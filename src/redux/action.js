@@ -261,11 +261,9 @@ export function getUserLogin({ email, password }) {
       "https://viveargentina.herokuapp.com/users/login",
       { email, password }
     );
-    if (!response.data) {
-      return dispatch({
-        type: GET_USER_LOGIN,
-        payload: { auth: false },
-      });
+    console.log(response.data)
+    if (response.data === 'not allowed') {
+      return 'Incorrect password'
     }
     window.localStorage.setItem("user", JSON.stringify(response.data));
     return dispatch({

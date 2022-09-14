@@ -1,9 +1,24 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { useHistory } from "react-router-dom";
 import { passwordReset } from '../../redux/action'
 import { useDispatch } from "react-redux";
 import { useState } from "react";
+
+import Swal from "sweetalert2";
+
+
+
+function validate(state) {
+    // let strongPasswordVerification = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+    let errors = {};
+    if (!state.newPassword) errors.newPassword = "Password is required"
+    if (!state.repeatPassword) errors.repeatPassword = "Passwords do not much"
+    if (state.newPassword !== state.repeatPassword) errors.repeatPassword = "Passwords do not much"
+    return errors
+}
+
 import styles from "../User/User.module.css"
+
 
 function ResetPassword() {
     const dispatch = useDispatch()
@@ -16,34 +31,29 @@ function ResetPassword() {
         alert: ""
     })
 
+    const [errors, setErrors] = useState({})
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (validate()) {
-            await dispatch(passwordReset({ token: token, password: state.newPassword }))
+        let errorMessagesNodeList = document.querySelectorAll("#errors")
+        let errorMessagesArray = Array.from(errorMessagesNodeList)
+        if (Object.entries(errors).length > 0) {
+            e.preventDefault()
+            e.stopPropagation()
+            errorMessagesArray.forEach(e => e.hidden = false)
+        } else {
+            dispatch(passwordReset({ token: token, password: state.newPassword }))
+            Swal.fire({
+                title: "Your password was changed successfully",
+                imageUrl: "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663003831/VivaArg/Alerts/2_wsn0oa.png",
+                imageWidth: 350,
+                imageHeight: 300,
+                confirmButtonColor: "#C49D48",
+                imageAlt: "Custom image",
+            });
+
             history.push("/home")
         }
-    }
-
-    const validate = () => {
-        console.log(state)
-        if (state.newPassword.length < 1) {
-            setState({
-                ...state,
-                alert: "Please enter the new password"
-            })
-            return false
-        } else if (state.newPassword != state.repeatPassword) {
-            setState({
-                ...state,
-                alert: "Please enter the same password in both inputs"
-            })
-            return false
-        }
-        setState({
-            ...state,
-            alert: "All good"
-        })
-        return true
     }
 
     const handleChange = (e) => {
@@ -51,8 +61,17 @@ function ResetPassword() {
             ...state,
             [e.target.name]: e.target.value,
         });
-        // validate()
+        setErrors(validate({
+            ...state,
+            [e.target.name]: e.target.value
+        }))
     };
+
+
+    useEffect(() => {
+        setErrors(validate(state))
+    }, [])
+
 
     return (
         <>
@@ -90,6 +109,7 @@ function ResetPassword() {
                         </form>
                     </div>
                 </div>
+
             </div>
         </>
     )

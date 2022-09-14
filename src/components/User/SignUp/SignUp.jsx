@@ -2,21 +2,21 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { useHistory } from "react-router-dom"
-
+import Swal from "sweetalert2";
 import styles from '../User.module.css'
 import './SignUp.css'
 
-import { registerUser } from "../../../redux/action";
+import { registerUser } from "../../../redux/action.js";
 
 function validate(newUser) {
     let emailVerification = /^(([^<>()\[\]\\.,;:\s@”]+(\.[^<>()\[\]\\.,;:\s@”]+)*)|(“.+”))@((\[[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}])|(([a-zA-Z\-0–9]+\.)+[a-zA-Z]{2,}))$/
     // let strongPasswordVerification = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
     let errors = {};
-    if (!newUser.firstName) {
-        errors.firstName = "Firstname is required"
+    if (!newUser.first_name) {
+        errors.first_name = "Firstname is required"
     }
-    if (!newUser.lastName) {
-        errors.lastName = "Lastname is required"
+    if (!newUser.last_name) {
+        errors.last_name = "Lastname is required"
     }
     if (!newUser.email) {
         errors.email = "Email is required"
@@ -34,7 +34,6 @@ function validate(newUser) {
     if (newUser.password !== newUser.repeatedPassword) {
         errors.repeatedPassword = "Password do not much"
     }
-
     return errors
 }
 
@@ -43,8 +42,8 @@ export default function SignUp() {
     const history = useHistory()
     const dispatch = useDispatch()
     const [newUser, setNewUser] = useState({
-        firstName: "",
-        lastName: "",
+        first_name: "",
+        last_name: "",
         email: "",
         password: "",
         repeatedPassword: ""
@@ -74,23 +73,30 @@ export default function SignUp() {
     }
 
     const handleSubmit = (e) => {
+        e.preventDefault()
         let errorMessagesNodeList = document.querySelectorAll("#errors")
         let errorMessagesArray = Array.from(errorMessagesNodeList)
         if (Object.entries(errors).length > 0) {
             e.preventDefault()
             e.stopPropagation()
             errorMessagesArray.forEach(e => e.hidden = false)
-        }
-        else {
+        } else {
             dispatch(registerUser(newUser))
+            Swal.fire({
+                title: "rodri",
+                imageUrl: "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663003831/VivaArg/Alerts/2_wsn0oa.png",
+                imageWidth: 350,
+                imageHeight: 300,
+                confirmButtonColor: "#C49D48",
+                imageAlt: "Custom image",
+            });
             setNewUser({
-                firstName: "",
-                lastName: "",
+                first_name: "",
+                last_name: "",
                 email: "",
                 password: "",
                 repeatedPassword: ""
             })
-            history.push('/home')
         }
     }
 
@@ -125,26 +131,26 @@ export default function SignUp() {
                                                 <input
                                                     className='infoInput'
                                                     type="text"
-                                                    value={newUser.firstName}
-                                                    name="firstName"
+                                                    value={newUser.first_name}
+                                                    name="first_name"
                                                     placeholder="John"
                                                     onChange={(e) => handleChange(e)} />
-                                                {errors.firstName ?
-                                                    <p id="errors" hidden>{errors.firstName}</p> :
+                                                {errors.first_name ?
+                                                    <p id="errors" hidden>{errors.first_name}</p> :
                                                     <p className="validMessage">Looks Good!</p>
                                                 }
                                             </div>
                                             <div class="col-md-6">
                                                 <label className="infoLabel">LASTNAME </label>
                                                 <input
-                                                    className="infoInput"                                                   
+                                                    className="infoInput"
                                                     type="text"
-                                                    value={newUser.lastName}
-                                                    name="lastName"
+                                                    value={newUser.last_name}
+                                                    name="last_name"
                                                     placeholder="Wick"
                                                     onChange={(e) => handleChange(e)} />
-                                                {errors.lastName ?
-                                                    <p id="errors" hidden>{errors.lastName}</p> :
+                                                {errors.last_name ?
+                                                    <p id="errors" hidden>{errors.last_name}</p> :
                                                     <p className="validMessage">Looks Good!</p>
                                                 }
                                             </div>
@@ -184,7 +190,7 @@ export default function SignUp() {
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <label className="infoLabel">REPEAT PASSWORD</label>
-                                                <input 
+                                                <input
                                                     className="infoInput"
                                                     type="password"
                                                     value={newUser.repeatedPassword}
@@ -202,7 +208,7 @@ export default function SignUp() {
                                         </div>
                                         <div class="row">
                                             <div class="column">
-                                                <button className="btn btn-outline-secondary"style={{ fontSize: "1.7vh", fontFamily: "Raleway", backgroundColor: "#005B4C", borderColor: "#005B4C", borderRadius: "5px" }} type="submit" >SIGN UP</button>
+                                                <button className="btn btn-outline-secondary" style={{ fontSize: "1.7vh", fontFamily: "Raleway", backgroundColor: "#005B4C", borderColor: "#005B4C", borderRadius: "5px" }} data-bs-dismiss="modal" type="submit" >SIGN UP</button>
                                             </div>
                                         </div>
                                     </form>
