@@ -1,6 +1,5 @@
 import React from 'react';
 import { useEffect } from 'react';
-import Login from '../User/Login.jsx';
 import './NavBarAdmin.css';
 
 
@@ -15,7 +14,7 @@ export default function NavBarAdmin() {
 
     return (
         <div>
-            <div className="container-fluid">
+            <div className="container-fluid-admin">
                 <div className="row">
                     <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
                         <div className="collapse navbar-collapse">
