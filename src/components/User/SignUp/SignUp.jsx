@@ -101,7 +101,7 @@ export default function SignUp() {
 
                     {/* Inicio boton para abrir el modal */}
                     <div>
-                        <button type="button" className={`btn btn-outline-secondary btn-lg ${styles.registerbutton}`} data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <button type="button" className={`btn btn-outline-secondary  ${styles.registerbutton}`} data-bs-toggle="modal" data-bs-target="#exampleModal">
                             Sign Up <i class="bi bi-person-lines-fill"></i>
                         </button>
                     </div>
@@ -113,7 +113,7 @@ export default function SignUp() {
                             <div className="modal-content">
 
                                 <div className="modal-header">
-                                    <h5 style={{ fontSize: "20px" }} className="modal-title" id="exampleModalLabel">Please Sign Up</h5>
+                                    <h5 style={{ fontSize: "20px" }} className="modal-title" id="exampleModalLabel">PLEASE SIGN UP</h5>
                                     <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
 
@@ -121,7 +121,7 @@ export default function SignUp() {
                                     <form class="row g-3" onSubmit={(e) => handleSubmit(e)}>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label className="infoLabel">Firstname </label>
+                                                <label className="infoLabel">FIRSTNAME </label>
                                                 <input
                                                     className='infoInput'
                                                     type="text"
@@ -135,7 +135,7 @@ export default function SignUp() {
                                                 }
                                             </div>
                                             <div class="col-md-6">
-                                                <label className="infoLabel">Lastname </label>
+                                                <label className="infoLabel">LASTNAME </label>
                                                 <input
                                                     className="infoInput"                                                   
                                                     type="text"
@@ -151,7 +151,7 @@ export default function SignUp() {
                                         </div>
                                         <div class="row">
                                             <div class="col">
-                                                <label className="infoLabel">Email </label>
+                                                <label className="infoLabel">E-MAIL </label>
                                                 <input
                                                     className="infoInput"
                                                     type="text"
@@ -167,7 +167,7 @@ export default function SignUp() {
                                         </div>
                                         <div class="row">
                                             <div class="col">
-                                                <label className="infoLabel">Password</label>
+                                                <label className="infoLabel">PASSWORD</label>
                                                 <input
                                                     className="infoInput"
                                                     type="password"
@@ -183,7 +183,7 @@ export default function SignUp() {
                                         </div>
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <label className="infoLabel">Repeat Password</label>
+                                                <label className="infoLabel">REPEAT PASSWORD</label>
                                                 <input 
                                                     className="infoInput"
                                                     type="password"
@@ -202,7 +202,7 @@ export default function SignUp() {
                                         </div>
                                         <div class="row">
                                             <div class="column">
-                                                <button style={{ fontSize: "1.7vh", fontFamily: "Raleway", backgroundColor: "#C49D48", borderColor: "#C49D48", borderRadius: "5px" }} type="submit" >Sign Up</button>
+                                                <button className="btn btn-outline-secondary"style={{ fontSize: "1.7vh", fontFamily: "Raleway", backgroundColor: "#005B4C", borderColor: "#005B4C", borderRadius: "5px" }} type="submit" >SIGN UP</button>
                                             </div>
                                         </div>
                                     </form>
