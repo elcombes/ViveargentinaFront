@@ -48,6 +48,7 @@ export default function UsersTable() {
                                         <td class="text-center">
                                             <div class="toggle-btn">
                                                 <div class="inner-circle"></div>
+                                                {/* <input type="checkbox" class="custom-control-input" id="customSwitches"></input> */}
                                             </div>
                                         </td>
                                         <td>{u.email}</td>
