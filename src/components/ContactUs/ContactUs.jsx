@@ -59,34 +59,34 @@ export default function ContactUs() {
 
         <div class="wrapperContact">
 
-          <div class="formContact">
-            <h4>GET IN TOUCH</h4>
-            <h2 class="form-headlineContact">Send us a message</h2>
-            <form id="submit-form" action="" >
-              <p>
-                <input id="name" class="form-control form-inputContact" type="text" name="name" value={state.name} onChange={(e) => handleChange(e)} placeholder="Your Name*" />
-                <small class="name-error"></small>
-              </p>
-              <p>
-                <input id="email" class="form-control form-inputContact" type="email" name="email" value={state.email} onChange={(e) => handleChange(e)} placeholder="Your Email*" />
-                <small class="email-error"></small>
-              </p>
-              <p class="full-width">
-                <input id="company-name" class="form-control form-inputContact" type="text" name="lastName" value={state.lastName} onChange={(e) => handleChange(e)} placeholder="Your Lastname*" required />
-                <small class="name-error"></small>
-              </p>
-              <p class="full-width">
-                <textarea class="form-control" minlength="20" id="message" cols="30" rows="7" name="message" value={state.message} onChange={(e) => handleChange(e)} placeholder="Your Message*" required></textarea>
-                <small></small>
-              </p>
-              <p class="full-width">
-                <input type="checkbox" id="checkbox" name="checkbox" checked /> Yes, I would like to receive information about discounts, promotions, packages and experiences available..
-              </p>
-              <p class="full-width">
-                <input type="submit" class="btn btn-outline-secondary" value="Submit" onClick={(e) => handleSubmit(e)} />
-              </p>
-            </form>
-          </div>
+  <div class="formContact">
+    <h4>GET IN TOUCH</h4>
+    <h2 class="form-headlineContact">Send us a message</h2>
+    <form id="submit-form" action="" >
+      <p>
+        <input id="name" class="form-control form-inputContact" type="text" name="name" value={state.name} onChange={(e)=>handleChange(e)} placeholder="Your Name*"/>
+        <small class="name-error"></small>
+      </p>
+      <p>
+        <input id="email" class="form-control form-inputContact" type="email" name="email" value={state.email} onChange={(e)=>handleChange(e)} placeholder="Your Email*"/>
+        <small class="email-error"></small>
+      </p>
+      <p class="full-width">
+        <input id="company-name" class="form-control form-inputContact" type="text" name="lastName" value={state.lastName} onChange={(e)=>handleChange(e)} placeholder="Your Lastname*" required/>
+        <small class="name-error"></small>
+      </p>
+      <p class="full-width">
+        <textarea  className="form-control form-inputContact "minlength="20" id="message" cols="30" rows="7" name="message" value={state.message} onChange={(e)=>handleChange(e)} placeholder="Your Message*" required></textarea>
+        <small></small>
+      </p>
+      <p class="full-width">
+        <input className="form-control form-inputContact"type="checkbox" id="checkbox" name="checkbox" checked/> Yes, I would like to receive information about discounts, promotions, packages and experiences available..
+      </p>
+      <p class="full-width">
+        <input type="submit" class="form-control form-inputContact" value="SEND" onClick={(e)=>handleSubmit(e)}/>
+      </p>
+    </form>
+  </div>
 
           <div class="contacts contact-wrapperContact">
 

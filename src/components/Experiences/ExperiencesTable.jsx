@@ -30,13 +30,13 @@ export default function ExperiencesTable() {
                 <div class="col-md-10">
                     <div class="rounded">
                         <div class="table-responsive table-borderless">
-
-                            <br />
+                            <div class="table-create">
+                                <CreateExperience />
+                            </div>
+                                <br />
                             <table class="table">
-
                                 {/* Encabezado de columnas */}
                                 <thead>
-                                    <tr>EXPERIENCES</tr>
                                     <tr>
                                         <th>CITY</th>
                                         <th>PACKAGE</th>
@@ -73,9 +73,7 @@ export default function ExperiencesTable() {
                                 )
                                 })}
                             </table>
-                            <div class="table-create">
-                                <CreateExperience />
-                            </div>
+
                         </div>
                     </div>
                 </div>
