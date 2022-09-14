@@ -81,7 +81,7 @@ export default function Experiences() {
               aria-labelledby="cexampleModalLabel"
               aria-hidden="true"
             >
-              <div className="modal-dialog">
+              <div className="modal-dialog" style={{marginTop:"90px"}}>
                 <div className="modal-content">
                   <div className="modal-header">
                     <h5 className="modal-title" id="cexampleModalLabel">
