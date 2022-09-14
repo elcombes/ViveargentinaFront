@@ -93,6 +93,7 @@ export default function Login2() {
     };
 
     const handleSubmit = async (e) => {
+        e.preventDefault()
         let errorMessagesNodeList = document.querySelectorAll("#errors")
         let errorMessagesArray = Array.from(errorMessagesNodeList)
         if (Object.entries(errors).length > 0) {
