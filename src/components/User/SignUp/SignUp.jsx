@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { useHistory } from "react-router-dom"
-
+import Swal from "sweetalert2";
 import styles from '../User.module.css'
 import './SignUp.css'
 
@@ -74,24 +74,31 @@ export default function SignUp() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(Object.entries(errors).length)
         let errorMessagesNodeList = document.querySelectorAll("#errors")
         let errorMessagesArray = Array.from(errorMessagesNodeList)
         if (Object.entries(errors).length > 0) {
             e.preventDefault()
             e.stopPropagation()
             errorMessagesArray.forEach(e => e.hidden = false)
+        } else {
+            dispatch(registerUser(newUser))
+            // history.push('/home')
+            Swal.fire({
+                title: "rodri",
+                imageUrl: "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663003831/VivaArg/Alerts/2_wsn0oa.png",
+                imageWidth: 350,
+                imageHeight: 300,
+                confirmButtonColor: "#C49D48",
+                imageAlt: "Custom image",
+            });
+            setNewUser({
+                first_name: "",
+                last_name: "",
+                email: "",
+                password: "",
+                repeatedPassword: ""
+            })
         }
-        console.log(newUser)
-        dispatch(registerUser(newUser))
-        setNewUser({
-            first_name: "",
-            last_name: "",
-            email: "",
-            password: "",
-            repeatedPassword: ""
-        })
-        history.push('/home')
     }
 
     return (
@@ -202,7 +209,7 @@ export default function SignUp() {
                                         </div>
                                         <div class="row">
                                             <div class="column">
-                                                <button className="btn btn-outline-secondary" style={{ fontSize: "1.7vh", fontFamily: "Raleway", backgroundColor: "#005B4C", borderColor: "#005B4C", borderRadius: "5px" }} type="submit" >SIGN UP</button>
+                                                <button className="btn btn-outline-secondary" style={{ fontSize: "1.7vh", fontFamily: "Raleway", backgroundColor: "#005B4C", borderColor: "#005B4C", borderRadius: "5px" }} data-bs-dismiss="modal" type="submit" >SIGN UP</button>
                                             </div>
                                         </div>
                                     </form>
