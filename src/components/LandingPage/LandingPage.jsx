@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { animatedScroll as scroll } from "react-scroll";
 import React, { Fragment } from "react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";

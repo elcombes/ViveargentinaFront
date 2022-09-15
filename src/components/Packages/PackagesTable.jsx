@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import  { useSelector, useDispatch }  from "react-redux";
 import {getAllPackages} from '../../redux/action';
 import './PackagesTable.css';
-
+import CreatePackage from "../CreatePackage/CreatePackage"
 //Ruta de prueba agregar en App => '/table'
 export default function PackagesTable() {
 
@@ -27,12 +27,13 @@ export default function PackagesTable() {
                 <div class="col-md-10">
                     <div class="rounded">
                         <div class="table-responsive table-borderless">
-                            <button className='btn-new-pack'>NEW PACKAGE</button>
+                          
+                            <CreatePackage />
+                            
                             <br />
-                            <table class="table">
+                            <table class="table table-bordered">
                                 {/* Encabezado de columnas */}
                                 <thead>
-                                    <tr>PACKAGES</tr>
                                     <tr>
                                         <th>CITY</th>
                                         <th>PACKAGE</th>
@@ -58,7 +59,7 @@ export default function PackagesTable() {
                                         })}
                                         </td>
                                         <td>{p.duration}</td>
-                                        <td>{p.price}</td>
+                                        <td>${p.price}</td>
                                         <td>{p.score}</td>
                                         <td>
                                             <button className="btn"><i class="bi bi-pencil-square"></i></button>

@@ -6,7 +6,7 @@ import NavBarUser from "../NavBarUser/NavBarUser";
 import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer/Footer";
 import SearchBar from "../SearchBar/SearchBar";
-import CreateExperience from "../CreateExperience/CreateExperience";
+
 import FilterExperiences from "../Filters/FilterExperiences";
 import Paged from "../Paged/Paged";
 import CategoriesExperiences from "./Categories.Experiences";

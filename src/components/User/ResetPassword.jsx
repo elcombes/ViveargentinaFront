@@ -1,3 +1,4 @@
+import styles from "../User/User.module.css"
 import React, {useEffect} from 'react'
 import { useHistory } from "react-router-dom";
 import { passwordReset } from '../../redux/action'
@@ -17,7 +18,6 @@ function validate(state) {
     return errors
 }
 
-import styles from "../User/User.module.css"
 
 
 function ResetPassword() {

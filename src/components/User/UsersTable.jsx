@@ -23,14 +23,14 @@ export default function UsersTable() {
         <div class="col-md-10">
           <div class="rounded">
             <div class="table-responsive table-borderless">
-              <table class="table">
+              <table class="table table-bordered">
                 {/* Encabezado de columnas */}
                 <thead>
                   <tr>
                     <th>BLOCK</th>
                     <th>EMAIL</th>
                     <th>NAME</th>
-                    <th>SHOPPING</th>
+                    <th>PURCHASE ITEMS</th>
                     <th>ADMIN</th>
                     <th>PASS RESET</th>
                   </tr>

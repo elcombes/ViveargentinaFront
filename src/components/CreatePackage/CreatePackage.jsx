@@ -1,6 +1,6 @@
 // import { useDispatch } from "react-redux";
 import React, { useEffect } from "react";
-import styles from "../CreateExperience/CreateExperience.module.css";
+import styles from "../CreatePackage/CreatePackage.module.css";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "react-bootstrap/Button";
@@ -8,51 +8,51 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import { useHistory } from "react-router-dom";
-import { createNewExperience, getAllPackages, getAllCategories } from "../../redux/action";
+import { createNewPackage, getAllPackages, getAllCities } from "../../redux/action";
 
-function validate(newExperience) {
+function validate(newPackage) {
   let errors = {};
-  if (!newExperience.name) {
+  if (!newPackage.name) {
     errors.name = "Name is required"
   }
-  if (!newExperience.subTitle) {
+  if (!newPackage.subTitle) {
     errors.subTitle = "Subtitle is required"
   }
-  if (!newExperience.price) {
+  if (!newPackage.price) {
     errors.price = "Price is required"
   }
-  if (newExperience.price < 0) {
+  if (newPackage.price < 0) {
     errors.price = "Price cannot be less than 0"
   }
-  if (!newExperience.duration) {
+  if (!newPackage.duration) {
     errors.duration = "Duration is required"
   }
-  if (!newExperience.dates) {
+  if (!newPackage.dates) {
     errors.dates = "At least 1 date is required"
   }
-  if (!newExperience.description) {
+  if (!newPackage.description) {
     errors.description = "Description is required"
   }
-  if (!newExperience.categoryId) {
+  if (!newPackage.categoryId) {
     errors.categoryId = "Category is required"
   }
-  if (!newExperience.packageId) {
+  if (!newPackage.packageId) {
     errors.packageId = "Package is required"
   }
-  if (!newExperience.image) {
+  if (!newPackage.image) {
     errors.image = "Image is required"
   }
 
   return errors
 }
 
-export default function Experiences() {
+export default function Packages() {
 
   const history = useHistory()
   const dispatch = useDispatch();
   const allPackages = useSelector((state) => state.allPackages);
-  const allCategories = useSelector((state) => state.allCategories);
-  const [newExperience, setNewExperience] = useState({
+  const allCities = useSelector((state) => state.allCities);
+  const [newPackage, setNewPackage] = useState({
     name: "",
     subTitle: "",
     price: "",
@@ -70,17 +70,17 @@ export default function Experiences() {
 
   useEffect(() => {
     dispatch(getAllPackages());
-    dispatch(getAllCategories());
-    setErrors(validate(newExperience))
+    dispatch(getAllCities());
+    setErrors(validate(newPackage))
   }, []);
 
   const handleChange = (e) => {
-    setNewExperience({
-      ...newExperience,
+    setNewPackage({
+      ...newPackage,
       [e.target.name]: e.target.value,
     });
     setErrors(validate({
-      ...newExperience,
+      ...newPackage,
       [e.target.name]: e.target.value
     }))
   };
@@ -93,7 +93,7 @@ export default function Experiences() {
       e.stopPropagation()
       errorMessagesArray.forEach(e => e.hidden = false)
     } else {
-    dispatch(createNewExperience(newExperience));
+    dispatch(createNewPackage(newPackage));
     }
   };
 
@@ -111,7 +111,7 @@ export default function Experiences() {
                 data-bs-toggle="modal"
                 data-bs-target="#cexampleModal"
               >
-                <i className="bi bi-node-plus"></i> New Experience
+                <i className="bi bi-node-plus"></i> New Package
               </button>
             </div>
 
@@ -126,7 +126,7 @@ export default function Experiences() {
                 <div className="modal-content">
                   <div className="modal-header">
                     <h5 className="modal-title" id="cexampleModalLabel">
-                      CREATE A NEW EXPERIENCE
+                      CREATE A NEW PACKAGE
                     </h5>
                     <button
                       type="button"
@@ -139,13 +139,13 @@ export default function Experiences() {
                     <form class="row g-3" onSubmit={(e) => handleSubmit(e)}>
                       <div class="row">
                         <div class="col-md-6">
-                          <label className="infoLabel">Name </label>
+                          <label className="infoLabel">NAME</label>
                           <input
-                            className='infoInput'
+                            className='form-control form-inputContact'
                             type="text"
-                            value={newExperience.name}
+                            value={newPackage.name}
                             name="name"
-                            placeholder="Excursion to Las Cataratas del Iguazu"
+                            placeholder="Not to be missed in Salta"
                             onChange={(e) => handleChange(e)} />
                           {errors.name ?
                             <p id="errors" hidden>{errors.name}</p> :
@@ -153,13 +153,13 @@ export default function Experiences() {
                           }
                         </div>
                         <div class="col-md-6">
-                          <label className="infoLabel">Subtitle </label>
+                          <label className="infoLabel">SUBTITLE </label>
                           <input
-                            className="infoInput"
+                            className='form-control form-inputContact'
                             type="text"
-                            value={newExperience.subTitle}
+                            value={newPackage.subTitle}
                             name="subTitle"
-                            placeholder="Get wet"
+                            placeholder="What you can't miss"
                             onChange={(e) => handleChange(e)} />
                           {errors.subTitle ?
                             <p id="errors" hidden>{errors.subTitle}</p> :
@@ -170,14 +170,14 @@ export default function Experiences() {
                       <div class="row">
                         <div class="col">
                           <div style={{ flexWrap: "nowrap", alignItems: "center", marginTop: "10px" }} class="input-group">
-                            <label style={{ paddingRight: "5px" }} class="col-sm-2" className="infoLabel">Price</label>
+                            <label style={{ paddingRight: "5px" }} class="col-sm-2" className="infoLabel">PRICE</label>
                             <span style={{ height: "41px", fontSize: "16px" }} class="input-group-text">$</span>
                             <input
                               style={{ width: "100%" }}
                               type="text"
                               class="col-sm-2"
-                              className="infoInput"
-                              value={newExperience.price}
+                              className='form-control form-inputContact'
+                              value={newPackage.price}
                               name="price"
                               placeholder="7500"
                               onChange={(e) => handleChange(e)} />
@@ -188,15 +188,15 @@ export default function Experiences() {
                           </div>
 
                           <div style={{ flexWrap: "nowrap", alignItems: "center", paddingTop: "22px" }} class="input-group">
-                            <label style={{ paddingRight: "5px" }} class="col-sm-2" className="infoLabel">Duration</label>
+                            <label style={{ paddingRight: "5px" }} class="col-sm-2" className="infoLabel">DURATION</label>
                             <input
                               // style={{width:"100%"}}
                               type="text"
                               class="col-sm-2"
-                              className="infoInput"
-                              value={newExperience.duration}
+                              className='form-control form-inputContact'
+                              value={newPackage.duration}
                               name="duration"
-                              placeholder="3 hours"
+                              placeholder="4 days"
                               onChange={(e) => handleChange(e)} />
                             {errors.duration ?
                               <p id="errors" hidden>{errors.duration}</p> :
@@ -205,13 +205,13 @@ export default function Experiences() {
                           </div>
 
                           <div style={{ flexWrap: "nowrap", alignItems: "center", paddingTop: "22px" }} class="input-group">
-                            <label style={{ paddingRight: "5px" }} class="col-sm-2" className="infoLabel">Dates</label>
+                            <label style={{ paddingRight: "5px" }} class="col-sm-2" className="infoLabel">DATES</label>
                             <input
                               // style={{width:"100%"}}
                               type="text"
                               class="col-sm-2"
-                              className="infoInput"
-                              value={newExperience.dates}
+                              className='form-control form-inputContact'
+                              value={newPackage.dates}
                               name="dates"
                               placeholder="23/05/2023, 08/03/2023"
                               onChange={(e) => handleChange(e)} />
@@ -223,12 +223,12 @@ export default function Experiences() {
 
                         </div>
                         <div class="col">
-                          <label className="infoLabel">Description </label>
+                          <label className="infoLabel">DESCRIPTION </label>
                           <textarea
                             style={{ height: "150px", fontSize: "12px" }}
-                            className="infoInput"
+                            className='form-control form-inputContact'
                             type="text"
-                            value={newExperience.description}
+                            value={newPackage.description}
                             name="description"
                             placeholder="What to do in Salta, the answer will always be..."
                             onChange={(e) => handleChange(e)} />
@@ -242,9 +242,9 @@ export default function Experiences() {
                       <div class="row">
                         <div class="col-md-6">
                           <select onChange={(e) => handleChange(e)} name="packageId"
-                            value={newExperience.packageId} class="form-select form-select-lg mb-3">
-                            <option selected>Select a Package</option>
-                            {allPackages?.map(e => {
+                            value={newPackage.packageId} class="form-select form-select-lg mb-3">
+                            <option selected>SELECT A CITY</option>
+                            {allCities?.map(e => {
                               return <option value={e.name}>{e.name}</option>
                             })}
                           </select>
@@ -252,30 +252,17 @@ export default function Experiences() {
                             <p id="errors" hidden>{errors.packageId}</p> :
                             <p className="validMessage">Looks Good!</p>
                           }
-                        </div>
-                        <div class="col-md-6">
-                          <select onChange={(e) => handleChange(e)} name="categoryId"
-                            value={newExperience.categoryId} class="form-select form-select-lg mb-3">
-                            <option selected>Select a Category</option>
-                            {allCategories?.map(e => {
-                              return <option value={e.name}>{e.name}</option>
-                            })}
-                          </select>
-                          {errors.categoryId ?
-                            <p id="errors" hidden>{errors.categoryId}</p> :
-                            <p className="validMessage">Looks Good!</p>
-                          }
-                        </div>
+                        </div>                   
                       </div>
                       <div class="row">
                         <div class="col">
-                          <label className="infoLabel">Image </label>
+                          <label className="infoLabel">IMAGE </label>
                           <div class="input-group mb-3">
                             <input 
                             style={{ minHeight: "0px" }} 
                             type="file" 
-                            class="form-control"
-                            value={newExperience.image}
+                            className='form-control form-inputContact'
+                            value={newPackage.image}
                             name="image"
                             onChange={(e) => handleChange(e)}
                             />
@@ -286,7 +273,7 @@ export default function Experiences() {
                           </div>
                         </div>
                         <div class="col-md-6" style={{ display: "flex", alignItems: "center" }}>
-                          <button style={{ fontSize: "1.6vh", fontFamily: "Raleway", backgroundColor: "#C49D48", borderColor: "#C49D48", borderRadius: "5px", width: "100%", marginTop: "8px", marginRight: "0px" }} type="submit" >Create Experience</button>
+                          <button style={{ fontSize: "1.6vh", fontFamily: "Raleway", backgroundColor: "#C49D48", borderColor: "#C49D48", borderRadius: "5px", width: "100%", marginTop: "8px", marginRight: "0px" }} type="submit" >CREATE PACKAGE</button>
                         </div>
 
                       </div>

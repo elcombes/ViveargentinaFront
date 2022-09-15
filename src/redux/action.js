@@ -21,6 +21,7 @@ export const ORDER_PACKAGES = "ORDER_PACKAGES";
 export const ORDER_EXPERIENCES = "ORDER_EXPERIENCES";
 export const FILTER_EXPERIENCES = "FILTER_EXPERIENCES";
 export const CREATE_NEW_EXPERIENCE = "CREATE_NEW_EXPERIENCE";
+export const CREATE_NEW_PACKAGE = "CREATE_NEW_PACKAGE";
 export const GET_USER_LOGIN = "GET_USER_LOGIN";
 export const LOGOUT = "LOGOUT";
 export const GET_LS_USER = "GET_LS_USER";
@@ -138,9 +139,6 @@ export function changePassword({ token, password, newPassword }) {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     };
-    console.log("token" + token);
-    console.log("old pass: " + password);
-    console.log("new pass: " + newPassword);
     const response = await axios.post(
       "https://viveargentina.herokuapp.com/users/change_password",
       { password, newPassword },
@@ -148,6 +146,24 @@ export function changePassword({ token, password, newPassword }) {
     );
     console.log("response: " + response);
     return response;
+  };
+}
+
+
+export function softDelete({ token, userId }) {
+  return async function () {
+    const headers = {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    };
+    const response = await axios.put(
+      "https://viveargentina.herokuapp.com/users/soft_delete",
+      { userId },
+      { headers }
+    );
+    console.log("response: " + response);
+    return response.data;
   };
 }
 
@@ -494,6 +510,16 @@ export function createNewExperience(newExperience) {
     return newExperienceCreated;
   };
 }
+export function createNewPackage(newPackage) {
+  return async function (dispatch) {
+    let newPackageCreated = await axios.post(
+      "https://viveargentina.herokuapp.com/packages",
+      newPackage
+    );
+    console.log(newPackageCreated);
+    return newPackageCreated;
+  };
+}
 
 export function orderCities(payload) {
   return {
@@ -559,6 +585,7 @@ export function filterExperiences(payload) {
 export function logout() {
   return async function (dispatch) {
     window.localStorage.removeItem("user");
+    window.localStorage.removeItem("items");
     return dispatch({
       type: LOGOUT,
       payload: null,
