@@ -63,7 +63,7 @@ export default function SalesTable() {
                 <option value="done">DONE</option>
               </select>
               <br />
-              <table class="table ">
+              <table class="table table-bordered ">
                 {/* Encabezado de columnas */}
                 <thead>
                   <tr>

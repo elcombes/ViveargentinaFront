@@ -21,6 +21,7 @@ export const ORDER_PACKAGES = "ORDER_PACKAGES";
 export const ORDER_EXPERIENCES = "ORDER_EXPERIENCES";
 export const FILTER_EXPERIENCES = "FILTER_EXPERIENCES";
 export const CREATE_NEW_EXPERIENCE = "CREATE_NEW_EXPERIENCE";
+export const CREATE_NEW_PACKAGE = "CREATE_NEW_PACKAGE";
 export const GET_USER_LOGIN = "GET_USER_LOGIN";
 export const LOGOUT = "LOGOUT";
 export const GET_LS_USER = "GET_LS_USER";
@@ -492,6 +493,16 @@ export function createNewExperience(newExperience) {
     );
     console.log(newExperienceCreated);
     return newExperienceCreated;
+  };
+}
+export function createNewPackage(newPackage) {
+  return async function (dispatch) {
+    let newPackageCreated = await axios.post(
+      "https://viveargentina.herokuapp.com/packages",
+      newPackage
+    );
+    console.log(newPackageCreated);
+    return newPackageCreated;
   };
 }
 
