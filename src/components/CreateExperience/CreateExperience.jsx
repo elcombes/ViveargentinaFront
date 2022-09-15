@@ -139,9 +139,9 @@ export default function Experiences() {
                     <form class="row g-3" onSubmit={(e) => handleSubmit(e)}>
                       <div class="row">
                         <div class="col-md-6">
-                          <label className="infoLabel">NAME </label>
+                          <label className="infoLabel">Name </label>
                           <input
-                            className="form-control form-inputContact"
+                            className='infoInput'
                             type="text"
                             value={newExperience.name}
                             name="name"
@@ -153,9 +153,9 @@ export default function Experiences() {
                           }
                         </div>
                         <div class="col-md-6">
-                          <label className="infoLabel">SUBTITLE </label>
+                          <label className="infoLabel">Subtitle </label>
                           <input
-                            className="form-control form-inputContact"
+                            className="infoInput"
                             type="text"
                             value={newExperience.subTitle}
                             name="subTitle"
@@ -170,13 +170,13 @@ export default function Experiences() {
                       <div class="row">
                         <div class="col">
                           <div style={{ flexWrap: "nowrap", alignItems: "center", marginTop: "10px" }} class="input-group">
-                            <label style={{ paddingRight: "5px" }} class="col-sm-2" className="infoLabel">PRICE</label>
+                            <label style={{ paddingRight: "5px" }} class="col-sm-2" className="infoLabel">Price</label>
                             <span style={{ height: "41px", fontSize: "16px" }} class="input-group-text">$</span>
                             <input
                               style={{ width: "100%" }}
                               type="text"
                               class="col-sm-2"
-                              className="form-control form-inputContact"
+                              className="infoInput"
                               value={newExperience.price}
                               name="price"
                               placeholder="7500"
@@ -188,12 +188,12 @@ export default function Experiences() {
                           </div>
 
                           <div style={{ flexWrap: "nowrap", alignItems: "center", paddingTop: "22px" }} class="input-group">
-                            <label style={{ paddingRight: "5px" }} class="col-sm-2" className="infoLabel">DURATION</label>
+                            <label style={{ paddingRight: "5px" }} class="col-sm-2" className="infoLabel">Duration</label>
                             <input
                               // style={{width:"100%"}}
                               type="text"
                               class="col-sm-2"
-                              className="form-control form-inputContact"
+                              className="infoInput"
                               value={newExperience.duration}
                               name="duration"
                               placeholder="3 hours"
@@ -205,12 +205,12 @@ export default function Experiences() {
                           </div>
 
                           <div style={{ flexWrap: "nowrap", alignItems: "center", paddingTop: "22px" }} class="input-group">
-                            <label style={{ paddingRight: "5px" }} class="col-sm-2" className="infoLabel">DATES</label>
+                            <label style={{ paddingRight: "5px" }} class="col-sm-2" className="infoLabel">Dates</label>
                             <input
                               // style={{width:"100%"}}
                               type="text"
                               class="col-sm-2"
-                              className="form-control form-inputContact"
+                              className="infoInput"
                               value={newExperience.dates}
                               name="dates"
                               placeholder="23/05/2023, 08/03/2023"
@@ -223,15 +223,14 @@ export default function Experiences() {
 
                         </div>
                         <div class="col">
-                          <label className="infoLabel">DESCRIPTION </label>
+                          <label className="infoLabel">Description </label>
                           <textarea
                             style={{ height: "150px", fontSize: "12px" }}
-                            class="form-control form-inputContact"
                             className="infoInput"
                             type="text"
                             value={newExperience.description}
                             name="description"
-                            placeholder="A journey through the Cataratas..."
+                            placeholder="What to do in Salta, the answer will always be..."
                             onChange={(e) => handleChange(e)} />
                           {errors.description ?
                             <p id="errors" hidden>{errors.description}</p> :
@@ -244,7 +243,7 @@ export default function Experiences() {
                         <div class="col-md-6">
                           <select onChange={(e) => handleChange(e)} name="packageId"
                             value={newExperience.packageId} class="form-select form-select-lg mb-3">
-                            <option selected>SELECT A PACKAGE</option>
+                            <option selected>Select a Package</option>
                             {allPackages?.map(e => {
                               return <option value={e.name}>{e.name}</option>
                             })}
@@ -257,7 +256,7 @@ export default function Experiences() {
                         <div class="col-md-6">
                           <select onChange={(e) => handleChange(e)} name="categoryId"
                             value={newExperience.categoryId} class="form-select form-select-lg mb-3">
-                            <option selected>SELECT A CATEGORY</option>
+                            <option selected>Select a Category</option>
                             {allCategories?.map(e => {
                               return <option value={e.name}>{e.name}</option>
                             })}
@@ -270,12 +269,12 @@ export default function Experiences() {
                       </div>
                       <div class="row">
                         <div class="col">
-                          <label className="infoLabel">IMAGE </label>
+                          <label className="infoLabel">Image </label>
                           <div class="input-group mb-3">
                             <input 
                             style={{ minHeight: "0px" }} 
                             type="file" 
-                            className="form-control form-inputContact"
+                            class="form-control"
                             value={newExperience.image}
                             name="image"
                             onChange={(e) => handleChange(e)}
@@ -287,7 +286,7 @@ export default function Experiences() {
                           </div>
                         </div>
                         <div class="col-md-6" style={{ display: "flex", alignItems: "center" }}>
-                          <button style={{ fontSize: "1.6vh", fontFamily: "Raleway", backgroundColor: "#C49D48", borderColor: "#C49D48", borderRadius: "5px", width: "100%", marginTop: "8px", marginRight: "0px" }} type="submit" >CREATE EXPERIENCE</button>
+                          <button style={{ fontSize: "1.6vh", fontFamily: "Raleway", backgroundColor: "#C49D48", borderColor: "#C49D48", borderRadius: "5px", width: "100%", marginTop: "8px", marginRight: "0px" }} type="submit" >Create Experience</button>
                         </div>
 
                       </div>

@@ -3,10 +3,10 @@ import React, { useEffect } from "react";
 import styles from "../CreateExperience/CreateExperience.module.css";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Button from "react-bootstrap/Button";
-import Col from "react-bootstrap/Col";
-import Form from "react-bootstrap/Form";
-import Row from "react-bootstrap/Row";
+// import Button from "react-bootstrap/Button";
+// import Col from "react-bootstrap/Col";
+// import Form from "react-bootstrap/Form";
+// import Row from "react-bootstrap/Row";
 import { useHistory } from "react-router-dom";
 import { createNewExperience, getAllPackages, getAllCategories } from "../../redux/action";
 
@@ -46,7 +46,7 @@ function validate(newExperience) {
   return errors
 }
 
-export default function Experiences() {
+export default function UpdateExperiences() {
 
   const history = useHistory()
   const dispatch = useDispatch();
@@ -139,7 +139,7 @@ export default function Experiences() {
                     <form class="row g-3" onSubmit={(e) => handleSubmit(e)}>
                       <div class="row">
                         <div class="col-md-6">
-                          <label className="infoLabel">NAME </label>
+                          <label className="infoLabel">cd </label>
                           <input
                             className="form-control form-inputContact"
                             type="text"
