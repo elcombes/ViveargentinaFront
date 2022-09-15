@@ -141,7 +141,7 @@ export default function Packages() {
                         <div class="col-md-6">
                           <label className="infoLabel">NAME</label>
                           <input
-                            className='infoInput'
+                            className='form-control form-inputContact'
                             type="text"
                             value={newPackage.name}
                             name="name"
@@ -153,9 +153,9 @@ export default function Packages() {
                           }
                         </div>
                         <div class="col-md-6">
-                          <label className="infoLabel">Subtitle </label>
+                          <label className="infoLabel">SUBTITLE </label>
                           <input
-                            className="infoInput"
+                            className='form-control form-inputContact'
                             type="text"
                             value={newPackage.subTitle}
                             name="subTitle"
@@ -170,13 +170,13 @@ export default function Packages() {
                       <div class="row">
                         <div class="col">
                           <div style={{ flexWrap: "nowrap", alignItems: "center", marginTop: "10px" }} class="input-group">
-                            <label style={{ paddingRight: "5px" }} class="col-sm-2" className="infoLabel">Price</label>
+                            <label style={{ paddingRight: "5px" }} class="col-sm-2" className="infoLabel">PRICE</label>
                             <span style={{ height: "41px", fontSize: "16px" }} class="input-group-text">$</span>
                             <input
                               style={{ width: "100%" }}
                               type="text"
                               class="col-sm-2"
-                              className="infoInput"
+                              className='form-control form-inputContact'
                               value={newPackage.price}
                               name="price"
                               placeholder="7500"
@@ -188,12 +188,12 @@ export default function Packages() {
                           </div>
 
                           <div style={{ flexWrap: "nowrap", alignItems: "center", paddingTop: "22px" }} class="input-group">
-                            <label style={{ paddingRight: "5px" }} class="col-sm-2" className="infoLabel">Duration</label>
+                            <label style={{ paddingRight: "5px" }} class="col-sm-2" className="infoLabel">DURATION</label>
                             <input
                               // style={{width:"100%"}}
                               type="text"
                               class="col-sm-2"
-                              className="infoInput"
+                              className='form-control form-inputContact'
                               value={newPackage.duration}
                               name="duration"
                               placeholder="4 days"
@@ -205,12 +205,12 @@ export default function Packages() {
                           </div>
 
                           <div style={{ flexWrap: "nowrap", alignItems: "center", paddingTop: "22px" }} class="input-group">
-                            <label style={{ paddingRight: "5px" }} class="col-sm-2" className="infoLabel">Dates</label>
+                            <label style={{ paddingRight: "5px" }} class="col-sm-2" className="infoLabel">DATES</label>
                             <input
                               // style={{width:"100%"}}
                               type="text"
                               class="col-sm-2"
-                              className="infoInput"
+                              className='form-control form-inputContact'
                               value={newPackage.dates}
                               name="dates"
                               placeholder="23/05/2023, 08/03/2023"
@@ -223,10 +223,10 @@ export default function Packages() {
 
                         </div>
                         <div class="col">
-                          <label className="infoLabel">Description </label>
+                          <label className="infoLabel">DESCRIPTION </label>
                           <textarea
                             style={{ height: "150px", fontSize: "12px" }}
-                            className="infoInput"
+                            className='form-control form-inputContact'
                             type="text"
                             value={newPackage.description}
                             name="description"
@@ -243,7 +243,7 @@ export default function Packages() {
                         <div class="col-md-6">
                           <select onChange={(e) => handleChange(e)} name="packageId"
                             value={newPackage.packageId} class="form-select form-select-lg mb-3">
-                            <option selected>Select a City</option>
+                            <option selected>SELECT A CITY</option>
                             {allCities?.map(e => {
                               return <option value={e.name}>{e.name}</option>
                             })}
@@ -256,12 +256,12 @@ export default function Packages() {
                       </div>
                       <div class="row">
                         <div class="col">
-                          <label className="infoLabel">Image </label>
+                          <label className="infoLabel">IMAGE </label>
                           <div class="input-group mb-3">
                             <input 
                             style={{ minHeight: "0px" }} 
                             type="file" 
-                            class="form-control"
+                            className='form-control form-inputContact'
                             value={newPackage.image}
                             name="image"
                             onChange={(e) => handleChange(e)}
@@ -273,7 +273,7 @@ export default function Packages() {
                           </div>
                         </div>
                         <div class="col-md-6" style={{ display: "flex", alignItems: "center" }}>
-                          <button style={{ fontSize: "1.6vh", fontFamily: "Raleway", backgroundColor: "#C49D48", borderColor: "#C49D48", borderRadius: "5px", width: "100%", marginTop: "8px", marginRight: "0px" }} type="submit" >Create Package</button>
+                          <button style={{ fontSize: "1.6vh", fontFamily: "Raleway", backgroundColor: "#C49D48", borderColor: "#C49D48", borderRadius: "5px", width: "100%", marginTop: "8px", marginRight: "0px" }} type="submit" >CREATE PACKAGE</button>
                         </div>
 
                       </div>
