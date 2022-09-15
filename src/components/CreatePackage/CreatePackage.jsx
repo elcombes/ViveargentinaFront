@@ -230,7 +230,7 @@ export default function Packages() {
                             type="text"
                             value={newPackage.description}
                             name="description"
-                            placeholder="A journey through the Cataratas..."
+                            placeholder="What to do in Salta, the answer will always be..."
                             onChange={(e) => handleChange(e)} />
                           {errors.description ?
                             <p id="errors" hidden>{errors.description}</p> :
