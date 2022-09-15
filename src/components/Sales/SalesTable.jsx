@@ -4,12 +4,13 @@ import {
   getAllUsers,
   putExperiencesStatus,
   putPackagesStatus,
+  filterSalesStatus,
 } from "../../redux/action";
 import "./SalesTable.css";
 
 export default function SalesTable() {
   const dispatch = useDispatch();
-
+  let allBoughtUsers = useSelector((state) => state.boughtUsers);
   const [state, setState] = React.useState({ change: false });
 
   function handleUpdateStatus(event, userId, itemId, item) {
@@ -36,28 +37,38 @@ export default function SalesTable() {
     }
   }
 
-  /* const orderUsers = allUsers.sort(function (a, b) {
-        if (a.email.toLowerCase() > b.email.toLowerCase()) return 1;
-        if (a.email.toLowerCase() < b.email.toLowerCase()) return -1;
-        else return 0;
-      }); */
+  function handleFilterStatus(e) {
+    
+    e.preventDefault();
+    if (state.change === true) {
+      setState({ change: false });
+      console.log(state);
+    } else {
+      setState({ change: true });
+      console.log(state);
+    }
+    dispatch(filterSalesStatus(e.target.value))
+
+  };
+
 
   useEffect(() => {
     dispatch(getAllUsers());
-  }, [state]);
+  }, []);
 
-  let allBoughtUsers = useSelector((state) => state.boughtUsers);
-
+ 
   return (
     <div class="container mt-5 ">
       <div class="d-flex justify-content-center row ">
         <div class="col-md-10">
           <div class="rounded">
             <div class="table-responsive table-borderless">
+               {/* Filtro de  Status */}
               <span> FILTER </span>
-              <select className="selectBtn">
+              <select onChange={(e) => handleFilterStatus(e)} className="selectBtn">
                 <option disable>Select Status</option>
-                <option value="pending">PENDING PAYMENT</option>
+                <option value="all">ALL</option>
+                <option value="Pending payment">PENDING PAYMENT</option>
                 <option value="confirmed">CONFIRMED</option>
                 <option value="cancelled">CANCELLED</option>
                 <option value="done">DONE</option>
@@ -97,14 +108,14 @@ export default function SalesTable() {
                                 : e.reservation_package.passengers}
                             </td>
                             <td>
-                              {e.reservation_experience
+                              $ {e.reservation_experience
                                 ? e.reservation_experience.total
                                 : e.reservation_package.total}
                             </td>
                             <td>
                               {e.reservation_experience
-                                ? e.reservation_experience.status
-                                : e.reservation_package.status}
+                                ? e.reservation_experience.status.toUpperCase()
+                                : e.reservation_package.status.toUpperCase()}
                             </td>
                             <td>
                               <select
@@ -120,8 +131,9 @@ export default function SalesTable() {
                                 }
                                 className="statusChange"
                               >
+                                {/* Change Status */}
                                 <option disable>Select Status</option>
-                                <option value="pending payment">
+                                <option value="Pending payment">
                                   PENDING PAYMENT
                                 </option>
                                 <option value="confirmed">CONFIRMED</option>
