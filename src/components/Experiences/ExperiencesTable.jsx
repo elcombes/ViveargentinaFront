@@ -34,7 +34,7 @@ export default function ExperiencesTable() {
                                 <CreateExperience />
                             </div>
                                 <br />
-                            <table class="table">
+                            <table class="table table-bordered">
                                 {/* Encabezado de columnas */}
                                 <thead>
                                     <tr>
