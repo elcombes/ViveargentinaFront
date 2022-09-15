@@ -8,25 +8,39 @@ export default function SideBar() {
             <div className="container__sidebar">
                 <ul className="sidebar">
                     <br />
-                    <li>
-                        <Link to='/admin/packages'><i class="bi bi-airplane-fill"></i> PACKAGES</Link>
-                    </li>
+                    <Link to='/admin/packages'>
+                        <li>
+                            <i class="bi bi-airplane-fill"></i> PACKAGES
+                        </li>
+                    </Link>
                     <br />
+
+                    <Link to='/admin/experiences'>
                     <li>
-                        <Link to='/admin/experiences'><i class="bi bi-compass"></i> EXPERIENCES</Link>
+                        <i class="bi bi-compass"></i> EXPERIENCES
                     </li>
+                    </Link>
                     <br />
+
+                    <Link to='/admin/sales'>
                     <li>
-                        <Link to='/admin/sales'><i class="bi bi-cart4"></i> SALES</Link>
+                        <i class="bi bi-cart4"></i> SALES
                     </li>
+                    </Link>
                     <br />
+
+                    <Link to='/admin/users'>
                     <li>
-                        <Link to='/admin/users'><i class="bi bi-person-circle"></i> USERS</Link>
+                        <i class="bi bi-person-circle"></i> USERS
                     </li>
+                    </Link>
                     <br />
+
+                    <Link to='/admin/reviews'>
                     <li>
-                        <Link to='/admin/reviews'><i class="bi bi-chat-left-quote"></i> REVIEWS</Link>
+                        <i class="bi bi-chat-left-quote"></i> REVIEWS
                     </li>
+                    </Link>
                 </ul>
             </div>
         </div>
