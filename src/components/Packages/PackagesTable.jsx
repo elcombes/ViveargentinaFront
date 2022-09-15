@@ -29,10 +29,9 @@ export default function PackagesTable() {
                         <div class="table-responsive table-borderless">
                             <button className='btn-new-pack'>NEW PACKAGE</button>
                             <br />
-                            <table class="table">
+                            <table class="table table-bordered">
                                 {/* Encabezado de columnas */}
                                 <thead>
-                                    <tr>PACKAGES</tr>
                                     <tr>
                                         <th>CITY</th>
                                         <th>PACKAGE</th>
@@ -58,7 +57,7 @@ export default function PackagesTable() {
                                         })}
                                         </td>
                                         <td>{p.duration}</td>
-                                        <td>{p.price}</td>
+                                        <td>${p.price}</td>
                                         <td>{p.score}</td>
                                         <td>
                                             <button className="btn"><i class="bi bi-pencil-square"></i></button>

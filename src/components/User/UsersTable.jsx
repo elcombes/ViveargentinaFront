@@ -30,7 +30,7 @@ export default function UsersTable() {
                     <th>BLOCK</th>
                     <th>EMAIL</th>
                     <th>NAME</th>
-                    <th>SHOPPING</th>
+                    <th>PURCHASE ITEMS</th>
                     <th>ADMIN</th>
                     <th>PASS RESET</th>
                   </tr>

@@ -66,7 +66,7 @@ export default function Cart() {
         dispatch(addExperienceBought(userId, i));
       }
     });
-    // dispatch(buyInMercadoPago(itemsFromStore));
+    dispatch(buyInMercadoPago(itemsFromStore));
   }
 
   if (!itemsFromStore || itemsFromStore.length === 0) {
