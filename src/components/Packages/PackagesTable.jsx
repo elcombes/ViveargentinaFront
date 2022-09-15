@@ -55,7 +55,9 @@ export default function PackagesTable() {
                                         <td>{p.city.name}</td>
                                         <td>{p.name}</td>
                                         <td>{p.dates?.split(",").map((d) => {
-                                            return d + ' ';
+                                            console.log(d)
+                                            let lines = d.contact('<br/>')
+                                            return lines;
                                         })}
                                         </td>
                                         <td>{p.duration}</td>
