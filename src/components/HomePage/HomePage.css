@@ -52,12 +52,14 @@
 .citiesHeader {
     margin-bottom: 55px;
     overflow: hidden;
+ 
 }
 .citiesHeader h1{
     font-weight: 500;
     font-size: 4rem;
     font-family: Raleway;
     margin: 5px -5px 15px;
+    color: #634100;
 }
 .citiesHeader span{
     text-transform: uppercase;
@@ -189,6 +191,7 @@
     font-size: 4rem;
     font-family: Raleway;
     margin: 5px -5px 15px;
+    color: #C49D48;
 }
 .experiencesHeader span{
     text-transform: uppercase;
@@ -201,6 +204,7 @@
 .experiencesHeader p{
     max-width: min(40ch, 100% - 2rem);
     line-height: 1.6;
+    font-weight: 500;
     color: #565656;
 }
 
@@ -230,6 +234,7 @@
     font-size: 4rem;
     font-family: Raleway;
     margin: 5px -5px 15px;
+    color: #005B4C;
 }
 .videosHeader span{
     text-transform: uppercase;
@@ -243,6 +248,7 @@
     max-width: min(40ch, 100% - 2rem);
     line-height: 1.6;
     color: #565656;
+    font-weight: 500;
 }
 
 /* CONTACT----------------------- */

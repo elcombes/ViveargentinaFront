@@ -2,7 +2,6 @@ import React, { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import perfil_user from "../../assets/perfil_user.png";
-//import NavBarUser from "../NavBarUser/NavBarUser";
 import MyTrips from "../User/MyTrips";
 import MyFavs from "../User/MyFavs";
 import { getUserById } from "./../../redux/action.js";
@@ -41,8 +40,16 @@ export default function Profile() {
         }}
       >
         <div className="container py-5 h-100">
-          <div className="row d-flex justify-content-center align-items-center h-100">
-            <div className="col col-lg-6 mb-4 mb-lg-0">
+        <div className="row d-flex justify-content-left align-items-left">
+        <Link to="/home">
+          <button  className="btn btn-outline-secondary">
+            {" "}
+            <a href="#myfavs"> HOME</a>
+          </button>
+        </Link>
+        </div>
+          <div className="row d-flex justify-content-center align-items-center h-90">
+            <div className="col col-lg-5 mb-4 mb-lg-0">
               <div
                 className="card mb-3"
                 style={{
@@ -141,12 +148,9 @@ export default function Profile() {
                       <div className="column-2">
                         <button className="btn btn-outline-secondary">
                           {" "}
-                          <a href="#mytrips">CLICK ME TO SEE YOUR TRIPS</a>
+                          <a href="#mytrips">MY HISTORY</a>
                         </button>
-                        <button className="btn btn-outline-secondary">
-                          {" "}
-                          <a href="#myfavs">CLICK ME TO SEE YOUR FAVS</a>
-                        </button>
+
                         {userFromStorage.user.birth_date === "active" ? (
                           <button
                             onClick={() => toggleCP()}
@@ -156,12 +160,6 @@ export default function Profile() {
                             CHANGE PASSWORD
                           </button>
                         ) : null}
-                        <Link to="/home">
-                          <button className="btn btn-outline-secondary">
-                            {" "}
-                            <a href="#myfavs"> HOME</a>
-                          </button>
-                        </Link>
                         {changePassword ? <ChangePassword /> : null}
                       </div>
                     </div>

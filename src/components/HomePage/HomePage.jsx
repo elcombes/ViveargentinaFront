@@ -70,7 +70,7 @@ function HomePage() {
               <div class="citiesHeader">
                 <span style={{ transform: `translate(${offSetY * 0.3}px)` }}>top Packages</span>
                 <h1 style={{ transform: `translate(${offSetY * 0.2}px)` }}>Our popular packages</h1>
-                <p style={{ transform: `translate(${offSetY * -0.1}px)` }}>We are a team of humans with the strategy, the tools and the solutions for you to travel as you deserve.</p>
+                <p style={{ transform: `translate(${offSetY * 0.1}px)` }}>We are a team of humans with the strategy, the tools and the solutions for you to travel as you deserve.</p>
               </div>
               <Link to="/packages/e1fa7baf-6de2-4e58-abfa-129d3269cc6e">
                 <div class="owl-carousel owl-theme">
@@ -133,8 +133,8 @@ function HomePage() {
             <div className='videos' id='videos'>
               <div class="videosHeader">
 
-                <span style={{ transform: `translate(${offSetY * 0.02}px)` }}>EXPLORE</span>
-                <h1 style={{ transform: `translate(${offSetY * 0.03}px)` }}>Our cities</h1>
+                <span style={{ transform: `translate(${offSetY * 0.09}px)` }}>EXPLORE</span>
+                <h1 style={{ transform: `translate(${offSetY * 0.08}px)` }}>Our cities</h1>
                 <p style={{ transform: `translate(${offSetY * 0.04}px)` }}>Choose a city, we organize the rest of your trip.</p>
               </div>
 

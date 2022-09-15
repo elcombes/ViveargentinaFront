@@ -1,58 +1,58 @@
 // import { useDispatch } from "react-redux";
 import React, { useEffect } from "react";
-import styles from "../CreatePackage/CreatePackage.module.css";
+import styles from "../CreateExperience/CreateExperience.module.css";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Button from "react-bootstrap/Button";
-import Col from "react-bootstrap/Col";
-import Form from "react-bootstrap/Form";
-import Row from "react-bootstrap/Row";
+// import Button from "react-bootstrap/Button";
+// import Col from "react-bootstrap/Col";
+// import Form from "react-bootstrap/Form";
+// import Row from "react-bootstrap/Row";
 import { useHistory } from "react-router-dom";
-import { createNewPackage, getAllPackages, getAllCities } from "../../redux/action";
+import { createNewExperience, getAllPackages, getAllCategories } from "../../redux/action";
 
-function validate(newPackage) {
+function validate(newExperience) {
   let errors = {};
-  if (!newPackage.name) {
+  if (!newExperience.name) {
     errors.name = "Name is required"
   }
-  if (!newPackage.subTitle) {
+  if (!newExperience.subTitle) {
     errors.subTitle = "Subtitle is required"
   }
-  if (!newPackage.price) {
+  if (!newExperience.price) {
     errors.price = "Price is required"
   }
-  if (newPackage.price < 0) {
+  if (newExperience.price < 0) {
     errors.price = "Price cannot be less than 0"
   }
-  if (!newPackage.duration) {
+  if (!newExperience.duration) {
     errors.duration = "Duration is required"
   }
-  if (!newPackage.dates) {
+  if (!newExperience.dates) {
     errors.dates = "At least 1 date is required"
   }
-  if (!newPackage.description) {
+  if (!newExperience.description) {
     errors.description = "Description is required"
   }
-  if (!newPackage.categoryId) {
+  if (!newExperience.categoryId) {
     errors.categoryId = "Category is required"
   }
-  if (!newPackage.packageId) {
+  if (!newExperience.packageId) {
     errors.packageId = "Package is required"
   }
-  if (!newPackage.image) {
+  if (!newExperience.image) {
     errors.image = "Image is required"
   }
 
   return errors
 }
 
-export default function Packages() {
+export default function UpdateExperiences() {
 
   const history = useHistory()
   const dispatch = useDispatch();
   const allPackages = useSelector((state) => state.allPackages);
-  const allCities = useSelector((state) => state.allCities);
-  const [newPackage, setNewPackage] = useState({
+  const allCategories = useSelector((state) => state.allCategories);
+  const [newExperience, setNewExperience] = useState({
     name: "",
     subTitle: "",
     price: "",
@@ -70,17 +70,17 @@ export default function Packages() {
 
   useEffect(() => {
     dispatch(getAllPackages());
-    dispatch(getAllCities());
-    setErrors(validate(newPackage))
+    dispatch(getAllCategories());
+    setErrors(validate(newExperience))
   }, []);
 
   const handleChange = (e) => {
-    setNewPackage({
-      ...newPackage,
+    setNewExperience({
+      ...newExperience,
       [e.target.name]: e.target.value,
     });
     setErrors(validate({
-      ...newPackage,
+      ...newExperience,
       [e.target.name]: e.target.value
     }))
   };
@@ -93,7 +93,7 @@ export default function Packages() {
       e.stopPropagation()
       errorMessagesArray.forEach(e => e.hidden = false)
     } else {
-    dispatch(createNewPackage(newPackage));
+    dispatch(createNewExperience(newExperience));
     }
   };
 
@@ -106,12 +106,12 @@ export default function Packages() {
           <div className="col-md-12">
             <div className={styles.modalbuttons}>
               <button
+                className="btn"
                 type="button"
-                className="btn btn-outline-secondary btn-lg"
                 data-bs-toggle="modal"
                 data-bs-target="#cexampleModal"
               >
-                <i className="bi bi-node-plus"></i> New Package
+              <i class="bi bi-pencil-square"></i> 
               </button>
             </div>
 
@@ -126,7 +126,7 @@ export default function Packages() {
                 <div className="modal-content">
                   <div className="modal-header">
                     <h5 className="modal-title" id="cexampleModalLabel">
-                      CREATE A NEW PACKAGE
+                      UPDATE EXPERIENCE
                     </h5>
                     <button
                       type="button"
@@ -139,13 +139,13 @@ export default function Packages() {
                     <form class="row g-3" onSubmit={(e) => handleSubmit(e)}>
                       <div class="row">
                         <div class="col-md-6">
-                          <label className="infoLabel">NAME</label>
+                          <label className="infoLabel">cd </label>
                           <input
-                            className='form-control form-inputContact'
+                            className="form-control form-inputContact"
                             type="text"
-                            value={newPackage.name}
+                            value={newExperience.name}
                             name="name"
-                            placeholder="Not to be missed in Salta"
+                            placeholder="Excursion to Las Cataratas del Iguazu"
                             onChange={(e) => handleChange(e)} />
                           {errors.name ?
                             <p id="errors" hidden>{errors.name}</p> :
@@ -155,11 +155,11 @@ export default function Packages() {
                         <div class="col-md-6">
                           <label className="infoLabel">SUBTITLE </label>
                           <input
-                            className='form-control form-inputContact'
+                            className="form-control form-inputContact"
                             type="text"
-                            value={newPackage.subTitle}
+                            value={newExperience.subTitle}
                             name="subTitle"
-                            placeholder="What you can't miss"
+                            placeholder="Get wet"
                             onChange={(e) => handleChange(e)} />
                           {errors.subTitle ?
                             <p id="errors" hidden>{errors.subTitle}</p> :
@@ -176,8 +176,8 @@ export default function Packages() {
                               style={{ width: "100%" }}
                               type="text"
                               class="col-sm-2"
-                              className='form-control form-inputContact'
-                              value={newPackage.price}
+                              className="form-control form-inputContact"
+                              value={newExperience.price}
                               name="price"
                               placeholder="7500"
                               onChange={(e) => handleChange(e)} />
@@ -193,10 +193,10 @@ export default function Packages() {
                               // style={{width:"100%"}}
                               type="text"
                               class="col-sm-2"
-                              className='form-control form-inputContact'
-                              value={newPackage.duration}
+                              className="form-control form-inputContact"
+                              value={newExperience.duration}
                               name="duration"
-                              placeholder="4 days"
+                              placeholder="3 hours"
                               onChange={(e) => handleChange(e)} />
                             {errors.duration ?
                               <p id="errors" hidden>{errors.duration}</p> :
@@ -210,8 +210,8 @@ export default function Packages() {
                               // style={{width:"100%"}}
                               type="text"
                               class="col-sm-2"
-                              className='form-control form-inputContact'
-                              value={newPackage.dates}
+                              className="form-control form-inputContact"
+                              value={newExperience.dates}
                               name="dates"
                               placeholder="23/05/2023, 08/03/2023"
                               onChange={(e) => handleChange(e)} />
@@ -226,11 +226,12 @@ export default function Packages() {
                           <label className="infoLabel">DESCRIPTION </label>
                           <textarea
                             style={{ height: "150px", fontSize: "12px" }}
-                            className='form-control form-inputContact'
+                            class="form-control form-inputContact"
+                            className="infoInput"
                             type="text"
-                            value={newPackage.description}
+                            value={newExperience.description}
                             name="description"
-                            placeholder="What to do in Salta, the answer will always be..."
+                            placeholder="A journey through the Cataratas..."
                             onChange={(e) => handleChange(e)} />
                           {errors.description ?
                             <p id="errors" hidden>{errors.description}</p> :
@@ -242,9 +243,9 @@ export default function Packages() {
                       <div class="row">
                         <div class="col-md-6">
                           <select onChange={(e) => handleChange(e)} name="packageId"
-                            value={newPackage.packageId} class="form-select form-select-lg mb-3">
-                            <option selected>SELECT A CITY</option>
-                            {allCities?.map(e => {
+                            value={newExperience.packageId} class="form-select form-select-lg mb-3">
+                            <option selected>SELECT A PACKAGE</option>
+                            {allPackages?.map(e => {
                               return <option value={e.name}>{e.name}</option>
                             })}
                           </select>
@@ -252,7 +253,20 @@ export default function Packages() {
                             <p id="errors" hidden>{errors.packageId}</p> :
                             <p className="validMessage">Looks Good!</p>
                           }
-                        </div>                   
+                        </div>
+                        <div class="col-md-6">
+                          <select onChange={(e) => handleChange(e)} name="categoryId"
+                            value={newExperience.categoryId} class="form-select form-select-lg mb-3">
+                            <option selected>SELECT A CATEGORY</option>
+                            {allCategories?.map(e => {
+                              return <option value={e.name}>{e.name}</option>
+                            })}
+                          </select>
+                          {errors.categoryId ?
+                            <p id="errors" hidden>{errors.categoryId}</p> :
+                            <p className="validMessage">Looks Good!</p>
+                          }
+                        </div>
                       </div>
                       <div class="row">
                         <div class="col">
@@ -261,8 +275,8 @@ export default function Packages() {
                             <input 
                             style={{ minHeight: "0px" }} 
                             type="file" 
-                            className='form-control form-inputContact'
-                            value={newPackage.image}
+                            className="form-control form-inputContact"
+                            value={newExperience.image}
                             name="image"
                             onChange={(e) => handleChange(e)}
                             />
@@ -273,7 +287,7 @@ export default function Packages() {
                           </div>
                         </div>
                         <div class="col-md-6" style={{ display: "flex", alignItems: "center" }}>
-                          <button style={{ fontSize: "1.6vh", fontFamily: "Raleway", backgroundColor: "#C49D48", borderColor: "#C49D48", borderRadius: "5px", width: "100%", marginTop: "8px", marginRight: "0px" }} type="submit" >CREATE PACKAGE</button>
+                          <button style={{ fontSize: "1.6vh", fontFamily: "Raleway", backgroundColor: "#C49D48", borderColor: "#C49D48", borderRadius: "5px", width: "100%", marginTop: "8px", marginRight: "0px" }} type="submit" >UPDATE EXPERIENCE</button>
                         </div>
 
                       </div>

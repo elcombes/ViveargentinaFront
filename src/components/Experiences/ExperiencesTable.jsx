@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import  { useSelector, useDispatch }  from "react-redux";
 import { getAllExperiences } from "../../redux/action";
 import './ExperiencesTable.css';
-import CreateExperience from "../CreateExperience/CreateExperience"
+import CreateExperience from "../CreateExperience/CreateExperience";
+import UpdateExperience from "../UpdateExperience/UpdateExperience";
 
 
 export default function ExperiencesTable() {
@@ -64,7 +65,7 @@ export default function ExperiencesTable() {
                                         <td>${e.price}</td>
                                         <td>{e.score}</td>
                                         <td>
-                                            <button className="btn"><i class="bi bi-pencil-square"></i></button>
+                                            <UpdateExperience/>
 
                                             <button className="btn"><i class="bi bi-sign-stop-fill"></i></button>
                                             
