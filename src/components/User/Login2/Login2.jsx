@@ -93,6 +93,7 @@ export default function Login2() {
     };
 
     const handleSubmit = async (e) => {
+        e.preventDefault()
         let errorMessagesNodeList = document.querySelectorAll("#errors")
         let errorMessagesArray = Array.from(errorMessagesNodeList)
         if (Object.entries(errors).length > 0) {
@@ -101,9 +102,8 @@ export default function Login2() {
             errorMessagesArray.forEach(e => e.hidden = false)
         }
         console.log(newUser)
-        await dispatch(getUserLogin({ email: newUser.email, password: newUser.password })).then(() => {
-            console.log(userAuth)
-        })
+        const response = await dispatch(getUserLogin({ email: newUser.email, password: newUser.password }))
+        console.log(response)
         window.location.reload(false);
     };
 

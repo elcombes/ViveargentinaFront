@@ -30,15 +30,15 @@ export default function ExperiencesTable() {
                 <div class="col-md-10">
                     <div class="rounded">
                         <div class="table-responsive table-borderless">
-
-                            <br />
-                            <table class="table">
-
+                            <div class="table-create">
+                                <CreateExperience />
+                            </div>
+                                <br />
+                            <table class="table table-bordered">
                                 {/* Encabezado de columnas */}
                                 <thead>
-                                    <tr>EXPERIENCES</tr>
                                     <tr>
-                                        <th>CITY</th>
+                                        {/* <th>CITY</th> */}
                                         <th>PACKAGE</th>
                                         <th>EXPERIENCE</th>
                                         <th>DATES</th>
@@ -54,28 +54,29 @@ export default function ExperiencesTable() {
                                 return(
                                 <tbody class="table-body">
                                     <tr class="cell-1">
-                                        <td>CITY</td>
+                                        {/* <td>CITY</td> */}
                                         <td>{e.package.name}</td>
                                         <td>{e.name}</td>
                                         <td>{e.dates?.split(",").map((d) => {
                                             return d + ' ';
                                         })}
                                         </td>
-                                        <td>{e.price}</td>
+                                        <td>${e.price}</td>
                                         <td>{e.score}</td>
                                         <td>
                                             <button className="btn"><i class="bi bi-pencil-square"></i></button>
+
                                             <button className="btn"><i class="bi bi-sign-stop-fill"></i></button>
+                                            
                                             <button className="btn"><i class="bi bi-trash3"></i></button>
+
                                         </td>
                                     </tr>
                                 </tbody>
                                 )
                                 })}
                             </table>
-                            <div class="table-create">
-                                <CreateExperience />
-                            </div>
+
                         </div>
                     </div>
                 </div>

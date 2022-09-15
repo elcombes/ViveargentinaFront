@@ -121,19 +121,19 @@ export default function rootReducer(state = initialState, action) {
         userPackagesFavorite: userPackagesFavorite,
       };
     case GET_LS_USER:
-      allExperiences = action.payload.user.experiences;
-      allPackages = action.payload.user.packages;
+      allExperiences = action.payload.user?.experiences;
+      allPackages = action.payload.user?.packages;
 
-      userExperiencesBought = allExperiences.map((e) => {
+      userExperiencesBought = allExperiences?.map((e) => {
         return e.bought === true;
       });
-      userPackagesBought = allPackages.map((p) => {
+      userPackagesBought = allPackages?.map((p) => {
         return p.bought === true;
       });
-      userExperiencesFavorite = allExperiences.map((e) => {
+      userExperiencesFavorite = allExperiences?.map((e) => {
         return e.favorite === true;
       });
-      userPackagesFavorite = allPackages.map((p) => {
+      userPackagesFavorite = allPackages?.map((p) => {
         return p.favorite === true;
       });
       return {
