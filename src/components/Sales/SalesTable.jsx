@@ -65,7 +65,7 @@ export default function SalesTable() {
               <br />
               <table class="table table-bordered ">
                 {/* Encabezado de columnas */}
-                <thead>
+                <thead className='text-center'>
                   <tr>
                     <th>USER</th>
                     <th>DATE</th>
@@ -83,31 +83,31 @@ export default function SalesTable() {
                     return u.allBoughtItems?.map((e) => {
                       return (
                         <Fragment>
-                          <tr class="cell-1">
+                          <tr class="cell-1 vertalign">
                             <td>{u.first_name + " " + u.last_name}</td>
-                            <td>
+                            <td className="datesale">
                               {e.reservation_experience
                                 ? e.reservation_experience.createdAt.slice(0, 9)
                                 : e.reservation_package.createdAt.slice(0, 9)}
                             </td>
                             <td>{e.name}</td>
-                            <td>
+                            <td className='text-center'>
                               {e.reservation_experience
                                 ? e.reservation_experience.passengers
                                 : e.reservation_package.passengers}
                             </td>
-                            <td>
+                            <td className='text-center'>
                               {e.reservation_experience
                                 ? e.reservation_experience.total
                                 : e.reservation_package.total}
                             </td>
-                            <td>
+                            <td className='text-center paymentstyle'>
                               {e.reservation_experience
                                 ? e.reservation_experience.status
                                 : e.reservation_package.status}
                             </td>
-                            <td>
-                              <select
+                            <td >
+                              <select 
                                 onChange={(event) =>
                                   handleUpdateStatus(
                                     event,

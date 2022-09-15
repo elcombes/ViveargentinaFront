@@ -34,7 +34,7 @@ export default function PackagesTable() {
                             <table class="table table-bordered">
                                 {/* Encabezado de columnas */}
                                 <thead>
-                                    <tr>
+                                    <tr className='text-center'>
                                         <th>CITY</th>
                                         <th>PACKAGE</th>
                                         <th>DATES</th>
@@ -51,18 +51,16 @@ export default function PackagesTable() {
                                 return (
                                 
                                 <tbody class="table-body">
-                                    <tr class="cell-1">
+                                    <tr class="cell-1 vertalign">
                                         <td>{p.city.name}</td>
                                         <td>{p.name}</td>
-                                        <td>{p.dates?.split(",").map((d) => {
-                                            console.log(d)
-                                            let lines = d.contact('<br/>')
-                                            return lines;
+                                        <td className='datescol'>{p.dates?.split(",").map((d) => {
+                                            return d + " ";
                                         })}
                                         </td>
                                         <td>{p.duration}</td>
                                         <td>${p.price}</td>
-                                        <td>{p.score}</td>
+                                        <td className='text-center'>{p.score}</td>
                                         <td>
                                             <button className="btn"><i class="bi bi-pencil-square"></i></button>
                                             <button className="btn"><i class="bi bi-sign-stop-fill"></i></button>
