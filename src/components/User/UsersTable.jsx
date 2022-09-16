@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getAllUsers } from "../../redux/action";
+import { getAllUsers, resetPasswordRequest  } from "../../redux/action";
 import "./UsersTable.css";
 
 export default function UsersTable() {
@@ -17,6 +17,11 @@ export default function UsersTable() {
   useEffect(() => {
     dispatch(getAllUsers());
   }, [dispatch]);
+
+  function handleResetPass(email) {
+    dispatch(resetPasswordRequest(email))
+  }
+
   return (
     <div className="container mt-5 ">
       <div className="d-flex justify-content-center row">
@@ -47,7 +52,7 @@ export default function UsersTable() {
                             {/* <input type="checkbox" className="custom-control-input" id="customSwitches"></input> */}
                           </div>
                         </td>
-                        <td>{u.email}</td>
+                        <td>{u.email.substring(0, 6) === 'google' ? u.email.slice(7) : u.email}</td>
                         <td>{u.first_name + " " + u.last_name}</td>
                         <td className="text-center">
                           <input
@@ -56,7 +61,7 @@ export default function UsersTable() {
                           ></input>
                         </td>
                         <td className="text-center">
-                          <button className="btn btn-outline-secondary">
+                          <button onClick={handleResetPass(u.email.substring(0, 6) === 'google' ? u.email.slice(7) : u.email)} className="btn btn-outline-secondary">
                             <i className="bi bi-key-fill"></i>
                           </button>
                         </td>
