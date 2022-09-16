@@ -8,17 +8,8 @@ import UpdateExperience from "../UpdateExperience/UpdateExperience";
 
 export default function ExperiencesTable() {
 
-<<<<<<< HEAD
-      console.log('orderExperiences', orderExperiences)
-
-    useEffect(() => {
-        dispatch(getAllExperiences());
-        
-    }, []);
-=======
   const dispatch = useDispatch();
   const allExperiences = useSelector((state) => state.allExperiences);
->>>>>>> 7b4e641871c666240c9d2560a1914063bbcc7564
 
   const orderExperiences = allExperiences.sort(function (a, b) {
     if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
@@ -26,54 +17,11 @@ export default function ExperiencesTable() {
     else return 0;
   });
 
-<<<<<<< HEAD
-    return (
-        <div class="container mt-5">
-        
-            <div class="d-flex justify-content-center row">
-                <div class="col-md-10">
-                    <div class="rounded">
-                        <div class="table-responsive table-borderless">
-                            <div class="table-create">
-                                <CreateExperience />
-                            </div>
-                                <br />
-                            <table class="table table-bordered">
-                                {/* Encabezado de columnas */}
-                                <thead>
-                                    <tr>
-                                        <th>PACKAGE</th>
-                                        <th>EXPERIENCE</th>
-                                        <th>DATES</th>
-                                        <th>PRICE</th>
-                                        <th>SCORE</th>
-                                        <th>ACTIONS</th>
-                                    </tr>
-                                </thead>
-=======
   useEffect(() => {
     dispatch(getAllExperiences());
->>>>>>> 7b4e641871c666240c9d2560a1914063bbcc7564
 
   }, []);
 
-<<<<<<< HEAD
-                                {orderExperiences?.map((e) => {
-                                return(
-                                <tbody class="table-body">
-                                    <tr class="cell-1">
-                                        <td>{e.package.name}</td>
-                                        <td>{e.name}</td>
-                                        <td>{e.dates?.split(",").map((d) => {
-                                            return d + ' ';
-                                        })}
-                                        </td>
-                                        <td>${e.price}</td>
-                                        <td>{e.score}</td>
-                                        <td>
-                                            <UpdateExperience/>
-=======
->>>>>>> 7b4e641871c666240c9d2560a1914063bbcc7564
 
 
   return (
