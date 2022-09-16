@@ -60,7 +60,7 @@ export default function Experiences() {
     subTitle: "",
     price: "",
     description: "",
-    image: "",
+    // image: "",
     duration: "",
     dates: "",
     categoryId: "",
@@ -143,11 +143,7 @@ export default function Experiences() {
                         <div class="col-md-6">
                           <label className="infoLabel">Name </label>
                           <input
-<<<<<<< HEAD
-                            className="infoInput"
-=======
-                            className='form-control infoInput'
->>>>>>> 5cb3c462d4930fb1214c33ee441d002cb3ffb103
+                            className="form-control infoInput"
                             type="text"
                             value={newExperience.name}
                             name="name"
