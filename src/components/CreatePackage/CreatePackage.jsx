@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import styles from "../CreatePackage/CreatePackage.module.css";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Axios from 'axios';
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
@@ -35,11 +36,9 @@ function validate(newPackage) {
   if (!newPackage.cityId) {
     errors.cityId = "City is required";
   }
-
-  // if (!newPackage.image) {
-  //   errors.image = "Image is required"
-  // }
-
+  if (!newPackage.image) {
+    errors.image = "Image is required"
+  }
   return errors;
 }
 
@@ -53,7 +52,7 @@ export default function Packages() {
     subTitle: "",
     price: "",
     description: "",
-    // image: "",
+    image: "",
     duration: "",
     dates: "",
     cityId: "",
@@ -79,6 +78,7 @@ export default function Packages() {
   };
 
   const handleSubmit = (e) => {
+    e.preventDefault()
     console.log("entre");
     let errorMessagesNodeList = document.querySelectorAll("#errors");
     let errorMessagesArray = Array.from(errorMessagesNodeList);
@@ -91,6 +91,32 @@ export default function Packages() {
       dispatch(createNewPackage(newPackage));
     }
   };
+
+  let imageDB;
+  const uploadImage = (selectedImage) => {
+    const formData = new FormData()
+    formData.append('file', selectedImage)
+    formData.append('upload_preset', 'fftkpmfl')
+    Axios.post('https://api.cloudinary.com/v1_1/dblc1bzmx/image/upload', formData).then((res) => {
+      imageDB = (res.data.url)
+      setNewPackage({
+        ...newPackage,
+        image: imageDB
+      });
+      console.log(imageDB)
+      console.log(res)
+    })
+  }
+
+  const handleImageSelected = (e) => {
+    console.log(e.target.files[0])
+    let selectedImage = e.target.files[0]
+    uploadImage(selectedImage)
+    setErrors(validate({
+      ...newPackage,
+      image: e.target.files[0].name
+    }))
+  }
 
   return (
     <div>
@@ -306,7 +332,7 @@ export default function Packages() {
                           <select
                             onChange={(e) => handleChange(e)}
                             name="cityId"
-                            value={newPackage.packageId}
+                            // value={newPackage.packageId}
                             class="form-select form-select-lg mb-3"
                           >
                             <option selected>SELECT A CITY</option>
@@ -331,9 +357,9 @@ export default function Packages() {
                               style={{ minHeight: "0px" }}
                               type="file"
                               className="form-control form-inputContact"
-                              value={newPackage.image}
+                              // value={newPackage.image}
                               name="image"
-                              onChange={(e) => handleChange(e)}
+                              onChange={(e) => handleImageSelected(e)}
                             />
                             {errors.image ? (
                               <p id="errors" hidden>
