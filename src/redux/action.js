@@ -22,6 +22,8 @@ export const ORDER_EXPERIENCES = "ORDER_EXPERIENCES";
 export const FILTER_EXPERIENCES = "FILTER_EXPERIENCES";
 export const CREATE_NEW_EXPERIENCE = "CREATE_NEW_EXPERIENCE";
 export const CREATE_NEW_PACKAGE = "CREATE_NEW_PACKAGE";
+export const UPDATE_EXPERIENCE = "UPDATE_EXPERIENCE";
+export const UPDATE_PACKAGE = "UPDATE_PACKAGE";
 export const GET_USER_LOGIN = "GET_USER_LOGIN";
 export const LOGOUT = "LOGOUT";
 export const GET_LS_USER = "GET_LS_USER";
@@ -34,7 +36,7 @@ export const FILTER_SALES_STATUS = "FILTER_SALES_STATUS";
 
 //Filtra las ventas por Status
 export function filterSalesStatus(payload) {
-  console.log('payload en action', payload)
+  console.log("payload en action", payload);
   return {
     type: FILTER_SALES_STATUS,
     payload,
@@ -158,7 +160,6 @@ export function changePassword({ token, password, newPassword }) {
     return response;
   };
 }
-
 
 export function softDelete({ token, userId }) {
   return async function () {
@@ -287,9 +288,9 @@ export function getUserLogin({ email, password }) {
       "https://viveargentina.herokuapp.com/users/login",
       { email, password }
     );
-    console.log(response.data)
-    if (response.data === 'not allowed') {
-      return 'Incorrect password'
+    console.log(response.data);
+    if (response.data === "not allowed") {
+      return "Incorrect password";
     }
     window.localStorage.setItem("user", JSON.stringify(response.data));
     return dispatch({
@@ -520,7 +521,21 @@ export function createNewExperience(newExperience) {
     return newExperienceCreated;
   };
 }
+
+export function updateExperience(newExperience) {
+  console.log(newExperience);
+  return async function (dispatch) {
+    let ExperienceUpdated = await axios.put(
+      "https://viveargentina.herokuapp.com/experiences",
+      newExperience
+    );
+    console.log(ExperienceUpdated);
+    return ExperienceUpdated;
+  };
+}
+
 export function createNewPackage(newPackage) {
+  console.log(newPackage);
   return async function (dispatch) {
     let newPackageCreated = await axios.post(
       "https://viveargentina.herokuapp.com/packages",
@@ -528,6 +543,17 @@ export function createNewPackage(newPackage) {
     );
     console.log(newPackageCreated);
     return newPackageCreated;
+  };
+}
+
+export function updatePackage(newPackage) {
+  return async function (dispatch) {
+    let packageUpdated = await axios.put(
+      "https://viveargentina.herokuapp.com/packages",
+      newPackage
+    );
+    console.log(packageUpdated);
+    return packageUpdated;
   };
 }
 
