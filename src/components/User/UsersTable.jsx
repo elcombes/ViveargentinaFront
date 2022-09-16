@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getAllUsers, resetPasswordRequest } from "../../redux/action";
+import { getAllUsers } from "../../redux/action";
 import "./UsersTable.css";
 
 export default function UsersTable() {
@@ -17,20 +17,15 @@ export default function UsersTable() {
   useEffect(() => {
     dispatch(getAllUsers());
   }, [dispatch]);
-
-  function handleResetPass(email) {
-    dispatch(resetPasswordRequest(email))
-  }
-
   return (
-    <div class="container mt-5 ">
-      <div class="d-flex justify-content-center row">
-        <div class="col-md-10">
-          <div class="rounded">
-            <div class="table-responsive table-borderless">
-              <table class="table table-bordered">
+    <div className="container mt-5 ">
+      <div className="d-flex justify-content-center row">
+        <div className="col-md-10">
+          <div className="rounded">
+            <div className="table-responsive table-borderless">
+              <table className="table table-bordered vertalign">
                 {/* Encabezado de columnas */}
-                <thead>
+                <thead className='text-center'>
                   <tr>
                     <th>BLOCK</th>
                     <th>EMAIL</th>
@@ -44,25 +39,25 @@ export default function UsersTable() {
 
                 {orderUsers?.map((u) => {
                   return (
-                    <tbody class="table-body">
-                      <tr class="cell-1">
-                        <td class="text-center">
-                          <div class="toggle-btn">
-                            <div class="inner-circle"></div>
-                            {/* <input type="checkbox" class="custom-control-input" id="customSwitches"></input> */}
+                    <tbody className="table-body">
+                      <tr className="cell-1">
+                        <td>
+                          <div className="toggle-btn">
+                            <div className="inner-circle"></div>
+                            {/* <input type="checkbox" className="custom-control-input" id="customSwitches"></input> */}
                           </div>
                         </td>
-                        <td>{u.email.substring(0, 6) === 'google' ? u.email.slice(7) : u.email}</td>
+                        <td>{u.email}</td>
                         <td>{u.first_name + " " + u.last_name}</td>
-                        <td>
+                        <td className="text-center">
                           <input
-                            class="form-check-input"
+                            className="form-check-input"
                             type="checkbox"
                           ></input>
                         </td>
-                        <td>
-                          <button onClick={handleResetPass(u.email.substring(0, 6) === 'google' ? u.email.slice(7) : u.email)} className="btn btn-outline-secondary">
-                            <i class="bi bi-key-fill"></i>
+                        <td className="text-center">
+                          <button className="btn btn-outline-secondary">
+                            <i className="bi bi-key-fill"></i>
                           </button>
                         </td>
                       </tr>

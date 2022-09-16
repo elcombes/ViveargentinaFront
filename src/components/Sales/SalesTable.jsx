@@ -65,7 +65,7 @@ export default function SalesTable() {
             <div class="table-responsive table-borderless">
                {/* Filtro de  Status */}
               <span> FILTER </span>
-              <select onChange={(e) => handleFilterStatus(e)} className="selectBtn">
+              <select onChange={(e) => handleFilterStatus(e)} className="form-select selectBtn">
                 <option disable>Select Status</option>
                 <option value="all">ALL</option>
                 <option value="Pending payment">PENDING PAYMENT</option>
@@ -76,7 +76,7 @@ export default function SalesTable() {
               <br />
               <table class="table table-bordered ">
                 {/* Encabezado de columnas */}
-                <thead>
+                <thead className='text-center'>
                   <tr>
                     <th>USER</th>
                     <th>DATE</th>
@@ -94,31 +94,31 @@ export default function SalesTable() {
                     return u.allBoughtItems?.map((e) => {
                       return (
                         <Fragment>
-                          <tr class="cell-1">
+                          <tr class="cell-1 vertalign">
                             <td>{u.first_name + " " + u.last_name}</td>
-                            <td>
+                            <td className="datesale">
                               {e.reservation_experience
                                 ? e.reservation_experience.createdAt.slice(0, 9)
                                 : e.reservation_package.createdAt.slice(0, 9)}
                             </td>
                             <td>{e.name}</td>
-                            <td>
+                            <td className='text-center'>
                               {e.reservation_experience
                                 ? e.reservation_experience.passengers
                                 : e.reservation_package.passengers}
                             </td>
-                            <td>
-                              $ {e.reservation_experience
+                            <td className='text-center'>
+                              {e.reservation_experience
                                 ? e.reservation_experience.total
                                 : e.reservation_package.total}
                             </td>
-                            <td>
+                            <td className='text-center paymentstyle'>
                               {e.reservation_experience
                                 ? e.reservation_experience.status.toUpperCase()
                                 : e.reservation_package.status.toUpperCase()}
                             </td>
-                            <td>
-                              <select
+                            <td >
+                              <select 
                                 onChange={(event) =>
                                   handleUpdateStatus(
                                     event,
@@ -129,7 +129,7 @@ export default function SalesTable() {
                                       : "package"
                                   )
                                 }
-                                className="statusChange"
+                                className="form-select statusChange"
                               >
                                 {/* Change Status */}
                                 <option disable>Select Status</option>
