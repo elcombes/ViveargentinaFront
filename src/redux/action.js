@@ -126,7 +126,7 @@ export function passwordReset({ token, password }) {
       { password },
       { headers }
     );
-    console.log(response);
+    return response.data;
   };
 }
 
@@ -137,7 +137,7 @@ export function resetPasswordRequest(email) {
       "https://viveargentina.herokuapp.com/users/reset_password_request",
       { email }
     );
-    console.log("response: " + response);
+    return response.data
   };
 }
 
