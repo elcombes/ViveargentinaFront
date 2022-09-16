@@ -51,3 +51,8 @@
   .statusChange{
     margin-right: 30px;
   }
+  
+
+select.form-select.selectBtn {
+    max-width: 200px;
+}

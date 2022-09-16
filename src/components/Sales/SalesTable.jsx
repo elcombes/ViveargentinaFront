@@ -65,7 +65,7 @@ export default function SalesTable() {
             <div class="table-responsive table-borderless">
                {/* Filtro de  Status */}
               <span> FILTER </span>
-              <select onChange={(e) => handleFilterStatus(e)} className="selectBtn">
+              <select onChange={(e) => handleFilterStatus(e)} className="form-select selectBtn">
                 <option disable>Select Status</option>
                 <option value="all">ALL</option>
                 <option value="Pending payment">PENDING PAYMENT</option>
@@ -129,7 +129,7 @@ export default function SalesTable() {
                                       : "package"
                                   )
                                 }
-                                className="statusChange"
+                                className="form-select statusChange"
                               >
                                 {/* Change Status */}
                                 <option disable>Select Status</option>
