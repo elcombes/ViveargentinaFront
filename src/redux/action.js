@@ -178,6 +178,24 @@ export function softDelete({ token, userId }) {
   };
 }
 
+//esta funcion le cambia la propiedad de administrador a un usuario dependiendo de su estado actual
+export function shiftAdmin({ token, userId }) {
+  return async function () {
+    const headers = {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    };
+    const response = await axios.put(
+      "https://viveargentina.herokuapp.com/users/shift_admin_authorization",
+      { userId },
+      { headers }
+    );
+    console.log("response: " + response);
+    return response.data;
+  };
+}
+
 // Esta ruta añade un paquete a favoritos del usuario
 export function addPackageFavorite(packageId, userId) {
   return async function () {
