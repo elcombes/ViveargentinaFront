@@ -148,7 +148,7 @@ export default function SignUp() {
                                                 <label className="infoLabel">LASTNAME </label>
                                                 <input
                                                     class="form-control form-inputContact"
-                                                    className="infoInput"
+                                                    className="form-control form-inputContact"
                                                     type="text"
                                                     value={newUser.last_name}
                                                     name="last_name"
@@ -196,8 +196,8 @@ export default function SignUp() {
                                             <div class="col-md-12">
                                                 <label className="infoLabel">REPEAT PASSWORD</label>
                                                 <input
+                                                    
                                                     class="form-control form-inputContact"
-                                                    className="infoInput"
                                                     type="password"
                                                     value={newUser.repeatedPassword}
                                                     name="repeatedPassword"
@@ -215,7 +215,6 @@ export default function SignUp() {
                                         <div class="row">
                                             <div class="column">
                                                 <button className="btn btn-outline-secondary" style={{ fontSize: "15px", fontFamily: "Raleway", backgroundColor: "#C49D48", borderColor: "#C49D48", borderRadius: "5px", width: "100%" }} type="submit" >SIGN UP</button>
-                                                <button className="btn btn-outline-secondary" style={{ fontSize: "1.7vh", fontFamily: "Raleway", backgroundColor: "#005B4C", borderColor: "#005B4C", borderRadius: "5px" }} data-bs-dismiss="modal" type="submit" >SIGN UP</button>
                                             </div>
                                         </div>
                                     </form>

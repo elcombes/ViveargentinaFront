@@ -32,18 +32,7 @@ export default function Card(city) {
 
                         <h4 style={{ fontSize: "18px",textTransform: "uppercase", fontWeight: "500", fontFamily: "Roboto" }}>{subtitle}</h4>
 
-                        <ul style={{color:"#C49D48",fontSize: "18px",fontWeight: "500", fontFamily: "Roboto" }}className={styles.scorecity}>
-                            Score:{score}
-                            {/*                                  
-                                    <li><i class="bi bi-star-fill" Style="color:#C49D48" ></i></li>
-                                    <li><i class="bi bi-star-fill"Style="color:#C49D48"></i></li>
-                                    <li><i class="bi bi-star-fill"Style="color:#C49D48"></i></li>
-                                    <li><i class="bi bi-star-fill"Style="color:#C49D48"></i></li>
-                                    <li><i class="bi bi-star"></i></li>   
-                             */}
 
-
-                        </ul>
                         <p style={{ fontFamily: "Roboto", fontSize: "18px", fontWeight: "300", textAlign:"justify" }}> {description}</p>
                         <Link to={'/packages/'+id}>
                             <div className={styles.citybuttons}>

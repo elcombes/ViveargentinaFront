@@ -22,6 +22,8 @@ export const ORDER_EXPERIENCES = "ORDER_EXPERIENCES";
 export const FILTER_EXPERIENCES = "FILTER_EXPERIENCES";
 export const CREATE_NEW_EXPERIENCE = "CREATE_NEW_EXPERIENCE";
 export const CREATE_NEW_PACKAGE = "CREATE_NEW_PACKAGE";
+export const UPDATE_EXPERIENCE = "UPDATE_EXPERIENCE";
+export const UPDATE_PACKAGE = "UPDATE_PACKAGE";
 export const GET_USER_LOGIN = "GET_USER_LOGIN";
 export const LOGOUT = "LOGOUT";
 export const GET_LS_USER = "GET_LS_USER";
@@ -34,7 +36,7 @@ export const FILTER_SALES_STATUS = "FILTER_SALES_STATUS";
 
 //Filtra las ventas por Status
 export function filterSalesStatus(payload) {
-  console.log('payload en action', payload)
+  console.log("payload en action", payload);
   return {
     type: FILTER_SALES_STATUS,
     payload,
@@ -126,7 +128,7 @@ export function passwordReset({ token, password }) {
       { password },
       { headers }
     );
-    console.log(response);
+    return response.data;
   };
 }
 
@@ -137,7 +139,7 @@ export function resetPasswordRequest(email) {
       "https://viveargentina.herokuapp.com/users/reset_password_request",
       { email }
     );
-    console.log("response: " + response);
+    return response.data
   };
 }
 
@@ -159,7 +161,6 @@ export function changePassword({ token, password, newPassword }) {
   };
 }
 
-
 export function softDelete({ token, userId }) {
   return async function () {
     const headers = {
@@ -169,6 +170,24 @@ export function softDelete({ token, userId }) {
     };
     const response = await axios.put(
       "https://viveargentina.herokuapp.com/users/soft_delete",
+      { userId },
+      { headers }
+    );
+    console.log("response: " + response);
+    return response.data;
+  };
+}
+
+//esta funcion le cambia la propiedad de administrador a un usuario dependiendo de su estado actual
+export function shiftAdmin({ token, userId }) {
+  return async function () {
+    const headers = {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    };
+    const response = await axios.put(
+      "https://viveargentina.herokuapp.com/users/shift_admin_authorization",
       { userId },
       { headers }
     );
@@ -287,9 +306,9 @@ export function getUserLogin({ email, password }) {
       "https://viveargentina.herokuapp.com/users/login",
       { email, password }
     );
-    console.log(response.data)
-    if (response.data === 'not allowed') {
-      return 'Incorrect password'
+    console.log(response.data);
+    if (response.data === "not allowed") {
+      return "Incorrect password";
     }
     window.localStorage.setItem("user", JSON.stringify(response.data));
     return dispatch({
@@ -520,7 +539,21 @@ export function createNewExperience(newExperience) {
     return newExperienceCreated;
   };
 }
+
+export function updateExperience(newExperience) {
+  console.log(newExperience);
+  return async function (dispatch) {
+    let ExperienceUpdated = await axios.put(
+      "https://viveargentina.herokuapp.com/experiences",
+      newExperience
+    );
+    console.log(ExperienceUpdated);
+    return ExperienceUpdated;
+  };
+}
+
 export function createNewPackage(newPackage) {
+  console.log(newPackage);
   return async function (dispatch) {
     let newPackageCreated = await axios.post(
       "https://viveargentina.herokuapp.com/packages",
@@ -528,6 +561,17 @@ export function createNewPackage(newPackage) {
     );
     console.log(newPackageCreated);
     return newPackageCreated;
+  };
+}
+
+export function updatePackage(newPackage) {
+  return async function (dispatch) {
+    let packageUpdated = await axios.put(
+      "https://viveargentina.herokuapp.com/packages",
+      newPackage
+    );
+    console.log(packageUpdated);
+    return packageUpdated;
   };
 }
 

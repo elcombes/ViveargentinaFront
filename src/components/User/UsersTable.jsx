@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getAllUsers } from "../../redux/action";
+import { getAllUsers, resetPasswordRequest  } from "../../redux/action";
 import "./UsersTable.css";
+import Swal from "sweetalert2";
 
 export default function UsersTable() {
   const dispatch = useDispatch();
@@ -17,6 +18,29 @@ export default function UsersTable() {
   useEffect(() => {
     dispatch(getAllUsers());
   }, [dispatch]);
+
+  const handleResetPass= async (e)=>{
+    // console.log(JSON.stringify(e.target.outerHTML))
+    // console.log(JSON.stringify(e.target.outerHTML).split('\\"'))
+    let userEmail
+    if(e.target.name){
+      userEmail = e.target.name
+    }else{
+      userEmail = JSON.stringify(e.target.outerHTML).split('\\"')[1]
+    }
+    console.log("email: "+userEmail)
+    const resp = await dispatch(resetPasswordRequest(userEmail))
+    console.log(resp)
+    Swal.fire({
+      title: resp+"!",
+      imageUrl: "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663188984/VivaArg/Alerts/passagerAlert_hxpidz.png",
+      imageWidth: 350,
+      imageHeight: 300,
+      confirmButtonColor: "#C49D48",
+      imageAlt: "Custom image",
+    });
+  }
+
   return (
     <div className="container mt-5 ">
       <div className="d-flex justify-content-center row">
@@ -47,7 +71,7 @@ export default function UsersTable() {
                             {/* <input type="checkbox" className="custom-control-input" id="customSwitches"></input> */}
                           </div>
                         </td>
-                        <td>{u.email}</td>
+                        <td>{u.email.substring(0, 6) === 'google' ? u.email.slice(7)+" (Google)" : u.email}</td>
                         <td>{u.first_name + " " + u.last_name}</td>
                         <td className="text-center">
                           <input
@@ -56,9 +80,15 @@ export default function UsersTable() {
                           ></input>
                         </td>
                         <td className="text-center">
-                          <button className="btn btn-outline-secondary">
-                            <i className="bi bi-key-fill"></i>
-                          </button>
+                          {
+                            u.email.substring(0, 6) === 'google' ?
+                            null:
+                            (
+                              <button onClick={(e)=>handleResetPass(e)} name={u.email} className="btn btn-outline-secondary">
+                                <i name={u.email} className="bi bi-key-fill"></i>
+                              </button>
+                            )
+                          }
                         </td>
                       </tr>
                     </tbody>
