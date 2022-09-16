@@ -29,7 +29,6 @@ function validate(newExperience) {
     errors.price = "Price cannot be less than 0";
   }
   if (typeof newExperience.price !== 'number') {
-    console.log(typeof newExperience.price)
     errors.price = "Price must be a number"
   }
   if (!newExperience.duration) {
