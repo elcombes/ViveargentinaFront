@@ -145,7 +145,7 @@ export default function UpdateExperiences({
                     <button
                       type="button"
                       className="btn-close"
-                      data-bs-dismiss={`cexampleModal${id}`}
+                      data-bs-dismiss="modal"
                       aria-label="Close"
                     ></button>
                   </div>
