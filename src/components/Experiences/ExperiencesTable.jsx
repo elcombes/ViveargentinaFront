@@ -1,13 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllExperiences } from "../../redux/action";
-import './ExperiencesTable.css';
+import "./ExperiencesTable.css";
 import CreateExperience from "../CreateExperience/CreateExperience";
 import UpdateExperience from "../UpdateExperience/UpdateExperience";
 
-
 export default function ExperiencesTable() {
-
   const dispatch = useDispatch();
   const allExperiences = useSelector((state) => state.allExperiences);
 
@@ -19,14 +17,10 @@ export default function ExperiencesTable() {
 
   useEffect(() => {
     dispatch(getAllExperiences());
-
   }, []);
-
-
 
   return (
     <div class="container mt-5">
-
       <div class="d-flex justify-content-center row">
         <div class="col-md-10">
           <div class="rounded">
@@ -38,7 +32,7 @@ export default function ExperiencesTable() {
               <table class="table table-bordered">
                 {/* Encabezado de columnas */}
                 <thead>
-                  <tr className='text-center'>
+                  <tr className="text-center">
                     {/* <th>CITY</th> */}
                     <th>PACKAGE</th>
                     <th>EXPERIENCE</th>
@@ -58,26 +52,40 @@ export default function ExperiencesTable() {
                         {/* <td>CITY</td> */}
                         <td>{e.package.name}</td>
                         <td>{e.name}</td>
-                        <td className='datescol'>{e.dates?.split(",").map((d) => {
-                          return d + ' ';
-                        })}
+                        <td className="datescol">
+                          {e.dates?.split(",").map((d) => {
+                            return d + " ";
+                          })}
                         </td>
-                        <td className='text-center'>${e.price}</td>
-                        <td className='text-center'>{e.score}</td>
-                        <td className='text-center controlbuttonsexp'>
-                          <div><UpdateExperience /></div>
-                          <button className="btn"><i class="bi bi-sign-stop-fill"></i></button>
+                        <td className="text-center">${e.price}</td>
+                        <td className="text-center">{e.score}</td>
+                        <td className="text-center controlbuttonsexp">
+                          <div>
+                            <UpdateExperience
+                              id={e.id}
+                              subTitle={e.subTitle}
+                              description={e.description}
+                              price={e.price}
+                              duration={e.duration}
+                              dates={e.dates}
+                              categoryId={e.categoryId}
+                              packageId={e.packageId}
+                              image={e.image}
+                            />
+                          </div>
+                          <button className="btn">
+                            <i class="bi bi-sign-stop-fill"></i>
+                          </button>
                         </td>
                       </tr>
                     </tbody>
-                  )
+                  );
                 })}
               </table>
-
             </div>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
