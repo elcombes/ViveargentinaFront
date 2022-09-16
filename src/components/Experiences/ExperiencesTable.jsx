@@ -56,6 +56,7 @@ export default function ExperiencesTable() {
                           {e.dates?.split(",").map((d) => {
                             return d + " ";
                           })}
+
                         </td>
                         <td className="text-center">${e.price}</td>
                         <td className="text-center">{e.score}</td>

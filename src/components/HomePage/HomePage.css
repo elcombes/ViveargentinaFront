@@ -178,6 +178,7 @@
     align-items: center;
     align-self: center;
     margin-top: 30px;
+    overflow: hidden;
 }
 
 .experiences {
@@ -190,6 +191,7 @@
     flex-direction: column;
     justify-content: center;
     padding-block: min(20vh, 5em);
+    overflow: hidden;
 }
 
 .experiencesHeader {
@@ -249,6 +251,8 @@
     font-family: Raleway;
     margin: 5px -5px 15px;
     color: #005B4C;
+    overflow: hidden;
+
 }
 
 .videosHeader span {
@@ -274,6 +278,8 @@
     width: 400px;
     margin: 50px auto;
     text-align: center;
+    overflow: hidden;
+
 
 }
 
