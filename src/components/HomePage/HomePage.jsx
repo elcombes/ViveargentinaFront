@@ -245,7 +245,7 @@ function HomePage() {
                     <small></small>
                   </p>
                   <p class="full-width">
-                    <input type="checkbox" id="checkbox" name="checkbox" checked /> Yes, I would like to receive information about discounts, promotions, packages and experiences available..
+                    <input type="checkbox" id="checkbox" name="checkbox"/> Yes, I would like to receive information about discounts, promotions, packages and experiences available..
                   </p>
                   <p class="full-width">
                     <input type="submit" class="btn btn-outline-secondary btn-lg " value="SEND" onclick="checkValidations()" />

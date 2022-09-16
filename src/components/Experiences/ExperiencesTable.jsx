@@ -52,9 +52,10 @@ export default function ExperiencesTable() {
                         {/* <td>CITY</td> */}
                         <td>{e.package?.name}</td>
                         <td>{e?.name}</td>
-                        <td className='datescol'>{e.dates?.split(",").map((d) => {
-                          return d + ' ';
-                        })}
+                        <td className="datescol">
+                          {e.dates?.split(",").map((d) => {
+                            return d + " ";
+                          })}
 
                         </td>
                         <td className="text-center">${e.price}</td>
