@@ -41,7 +41,12 @@ function App() {
           <Route path="/cart" component={Cart} />
           <Route path="/table" component={UsersTable} />
           <Route path="/create" component={CreateExperience}/>
-          <Route path="/admin" component={AdminDashboard} />
+          <Route exact path="/admin" component={AdminDashboard} />
+          <Route exact path="/admin/sales" component={AdminDashboard} />
+          <Route exact path="/admin/packages" component={AdminDashboard} />
+          <Route exact path="/admin/experiences" component={AdminDashboard} />
+          <Route exact path="/admin/users" component={AdminDashboard} />
+          <Route exact path="/admin/reviews" component={AdminDashboard} />
           <Route path="*" component={Error404} />
           
         </Switch>

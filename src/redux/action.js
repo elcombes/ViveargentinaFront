@@ -2,6 +2,7 @@
 import axios from "axios";
 
 export const GET_ALL_USERS = "GET_ALL_USERS";
+export const GET_ALL_REVIEWS = "GET_ALL_REVIEWS";
 export const GET_USER_BY_ID = "GET_USER_BY_ID";
 export const GET_CITIES_BY_NAME = "GET_CITIES_BY_NAME";
 export const GET_CITY_BY_ID = "GET_CITY_BY_ID";
@@ -22,6 +23,7 @@ export const ORDER_EXPERIENCES = "ORDER_EXPERIENCES";
 export const FILTER_EXPERIENCES = "FILTER_EXPERIENCES";
 export const CREATE_NEW_EXPERIENCE = "CREATE_NEW_EXPERIENCE";
 export const CREATE_NEW_PACKAGE = "CREATE_NEW_PACKAGE";
+export const CREATE_NEW_REVIEW = "CREATE_NEW_REVIEW";
 export const UPDATE_EXPERIENCE = "UPDATE_EXPERIENCE";
 export const UPDATE_PACKAGE = "UPDATE_PACKAGE";
 export const GET_USER_LOGIN = "GET_USER_LOGIN";
@@ -73,6 +75,18 @@ export function getAllUsers() {
     });
   };
 }
+// Esta ruta trae un array con todas las reviews.
+
+export function getAllReviews() {
+  console.log("entre")
+  return async function (dispatch) {
+    let allReviews = await axios.get(`https://viveargentina.herokuapp.com/reviews`);
+    return dispatch({
+      type: GET_ALL_REVIEWS,
+      payload: allReviews.data,
+    });
+  };
+}
 
 // Esta ruta trae un usuario por ID
 export function getUserById(userId) {
@@ -96,6 +110,21 @@ export function buyInMercadoPago(itemsFromStore) {
     );
     return dispatch({
       type: BUY_IN_MERCADOPAGO,
+      payload: response.data,
+    });
+  };
+}
+// Esta ruta crea una nueva review
+
+export function createNewReview(newReview) {
+  return async function (dispatch) {
+    let response = await axios.post(
+      "https://viveargentina.herokuapp.com/reviews",
+      newReview
+    );
+    console.log(response.data)
+    return dispatch({
+      type: CREATE_NEW_REVIEW,
       payload: response.data,
     });
   };

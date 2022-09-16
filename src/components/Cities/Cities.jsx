@@ -42,7 +42,7 @@ export default function Card() {
                   allCities?.map((e) => {
                     return allCities === [] ? (
                       <div className="noCities">
-                        <img src="../images/loading-opaque.gif" alt="Loading..." />
+                        <img src="../../assets/buenos aires.jpg" alt="Loading..." />
                       </div>
                     ) : (
                       <div class="accordion-item" key={prevId++}>
