@@ -29,6 +29,9 @@ function validate(newExperience) {
   if (newExperience.price < 0) {
     errors.price = "Price cannot be less than 0";
   }
+  if (typeof newExperience.price !== 'number') {
+    errors.price = "Price must be a number"
+  }
   if (!newExperience.duration) {
     errors.duration = "Duration is required";
   }
@@ -58,7 +61,7 @@ export default function Experiences() {
   const [newExperience, setNewExperience] = useState({
     name: "",
     subTitle: "",
-    price: "",
+    price: 0,
     description: "",
     image: "",
     duration: "",
@@ -75,17 +78,29 @@ export default function Experiences() {
   }, []);
 
   const handleChange = (e) => {
+    if (e.target.name === "price") {
+      setNewExperience({
+        ...newExperience,
+        [e.target.name]: parseInt(e.target.value),
+      });
+      setErrors(
+        validate({
+          ...newExperience,
+          [e.target.name]: parseInt(e.target.value),
+        })
+      )
+    }
+    else { 
     setNewExperience({
       ...newExperience,
       [e.target.name]: e.target.value,
     });
-    setErrors(
-      validate({
+    setErrors(validate({
         ...newExperience,
         [e.target.name]: e.target.value,
       })
-    );
-  };
+    )}
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -229,7 +244,7 @@ export default function Experiences() {
                             </span>
                             <input
                               style={{ width: "100%" }}
-                              type="text"
+                              type="number"
                               class="col-sm-2"
                               className="form-control infoInput"
                               value={newExperience.price}

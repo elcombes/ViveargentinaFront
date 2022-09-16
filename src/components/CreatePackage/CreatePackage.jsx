@@ -24,6 +24,9 @@ function validate(newPackage) {
   if (newPackage.price < 0) {
     errors.price = "Price cannot be less than 0";
   }
+  if (typeof newPackage.price !== 'number') {
+    errors.price = "Price must be a number"
+  }
   if (!newPackage.duration) {
     errors.duration = "Duration is required";
   }
@@ -50,7 +53,7 @@ export default function Packages() {
   const [newPackage, setNewPackage] = useState({
     name: "",
     subTitle: "",
-    price: "",
+    price: 0,
     description: "",
     image: "",
     duration: "",
@@ -65,6 +68,19 @@ export default function Packages() {
   }, []);
 
   const handleChange = (e) => {
+    if (e.target.name === "price") {
+      setNewPackage({
+        ...newPackage,
+        [e.target.name]: parseInt(e.target.value),
+      });
+      setErrors(
+        validate({
+          ...newPackage,
+          [e.target.name]: parseInt(e.target.value),
+        })
+      )
+    }
+    else {
     setNewPackage({
       ...newPackage,
       [e.target.name]: e.target.value,
@@ -74,7 +90,7 @@ export default function Packages() {
         ...newPackage,
         [e.target.name]: e.target.value,
       })
-    );
+    )};
   };
 
   const handleSubmit = (e) => {
@@ -87,7 +103,6 @@ export default function Packages() {
       e.stopPropagation();
       errorMessagesArray.forEach((e) => (e.hidden = false));
     } else {
-      console.log(newPackage);
       dispatch(createNewPackage(newPackage));
     }
   };
@@ -221,7 +236,7 @@ export default function Packages() {
                             </span>
                             <input
                               style={{ width: "100%" }}
-                              type="text"
+                              type="number"
                               class="col-sm-2"
                               className="form-control form-inputContact"
                               value={newPackage.price}

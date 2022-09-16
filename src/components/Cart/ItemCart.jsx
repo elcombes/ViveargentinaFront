@@ -26,13 +26,13 @@ export default function ItemCart({
     setBuyInFalse();
     if(itemPax !== 1) {
       setItemPax(parseInt(itemPax - 1))
-    }
     console.log(itemPax)
     itemsFromStore = JSON.parse(localStorage.getItem("items"));
     itemsFromStore[index].pax = parseInt(itemsFromStore[index].pax) - 1;
     // console.log(itemsFromStore[index].pax)
     // console.log(itemsFromStore)
     localStorage.setItem("items", JSON.stringify(itemsFromStore));
+    }
   }
 
   function onClickPos() {
