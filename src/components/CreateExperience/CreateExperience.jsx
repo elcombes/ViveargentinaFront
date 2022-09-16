@@ -143,7 +143,11 @@ export default function Experiences() {
                         <div class="col-md-6">
                           <label className="infoLabel">Name </label>
                           <input
+<<<<<<< HEAD
                             className="infoInput"
+=======
+                            className='form-control infoInput'
+>>>>>>> 5cb3c462d4930fb1214c33ee441d002cb3ffb103
                             type="text"
                             value={newExperience.name}
                             name="name"
@@ -161,7 +165,7 @@ export default function Experiences() {
                         <div class="col-md-6">
                           <label className="infoLabel">Subtitle </label>
                           <input
-                            className="infoInput"
+                            className="form-control infoInput"
                             type="text"
                             value={newExperience.subTitle}
                             name="subTitle"
@@ -204,7 +208,7 @@ export default function Experiences() {
                               style={{ width: "100%" }}
                               type="text"
                               class="col-sm-2"
-                              className="infoInput"
+                              className="form-control infoInput"
                               value={newExperience.price}
                               name="price"
                               placeholder="7500"
@@ -238,7 +242,7 @@ export default function Experiences() {
                               // style={{width:"100%"}}
                               type="text"
                               class="col-sm-2"
-                              className="infoInput"
+                              className="form-control infoInput"
                               value={newExperience.duration}
                               name="duration"
                               placeholder="3 hours"
@@ -272,7 +276,7 @@ export default function Experiences() {
                               // style={{width:"100%"}}
                               type="text"
                               class="col-sm-2"
-                              className="infoInput"
+                              className="form-control infoInput"
                               value={newExperience.dates}
                               name="dates"
                               placeholder="23/05/2023, 08/03/2023"

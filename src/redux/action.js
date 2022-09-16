@@ -32,6 +32,16 @@ export const GOOGLE_LOGIN = "GOOGLE_LOGIN";
 export const BUY_IN_MERCADOPAGO = "BUY_IN_MERCADOPAGO";
 export const VERIFY_USER = "VERIFY_USER";
 export const CONTACTUS = "CONTACTUS";
+export const FILTER_SALES_STATUS = "FILTER_SALES_STATUS";
+
+//Filtra las ventas por Status
+export function filterSalesStatus(payload) {
+  console.log('payload en action', payload)
+  return {
+    type: FILTER_SALES_STATUS,
+    payload,
+  };
+}
 
 //Esta action cambia el estado de una venta de Experiencias
 export function putExperiencesStatus(status) {

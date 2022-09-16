@@ -32,7 +32,7 @@ export default function ExperiencesTable() {
               <table class="table table-bordered">
                 {/* Encabezado de columnas */}
                 <thead>
-                  <tr>
+                  <tr className="text-center">
                     {/* <th>CITY</th> */}
                     <th>PACKAGE</th>
                     <th>EXPERIENCE</th>
@@ -48,37 +48,33 @@ export default function ExperiencesTable() {
                 {orderExperiences?.map((e) => {
                   return (
                     <tbody class="table-body">
-                      <tr class="cell-1">
+                      <tr class="cell-1 vertalign">
                         {/* <td>CITY</td> */}
                         <td>{e.package.name}</td>
                         <td>{e.name}</td>
-                        <td>
+                        <td className="datescol">
                           {e.dates?.split(",").map((d) => {
                             return d + " ";
                           })}
                         </td>
-                        <td>${e.price}</td>
-                        <td>{e.score}</td>
-                        <td>
-                          <UpdateExperience
-                            name={e.name}
-                            id={e.id}
-                            subTitle={e.subTitle}
-                            description={e.description}
-                            price={e.price}
-                            duration={e.duration}
-                            dates={e.dates}
-                            categoryId={e.categoryId}
-                            packageId={e.packageId}
-                            image={e.image}
-                          />
-
+                        <td className="text-center">${e.price}</td>
+                        <td className="text-center">{e.score}</td>
+                        <td className="text-center controlbuttonsexp">
+                          <div>
+                            <UpdateExperience
+                              id={e.id}
+                              subTitle={e.subTitle}
+                              description={e.description}
+                              price={e.price}
+                              duration={e.duration}
+                              dates={e.dates}
+                              categoryId={e.categoryId}
+                              packageId={e.packageId}
+                              image={e.image}
+                            />
+                          </div>
                           <button className="btn">
                             <i class="bi bi-sign-stop-fill"></i>
-                          </button>
-
-                          <button className="btn">
-                            <i class="bi bi-trash3"></i>
                           </button>
                         </td>
                       </tr>
