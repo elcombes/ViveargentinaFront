@@ -56,8 +56,8 @@ export default function ExperiencesTable() {
                     <tbody class="table-body">
                       <tr class="cell-1 vertalign">
                         {/* <td>CITY</td> */}
-                        <td>{e.package.name}</td>
-                        <td>{e.name}</td>
+                        <td>{e.package?.name}</td>
+                        <td>{e?.name}</td>
                         <td className='datescol'>{e.dates?.split(",").map((d) => {
                           return d + ' ';
                         })}

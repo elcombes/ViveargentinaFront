@@ -3,6 +3,8 @@ import React, { useEffect } from "react";
 import styles from "../CreateExperience/CreateExperience.module.css";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Axios from 'axios';
+import {Image} from 'cloudinary-react'
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
@@ -86,6 +88,7 @@ export default function Experiences() {
   };
 
   const handleSubmit = (e) => {
+    e.preventDefault()
     let errorMessagesNodeList = document.querySelectorAll("#errors")
     let errorMessagesArray = Array.from(errorMessagesNodeList)
     if (Object.entries(errors).length > 0) {
@@ -96,6 +99,39 @@ export default function Experiences() {
     dispatch(createNewExperience(newExperience));
     }
   };
+
+  const [imageSelected, setImageSelected] = useState('')
+  let imageDB;
+
+  const uploadImage = (selectedImage) => {
+    const formData = new FormData()
+    formData.append('file', selectedImage)
+    formData.append('upload_preset', 'fftkpmfl')
+    Axios.post('https://api.cloudinary.com/v1_1/dblc1bzmx/image/upload', formData).then((res) => {
+      imageDB = (res.data.url)
+      setNewExperience({
+        ...newExperience,
+        image: imageDB
+      });
+      console.log(imageDB)
+      console.log(res)
+    })
+  }
+
+  const handleImageSelected = (e) => {
+    console.log(e.target.files[0])
+    // setImageSelected(e.target.files[0])
+    let selectedImage = e.target.files[0]
+    uploadImage(selectedImage)
+    // setNewExperience({
+    //   ...newExperience,
+    //   image: e.target.files[0].name
+    // })
+    setErrors(validate({
+      ...newExperience,
+      image: e.target.files[0].name
+    }))
+  }
 
   return (
     <div>
@@ -136,7 +172,7 @@ export default function Experiences() {
                     ></button>
                   </div>
                   <div className="modal-body">
-                    <form class="row g-3" onSubmit={(e) => handleSubmit(e)}>
+                    <form class="row g-3" onSubmit={(e) => handleSubmit(e)} >
                       <div class="row">
                         <div class="col-md-6">
                           <label className="infoLabel">Name </label>
@@ -245,7 +281,7 @@ export default function Experiences() {
                             value={newExperience.packageId} class="form-select form-select-lg mb-3">
                             <option selected>Select a Package</option>
                             {allPackages?.map(e => {
-                              return <option value={e.name}>{e.name}</option>
+                              return <option value={e.id}>{e.name}</option>
                             })}
                           </select>
                           {errors.packageId ?
@@ -258,7 +294,7 @@ export default function Experiences() {
                             value={newExperience.categoryId} class="form-select form-select-lg mb-3">
                             <option selected>Select a Category</option>
                             {allCategories?.map(e => {
-                              return <option value={e.name}>{e.name}</option>
+                              return <option value={e.id}>{e.name}</option>
                             })}
                           </select>
                           {errors.categoryId ?
@@ -272,13 +308,14 @@ export default function Experiences() {
                           <label className="infoLabel">Image </label>
                           <div class="input-group mb-3">
                             <input 
-                            style={{ minHeight: "0px" }} 
+                            // style={{ minHeight: "0px" }} 
                             type="file" 
-                            class="form-control"
-                            value={newExperience.image}
+                            // class="form-control"
+                            // value={newExperience.image}
                             name="image"
-                            onChange={(e) => handleChange(e)}
+                            onChange={(e) => handleImageSelected(e)}
                             />
+                            {/* <button type="button" value={newExperience.image} id='btn-experienceImage'>Select image</button> */}
                             {errors.image ?
                             <p id="errors" hidden>{errors.image}</p> :
                             <p className="validMessage">Looks Good!</p>
@@ -286,7 +323,7 @@ export default function Experiences() {
                           </div>
                         </div>
                         <div class="col-md-6" style={{ display: "flex", alignItems: "center" }}>
-                          <button style={{ fontSize: "1.6vh", fontFamily: "Raleway", backgroundColor: "#C49D48", borderColor: "#C49D48", borderRadius: "5px", width: "100%", marginTop: "8px", marginRight: "0px" }} type="submit" >Create Experience</button>
+                          <button style={{ fontSize: "1.6vh", fontFamily: "Raleway", backgroundColor: "#C49D48", borderColor: "#C49D48", borderRadius: "5px", width: "100%", marginTop: "8px", marginRight: "0px" }} type="submit">Create Experience</button>
                         </div>
 
                       </div>
