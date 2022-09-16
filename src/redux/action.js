@@ -180,6 +180,7 @@ export function softDelete({ token, userId }) {
 
 //esta funcion le cambia la propiedad de administrador a un usuario dependiendo de su estado actual
 export function shiftAdmin({ token, userId }) {
+  console.log(userId)
   return async function () {
     const headers = {
       Accept: "application/json",

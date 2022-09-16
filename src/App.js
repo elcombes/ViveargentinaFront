@@ -41,7 +41,7 @@ function App() {
           <Route path="/cart" component={Cart} />
           <Route path="/table" component={UsersTable} />
           <Route path="/create" component={CreateExperience}/>
-          <Route exact path="/admin" component={AdminDashboard} />
+          <Route path="/admin" component={AdminDashboard} />
           <Route path="*" component={Error404} />
           
         </Switch>
