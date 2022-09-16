@@ -19,9 +19,7 @@ import MyFavs from './components/User/MyFavs.jsx';
 import Verify from "./components/User/Verify";
 import AdminDashboard from './components/Admin/AdminDashboard.jsx';
 import UsersTable from "./components/User/UsersTable";
-import SignUp from "./components/User/SignUp/SignUp";
 import ResetPassword from "./components/User/ResetPassword";
-import Login2 from "./components/User/Login2/Login2";
 
 function App() {
   return (
@@ -35,19 +33,15 @@ function App() {
           <Route exact path="/city" component={City} />
           <Route exact path="/home" component={HomePage} />
           <Route path="/packages/:cityId" component={Packages} />
+          <Route exact path="/packages" component={Packages} />
           <Route path="/verify/:token" component={Verify} />
           <Route path="/reset_password/:token" component={ResetPassword} />
-          <Route exact path="/packages" component={Packages} />
           <Route path="/experiences/:packageId" component={Experiences} />
           <Route exact path="/experiences" component={Experiences} />
           <Route path="/cart" component={Cart} />
-          <Route path="/userlogged" component={MenuUser} />
-          <Route path="/userguest" component={MenuGuest} />
-          <Route path="/mytrips" component={MyTrips} />
-          <Route path="/myfavs" component={MyFavs} />
-          <Route path="/admin" component={AdminDashboard} />
           <Route path="/table" component={UsersTable} />
           <Route path="/create" component={CreateExperience}/>
+          <Route exact path="/admin" component={AdminDashboard} />
           <Route path="*" component={Error404} />
           
         </Switch>

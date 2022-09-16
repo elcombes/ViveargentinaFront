@@ -24,6 +24,13 @@
     margin-top: 70px;
 
   }
+  .controlbuttonsexp {
+    width: 155px;
+    display: inline-flex;
+    justify-content: center;
+    height: 90px;
+    align-items: center;
+  }
  
   
   
