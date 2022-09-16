@@ -17,7 +17,6 @@ import Footer from '../Footer/Footer.jsx';
 
 
 function HomePage() {
-
   const [offSetY, setOffSetY] = useState(0);
 
   const handleScrollY = () => setOffSetY(window.pageYOffset)
@@ -31,6 +30,8 @@ function HomePage() {
     window.addEventListener('scroll', handleScrollY)
     return () => window.removeEventListener('scroll', handleScrollY)
   }, [])
+
+  /* reviews */
 
 
   return (
@@ -88,7 +89,7 @@ function HomePage() {
               </Link>
               <div className='explore'>
                 <button className="btn">
-                  <a href="#packages"><span></span><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-down-circle-fill " viewBox="0 0 16 16">
+                  <a href="#experiences"><span></span><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-down-circle-fill " viewBox="0 0 16 16">
                     <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z" />
                   </svg></a>
                 </button>
@@ -135,7 +136,7 @@ function HomePage() {
 
                 <span style={{ transform: `translate(${offSetY * 0.09}px)` }}>EXPLORE</span>
                 <h1 style={{ transform: `translate(${offSetY * 0.08}px)` }}>Our cities</h1>
-                <p style={{ transform: `translate(${offSetY * 0.04}px)` }}>Choose a city, we organize the rest of your trip.</p>
+                
               </div>
 
               <div >
@@ -146,7 +147,7 @@ function HomePage() {
 
               <div className='explore'>
                 <button className="btn">
-                  <a href="#contact"><span></span><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-down-circle-fill " viewBox="0 0 16 16">
+                  <a href="#reviews"><span></span><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-down-circle-fill " viewBox="0 0 16 16">
                     <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z" />
                   </svg></a>
                 </button>
@@ -154,7 +155,66 @@ function HomePage() {
             </div>
           </div>
         </div>
+        <div>
 
+          <section class="containerReviews" id='reviews'>
+            <div class="titleReviews">
+              <h2>our reviews</h2>
+            </div>
+            <article class="reviewReviews">
+              <div class="img-container">
+                <img src="http://siga-aluminio.com.mx/wp-content/uploads/2019/01/person2.jpg" alt="person-1" id="person-img" />
+              </div>
+
+              <h4 id="authorReviews">Sara Jones</h4>
+              <p id="job">Very useful
+              </p>
+              <p id="info">
+                "Vive Argentina helped me find an ideal package for this long weekend!"
+              </p>
+              {/*   <!-- prev next buttons --> */}
+              <div class="button-container">
+                <button class="prev-btn">
+                  <i class="bi bi-arrow-left-short"></i>
+                </button>
+                <button class="next-btn">
+                  <i class="bi bi-arrow-right-short"></i>
+                </button>
+              </div>
+              {/*    */}
+              <div class="quote"><i class="fa-solid fa-quote-right" id="quote"></i></div>
+              <div class="underline"></div>
+
+              {/* CREATE REVIEW */}
+
+            </article>
+          </section>
+          <section>
+            <div>
+              <div className='reviewSection'>
+                <h1>Share your experience, write a review.</h1>
+              </div>
+              <form className='formReview'>
+                <div class="form-group">
+                  <label for="formGroupExampleInput2">TITLE OF YOUR REVIEW</label>
+                  <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Very useful!" />
+                </div>
+
+                <div class="form-group">
+                  <label for="formGroupExampleInput2">DESCRIPTION</label>
+                  <textarea
+                    style={{ height: "150px", fontSize: "12px" }}
+                    className="infoInput"
+                    type="text"
+                    name="description"
+                    placeholder="Vive Argentina helped me find an ideal package for this long weekend!..."
+                  />
+
+                </div>
+              </form>
+            </div>
+          </section>
+        </div>
       </div>
 
       <div className={`container-fluid ${styles.fondocontact}`}>

@@ -18,7 +18,8 @@
     font-size: 2.8vh;
     font-weight: 400;
 }
-.explore{
+
+.explore {
     display: flex;
     justify-content: center;
 }
@@ -38,6 +39,7 @@
     display: flex;
     flex-direction: row;
 }
+
 .cities {
     display: flex;
     width: min(980px, 85%);
@@ -47,21 +49,25 @@
     flex-direction: column;
     justify-content: center;
     padding-block: min(20vh, 5em);
-    
+
 }
+
 .citiesHeader {
     margin-bottom: 55px;
     overflow: hidden;
- 
+
 }
-.citiesHeader h1{
+
+.citiesHeader h1 {
     font-weight: 500;
     font-size: 4rem;
     font-family: Raleway;
     margin: 5px -5px 15px;
     color: #634100;
+    
 }
-.citiesHeader span{
+
+.citiesHeader span {
     text-transform: uppercase;
     letter-spacing: 1px;
     display: inline-block;
@@ -69,16 +75,15 @@
     font-size: 90px;
     color: #C49D48;
 }
-.citiesHeader p{
-    max-width: min(40ch, 100% - 2rem);
-    line-height: 1.6;
-    color: #565656;
-}
+
+
+
 .cityInfos {
     padding: 20vh 0vh 20vh 0vh;
     height: fit-content;
 
 }
+
 .item {
     width: 100%;
     height: 400px;
@@ -86,13 +91,15 @@
     border-radius: 12px;
     overflow: hidden;
 }
- .item  img{
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      position: absolute;
-      inset: 0;
+
+.item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    inset: 0;
 }
+
 .overlay {
     position: absolute;
     top: 0;
@@ -102,17 +109,16 @@
     padding: 28px 25px;
     color: #fff;
     background: rgb(197, 144, 75);
-    background: linear-gradient(
-      0deg,
-      #020024 0%,
-      #000032a1 3%,
-      #17d9ff00 100%
-    );
+    background: linear-gradient(0deg,
+            #020024 0%,
+            #000032a1 3%,
+            #17d9ff00 100%);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
 }
+
 .overlay2 {
     position: absolute;
     top: 0;
@@ -122,17 +128,16 @@
     padding: 28px 25px;
     color: #fff;
     background: rgb(197, 144, 75);
-    background: linear-gradient(
-      0deg,
-      #020024 0%,
-      #000032a1 3%,
-      #17d9ff00 100%
-    );
+    background: linear-gradient(0deg,
+            #020024 0%,
+            #000032a1 3%,
+            #17d9ff00 100%);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
 }
+
 .overlay3 {
     position: absolute;
     top: 0;
@@ -146,6 +151,7 @@
     justify-content: space-between;
     align-items: flex-start;
 }
+
 .overlay span {
     background: #C49D48;
     backdrop-filter: blur(4px);
@@ -153,7 +159,8 @@
     border-radius: 60px;
     padding: 10px 20px;
     display: inline-block;
-  }
+}
+
 .overlay2 span {
     background: #005B4C;
     backdrop-filter: blur(4px);
@@ -161,18 +168,19 @@
     border-radius: 60px;
     padding: 10px 20px;
     display: inline-block;
-  }
+}
 
 /* EXPERIENCES----------------------- */
-  .expExplore{
+.expExplore {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     align-self: center;
     margin-top: 30px;
-  }
-  .experiences {
+}
+
+.experiences {
 
     display: flex;
     width: min(980px, 85%);
@@ -183,17 +191,20 @@
     justify-content: center;
     padding-block: min(20vh, 5em);
 }
+
 .experiencesHeader {
     margin-bottom: 55px;
 }
-.experiencesHeader h1{
+
+.experiencesHeader h1 {
     font-weight: 500;
     font-size: 4rem;
     font-family: Raleway;
     margin: 5px -5px 15px;
     color: #C49D48;
 }
-.experiencesHeader span{
+
+.experiencesHeader span {
     text-transform: uppercase;
     letter-spacing: 1px;
     display: inline-block;
@@ -201,7 +212,8 @@
     font-size: 90px;
     color: #005B4C;
 }
-.experiencesHeader p{
+
+.experiencesHeader p {
     max-width: min(40ch, 100% - 2rem);
     line-height: 1.6;
     font-weight: 500;
@@ -210,14 +222,15 @@
 
 /* VIDEOS----------------------- */
 
-.vidExplore{
+.vidExplore {
     display: flex;
     justify-content: center;
     align-items: center;
     align-self: center;
+ 
+}
 
-  }
-  .videos {
+.videos {
 
     display: flex;
     width: min(980px, 85%);
@@ -227,16 +240,18 @@
     flex-direction: column;
     justify-content: center;
     padding-block: min(20vh, 5em);
+    overflow: hidden;
 }
 
-.videosHeader h1{
+.videosHeader h1 {
     font-weight: 500;
     font-size: 4rem;
     font-family: Raleway;
     margin: 5px -5px 15px;
     color: #005B4C;
 }
-.videosHeader span{
+
+.videosHeader span {
     text-transform: uppercase;
     letter-spacing: 1px;
     display: inline-block;
@@ -244,28 +259,194 @@
     font-size: 90px;
     color: #634100;
 }
-.videosHeader p{
+
+.videosHeader p {
     max-width: min(40ch, 100% - 2rem);
     line-height: 1.6;
     color: #565656;
     font-weight: 500;
 }
 
+
+/* REVIEWS----------------------- */
+.containerReviews {
+    height: 500px;
+    width: 400px;
+    margin: 50px auto;
+    text-align: center;
+
+}
+
+.titleReviews {
+    width: 180px;
+    text-transform: capitalize;
+    margin-top: 25px;
+    margin-left: 110px;
+    margin-bottom: 45px;
+    border-bottom: 5px solid #C49D48;
+    padding-bottom: 10px;
+    letter-spacing: 3px;
+}
+
+.reviewReviews {
+    width: 100%;
+    height: 385px;
+    background-color: white;
+    border-radius: 7px;
+    box-shadow: 0px 0px 5px 0px rgb(189, 189, 190);
+}
+
+#person-img {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-top: 40px;
+    margin-bottom: 12px;
+    z-index: 2;
+    box-shadow: 5px -5px#C49D48;
+}
+
+#author {
+    text-transform: capitalize;
+    letter-spacing: 3px;
+}
+
+#job {
+    font-size: 13px;
+    color: #C49D48;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+#info {
+    margin: auto;
+    width: 80%;
+    text-align: center;
+    font-size: 18px;
+    color: gray;
+}
+
+
+.button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 40px;
+    margin-top: 12px;
+    margin-bottom: 10px;
+    letter-spacing: 5px;
+    margin-left: 180px;
+}
+
+.prev-btn {
+    background-color: white;
+    border-style: none;
+    color: #C49D48;
+    font-size: 18px;
+}
+
+.prev-btn:hover {
+    cursor: pointer;
+    background-color: #5656561c;
+    border-radius: 25%;
+    color: #C49D48;
+
+
+}
+
+.next-btn {
+    background-color: white;
+    border-style: none;
+    color: #C49D48;
+    font-size: 18px;
+}
+
+.next-btn:hover {
+    cursor: pointer;
+    color: #C49D48;
+    background-color: #5656561c;
+    border-radius: 25%;
+
+}
+
+.random-btn {
+
+    background-color: white;
+    color: #C49D48;
+    margin-top: 10px;
+    font-size: 12px;
+    width: 80px;
+    height: 20px;
+    border-radius: 5px;
+    border: 2px solid #C49D48;
+
+
+}
+
+.random-btn:hover {
+    cursor: pointer;
+    color: black;
+    border: 2px solid #C49D48;
+    background-color: #C49D48;
+    font-size: 12.5px;
+}
+
+.quote {
+    width: 27px;
+    height: 27px;
+    border-radius: 50%;
+    font-size: 10px;
+    background-color: #C49D48;
+    position: relative;
+    bottom: 335px;
+    left: 128px;
+    z-index: 3;
+}
+
+#quote {
+    color: white;
+    margin-top: 7px;
+    font-size: 12px;
+
+}
+
+.formReview {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    padding-bottom: 60px;
+    font-size: 10px;
+}
+.reviewSection h1{
+    justify-content: center;
+    display: flex;
+    margin: 40px;
+    color: #C49D48;
+}
+
+.reviewSection :placeholder-shown{
+    font-size: 3px;
+}
 /* CONTACT----------------------- */
 
-.contactUs{
+.contactUs {
     display: flex;
     width: min(100%);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content:center;
+    justify-content: center;
     background-image: url('../../assets/vive\ argentina.png');
     background-color: #dedcd9;
     background-repeat: no-repeat;
-    background-position: left; 
+    background-position: left;
 }
-.wrapperContact{
+
+.wrapperContact {
     font-size: x-large;
 
 }

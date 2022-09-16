@@ -8,6 +8,7 @@
 
 .fondocontact{
   min-height: 70vh;
+  margin-bottom: -30px;
   background-color: #dedcd9;
   display: flex;
   align-items: center;
