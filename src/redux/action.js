@@ -36,7 +36,7 @@ export const FILTER_SALES_STATUS = "FILTER_SALES_STATUS";
 
 //Filtra las ventas por Status
 export function filterSalesStatus(payload) {
-  console.log('payload en action', payload)
+  console.log("payload en action", payload);
   return {
     type: FILTER_SALES_STATUS,
     payload,
@@ -535,6 +535,7 @@ export function updateExperience(newExperience) {
 }
 
 export function createNewPackage(newPackage) {
+  console.log(newPackage);
   return async function (dispatch) {
     let newPackageCreated = await axios.post(
       "https://viveargentina.herokuapp.com/packages",
