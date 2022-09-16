@@ -23,6 +23,7 @@ import {
   BUY_IN_MERCADOPAGO,
   GET_USER_BY_ID,
   GET_ALL_USERS,
+  FILTER_SALES_STATUS,
 } from "./action";
 
 const initialState = {
@@ -75,6 +76,73 @@ export default function rootReducer(state = initialState, action) {
         allUsers: action.payload,
         boughtUsers: boughtUsers,
       };
+    case FILTER_SALES_STATUS:
+      console.log('payload en reducer', action.payload)
+        state.boughtUsers.forEach(u => {
+        if(action.payload === 'all') {
+          let boughtExperiences = u.experiences.filter(e => {
+            return e.reservation_experience.bought === true
+          })
+               
+          let boughtPackages = u.packages.filter(e => {
+            return e.reservation_package.bought === true
+          })
+
+          let allBoughtItems = boughtExperiences.concat(boughtPackages)
+          u.allBoughtItems =  allBoughtItems;
+
+        } else if(action.payload === 'Pending payment') {
+          let boughtExperiences = u.experiences.filter(e => {
+            return e.reservation_experience.bought === true && e.reservation_experience.status === action.payload
+          })
+               
+        let boughtPackages = u.packages.filter(e => {
+            return e.reservation_package.bought === true && e.reservation_package.status === action.payload
+          })
+          let allBoughtItems = boughtExperiences.concat(boughtPackages)
+          u.allBoughtItems =  allBoughtItems;
+        } else if(action.payload === 'confirmed') {
+          let boughtExperiences = u.experiences.filter(e => {
+            return e.reservation_experience.bought === true && e.reservation_experience.status === action.payload
+          })
+               
+          let boughtPackages = u.packages.filter(e => {
+            return e.reservation_package.bought === true && e.reservation_package.status === action.payload
+          })
+
+          let allBoughtItems = boughtExperiences.concat(boughtPackages)
+          u.allBoughtItems =  allBoughtItems;
+
+        } else if(action.payload === 'cancelled') {
+          let boughtExperiences = u.experiences.filter(e => {
+            return e.reservation_experience.bought === true && e.reservation_experience.status === action.payload
+          })
+               
+          let boughtPackages = u.packages.filter(e => {
+            return e.reservation_package.bought === true && e.reservation_package.status === action.payload
+          })
+
+          let allBoughtItems = boughtExperiences.concat(boughtPackages)
+          u.allBoughtItems =  allBoughtItems;
+
+        } else if(action.payload === 'done') {
+          let boughtExperiences = u.experiences.filter(e => {
+            return e.reservation_experience.bought === true && e.reservation_experience.status === action.payload
+          })
+               
+          let boughtPackages = u.packages.filter(e => {
+            return e.reservation_package.bought === true && e.reservation_package.status === action.payload
+          })
+
+          let allBoughtItems = boughtExperiences.concat(boughtPackages)
+          u.allBoughtItems =  allBoughtItems;
+        }
+        return {
+          ...state,
+          boughtUsers: state.boughtUsers,
+        };
+
+    });
     case GET_USER_BY_ID:
       return {
         ...state,
