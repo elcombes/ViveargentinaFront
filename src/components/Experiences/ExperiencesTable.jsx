@@ -17,6 +17,8 @@ export default function ExperiencesTable() {
         else return 0;
       });
 
+      console.log('orderExperiences', orderExperiences)
+
     useEffect(() => {
         dispatch(getAllExperiences());
         
@@ -39,7 +41,6 @@ export default function ExperiencesTable() {
                                 {/* Encabezado de columnas */}
                                 <thead>
                                     <tr>
-                                        {/* <th>CITY</th> */}
                                         <th>PACKAGE</th>
                                         <th>EXPERIENCE</th>
                                         <th>DATES</th>
@@ -55,7 +56,6 @@ export default function ExperiencesTable() {
                                 return(
                                 <tbody class="table-body">
                                     <tr class="cell-1">
-                                        {/* <td>CITY</td> */}
                                         <td>{e.package.name}</td>
                                         <td>{e.name}</td>
                                         <td>{e.dates?.split(",").map((d) => {

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getAllUsers } from "../../redux/action";
+import { getAllUsers, resetPasswordRequest } from "../../redux/action";
 import "./UsersTable.css";
 
 export default function UsersTable() {
@@ -17,6 +17,11 @@ export default function UsersTable() {
   useEffect(() => {
     dispatch(getAllUsers());
   }, [dispatch]);
+
+  function handleResetPass(email) {
+    dispatch(resetPasswordRequest(email))
+  }
+
   return (
     <div class="container mt-5 ">
       <div class="d-flex justify-content-center row">
@@ -30,7 +35,6 @@ export default function UsersTable() {
                     <th>BLOCK</th>
                     <th>EMAIL</th>
                     <th>NAME</th>
-                    <th>PURCHASE ITEMS</th>
                     <th>ADMIN</th>
                     <th>PASS RESET</th>
                   </tr>
@@ -48,11 +52,8 @@ export default function UsersTable() {
                             {/* <input type="checkbox" class="custom-control-input" id="customSwitches"></input> */}
                           </div>
                         </td>
-                        <td>{u.email}</td>
+                        <td>{u.email.substring(0, 6) === 'google' ? u.email.slice(7) : u.email}</td>
                         <td>{u.first_name + " " + u.last_name}</td>
-                        <td>
-                          <a href="#">VIEW</a>
-                        </td>
                         <td>
                           <input
                             class="form-check-input"
@@ -60,7 +61,7 @@ export default function UsersTable() {
                           ></input>
                         </td>
                         <td>
-                          <button className="btn btn-outline-secondary">
+                          <button onClick={handleResetPass(u.email.substring(0, 6) === 'google' ? u.email.slice(7) : u.email)} className="btn btn-outline-secondary">
                             <i class="bi bi-key-fill"></i>
                           </button>
                         </td>
