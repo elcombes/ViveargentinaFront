@@ -13,7 +13,23 @@
     background: #dddcdc;
   }
   
+td.datescol {
+  width: 185px;
+  padding: 0 5%;
+  text-align: center;
+}
 
+.vertalign {
+  vertical-align: middle;
+}
+.paymentstyle {
+  text-transform: capitalize;
+}
+.datesale {
+  width: 150px;
+  padding: 0 3%;
+  text-align: center;
+}
 
   .btn-new-pack {
     width: 160px;

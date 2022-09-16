@@ -18,19 +18,18 @@ export default function UsersTable() {
     dispatch(getAllUsers());
   }, [dispatch]);
   return (
-    <div class="container mt-5 ">
-      <div class="d-flex justify-content-center row">
-        <div class="col-md-10">
-          <div class="rounded">
-            <div class="table-responsive table-borderless">
-              <table class="table table-bordered">
+    <div className="container mt-5 ">
+      <div className="d-flex justify-content-center row">
+        <div className="col-md-10">
+          <div className="rounded">
+            <div className="table-responsive table-borderless">
+              <table className="table table-bordered vertalign">
                 {/* Encabezado de columnas */}
-                <thead>
+                <thead className='text-center'>
                   <tr>
                     <th>BLOCK</th>
                     <th>EMAIL</th>
                     <th>NAME</th>
-                    <th>PURCHASE ITEMS</th>
                     <th>ADMIN</th>
                     <th>PASS RESET</th>
                   </tr>
@@ -40,28 +39,25 @@ export default function UsersTable() {
 
                 {orderUsers?.map((u) => {
                   return (
-                    <tbody class="table-body">
-                      <tr class="cell-1">
-                        <td class="text-center">
-                          <div class="toggle-btn">
-                            <div class="inner-circle"></div>
-                            {/* <input type="checkbox" class="custom-control-input" id="customSwitches"></input> */}
+                    <tbody className="table-body">
+                      <tr className="cell-1">
+                        <td>
+                          <div className="toggle-btn">
+                            <div className="inner-circle"></div>
+                            {/* <input type="checkbox" className="custom-control-input" id="customSwitches"></input> */}
                           </div>
                         </td>
                         <td>{u.email}</td>
                         <td>{u.first_name + " " + u.last_name}</td>
-                        <td>
-                          <a href="#">VIEW</a>
-                        </td>
-                        <td>
+                        <td className="text-center">
                           <input
-                            class="form-check-input"
+                            className="form-check-input"
                             type="checkbox"
                           ></input>
                         </td>
-                        <td>
+                        <td className="text-center">
                           <button className="btn btn-outline-secondary">
-                            <i class="bi bi-key-fill"></i>
+                            <i className="bi bi-key-fill"></i>
                           </button>
                         </td>
                       </tr>
