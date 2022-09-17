@@ -121,13 +121,15 @@ export default function Experiences() {
         categoryId: "",
         packageId: "",
       })
-      return Swal.fire({
-        title: "NEW EXPERIENCE CREATED!",
-        confirmButtonColor: "#C49D48",
-        showClass: {
-          popup: 'animate__animated animate__flipInY'
-        },
-      });
+      setTimeout(() => {
+        return Swal.fire({
+          title: "NEW EXPERIENCE CREATED!",
+          confirmButtonColor: "#C49D48",
+          showClass: {
+            popup: 'animate__animated animate__flipInY'
+          },
+        });  
+      }, 500);
       
     }
   };
@@ -448,6 +450,7 @@ export default function Experiences() {
                               marginTop: "8px",
                               marginRight: "0px",
                             }}
+                            data-bs-dismiss="modal"
                             type="submit"
                           >
                             Create Experience
