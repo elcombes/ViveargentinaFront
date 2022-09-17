@@ -78,9 +78,11 @@ export function getAllUsers() {
 // Esta ruta trae un array con todas las reviews.
 
 export function getAllReviews() {
-  console.log("entre")
+  console.log("entre");
   return async function (dispatch) {
-    let allReviews = await axios.get(`https://viveargentina.herokuapp.com/reviews`);
+    let allReviews = await axios.get(
+      `https://viveargentina.herokuapp.com/reviews`
+    );
     return dispatch({
       type: GET_ALL_REVIEWS,
       payload: allReviews.data,
@@ -122,7 +124,7 @@ export function createNewReview(newReview) {
       "https://viveargentina.herokuapp.com/reviews",
       newReview
     );
-    console.log(response.data)
+    console.log(response.data);
     return dispatch({
       type: CREATE_NEW_REVIEW,
       payload: response.data,
@@ -209,7 +211,7 @@ export function softDelete({ token, userId }) {
 
 //esta funcion le cambia la propiedad de administrador a un usuario dependiendo de su estado actual
 export function shiftAdmin({ token, userId }) {
-  console.log(userId)
+  console.log(userId);
   return async function () {
     const headers = {
       Accept: "application/json",
@@ -354,12 +356,12 @@ export function getUserLogin({ email, password }) {
 //esta funcion une el register y el login de un usuario que se use el google login
 export function googleLogin({ first_name, last_name, email, password, photo }) {
   return async function (dispatch) {
-    console.log("before dispatch")
+    console.log("before dispatch");
     const response = await axios.post(
       "https://viveargentina.herokuapp.com/users/google_login",
       { email, password, first_name, last_name, photo }
     );
-    console.log(response)
+    console.log(response);
     if (response.data === "This user was deleted") {
       return "User not allowed, please contact the administrator";
     }
@@ -606,7 +608,7 @@ export function updatePackage(newPackage, id) {
   console.log(id);
   return async function (dispatch) {
     let PackageUpdated = await axios.put(
-      "https://viveargentina.herokuapp.com/packages?experienceId=" + id,
+      "https://viveargentina.herokuapp.com/packages?packageId=" + id,
       newPackage
     );
     console.log(PackageUpdated);
