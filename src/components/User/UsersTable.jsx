@@ -20,18 +20,18 @@ export default function UsersTable() {
     dispatch(getAllUsers());
   }, [dispatch]);
 
-  const handleResetPass= async (e)=>{
+  const handleResetPass = async (e) => {
     let userEmail
-    if(e.target.name){
+    if (e.target.name) {
       userEmail = e.target.name
-    }else{
+    } else {
       userEmail = JSON.stringify(e.target.outerHTML).split('\\"')[1]
     }
     // console.log("email: "+userEmail)
     const resp = await dispatch(resetPasswordRequest(userEmail))
     console.log(resp)
     Swal.fire({
-      title: resp+"!",
+      title: resp + "!",
       imageUrl: "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663188984/VivaArg/Alerts/passagerAlert_hxpidz.png",
       imageWidth: 350,
       imageHeight: 300,
@@ -40,10 +40,10 @@ export default function UsersTable() {
     });
   }
 
-  const handleChangeCheck = async (e)=>{
-    const response = await dispatch(shiftAdmin({token, userId: e.target.name}))
+  const handleChangeCheck = async (e) => {
+    const response = await dispatch(shiftAdmin({ token, userId: e.target.name }))
     Swal.fire({
-      title: response+"!",
+      title: response + "!",
       imageUrl: "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663371555/VivaArg/Alerts/passagerAlert_4_orw614.png",
       imageWidth: 350,
       imageHeight: 300,
@@ -77,31 +77,32 @@ export default function UsersTable() {
                     <tbody className="table-body">
                       <tr className="cell-1">
                         <td>
-                          <div className="toggle-btn">
-                            <div className="inner-circle"></div>
-                            {/* <input type="checkbox" className="custom-control-input" id="customSwitches"></input> */}
+                          <div className="buttonblock">
+                            <div className="form-check form-switch">
+                              <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
+                            </div>
                           </div>
                         </td>
-                        <td>{u.email.substring(0, 6) === 'google' ? u.email.slice(7)+" (Google)" : u.email}</td>
+                        <td>{u.email.substring(0, 6) === 'google' ? u.email.slice(7) + " (Google)" : u.email}</td>
                         <td>{u.first_name + " " + u.last_name}</td>
                         <td className="text-center">
                           <input
                             className="form-check-input"
-                            type="checkbox" 
+                            type="checkbox"
                             name={u.id}
-                            onChange={(e)=>handleChangeCheck(e)}
+                            onChange={(e) => handleChangeCheck(e)}
                             defaultChecked={u.administrator ? true : false}
                           ></input>
                         </td>
                         <td className="text-center">
                           {
                             u.email.substring(0, 6) === 'google' ?
-                            null:
-                            (
-                              <button onClick={(e)=>handleResetPass(e)} name={u.email} className="btn btn-outline-secondary">
-                                <i name={u.email} className="bi bi-key-fill"></i>
-                              </button>
-                            )
+                              null :
+                              (
+                                <button onClick={(e) => handleResetPass(e)} name={u.email} className="btn btn-outline-secondary">
+                                  <i name={u.email} className="bi bi-key-fill"></i>
+                                </button>
+                              )
                           }
                         </td>
                       </tr>
