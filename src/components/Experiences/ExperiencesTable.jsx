@@ -56,7 +56,6 @@ export default function ExperiencesTable() {
                           {e.dates?.split(",").map((d) => {
                             return d + " ";
                           })}
-
                         </td>
                         <td className="text-center">${e.price}</td>
                         <td className="text-center">{e.score}</td>
@@ -64,6 +63,7 @@ export default function ExperiencesTable() {
                           <div>
                             <UpdateExperience
                               id={e.id}
+                              name={e.name}
                               subTitle={e.subTitle}
                               description={e.description}
                               price={e.price}

@@ -1,6 +1,6 @@
 // import { useDispatch } from "react-redux";
 import React, { useEffect } from "react";
-//import styles from "../CreateExperience/CreateExperience.module.css";
+import styles from "../CreateExperience/CreateExperience.module.css";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import Button from "react-bootstrap/Button";
@@ -36,7 +36,7 @@ function validate(newExperience) {
   if (!newExperience.description) {
     errors.description = "Description is required";
   }
-  if (!newExperience.categoryId) {
+  if (!newExperience.cityId) {
     errors.cityId = "City is required";
   }
 
@@ -47,7 +47,7 @@ function validate(newExperience) {
   return errors;
 }
 
-export default function UpdateExperiences({
+export default function UpdatePackage({
   name,
   id,
   subTitle,
@@ -77,7 +77,7 @@ export default function UpdateExperiences({
 
   useEffect(() => {
     dispatch(getAllCities());
-    setErrors(validate(newExperience));
+    setErrors(validate(newPackage));
   }, []);
 
   const handleChange = (e) => {
@@ -115,8 +115,8 @@ export default function UpdateExperiences({
       e.stopPropagation();
       errorMessagesArray.forEach((e) => (e.hidden = false));
     } else {
-      console.log(newPackage);
-      dispatch(updatePackage(newPackage));
+      console.log(id);
+      dispatch(updatePackage(newPackage, id));
     }
   };
 
@@ -334,7 +334,7 @@ export default function UpdateExperiences({
                         <div class="col-md-6">
                           <select
                             onChange={(e) => handleChange(e)}
-                            name="packageId"
+                            name="cityId"
                             value={newPackage.cityId}
                             class="form-select form-select-lg mb-3"
                           >

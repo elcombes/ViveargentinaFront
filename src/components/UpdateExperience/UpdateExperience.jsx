@@ -28,8 +28,8 @@ function validate(newExperience) {
   if (newExperience.price < 0) {
     errors.price = "Price cannot be less than 0";
   }
-  if (typeof newExperience.price !== 'number') {
-    errors.price = "Price must be a number"
+  if (typeof newExperience.price !== "number") {
+    errors.price = "Price must be a number";
   }
   if (!newExperience.duration) {
     errors.duration = "Duration is required";
@@ -99,23 +99,23 @@ export default function UpdateExperiences({
           ...newExperience,
           [e.target.name]: parseInt(e.target.value),
         })
-      )
-    }
-    else {
-    setNewExperience({
-      ...newExperience,
-      [e.target.name]: e.target.value,
-    });
-    setErrors(
-      validate({
+      );
+    } else {
+      setNewExperience({
         ...newExperience,
         [e.target.name]: e.target.value,
-      })
-    )};
+      });
+      setErrors(
+        validate({
+          ...newExperience,
+          [e.target.name]: e.target.value,
+        })
+      );
+    }
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     let errorMessagesNodeList = document.querySelectorAll("#errors");
     let errorMessagesArray = Array.from(errorMessagesNodeList);
     if (Object.entries(errors).length > 0) {
@@ -124,7 +124,7 @@ export default function UpdateExperiences({
       errorMessagesArray.forEach((e) => (e.hidden = false));
     } else {
       console.log(newExperience);
-      dispatch(updateExperience(newExperience));
+      dispatch(updateExperience(newExperience, id));
     }
   };
 

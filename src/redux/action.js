@@ -139,7 +139,7 @@ export function resetPasswordRequest(email) {
       "https://viveargentina.herokuapp.com/users/reset_password_request",
       { email }
     );
-    return response.data
+    return response.data;
   };
 }
 
@@ -540,11 +540,11 @@ export function createNewExperience(newExperience) {
   };
 }
 
-export function updateExperience(newExperience) {
+export function updateExperience(newExperience, id) {
   console.log(newExperience);
   return async function (dispatch) {
     let ExperienceUpdated = await axios.put(
-      "https://viveargentina.herokuapp.com/experiences",
+      "https://viveargentina.herokuapp.com/experiences?experienceId=" + id,
       newExperience
     );
     console.log(ExperienceUpdated);
@@ -564,14 +564,15 @@ export function createNewPackage(newPackage) {
   };
 }
 
-export function updatePackage(newPackage) {
+export function updatePackage(newPackage, id) {
+  console.log(id);
   return async function (dispatch) {
-    let packageUpdated = await axios.put(
-      "https://viveargentina.herokuapp.com/packages",
+    let PackageUpdated = await axios.put(
+      "https://viveargentina.herokuapp.com/packages?experienceId=" + id,
       newPackage
     );
-    console.log(packageUpdated);
-    return packageUpdated;
+    console.log(PackageUpdated);
+    return PackageUpdated;
   };
 }
 
