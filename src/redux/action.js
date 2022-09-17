@@ -340,6 +340,9 @@ export function getUserLogin({ email, password }) {
     if (response.data === "not allowed") {
       return "Incorrect password";
     }
+    if (response.data === "This user was deleted") {
+      return "User not allowed, please contact the administrator";
+    }
     window.localStorage.setItem("user", JSON.stringify(response.data));
     return dispatch({
       type: GET_USER_LOGIN,

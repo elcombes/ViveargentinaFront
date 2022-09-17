@@ -76,11 +76,14 @@ export default function UsersTable() {
                   return (
                     <tbody className="table-body">
                       <tr className="cell-1">
-                        <td>
-                          <div className="toggle-btn">
-                            <div className="inner-circle"></div>
-                            {/* <input type="checkbox" className="custom-control-input" id="customSwitches"></input> */}
-                          </div>
+                        <td className="text-center">
+                          <input
+                            className="inner-circle"
+                            type="checkbox" 
+                            name={u.id}
+                            onChange={(e)=>handleChangeCheck(e)}
+                            defaultChecked={u.disabled ? false : true}
+                          ></input>
                         </td>
                         <td>{u.email.substring(0, 6) === 'google' ? u.email.slice(7)+" (Google)" : u.email}</td>
                         <td>{u.first_name + " " + u.last_name}</td>
