@@ -6,11 +6,12 @@ import {
   removeExperienceFavorite,
   removePackageFavorite,
 } from "./../../redux/action.js";
+import { useEffect } from "react";
 
-export default function MyFavs({ packages, experiences }) {
+export default function MyFavs({ packages, experiences, changeFatherState }) {
   const [state, setState] = useState(false);
   const dispatch = useDispatch();
-
+  
   let packagesfavorites =
     packages &&
     packages.filter((p) => {
@@ -21,21 +22,28 @@ export default function MyFavs({ packages, experiences }) {
     experiences.filter((e) => {
       return e.reservation_experience.favorite === true;
     });
+  
 
-  function removeExperienceFromFavorite(experienceId) {
+  function removeExperienceFromFavorite(experienceId, index) {
     let user = JSON.parse(localStorage.getItem("user"));
     let userId = user.user.id;
+    experiencesfavorites[index].reservation_experience.favorite = false
     dispatch(removeExperienceFavorite(experienceId, userId));
+    // experiencesfavorites = experiences?.filter((e) => {return e.reservation_experience.favorite === true})
     if (state === false) setState(true);
     else if (state === true) setState(false);
+    changeFatherState()
   }
 
-  function removePackageFromFavorite(packageId) {
+  function removePackageFromFavorite(packageId, index) {
     let user = JSON.parse(localStorage.getItem("user"));
     let userId = user.user.id;
+    packagesfavorites[index].reservation_package.favorite = false
     dispatch(removePackageFavorite(packageId, userId));
-    if (state === false) setState(true);
-    else if (state === true) setState(false);
+    // packagesfavorites = packages?.filter((e) => {return e.reservation_packages.favorite === true})
+    // if (state === false) setState(true);
+    // else if (state === true) setState(false);
+    changeFatherState()
   }
 
   return (
@@ -51,7 +59,7 @@ export default function MyFavs({ packages, experiences }) {
           {
             /* INICIO ITEMS PACKAGES */
             packagesfavorites &&
-              packagesfavorites.map((p) => {
+              packagesfavorites.map((p, i) => {
                 return (
                   <div className={`row ${styles.itemmyfavs}`}>
                     <div className="col-md-12">
@@ -72,8 +80,8 @@ export default function MyFavs({ packages, experiences }) {
                           <button
                             type="button"
                             className="btn btn-outline-secondary"
-                            onClick={() => removePackageFromFavorite(p.id)}
-                          >
+                            onClick={() => removePackageFromFavorite(p.id, i)}
+                          > 
                             <i className="bi bi-trash3-fill"></i> DELETE
                           </button>
                         </div>
@@ -88,7 +96,7 @@ export default function MyFavs({ packages, experiences }) {
           {
             /* INICIO ITEMS EXPERIENCES */
             experiencesfavorites &&
-              experiencesfavorites.map((e) => {
+              experiencesfavorites.map((e, i) => {
                 return (
                   <div className={`row ${styles.itemmyfavs}`}>
                     <div className="col-md-12">
@@ -109,7 +117,7 @@ export default function MyFavs({ packages, experiences }) {
                           <button
                             type="button"
                             className="btn btn-outline-secondary"
-                            onClick={() => removeExperienceFromFavorite(e.id)}
+                            onClick={() => removeExperienceFromFavorite(e.id, i)}
                           >
                             <i className="bi bi-trash3-fill"></i> DELETE
                           </button>
