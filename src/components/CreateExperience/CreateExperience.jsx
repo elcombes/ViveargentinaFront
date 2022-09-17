@@ -1,4 +1,3 @@
-// import { useDispatch } from "react-redux";
 import React, { useEffect } from "react";
 import styles from "../CreateExperience/CreateExperience.module.css";
 import { useState } from "react";
@@ -30,6 +29,9 @@ function validate(newExperience) {
   if (newExperience.price < 0) {
     errors.price = "Price cannot be less than 0";
   }
+  if (typeof newExperience.price !== 'number') {
+    errors.price = "Price must be a number"
+  }
   if (!newExperience.duration) {
     errors.duration = "Duration is required";
   }
@@ -45,10 +47,9 @@ function validate(newExperience) {
   if (!newExperience.packageId) {
     errors.packageId = "Package is required";
   }
-  // if (!newExperience.image) {
-  //   errors.image = "Image is required"
-  // }
-
+  if (!newExperience.image) {
+    errors.image = "Image is required"
+  }
   return errors;
 }
 
@@ -60,9 +61,9 @@ export default function Experiences() {
   const [newExperience, setNewExperience] = useState({
     name: "",
     subTitle: "",
-    price: "",
+    price: 0,
     description: "",
-    // image: "",
+    image: "",
     duration: "",
     dates: "",
     categoryId: "",
@@ -77,23 +78,34 @@ export default function Experiences() {
   }, []);
 
   const handleChange = (e) => {
+    if (e.target.name === "price") {
+      setNewExperience({
+        ...newExperience,
+        [e.target.name]: parseInt(e.target.value),
+      });
+      setErrors(
+        validate({
+          ...newExperience,
+          [e.target.name]: parseInt(e.target.value),
+        })
+      )
+    }
+    else { 
     setNewExperience({
       ...newExperience,
       [e.target.name]: e.target.value,
     });
-    setErrors(
-      validate({
+    setErrors(validate({
         ...newExperience,
         [e.target.name]: e.target.value,
       })
-    );
-  };
+    )}
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
     let errorMessagesNodeList = document.querySelectorAll("#errors")
     let errorMessagesArray = Array.from(errorMessagesNodeList)
-
     if (Object.entries(errors).length > 0) {
       e.preventDefault();
       e.stopPropagation();
@@ -103,9 +115,7 @@ export default function Experiences() {
     }
   };
 
-  const [imageSelected, setImageSelected] = useState('')
   let imageDB;
-
   const uploadImage = (selectedImage) => {
     const formData = new FormData()
     formData.append('file', selectedImage)
@@ -123,13 +133,8 @@ export default function Experiences() {
 
   const handleImageSelected = (e) => {
     console.log(e.target.files[0])
-    // setImageSelected(e.target.files[0])
     let selectedImage = e.target.files[0]
     uploadImage(selectedImage)
-    // setNewExperience({
-    //   ...newExperience,
-    //   image: e.target.files[0].name
-    // })
     setErrors(validate({
       ...newExperience,
       image: e.target.files[0].name
@@ -239,7 +244,7 @@ export default function Experiences() {
                             </span>
                             <input
                               style={{ width: "100%" }}
-                              type="text"
+                              type="number"
                               class="col-sm-2"
                               className="form-control infoInput"
                               value={newExperience.price}
@@ -350,7 +355,7 @@ export default function Experiences() {
                           <select
                             onChange={(e) => handleChange(e)}
                             name="packageId"
-                            value={newExperience.packageId}
+                            // value={newExperience.packageId}
                             class="form-select form-select-lg mb-3"
                           >
                             <option selected>Select a Package</option>
@@ -371,7 +376,7 @@ export default function Experiences() {
                           <select
                             onChange={(e) => handleChange(e)}
                             name="categoryId"
-                            value={newExperience.categoryId}
+                            // value={newExperience.categoryId}
                             class="form-select form-select-lg mb-3"
                           >
                             <option selected>Select a Category</option>
@@ -398,7 +403,7 @@ export default function Experiences() {
                               style={{ minHeight: "0px" }}
                               type="file"
                               class="form-control"
-                              value={newExperience.image}
+                              // value={newExperience.image}
                               name="image"
                               onChange={(e) => handleImageSelected(e)}
                             />

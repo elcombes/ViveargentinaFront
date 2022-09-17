@@ -47,7 +47,6 @@ function App() {
           <Route exact path="/admin/experiences" component={AdminDashboard} />
           <Route exact path="/admin/users" component={AdminDashboard} />
           <Route exact path="/admin/reviews" component={AdminDashboard} />
-
           <Route path="*" component={Error404} />
           
         </Switch>

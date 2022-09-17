@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import styles from "../CreatePackage/CreatePackage.module.css";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Axios from 'axios';
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
@@ -23,6 +24,9 @@ function validate(newPackage) {
   if (newPackage.price < 0) {
     errors.price = "Price cannot be less than 0";
   }
+  if (typeof newPackage.price !== 'number') {
+    errors.price = "Price must be a number"
+  }
   if (!newPackage.duration) {
     errors.duration = "Duration is required";
   }
@@ -35,11 +39,9 @@ function validate(newPackage) {
   if (!newPackage.cityId) {
     errors.cityId = "City is required";
   }
-
-  // if (!newPackage.image) {
-  //   errors.image = "Image is required"
-  // }
-
+  if (!newPackage.image) {
+    errors.image = "Image is required"
+  }
   return errors;
 }
 
@@ -51,9 +53,9 @@ export default function Packages() {
   const [newPackage, setNewPackage] = useState({
     name: "",
     subTitle: "",
-    price: "",
+    price: 0,
     description: "",
-    // image: "",
+    image: "",
     duration: "",
     dates: "",
     cityId: "",
@@ -66,6 +68,19 @@ export default function Packages() {
   }, []);
 
   const handleChange = (e) => {
+    if (e.target.name === "price") {
+      setNewPackage({
+        ...newPackage,
+        [e.target.name]: parseInt(e.target.value),
+      });
+      setErrors(
+        validate({
+          ...newPackage,
+          [e.target.name]: parseInt(e.target.value),
+        })
+      )
+    }
+    else {
     setNewPackage({
       ...newPackage,
       [e.target.name]: e.target.value,
@@ -75,10 +90,11 @@ export default function Packages() {
         ...newPackage,
         [e.target.name]: e.target.value,
       })
-    );
+    )};
   };
 
   const handleSubmit = (e) => {
+    e.preventDefault()
     console.log("entre");
     let errorMessagesNodeList = document.querySelectorAll("#errors");
     let errorMessagesArray = Array.from(errorMessagesNodeList);
@@ -87,10 +103,35 @@ export default function Packages() {
       e.stopPropagation();
       errorMessagesArray.forEach((e) => (e.hidden = false));
     } else {
-      console.log(newPackage);
       dispatch(createNewPackage(newPackage));
     }
   };
+
+  let imageDB;
+  const uploadImage = (selectedImage) => {
+    const formData = new FormData()
+    formData.append('file', selectedImage)
+    formData.append('upload_preset', 'fftkpmfl')
+    Axios.post('https://api.cloudinary.com/v1_1/dblc1bzmx/image/upload', formData).then((res) => {
+      imageDB = (res.data.url)
+      setNewPackage({
+        ...newPackage,
+        image: imageDB
+      });
+      console.log(imageDB)
+      console.log(res)
+    })
+  }
+
+  const handleImageSelected = (e) => {
+    console.log(e.target.files[0])
+    let selectedImage = e.target.files[0]
+    uploadImage(selectedImage)
+    setErrors(validate({
+      ...newPackage,
+      image: e.target.files[0].name
+    }))
+  }
 
   return (
     <div>
@@ -195,7 +236,7 @@ export default function Packages() {
                             </span>
                             <input
                               style={{ width: "100%" }}
-                              type="text"
+                              type="number"
                               class="col-sm-2"
                               className="form-control form-inputContact"
                               value={newPackage.price}
@@ -306,7 +347,7 @@ export default function Packages() {
                           <select
                             onChange={(e) => handleChange(e)}
                             name="cityId"
-                            value={newPackage.packageId}
+                            // value={newPackage.packageId}
                             class="form-select form-select-lg mb-3"
                           >
                             <option selected>SELECT A CITY</option>
@@ -331,9 +372,9 @@ export default function Packages() {
                               style={{ minHeight: "0px" }}
                               type="file"
                               className="form-control form-inputContact"
-                              value={newPackage.image}
+                              // value={newPackage.image}
                               name="image"
-                              onChange={(e) => handleChange(e)}
+                              onChange={(e) => handleImageSelected(e)}
                             />
                             {errors.image ? (
                               <p id="errors" hidden>
