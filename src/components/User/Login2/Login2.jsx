@@ -124,7 +124,7 @@ export default function Login2() {
                     {/* Fin boton para abrir el modal */}
 
                     {/* Inicio modal */}
-                    <div className="modal fade" id="loginModal" tabIndex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+                    <div className="modal fade" id="loginModal" data-bs-backdrop="static" tabIndex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
                         <div className="modal-dialog">
                             <div className="modal-content" style={{
                                 borderRadius: "10px",

@@ -287,6 +287,7 @@ export default function Card(props) {
                         <div
                           className="modal modal-lg fade"
                           id={e.name.split(" ").join("")}
+                          data-bs-backdrop="static" 
                           tabindex="-1"
                           aria-labelledby={`${e.id}label`}
                           aria-hidden="true"

@@ -149,6 +149,7 @@ export default function UpdateExperiences({
             <div
               className="modal modal-lg fade"
               id={`cexampleModal${id}`}
+              data-bs-backdrop="static"
               tabIndex="-1"
               aria-labelledby="cexampleModalLabel"
               aria-hidden="true"

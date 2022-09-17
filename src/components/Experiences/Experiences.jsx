@@ -295,6 +295,7 @@ export default function Experiences(props) {
                       <div
                         className="modal modal-lg fade"
                         id={e.name.toLowerCase().split(" ").join("")}
+                        data-bs-backdrop="static"
                         tabindex="-1"
                         aria-labelledby={`${e.id}label`}
                         aria-hidden="true"
@@ -488,7 +489,7 @@ export default function Experiences(props) {
                                 className="btn btn-secondary"
                                 data-bs-dismiss="modal"
                               >
-                                CANCEL
+                                Cancel
                               </button>
                               <button
                                 onClick={(event) => {

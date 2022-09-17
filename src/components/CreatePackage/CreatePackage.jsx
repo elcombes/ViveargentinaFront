@@ -128,6 +128,7 @@ export default function Packages() {
             <div
               className="modal modal-lg fade"
               id="cexampleModal"
+              data-bs-backdrop="static"
               tabIndex="-1"
               aria-labelledby="cexampleModalLabel"
               aria-hidden="true"
