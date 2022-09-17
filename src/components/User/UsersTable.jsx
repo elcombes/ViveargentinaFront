@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getAllUsers, resetPasswordRequest, shiftAdmin } from "../../redux/action";
+import { getAllUsers, resetPasswordRequest, shiftAdmin, softDelete } from "../../redux/action";
 import "./UsersTable.css";
 import Swal from "sweetalert2";
 
@@ -40,7 +40,19 @@ export default function UsersTable() {
     });
   }
 
-  const handleChangeCheck = async (e)=>{
+  const handleChangeBlock = async (e)=>{
+    const response = await dispatch(softDelete({token, userId: e.target.name}))
+    Swal.fire({
+      title: response+"!",
+      imageUrl: "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663371555/VivaArg/Alerts/passagerAlert_4_orw614.png",
+      imageWidth: 350,
+      imageHeight: 300,
+      confirmButtonColor: "#C49D48",
+      imageAlt: "Custom image",
+    });
+  }
+
+  const handleChangeAdmin = async (e)=>{
     const response = await dispatch(shiftAdmin({token, userId: e.target.name}))
     Swal.fire({
       title: response+"!",
@@ -81,7 +93,7 @@ export default function UsersTable() {
                             className="inner-circle"
                             type="checkbox" 
                             name={u.id}
-                            onChange={(e)=>handleChangeCheck(e)}
+                            onChange={(e)=>handleChangeBlock(e)}
                             defaultChecked={u.disabled ? false : true}
                           ></input>
                         </td>
@@ -92,7 +104,7 @@ export default function UsersTable() {
                             className="form-check-input"
                             type="checkbox" 
                             name={u.id}
-                            onChange={(e)=>handleChangeCheck(e)}
+                            onChange={(e)=>handleChangeAdmin(e)}
                             defaultChecked={u.administrator ? true : false}
                           ></input>
                         </td>
