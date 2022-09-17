@@ -88,14 +88,19 @@ export default function UsersTable() {
                   return (
                     <tbody className="table-body">
                       <tr className="cell-1">
-                        <td className="text-center">
-                          <input
-                            className="inner-circle"
-                            type="checkbox" 
-                            name={u.id}
-                            onChange={(e)=>handleChangeBlock(e)}
-                            defaultChecked={u.disabled ? false : true}
-                          ></input>
+                        <td>
+                          <div className="buttonblock">
+                            <div className="form-check form-switch">
+                              <input 
+                                className="form-check-input" 
+                                onChange={(e)=>handleChangeBlock(e)} 
+                                type="checkbox" 
+                                role="switch" 
+                                defaultChecked={u.disabled ? true : false} 
+                                name={u.id} 
+                                id="flexSwitchCheckDefault" />
+                            </div>
+                          </div>
                         </td>
                         <td>{u.email.substring(0, 6) === 'google' ? u.email.slice(7)+" (Google)" : u.email}</td>
                         <td>{u.first_name + " " + u.last_name}</td>
