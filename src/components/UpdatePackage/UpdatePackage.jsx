@@ -8,11 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 // import Form from "react-bootstrap/Form";
 // import Row from "react-bootstrap/Row";
 import { useHistory } from "react-router-dom";
-import {
-  updateExperience,
-  getAllPackages,
-  getAllCategories,
-} from "../../redux/action";
+import { updatePackage, getAllCities } from "../../redux/action";
 
 function validate(newExperience) {
   let errors = {};
@@ -40,12 +36,10 @@ function validate(newExperience) {
   if (!newExperience.description) {
     errors.description = "Description is required";
   }
-  if (!newExperience.categoryId) {
-    errors.categoryId = "Category is required";
+  if (!newExperience.cityId) {
+    errors.cityId = "City is required";
   }
-  if (!newExperience.packageId) {
-    errors.packageId = "Package is required";
-  }
+
   // if (!newExperience.image) {
   //   errors.image = "Image is required";
   // }
@@ -53,7 +47,7 @@ function validate(newExperience) {
   return errors;
 }
 
-export default function UpdateExperiences({
+export default function UpdatePackage({
   name,
   id,
   subTitle,
@@ -61,15 +55,15 @@ export default function UpdateExperiences({
   price,
   duration,
   dates,
-  categoryId,
-  packageId,
+  cityId,
+
   // image,
 }) {
   const history = useHistory();
   const dispatch = useDispatch();
-  const allPackages = useSelector((state) => state.allPackages);
-  const allCategories = useSelector((state) => state.allCategories);
-  const [newExperience, setNewExperience] = useState({
+  const allCities = useSelector((state) => state.allCities);
+
+  const [newPackage, setNewPackage] = useState({
     name: name,
     subTitle: subTitle,
     price: price,
@@ -77,37 +71,35 @@ export default function UpdateExperiences({
     //image: image,
     duration: duration,
     dates: dates,
-    categoryId: categoryId,
-    packageId: packageId,
+    cityId: cityId,
   });
   const [errors, setErrors] = useState({});
 
   useEffect(() => {
-    dispatch(getAllPackages());
-    dispatch(getAllCategories());
-    setErrors(validate(newExperience));
+    dispatch(getAllCities());
+    setErrors(validate(newPackage));
   }, []);
 
   const handleChange = (e) => {
     if (e.target.name === "price") {
-      setNewExperience({
-        ...newExperience,
+      setNewPackage({
+        ...newPackage,
         [e.target.name]: parseInt(e.target.value),
       });
       setErrors(
         validate({
-          ...newExperience,
+          ...newPackage,
           [e.target.name]: parseInt(e.target.value),
         })
       );
     } else {
-      setNewExperience({
-        ...newExperience,
+      setNewPackage({
+        ...newPackage,
         [e.target.name]: e.target.value,
       });
       setErrors(
         validate({
-          ...newExperience,
+          ...newPackage,
           [e.target.name]: e.target.value,
         })
       );
@@ -123,8 +115,8 @@ export default function UpdateExperiences({
       e.stopPropagation();
       errorMessagesArray.forEach((e) => (e.hidden = false));
     } else {
-      console.log(newExperience);
-      dispatch(updateExperience(newExperience, id));
+      console.log(id);
+      dispatch(updatePackage(newPackage, id));
     }
   };
 
@@ -157,7 +149,7 @@ export default function UpdateExperiences({
                 <div className="modal-content">
                   <div className="modal-header">
                     <h5 className="modal-title" id="cexampleModalLabel">
-                      UPDATE EXPERIENCE
+                      UPDATE PACKAGE
                     </h5>
                     <button
                       type="button"
@@ -174,7 +166,7 @@ export default function UpdateExperiences({
                           <input
                             className="form-control form-inputContact"
                             type="text"
-                            value={newExperience.name}
+                            value={newPackage.name}
                             name="name"
                             placeholder="Excursion to Las Cataratas del Iguazu"
                             onChange={(e) => handleChange(e)}
@@ -192,7 +184,7 @@ export default function UpdateExperiences({
                           <input
                             className="form-control form-inputContact"
                             type="text"
-                            value={newExperience.subTitle}
+                            value={newPackage.subTitle}
                             name="subTitle"
                             placeholder="Get wet"
                             onChange={(e) => handleChange(e)}
@@ -234,7 +226,7 @@ export default function UpdateExperiences({
                               type="number"
                               class="col-sm-2"
                               className="form-control form-inputContact"
-                              value={newExperience.price}
+                              value={newPackage.price}
                               name="price"
                               placeholder="7500"
                               onChange={(e) => handleChange(e)}
@@ -268,7 +260,7 @@ export default function UpdateExperiences({
                               type="text"
                               class="col-sm-2"
                               className="form-control form-inputContact"
-                              value={newExperience.duration}
+                              value={newPackage.duration}
                               name="duration"
                               placeholder="3 hours"
                               onChange={(e) => handleChange(e)}
@@ -302,7 +294,7 @@ export default function UpdateExperiences({
                               type="text"
                               class="col-sm-2"
                               className="form-control form-inputContact"
-                              value={newExperience.dates}
+                              value={newPackage.dates}
                               name="dates"
                               placeholder="23/05/2023, 08/03/2023"
                               onChange={(e) => handleChange(e)}
@@ -323,7 +315,7 @@ export default function UpdateExperiences({
                             class="form-control form-inputContact"
                             className="infoInput"
                             type="text"
-                            value={newExperience.description}
+                            value={newPackage.description}
                             name="description"
                             placeholder="A journey through the Cataratas..."
                             onChange={(e) => handleChange(e)}
@@ -342,38 +334,18 @@ export default function UpdateExperiences({
                         <div class="col-md-6">
                           <select
                             onChange={(e) => handleChange(e)}
-                            name="packageId"
-                            value={newExperience.packageId}
+                            name="cityId"
+                            value={newPackage.cityId}
                             class="form-select form-select-lg mb-3"
                           >
-                            <option selected>SELECT A PACKAGE</option>
-                            {allPackages?.map((e) => {
-                              return <option value={e.id}>{e.name}</option>;
+                            <option selected>SELECT A CITY</option>
+                            {allCities?.map((c) => {
+                              return <option value={c.id}>{c.name}</option>;
                             })}
                           </select>
-                          {errors.packageId ? (
+                          {errors.cityId ? (
                             <p id="errors" hidden>
-                              {errors.packageId}
-                            </p>
-                          ) : (
-                            <p className="validMessage">Looks Good!</p>
-                          )}
-                        </div>
-                        <div class="col-md-6">
-                          <select
-                            onChange={(e) => handleChange(e)}
-                            name="categoryId"
-                            value={newExperience.categoryId}
-                            class="form-select form-select-lg mb-3"
-                          >
-                            <option selected>SELECT A CATEGORY</option>
-                            {allCategories?.map((e) => {
-                              return <option value={e.id}>{e.name}</option>;
-                            })}
-                          </select>
-                          {errors.categoryId ? (
-                            <p id="errors" hidden>
-                              {errors.categoryId}
+                              {errors.cityId}
                             </p>
                           ) : (
                             <p className="validMessage">Looks Good!</p>
@@ -388,7 +360,7 @@ export default function UpdateExperiences({
                               style={{ minHeight: "0px" }}
                               type="file"
                               className="form-control form-inputContact"
-                              value={newExperience.image}
+                              value={newPackage.image}
                               name="image"
                               onChange={(e) => handleChange(e)}
                             />
@@ -418,7 +390,7 @@ export default function UpdateExperiences({
                             }}
                             type="submit"
                           >
-                            UPDATE EXPERIENCE
+                            UPDATE PACKAGE
                           </button>
                         </div>
                       </div>

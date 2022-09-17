@@ -58,93 +58,113 @@ export default function rootReducer(state = initialState, action) {
   switch (action.type) {
     case GET_ALL_USERS:
       const boughtUsers = action.payload.filter((u) => {
-        return u.experiences.length >= 1 || u.packages.length >= 1
-    })
-    
-    boughtUsers.forEach(u => {
-        let boughtExperiences = u.experiences.filter(e => {
-            return e.reservation_experience.bought === true
-        })
-               
-        let boughtPackages = u.packages.filter(e => {
-            return e.reservation_package.bought === true
-        })
-        let allBoughtItems = boughtExperiences.concat(boughtPackages)
-        u.allBoughtItems =  allBoughtItems;
+        return u.experiences.length >= 1 || u.packages.length >= 1;
+      });
 
-    });
+      boughtUsers.forEach((u) => {
+        let boughtExperiences = u.experiences.filter((e) => {
+          return e.reservation_experience.bought === true;
+        });
+
+        let boughtPackages = u.packages.filter((e) => {
+          return e.reservation_package.bought === true;
+        });
+        let allBoughtItems = boughtExperiences.concat(boughtPackages);
+        u.allBoughtItems = allBoughtItems;
+      });
       return {
         ...state,
         allUsers: action.payload,
         boughtUsers: boughtUsers,
       };
     case FILTER_SALES_STATUS:
-      console.log('payload en reducer', action.payload)
-        state.boughtUsers.forEach(u => {
-        if(action.payload === 'all') {
-          let boughtExperiences = u.experiences.filter(e => {
-            return e.reservation_experience.bought === true
-          })
-               
-          let boughtPackages = u.packages.filter(e => {
-            return e.reservation_package.bought === true
-          })
+      console.log("payload en reducer", action.payload);
+      state.boughtUsers.forEach((u) => {
+        if (action.payload === "all") {
+          let boughtExperiences = u.experiences.filter((e) => {
+            return e.reservation_experience.bought === true;
+          });
 
-          let allBoughtItems = boughtExperiences.concat(boughtPackages)
-          u.allBoughtItems =  allBoughtItems;
+          let boughtPackages = u.packages.filter((e) => {
+            return e.reservation_package.bought === true;
+          });
 
-        } else if(action.payload === 'Pending payment') {
-          let boughtExperiences = u.experiences.filter(e => {
-            return e.reservation_experience.bought === true && e.reservation_experience.status === action.payload
-          })
-               
-        let boughtPackages = u.packages.filter(e => {
-            return e.reservation_package.bought === true && e.reservation_package.status === action.payload
-          })
-          let allBoughtItems = boughtExperiences.concat(boughtPackages)
-          u.allBoughtItems =  allBoughtItems;
-        } else if(action.payload === 'confirmed') {
-          let boughtExperiences = u.experiences.filter(e => {
-            return e.reservation_experience.bought === true && e.reservation_experience.status === action.payload
-          })
-               
-          let boughtPackages = u.packages.filter(e => {
-            return e.reservation_package.bought === true && e.reservation_package.status === action.payload
-          })
+          let allBoughtItems = boughtExperiences.concat(boughtPackages);
+          u.allBoughtItems = allBoughtItems;
+        } else if (action.payload === "Pending payment") {
+          let boughtExperiences = u.experiences.filter((e) => {
+            return (
+              e.reservation_experience.bought === true &&
+              e.reservation_experience.status === action.payload
+            );
+          });
 
-          let allBoughtItems = boughtExperiences.concat(boughtPackages)
-          u.allBoughtItems =  allBoughtItems;
+          let boughtPackages = u.packages.filter((e) => {
+            return (
+              e.reservation_package.bought === true &&
+              e.reservation_package.status === action.payload
+            );
+          });
+          let allBoughtItems = boughtExperiences.concat(boughtPackages);
+          u.allBoughtItems = allBoughtItems;
+        } else if (action.payload === "confirmed") {
+          let boughtExperiences = u.experiences.filter((e) => {
+            return (
+              e.reservation_experience.bought === true &&
+              e.reservation_experience.status === action.payload
+            );
+          });
 
-        } else if(action.payload === 'cancelled') {
-          let boughtExperiences = u.experiences.filter(e => {
-            return e.reservation_experience.bought === true && e.reservation_experience.status === action.payload
-          })
-               
-          let boughtPackages = u.packages.filter(e => {
-            return e.reservation_package.bought === true && e.reservation_package.status === action.payload
-          })
+          let boughtPackages = u.packages.filter((e) => {
+            return (
+              e.reservation_package.bought === true &&
+              e.reservation_package.status === action.payload
+            );
+          });
 
-          let allBoughtItems = boughtExperiences.concat(boughtPackages)
-          u.allBoughtItems =  allBoughtItems;
+          let allBoughtItems = boughtExperiences.concat(boughtPackages);
+          u.allBoughtItems = allBoughtItems;
+        } else if (action.payload === "cancelled") {
+          let boughtExperiences = u.experiences.filter((e) => {
+            return (
+              e.reservation_experience.bought === true &&
+              e.reservation_experience.status === action.payload
+            );
+          });
 
-        } else if(action.payload === 'done') {
-          let boughtExperiences = u.experiences.filter(e => {
-            return e.reservation_experience.bought === true && e.reservation_experience.status === action.payload
-          })
-               
-          let boughtPackages = u.packages.filter(e => {
-            return e.reservation_package.bought === true && e.reservation_package.status === action.payload
-          })
+          let boughtPackages = u.packages.filter((e) => {
+            return (
+              e.reservation_package.bought === true &&
+              e.reservation_package.status === action.payload
+            );
+          });
 
-          let allBoughtItems = boughtExperiences.concat(boughtPackages)
-          u.allBoughtItems =  allBoughtItems;
+          let allBoughtItems = boughtExperiences.concat(boughtPackages);
+          u.allBoughtItems = allBoughtItems;
+        } else if (action.payload === "done") {
+          let boughtExperiences = u.experiences.filter((e) => {
+            return (
+              e.reservation_experience.bought === true &&
+              e.reservation_experience.status === action.payload
+            );
+          });
+
+          let boughtPackages = u.packages.filter((e) => {
+            return (
+              e.reservation_package.bought === true &&
+              e.reservation_package.status === action.payload
+            );
+          });
+
+          let allBoughtItems = boughtExperiences.concat(boughtPackages);
+          u.allBoughtItems = allBoughtItems;
         }
         return {
           ...state,
           boughtUsers: state.boughtUsers,
         };
-
-    });
+      });
+      break;
     case GET_USER_BY_ID:
       return {
         ...state,
