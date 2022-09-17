@@ -37,7 +37,7 @@ const initialState = {
   allCategories: [],
   allExperiences: [],
   allRegions: [],
-  allReviews:[],
+  allReviews: [],
   userAuth: false,
   userBasicInfo: {},
   token: "",
@@ -171,6 +171,7 @@ export default function rootReducer(state = initialState, action) {
         userById: action.payload,
       };
     case BUY_IN_MERCADOPAGO:
+      localStorage.removeItem("items");
       return {
         ...state,
         preferenceMercadoPagoId: action.payload,
