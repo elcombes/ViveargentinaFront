@@ -121,3 +121,7 @@ margin: 20px;
     justify-content: center;
     align-items: center;
 }
+#heartbutstyle {
+  color: crimson;
+  transition: 0.5s all;
+}
