@@ -196,8 +196,8 @@ export function changePassword({ token, password, newPassword }) {
       { password, newPassword },
       { headers }
     );
-    console.log("response: " + response);
-    return response;
+    console.log("response: " + response.data);
+    return response.data;
   };
 }
 
