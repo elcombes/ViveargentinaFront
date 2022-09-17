@@ -2,6 +2,7 @@ import React, { useState, Fragment, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
+import Animate from "animate.css"
 import styles from "../Packages/Packages.module.css";
 import NavBar from "../NavBar/NavBar";
 import NavBarUser from "../NavBarUser/NavBarUser";
@@ -19,11 +20,7 @@ export default function Card(props) {
   const dispatch = useDispatch();
   const allPackages = useSelector((state) => state.allPackages);
 
-  const [loading, setLoading] = useState(true)
 
-  window.onload = function () {
-    setLoading(false)
-  }
 
   const [Order, setOrder] = useState("");
   const { cityId } = props.match.params;
@@ -73,6 +70,9 @@ export default function Card(props) {
         imageHeight: 300,
         confirmButtonColor: "#C49D48",
         imageAlt: "Custom image",
+        showClass: {
+          popup: 'animate__animated animate__flipInY'
+        },
       });
     }
     if (document.getElementById(`${item.name} dates`).value === "select") {
@@ -83,7 +83,11 @@ export default function Card(props) {
         imageWidth: 350,
         imageHeight: 300,
         confirmButtonColor: "#C49D48",
+        showClass: {
+          popup: 'animate__animated animate__flipInY'
+        },
         imageAlt: "Custom image",
+        
       });
     }
 
@@ -103,7 +107,10 @@ export default function Card(props) {
         imageWidth: 350,
         imageHeight: 300,
         confirmButtonColor: "#C49D48",
-        imageAlt: "Custom image",
+        imageAlt: "Custom image", 
+        showClass: {
+          popup: 'animate__animated animate__flipInY'
+        },
       });
     }
     if (
@@ -132,6 +139,9 @@ export default function Card(props) {
         imageHeight: 200,
         confirmButtonColor: "#C49D48",
         imageAlt: "Custom image",
+        showClass: {
+          popup: 'animate__animated animate__flipInY'
+        },
       });
     }
   };
@@ -154,13 +164,20 @@ export default function Card(props) {
   }
   let userAuth = useSelector((state) => state.userAuth);
 
-  useEffect(() => {
+  const [data, setData] = useState(null);
+
+
+  useEffect(async () => {
     dispatch(getLsUser());
+    let aux = null;
     if (cityId) {
-      dispatch(getCityById(cityId));
+      aux = await dispatch(getCityById(cityId));
+
     } else {
-      dispatch(getAllPackages());
+      aux = await dispatch(getAllPackages());
+
     }
+    setData(aux)
   }, [dispatch]);
 
   const btn = document.getElementById('btn');
@@ -175,7 +192,7 @@ export default function Card(props) {
           <br />
 
           {
-            loading ? (
+            data === null ? (
               <div className={styles.loading}>
                 <img src="https://res.cloudinary.com/dblc1bzmx/image/upload/v1663376546/VivaArg/loading_kvi4vx.gif" alt="Loading" />
               </div>

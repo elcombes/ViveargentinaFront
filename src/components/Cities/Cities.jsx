@@ -12,22 +12,21 @@ import { getLsUser } from "./../../redux/action.js"
 
 export default function Card() {
   let prevId = 1;
+  const [data, setData] = useState(null);
 
-  const [loading, setLoading] = useState(true)
   const dispatch = useDispatch();
   const allCities = useSelector((state) => state.allCities);
 
 
-  window.onload = function () {
-    setLoading(false)
-  }
-
   let userAuth = useSelector((state) => state.userAuth)
 
-  useEffect(() => {
+  useEffect(async () => {
+    let aux = null;
     dispatch(getLsUser())
-    dispatch(getAllCities());
-  }, [dispatch]);
+    aux = await dispatch(getAllCities());
+    setData(aux)
+  },
+    [dispatch]);
 
   return (
     <Fragment>
@@ -45,10 +44,10 @@ export default function Card() {
           <div class="row">
             <div class="col-md-12">
               {
-                loading ? (
+                data === null ? (
                   <div className={styles.loading}>
-                  <img src="https://res.cloudinary.com/dblc1bzmx/image/upload/v1663376546/VivaArg/loading_kvi4vx.gif" alt="Loading" />
-                </div>
+                    <img src="https://res.cloudinary.com/dblc1bzmx/image/upload/v1663376546/VivaArg/loading_kvi4vx.gif" alt="Loading" />
+                  </div>
                 ) : (
                   allCities?.length === 0 ? (
                     <div className={styles.noFound}>

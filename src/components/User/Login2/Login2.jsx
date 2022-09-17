@@ -68,7 +68,7 @@ export default function Login2() {
         const message = typeof response === "string"? response : "User successfully logged"
         Swal.fire({
             title: message+"!",
-            imageUrl: image,
+            imageUrl: image,                
             imageWidth: 350,
             imageHeight: 300,
             confirmButtonColor: "#C49D48",
@@ -110,7 +110,7 @@ export default function Login2() {
             errorMessagesArray.forEach(e => e.hidden = false)
         }
         const response = await dispatch(getUserLogin({ email: newUser.email, password: newUser.password }))
-        console.log(response)
+        
         const image = typeof response === "string"? "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663190222/VivaArg/Alerts/passagerAlert_1_nejegh.png" : "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663188984/VivaArg/Alerts/passagerAlert_hxpidz.png"
         const message = typeof response === "string"? response : "User successfully logged"
         Swal.fire({
@@ -134,14 +134,24 @@ export default function Login2() {
 
                     {/* Inicio boton para abrir el modal */}
                     <div>
-                        <button type="button" className={`btn btn-outline-secondary btn-lg ${styles.registerbutton}`} data-bs-toggle="modal" data-bs-target="#loginModal">
+                        <button 
+                        type="button" 
+                        className={`btn btn-outline-secondary btn-lg ${styles.registerbutton}`} 
+                        data-bs-toggle="modal" 
+                        data-bs-target="#loginModal">
                             Log In <i class="bi bi-person-lines-fill"></i>
                         </button>
                     </div>
                     {/* Fin boton para abrir el modal */}
 
                     {/* Inicio modal */}
-                    <div className="modal fade" id="loginModal" tabIndex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+                    <div 
+                    className="modal fade" 
+                    id="loginModal" 
+                    tabIndex="-1" 
+                    aria-labelledby="loginModalLabel" 
+                    aria-hidden="true"
+                    >
                         <div className="modal-dialog">
                             <div className="modal-content" style={{
                                 borderRadius: "10px",
