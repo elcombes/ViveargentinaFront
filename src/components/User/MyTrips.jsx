@@ -27,8 +27,8 @@ export default function MyTrips({ packages, experiences }) {
 
           {
             /* INICIO ITEM PACKAGES */
-            packagesBought &&
-              packagesBought.map((p) => {
+            packagesBought?.length === 0 && experiencesBought?.length === 0 ? <h2>You have no trips yet</h2> :
+              packagesBought?.map((p) => {
                 return (
                   <div className={`row ${styles.itemmytrips}`}>
                     <div className="col-md-6">

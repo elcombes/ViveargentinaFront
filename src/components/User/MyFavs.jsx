@@ -6,22 +6,13 @@ import {
   removeExperienceFavorite,
   removePackageFavorite,
 } from "./../../redux/action.js";
-import { useEffect } from "react";
 
-export default function MyFavs({ packages, experiences, changeFatherState }) {
+export default function MyFavs({ packages, experiences }) {
   const [state, setState] = useState(false);
   const dispatch = useDispatch();
   
-  let packagesfavorites =
-    packages &&
-    packages.filter((p) => {
-      return p.reservation_package.favorite === true;
-    });
-  let experiencesfavorites =
-    experiences &&
-    experiences.filter((e) => {
-      return e.reservation_experience.favorite === true;
-    });
+  let packagesfavorites = packages?.filter((p) => {return p.reservation_package.favorite === true});
+  let experiencesfavorites = experiences?.filter((e) => {return e.reservation_experience.favorite === true});
   
 
   function removeExperienceFromFavorite(experienceId, index) {
@@ -29,10 +20,9 @@ export default function MyFavs({ packages, experiences, changeFatherState }) {
     let userId = user.user.id;
     experiencesfavorites[index].reservation_experience.favorite = false
     dispatch(removeExperienceFavorite(experienceId, userId));
-    // experiencesfavorites = experiences?.filter((e) => {return e.reservation_experience.favorite === true})
     if (state === false) setState(true);
     else if (state === true) setState(false);
-    changeFatherState()
+
   }
 
   function removePackageFromFavorite(packageId, index) {
@@ -40,11 +30,9 @@ export default function MyFavs({ packages, experiences, changeFatherState }) {
     let userId = user.user.id;
     packagesfavorites[index].reservation_package.favorite = false
     dispatch(removePackageFavorite(packageId, userId));
-    // packagesfavorites = packages?.filter((e) => {return e.reservation_packages.favorite === true})
-    // if (state === false) setState(true);
-    // else if (state === true) setState(false);
-    changeFatherState()
-  }
+    if (state === false) setState(true);
+    else if (state === true) setState(false);
+    }
 
   return (
     <Fragment>
@@ -58,8 +46,8 @@ export default function MyFavs({ packages, experiences, changeFatherState }) {
           </div>
           {
             /* INICIO ITEMS PACKAGES */
-            packagesfavorites &&
-              packagesfavorites.map((p, i) => {
+            packagesfavorites?.length === 0 && experiencesfavorites?.length === 0 ? <h2>Your favorite list is empty. Browse our packages and experiences</h2> :
+              packagesfavorites?.map((p, i) => {
                 return (
                   <div className={`row ${styles.itemmyfavs}`}>
                     <div className="col-md-12">
@@ -96,7 +84,7 @@ export default function MyFavs({ packages, experiences, changeFatherState }) {
           {
             /* INICIO ITEMS EXPERIENCES */
             experiencesfavorites &&
-              experiencesfavorites.map((e, i) => {
+              experiencesfavorites?.map((e, i) => {
                 return (
                   <div className={`row ${styles.itemmyfavs}`}>
                     <div className="col-md-12">

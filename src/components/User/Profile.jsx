@@ -16,7 +16,6 @@ export default function Profile() {
   let userFromStorage = JSON.parse(localStorage.getItem("user"));
 
   const [changePassword, setChangePassword] = useState(false);
-  const [fatherState, setFatherState] = useState(false)
 
   useEffect(() => {
     userFromStorage = JSON.parse(localStorage.getItem("user"));
@@ -27,11 +26,6 @@ export default function Profile() {
   const toggleCP = () => {
     setChangePassword(changePassword ? false : true);
   };
-
-  const changeFatherState = () => {
-    if (fatherState) setFatherState(false) 
-    if (!fatherState) setFatherState(true)
-  }
 
   return (
     <Fragment>
@@ -188,7 +182,6 @@ export default function Profile() {
         <MyFavs
           packages={userById.packages}
           experiences={userById.experiences}
-          changeFatherState={changeFatherState}
         />
       </div>
     </Fragment>
