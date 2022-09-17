@@ -120,6 +120,7 @@ export default function Login2() {
             imageHeight: 300,
             confirmButtonColor: "#C49D48",
             imageAlt: "Custom image",
+            
           });
         // window.location.reload(false);
     };

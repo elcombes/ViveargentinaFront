@@ -118,8 +118,7 @@ export default function Experiences(props) {
       document.getElementById(`${item.name} dates`).value = "select";
       return Swal.fire({
         title: "YOU ALREADY HAVE THIS ITEM IN YOUR CART",
-        imageUrl:
-          "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663003831/VivaArg/Alerts/3_zmfk4m.png",
+        imageUrl:"https://res.cloudinary.com/dblc1bzmx/image/upload/v1663003831/VivaArg/Alerts/3_zmfk4m.png",
         imageWidth: 350,
         imageHeight: 300,
         confirmButtonColor: "#C49D48",

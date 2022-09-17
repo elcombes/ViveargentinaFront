@@ -39,8 +39,8 @@ export default function Profile() {
           backgroundRepeat: "no-repeat",
         }}
       >
-        <div className="container py-5 h-100">
-        <div className="row d-flex justify-content-left align-items-left">
+        <div className="container py-5 h-50">
+        <div style={{float:"inline-start", botton:"0"}}>
         <Link to="/home">
           <button  className="btn btn-outline-secondary">
             {" "}

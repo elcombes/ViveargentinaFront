@@ -33,7 +33,8 @@
 
 .registerbutton,
 .loginbutton {
-    display: inline-flex;
+    display: flex;
+    flex-direction: row;
     align-items: center;
     text-transform: uppercase;
     font-family: Raleway;

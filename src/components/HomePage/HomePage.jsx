@@ -195,12 +195,13 @@ function HomePage() {
 
                 <span style={{ transform: `translate(${offSetY * 0.09}px)` }}>EXPLORE</span>
                 <h1 style={{ transform: `translate(${offSetY * 0.08}px)` }}>Our cities</h1>
+                <p style={{ transform: `translate(${offSetY * 0.08}px)` }}>Play me <i class="bi bi-play" style={{height:"50px"}}></i></p>
 
               </div>
 
               <div >
                 <div class="player-wrapper">
-                  <ReactPlayer url={'https://res.cloudinary.com/dblc1bzmx/video/upload/v1661639581/VivaArg/BUENOS%20AIRES/Buenos_Aires_1_ixmanf.mp4'} controls loop className='react-player' width="100%" height="100%" />
+                  <ReactPlayer url={'https://res.cloudinary.com/dblc1bzmx/video/upload/v1663441399/VivaArg/Video_corporativo_cx7oad.mp4'} controls loop className='react-player' width="100%" height="100%" />
                 </div>
               </div>
 
