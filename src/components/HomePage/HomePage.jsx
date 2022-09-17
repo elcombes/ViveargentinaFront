@@ -261,7 +261,7 @@ function HomePage() {
           </section>
 
           {/* FORMULARIO DE CREACION DE REVIEW */}
-          <section className='reviewSection'>
+          <section className='reviewSection'id="reviews">
             <div>
               <div >
                 <h1>Share your experience, write a review.</h1>

@@ -2,6 +2,7 @@ import React, { useState, Fragment, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
+import Animate from "animate.css"
 import styles from "../Packages/Packages.module.css";
 import NavBar from "../NavBar/NavBar";
 import NavBarUser from "../NavBarUser/NavBarUser";
@@ -69,6 +70,9 @@ export default function Card(props) {
         imageHeight: 300,
         confirmButtonColor: "#C49D48",
         imageAlt: "Custom image",
+        showClass: {
+          popup: 'animate__animated animate__flipInY'
+        },
       });
     }
     if (document.getElementById(`${item.name} dates`).value === "select") {
@@ -79,7 +83,11 @@ export default function Card(props) {
         imageWidth: 350,
         imageHeight: 300,
         confirmButtonColor: "#C49D48",
+        showClass: {
+          popup: 'animate__animated animate__flipInY'
+        },
         imageAlt: "Custom image",
+        
       });
     }
 
@@ -99,7 +107,10 @@ export default function Card(props) {
         imageWidth: 350,
         imageHeight: 300,
         confirmButtonColor: "#C49D48",
-        imageAlt: "Custom image",
+        imageAlt: "Custom image", 
+        showClass: {
+          popup: 'animate__animated animate__flipInY'
+        },
       });
     }
     if (
@@ -128,6 +139,9 @@ export default function Card(props) {
         imageHeight: 200,
         confirmButtonColor: "#C49D48",
         imageAlt: "Custom image",
+        showClass: {
+          popup: 'animate__animated animate__flipInY'
+        },
       });
     }
   };
@@ -158,7 +172,7 @@ export default function Card(props) {
 
     } else {
       aux = await dispatch(getAllPackages());
-     
+
     }
     setData(aux)
   }, [dispatch]);

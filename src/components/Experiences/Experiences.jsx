@@ -24,7 +24,7 @@ export default function Experiences(props) {
   let userAuth = useSelector((state) => state.userAuth);
   const [Order, setOrder] = useState("");
   const { packageId } = props.match.params;
- 
+
 
 
   const [page, setPage] = useState(1);
@@ -88,6 +88,9 @@ export default function Experiences(props) {
         imageHeight: 300,
         confirmButtonColor: "#C49D48",
         imageAlt: "Custom image",
+        showClass: {
+          popup: 'animate__animated animate__flipInY'
+        },
       });
     }
     if (document.getElementById(`${item.name} dates`).value === "select") {
@@ -99,6 +102,9 @@ export default function Experiences(props) {
         imageHeight: 300,
         confirmButtonColor: "#C49D48",
         imageAlt: "Custom image",
+        showClass: {
+          popup: 'animate__animated animate__flipInY'
+        },
       });
     }
 
@@ -118,6 +124,9 @@ export default function Experiences(props) {
         imageHeight: 300,
         confirmButtonColor: "#C49D48",
         imageAlt: "Custom image",
+        showClass: {
+          popup: 'animate__animated animate__flipInY'
+        },
       });
     }
     if (
@@ -148,6 +157,9 @@ export default function Experiences(props) {
         imageHeight: 200,
         confirmButtonColor: "#C49D48",
         imageAlt: "Custom image",
+        showClass: {
+          popup: 'animate__animated animate__flipInY'
+        },
       });
     }
   };
@@ -168,12 +180,12 @@ export default function Experiences(props) {
   }
   const [data, setData] = useState(null);
 
-  useEffect(async() => {
+  useEffect(async () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
     dispatch(getLsUser());
     let aux = null;
     if (packageId) {
-      aux = await dispatch(getPackageById(packageId)); 
+      aux = await dispatch(getPackageById(packageId));
     } else {
       aux = await dispatch(getAllExperiences());
     }
@@ -198,7 +210,7 @@ export default function Experiences(props) {
 
           <br />
           {
-            data  === null? (
+            data === null ? (
               <div className={styles.loading}>
                 <img src="https://res.cloudinary.com/dblc1bzmx/image/upload/v1663376546/VivaArg/loading_kvi4vx.gif" alt="Loading" />
               </div>
