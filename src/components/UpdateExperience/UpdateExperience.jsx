@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import styles from "../CreateExperience/CreateExperience.module.css";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Axios from 'axios';
 // import Button from "react-bootstrap/Button";
 // import Col from "react-bootstrap/Col";
 // import Form from "react-bootstrap/Form";
@@ -28,8 +29,8 @@ function validate(newExperience) {
   if (newExperience.price < 0) {
     errors.price = "Price cannot be less than 0";
   }
-  if (typeof newExperience.price !== 'number') {
-    errors.price = "Price must be a number"
+  if (typeof newExperience.price !== "number") {
+    errors.price = "Price must be a number";
   }
   if (!newExperience.duration) {
     errors.duration = "Duration is required";
@@ -46,10 +47,9 @@ function validate(newExperience) {
   if (!newExperience.packageId) {
     errors.packageId = "Package is required";
   }
-  // if (!newExperience.image) {
-  //   errors.image = "Image is required";
-  // }
-
+  if (!newExperience.image) {
+    errors.image = "Image is required";
+  }
   return errors;
 }
 
@@ -63,7 +63,7 @@ export default function UpdateExperiences({
   dates,
   categoryId,
   packageId,
-  // image,
+  image,
 }) {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -74,7 +74,7 @@ export default function UpdateExperiences({
     subTitle: subTitle,
     price: price,
     description: description,
-    //image: image,
+    image: image,
     duration: duration,
     dates: dates,
     categoryId: categoryId,
@@ -99,23 +99,23 @@ export default function UpdateExperiences({
           ...newExperience,
           [e.target.name]: parseInt(e.target.value),
         })
-      )
-    }
-    else {
-    setNewExperience({
-      ...newExperience,
-      [e.target.name]: e.target.value,
-    });
-    setErrors(
-      validate({
+      );
+    } else {
+      setNewExperience({
         ...newExperience,
         [e.target.name]: e.target.value,
-      })
-    )};
+      });
+      setErrors(
+        validate({
+          ...newExperience,
+          [e.target.name]: e.target.value,
+        })
+      );
+    }
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     let errorMessagesNodeList = document.querySelectorAll("#errors");
     let errorMessagesArray = Array.from(errorMessagesNodeList);
     if (Object.entries(errors).length > 0) {
@@ -124,9 +124,36 @@ export default function UpdateExperiences({
       errorMessagesArray.forEach((e) => (e.hidden = false));
     } else {
       console.log(newExperience);
-      dispatch(updateExperience(newExperience));
+      dispatch(updateExperience(newExperience, id));
+      console.log(newExperience)
     }
   };
+
+  let imageDB;
+  const uploadImage = (selectedImage) => {
+    const formData = new FormData()
+    formData.append('file', selectedImage)
+    formData.append('upload_preset', 'fftkpmfl')
+    Axios.post('https://api.cloudinary.com/v1_1/dblc1bzmx/image/upload', formData).then((res) => {
+      imageDB = (res.data.url)
+      setNewExperience({
+        ...newExperience,
+        image: imageDB
+      });
+      console.log(imageDB)
+      console.log(res)
+    })
+  }
+
+  const handleImageSelected = (e) => {
+    console.log(e.target.files[0])
+    let selectedImage = e.target.files[0]
+    uploadImage(selectedImage)
+    setErrors(validate({
+      ...newExperience,
+      image: e.target.files[0].name
+    }))
+  }
 
   return (
     <div>
@@ -344,7 +371,7 @@ export default function UpdateExperiences({
                           <select
                             onChange={(e) => handleChange(e)}
                             name="packageId"
-                            value={newExperience.packageId}
+                            // value={newExperience.packageId}
                             class="form-select form-select-lg mb-3"
                           >
                             <option selected>SELECT A PACKAGE</option>
@@ -389,9 +416,9 @@ export default function UpdateExperiences({
                               style={{ minHeight: "0px" }}
                               type="file"
                               className="form-control form-inputContact"
-                              value={newExperience.image}
+                              // value={newExperience.image}
                               name="image"
-                              onChange={(e) => handleChange(e)}
+                              onChange={(e) => handleImageSelected(e)}
                             />
                             {errors.image ? (
                               <p id="errors" hidden>

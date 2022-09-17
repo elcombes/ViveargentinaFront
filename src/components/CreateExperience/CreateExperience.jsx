@@ -1,14 +1,10 @@
-// import { useDispatch } from "react-redux";
 import React, { useEffect } from "react";
 import styles from "../CreateExperience/CreateExperience.module.css";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Axios from 'axios';
-import {Image} from 'cloudinary-react'
-import Button from "react-bootstrap/Button";
-import Col from "react-bootstrap/Col";
-import Form from "react-bootstrap/Form";
-import Row from "react-bootstrap/Row";
+import Swal from "sweetalert2";
+
 import { useHistory } from "react-router-dom";
 import {
   createNewExperience,
@@ -48,10 +44,9 @@ function validate(newExperience) {
   if (!newExperience.packageId) {
     errors.packageId = "Package is required";
   }
-  // if (!newExperience.image) {
-  //   errors.image = "Image is required"
-  // }
-
+  if (!newExperience.image) {
+    errors.image = "Image is required"
+  }
   return errors;
 }
 
@@ -65,7 +60,7 @@ export default function Experiences() {
     subTitle: "",
     price: 0,
     description: "",
-    // image: "",
+    image: "",
     duration: "",
     dates: "",
     categoryId: "",
@@ -108,18 +103,38 @@ export default function Experiences() {
     e.preventDefault()
     let errorMessagesNodeList = document.querySelectorAll("#errors")
     let errorMessagesArray = Array.from(errorMessagesNodeList)
+
     if (Object.entries(errors).length > 0) {
       e.preventDefault();
       e.stopPropagation();
       errorMessagesArray.forEach((e) => (e.hidden = false));
     } else {
       dispatch(createNewExperience(newExperience));
+      setNewExperience({
+        name: "",
+        subTitle: "",
+        price: 0,
+        description: "",
+        image: "",
+        duration: "",
+        dates: "",
+        categoryId: "",
+        packageId: "",
+      })
+      setTimeout(() => {
+        return Swal.fire({
+          title: "NEW EXPERIENCE CREATED!",
+          confirmButtonColor: "#C49D48",
+          showClass: {
+            popup: 'animate__animated animate__flipInY'
+          },
+        });  
+      }, 500);
+      
     }
   };
 
-  const [imageSelected, setImageSelected] = useState('')
   let imageDB;
-
   const uploadImage = (selectedImage) => {
     const formData = new FormData()
     formData.append('file', selectedImage)
@@ -137,13 +152,8 @@ export default function Experiences() {
 
   const handleImageSelected = (e) => {
     console.log(e.target.files[0])
-    // setImageSelected(e.target.files[0])
     let selectedImage = e.target.files[0]
     uploadImage(selectedImage)
-    // setNewExperience({
-    //   ...newExperience,
-    //   image: e.target.files[0].name
-    // })
     setErrors(validate({
       ...newExperience,
       image: e.target.files[0].name
@@ -365,7 +375,7 @@ export default function Experiences() {
                           <select
                             onChange={(e) => handleChange(e)}
                             name="packageId"
-                            value={newExperience.packageId}
+                            // value={newExperience.packageId}
                             class="form-select form-select-lg mb-3"
                           >
                             <option selected>Select a Package</option>
@@ -386,7 +396,7 @@ export default function Experiences() {
                           <select
                             onChange={(e) => handleChange(e)}
                             name="categoryId"
-                            value={newExperience.categoryId}
+                            // value={newExperience.categoryId}
                             class="form-select form-select-lg mb-3"
                           >
                             <option selected>Select a Category</option>
@@ -413,7 +423,7 @@ export default function Experiences() {
                               style={{ minHeight: "0px" }}
                               type="file"
                               class="form-control"
-                              value={newExperience.image}
+                              // value={newExperience.image}
                               name="image"
                               onChange={(e) => handleImageSelected(e)}
                             />
@@ -441,6 +451,7 @@ export default function Experiences() {
                               marginTop: "8px",
                               marginRight: "0px",
                             }}
+                            data-bs-dismiss="modal"
                             type="submit"
                           >
                             Create Experience

@@ -113,9 +113,7 @@ export default function Cart() {
               aria-label="Close"
             ></button>
           </div>
-          <div class="offcanvas-body">
-            YOU HAVE NO ITEMS IN YOUR CART YET
-          </div>
+          <div class="offcanvas-body">YOU HAVE NO ITEMS IN YOUR CART YET</div>
         </div>
       </div>
     );

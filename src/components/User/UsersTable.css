@@ -47,3 +47,14 @@ a:hover{
   color:#C49D48
 
 }
+.buttonblock {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  
+}
+.buttonblock input.form-check-input:checked {
+  background-color: #f44336;
+  border-color: #f44336;
+}

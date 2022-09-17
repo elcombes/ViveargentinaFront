@@ -1,64 +1,76 @@
+// import { useDispatch } from "react-redux";
 import React, { useEffect } from "react";
-import styles from "../CreatePackage/CreatePackage.module.css";
+import styles from "../CreateExperience/CreateExperience.module.css";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Axios from 'axios';
-import Button from "react-bootstrap/Button";
-import Col from "react-bootstrap/Col";
-import Form from "react-bootstrap/Form";
-import Row from "react-bootstrap/Row";
+// import Button from "react-bootstrap/Button";
+// import Col from "react-bootstrap/Col";
+// import Form from "react-bootstrap/Form";
+// import Row from "react-bootstrap/Row";
 import { useHistory } from "react-router-dom";
-import { createNewPackage, getAllCities } from "../../redux/action";
+import { updatePackage, getAllCities } from "../../redux/action";
 
-function validate(newPackage) {
+function validate(newExperience) {
   let errors = {};
-  if (!newPackage.name) {
+  if (!newExperience.name) {
     errors.name = "Name is required";
   }
-  if (!newPackage.subTitle) {
+  if (!newExperience.subTitle) {
     errors.subTitle = "Subtitle is required";
   }
-  if (!newPackage.price) {
+  if (!newExperience.price) {
     errors.price = "Price is required";
   }
-  if (newPackage.price < 0) {
+  if (newExperience.price < 0) {
     errors.price = "Price cannot be less than 0";
   }
-  if (typeof newPackage.price !== 'number') {
-    errors.price = "Price must be a number"
+  if (typeof newExperience.price !== "number") {
+    errors.price = "Price must be a number";
   }
-  if (!newPackage.duration) {
+  if (!newExperience.duration) {
     errors.duration = "Duration is required";
   }
-  if (!newPackage.dates) {
+  if (!newExperience.dates) {
     errors.dates = "At least 1 date is required";
   }
-  if (!newPackage.description) {
+  if (!newExperience.description) {
     errors.description = "Description is required";
   }
-  if (!newPackage.cityId) {
+  if (!newExperience.cityId) {
     errors.cityId = "City is required";
   }
-  if (!newPackage.image) {
-    errors.image = "Image is required"
+  if (!newExperience.image) {
+    errors.image = "Image is required";
   }
   return errors;
 }
 
-export default function Packages() {
+export default function UpdatePackage({
+  name,
+  id,
+  subTitle,
+  description,
+  price,
+  duration,
+  dates,
+  cityId,
+  image,
+}) {
+  console.log(image)
   const history = useHistory();
   const dispatch = useDispatch();
-
   const allCities = useSelector((state) => state.allCities);
+
   const [newPackage, setNewPackage] = useState({
-    name: "",
-    subTitle: "",
-    price: 0,
-    description: "",
-    image: "",
-    duration: "",
-    dates: "",
-    cityId: "",
+    name: name,
+    subTitle: subTitle,
+    price: price,
+    description: description,
+    image: image,
+    duration: duration,
+    dates: dates,
+    cityId: cityId,
   });
   const [errors, setErrors] = useState({});
 
@@ -78,24 +90,23 @@ export default function Packages() {
           ...newPackage,
           [e.target.name]: parseInt(e.target.value),
         })
-      )
-    }
-    else {
-    setNewPackage({
-      ...newPackage,
-      [e.target.name]: e.target.value,
-    });
-    setErrors(
-      validate({
+      );
+    } else {
+      setNewPackage({
         ...newPackage,
         [e.target.name]: e.target.value,
-      })
-    )};
+      });
+      setErrors(
+        validate({
+          ...newPackage,
+          [e.target.name]: e.target.value,
+        })
+      );
+    }
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log("entre");
+    e.preventDefault();
     let errorMessagesNodeList = document.querySelectorAll("#errors");
     let errorMessagesArray = Array.from(errorMessagesNodeList);
     if (Object.entries(errors).length > 0) {
@@ -103,7 +114,9 @@ export default function Packages() {
       e.stopPropagation();
       errorMessagesArray.forEach((e) => (e.hidden = false));
     } else {
-      dispatch(createNewPackage(newPackage));
+      console.log(id);
+      dispatch(updatePackage(newPackage, id));
+      console.log(newPackage)
     }
   };
 
@@ -142,19 +155,18 @@ export default function Packages() {
           <div className="col-md-12">
             <div className={styles.modalbuttons}>
               <button
+                className="btn"
                 type="button"
-                className="btn btn-outline-secondary btn-lg"
                 data-bs-toggle="modal"
-                data-bs-target="#cexampleModal"
+                data-bs-target={`#cexampleModal${id}`}
               >
-                <i className="bi bi-node-plus"></i> New Package
+                <i class="bi bi-pencil-square"></i>
               </button>
             </div>
 
             <div
               className="modal modal-lg fade"
-              id="cexampleModal"
-              data-bs-backdrop="static"
+              id={`cexampleModal${id}`}
               tabIndex="-1"
               aria-labelledby="cexampleModalLabel"
               aria-hidden="true"
@@ -163,7 +175,7 @@ export default function Packages() {
                 <div className="modal-content">
                   <div className="modal-header">
                     <h5 className="modal-title" id="cexampleModalLabel">
-                      CREATE A NEW PACKAGE
+                      UPDATE PACKAGE
                     </h5>
                     <button
                       type="button"
@@ -182,7 +194,7 @@ export default function Packages() {
                             type="text"
                             value={newPackage.name}
                             name="name"
-                            placeholder="Not to be missed in Salta"
+                            placeholder="Excursion to Las Cataratas del Iguazu"
                             onChange={(e) => handleChange(e)}
                           />
                           {errors.name ? (
@@ -200,7 +212,7 @@ export default function Packages() {
                             type="text"
                             value={newPackage.subTitle}
                             name="subTitle"
-                            placeholder="What you can't miss"
+                            placeholder="Get wet"
                             onChange={(e) => handleChange(e)}
                           />
                           {errors.subTitle ? (
@@ -276,7 +288,7 @@ export default function Packages() {
                               className="form-control form-inputContact"
                               value={newPackage.duration}
                               name="duration"
-                              placeholder="4 days"
+                              placeholder="3 hours"
                               onChange={(e) => handleChange(e)}
                             />
                             {errors.duration ? (
@@ -326,11 +338,12 @@ export default function Packages() {
                           <label className="infoLabel">DESCRIPTION </label>
                           <textarea
                             style={{ height: "150px", fontSize: "12px" }}
-                            className="form-control form-inputContact"
+                            class="form-control form-inputContact"
+                            className="infoInput"
                             type="text"
                             value={newPackage.description}
                             name="description"
-                            placeholder="What to do in Salta, the answer will always be..."
+                            placeholder="A journey through the Cataratas..."
                             onChange={(e) => handleChange(e)}
                           />
                           {errors.description ? (
@@ -348,17 +361,17 @@ export default function Packages() {
                           <select
                             onChange={(e) => handleChange(e)}
                             name="cityId"
-                            // value={newPackage.packageId}
+                            // value={newPackage.cityId}
                             class="form-select form-select-lg mb-3"
                           >
                             <option selected>SELECT A CITY</option>
-                            {allCities?.map((e) => {
-                              return <option value={e.id}>{e.name}</option>;
+                            {allCities?.map((c) => {
+                              return <option value={c.id}>{c.name}</option>;
                             })}
                           </select>
-                          {errors.packageId ? (
+                          {errors.cityId ? (
                             <p id="errors" hidden>
-                              {errors.packageId}
+                              {errors.cityId}
                             </p>
                           ) : (
                             <p className="validMessage">Looks Good!</p>
@@ -403,7 +416,7 @@ export default function Packages() {
                             }}
                             type="submit"
                           >
-                            CREATE PACKAGE
+                            UPDATE PACKAGE
                           </button>
                         </div>
                       </div>

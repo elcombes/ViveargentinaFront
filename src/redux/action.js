@@ -2,6 +2,7 @@
 import axios from "axios";
 
 export const GET_ALL_USERS = "GET_ALL_USERS";
+export const GET_ALL_REVIEWS = "GET_ALL_REVIEWS";
 export const GET_USER_BY_ID = "GET_USER_BY_ID";
 export const GET_CITIES_BY_NAME = "GET_CITIES_BY_NAME";
 export const GET_CITY_BY_ID = "GET_CITY_BY_ID";
@@ -22,6 +23,7 @@ export const ORDER_EXPERIENCES = "ORDER_EXPERIENCES";
 export const FILTER_EXPERIENCES = "FILTER_EXPERIENCES";
 export const CREATE_NEW_EXPERIENCE = "CREATE_NEW_EXPERIENCE";
 export const CREATE_NEW_PACKAGE = "CREATE_NEW_PACKAGE";
+export const CREATE_NEW_REVIEW = "CREATE_NEW_REVIEW";
 export const UPDATE_EXPERIENCE = "UPDATE_EXPERIENCE";
 export const UPDATE_PACKAGE = "UPDATE_PACKAGE";
 export const GET_USER_LOGIN = "GET_USER_LOGIN";
@@ -73,6 +75,20 @@ export function getAllUsers() {
     });
   };
 }
+// Esta ruta trae un array con todas las reviews.
+
+export function getAllReviews() {
+  console.log("entre");
+  return async function (dispatch) {
+    let allReviews = await axios.get(
+      `https://viveargentina.herokuapp.com/reviews`
+    );
+    return dispatch({
+      type: GET_ALL_REVIEWS,
+      payload: allReviews.data,
+    });
+  };
+}
 
 // Esta ruta trae un usuario por ID
 export function getUserById(userId) {
@@ -96,6 +112,21 @@ export function buyInMercadoPago(itemsFromStore) {
     );
     return dispatch({
       type: BUY_IN_MERCADOPAGO,
+      payload: response.data,
+    });
+  };
+}
+// Esta ruta crea una nueva review
+
+export function createNewReview(newReview) {
+  return async function (dispatch) {
+    let response = await axios.post(
+      "https://viveargentina.herokuapp.com/reviews",
+      newReview
+    );
+    console.log(response.data);
+    return dispatch({
+      type: CREATE_NEW_REVIEW,
       payload: response.data,
     });
   };
@@ -139,7 +170,7 @@ export function resetPasswordRequest(email) {
       "https://viveargentina.herokuapp.com/users/reset_password_request",
       { email }
     );
-    return response.data
+    return response.data;
   };
 }
 
@@ -180,6 +211,7 @@ export function softDelete({ token, userId }) {
 
 //esta funcion le cambia la propiedad de administrador a un usuario dependiendo de su estado actual
 export function shiftAdmin({ token, userId }) {
+  console.log(userId);
   return async function () {
     const headers = {
       Accept: "application/json",
@@ -310,6 +342,9 @@ export function getUserLogin({ email, password }) {
     if (response.data === "not allowed") {
       return "Incorrect password";
     }
+    if (response.data === "This user was deleted") {
+      return "User not allowed, please contact the administrator";
+    }
     window.localStorage.setItem("user", JSON.stringify(response.data));
     return dispatch({
       type: GET_USER_LOGIN,
@@ -321,14 +356,19 @@ export function getUserLogin({ email, password }) {
 //esta funcion une el register y el login de un usuario que se use el google login
 export function googleLogin({ first_name, last_name, email, password, photo }) {
   return async function (dispatch) {
-    const googleUser = await axios.post(
+    console.log("before dispatch");
+    const response = await axios.post(
       "https://viveargentina.herokuapp.com/users/google_login",
       { email, password, first_name, last_name, photo }
     );
-    window.localStorage.setItem("user", JSON.stringify(googleUser.data));
+    console.log(response);
+    if (response.data === "This user was deleted") {
+      return "User not allowed, please contact the administrator";
+    }
+    window.localStorage.setItem("user", JSON.stringify(response.data));
     return dispatch({
       type: GOOGLE_LOGIN,
-      payload: googleUser.data,
+      payload: response.data,
     });
   };
 }
@@ -540,11 +580,11 @@ export function createNewExperience(newExperience) {
   };
 }
 
-export function updateExperience(newExperience) {
+export function updateExperience(newExperience, id) {
   console.log(newExperience);
   return async function (dispatch) {
     let ExperienceUpdated = await axios.put(
-      "https://viveargentina.herokuapp.com/experiences",
+      "https://viveargentina.herokuapp.com/experiences?experienceId=" + id,
       newExperience
     );
     console.log(ExperienceUpdated);
@@ -564,14 +604,15 @@ export function createNewPackage(newPackage) {
   };
 }
 
-export function updatePackage(newPackage) {
+export function updatePackage(newPackage, id) {
+  console.log(id);
   return async function (dispatch) {
-    let packageUpdated = await axios.put(
-      "https://viveargentina.herokuapp.com/packages",
+    let PackageUpdated = await axios.put(
+      "https://viveargentina.herokuapp.com/packages?packageId=" + id,
       newPackage
     );
-    console.log(packageUpdated);
-    return packageUpdated;
+    console.log(PackageUpdated);
+    return PackageUpdated;
   };
 }
 

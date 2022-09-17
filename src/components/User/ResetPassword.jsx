@@ -38,6 +38,14 @@ function ResetPassword() {
         let errorMessagesNodeList = document.querySelectorAll("#errors")
         let errorMessagesArray = Array.from(errorMessagesNodeList)
         if (Object.entries(errors).length > 0) {
+            Swal.fire({
+                title: "Please check the fields",
+                imageUrl: "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663190222/VivaArg/Alerts/passagerAlert_1_nejegh.png",
+                imageWidth: 350,
+                imageHeight: 300,
+                confirmButtonColor: "#C49D48",
+                imageAlt: "Custom image",
+            });
             e.preventDefault()
             e.stopPropagation()
             errorMessagesArray.forEach(e => e.hidden = false)
@@ -45,7 +53,7 @@ function ResetPassword() {
             dispatch(passwordReset({ token: token, password: state.newPassword }))
             Swal.fire({
                 title: "Your password was changed successfully",
-                imageUrl: "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663003831/VivaArg/Alerts/2_wsn0oa.png",
+                imageUrl: "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663188984/VivaArg/Alerts/passagerAlert_hxpidz.png",
                 imageWidth: 350,
                 imageHeight: 300,
                 confirmButtonColor: "#C49D48",
