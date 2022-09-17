@@ -68,7 +68,7 @@ export default function Login2() {
         const message = typeof response === "string"? response : "User successfully logged"
         Swal.fire({
             title: message+"!",
-            imageUrl: image,
+            imageUrl: image,                
             imageWidth: 350,
             imageHeight: 300,
             confirmButtonColor: "#C49D48",

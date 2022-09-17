@@ -48,7 +48,7 @@ function HomePage() {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    if (newReview.text === "" && newReview.date === "") {
+    if (newReview.date === "" || newReview.text === "") {
       e.preventDefault();
       e.stopPropagation();
       return Swal.fire({
