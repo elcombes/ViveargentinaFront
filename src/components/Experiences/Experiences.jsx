@@ -118,7 +118,7 @@ export default function Experiences(props) {
       document.getElementById(`${item.name} dates`).value = "select";
       return Swal.fire({
         title: "YOU ALREADY HAVE THIS ITEM IN YOUR CART",
-        imageUrl:"https://res.cloudinary.com/dblc1bzmx/image/upload/v1663003831/VivaArg/Alerts/3_zmfk4m.png",
+        imageUrl: "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663003831/VivaArg/Alerts/3_zmfk4m.png",
         imageWidth: 350,
         imageHeight: 300,
         confirmButtonColor: "#C49D48",
@@ -515,7 +515,7 @@ export default function Experiences(props) {
                                         className="btn btn-secondary"
                                         data-bs-dismiss="modal"
                                       >
-                                        CANCEL
+                                        Cancel
                                       </button>
                                       <button
                                         onClick={(event) => {
@@ -541,36 +541,7 @@ export default function Experiences(props) {
                                 </div>
                               </div>
                             </div>
-
                             {/* Footer Modal */}
-                            <div className="modal-footer">
-                              <button
-                                type="button"
-                                className="btn btn-secondary"
-                                data-bs-dismiss="modal"
-                              >
-                                Cancel
-                              </button>
-                              <button
-                                onClick={(event) => {
-                                  handleClick(event);
-                                }}
-                                type="button"
-                                className="btn btn-primary"
-                                style={{
-                                  backgroundColor: "#C49D48",
-                                  borderColor: "#C49D48",
-                                  fontSize: "1.5vh",
-                                }}
-                                data-bs-dismiss="modal"
-                              >
-                                <i
-                                  className="bi bi-cart-check"
-                                  style={{ color: "white" }}
-                                ></i>{" "}
-                                ADD TO CART!
-                              </button>
-                            </div>
                           </div>
                           <div className="col-md-6 mb-5">
                             <img
