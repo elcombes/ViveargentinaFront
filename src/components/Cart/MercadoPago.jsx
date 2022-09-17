@@ -13,26 +13,16 @@ export default function MercadoPago() {
       locale: "es-AR",
     }
   );
-  /*
-  if (mercadopago) {
-    mercadopago.checkout({
-      preference: {
-        id: preferenceMercadoPagoId,
-      },
-      render: {
-        container: ".containerMercadoPago",
-        label: "Pay",
-      },
-    });
-  }
-*/
+
   if (mercadopago && preferenceMercadoPagoId) {
+    console.log(preferenceMercadoPagoId);
     const checkout = mercadopago.checkout({
       preference: {
         id: preferenceMercadoPagoId,
       },
       autoOpen: true,
     });
+    console.log(checkout);
   }
 
   return <></>;
