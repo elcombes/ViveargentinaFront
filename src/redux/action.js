@@ -354,14 +354,19 @@ export function getUserLogin({ email, password }) {
 //esta funcion une el register y el login de un usuario que se use el google login
 export function googleLogin({ first_name, last_name, email, password, photo }) {
   return async function (dispatch) {
-    const googleUser = await axios.post(
+    console.log("before dispatch")
+    const response = await axios.post(
       "https://viveargentina.herokuapp.com/users/google_login",
       { email, password, first_name, last_name, photo }
     );
-    window.localStorage.setItem("user", JSON.stringify(googleUser.data));
+    console.log(response)
+    if (response.data === "This user was deleted") {
+      return "User not allowed, please contact the administrator";
+    }
+    window.localStorage.setItem("user", JSON.stringify(response.data));
     return dispatch({
       type: GOOGLE_LOGIN,
-      payload: googleUser.data,
+      payload: response.data,
     });
   };
 }
