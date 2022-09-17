@@ -1,13 +1,14 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getAllUsers, resetPasswordRequest  } from "../../redux/action";
+import { getAllUsers, resetPasswordRequest, shiftAdmin, softDelete } from "../../redux/action";
 import "./UsersTable.css";
 import Swal from "sweetalert2";
 
 export default function UsersTable() {
   const dispatch = useDispatch();
   const allUsers = useSelector((state) => state.allUsers);
-  console.log("allUsers", allUsers);
+  // console.log("allUsers", allUsers);
+  const token = JSON.parse(window.localStorage.getItem("user")).accessToken
 
   const orderUsers = allUsers.sort(function (a, b) {
     if (a.email.toLowerCase() > b.email.toLowerCase()) return 1;
@@ -20,20 +21,42 @@ export default function UsersTable() {
   }, [dispatch]);
 
   const handleResetPass= async (e)=>{
-    // console.log(JSON.stringify(e.target.outerHTML))
-    // console.log(JSON.stringify(e.target.outerHTML).split('\\"'))
     let userEmail
     if(e.target.name){
       userEmail = e.target.name
     }else{
       userEmail = JSON.stringify(e.target.outerHTML).split('\\"')[1]
     }
-    console.log("email: "+userEmail)
+    // console.log("email: "+userEmail)
     const resp = await dispatch(resetPasswordRequest(userEmail))
     console.log(resp)
     Swal.fire({
       title: resp+"!",
       imageUrl: "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663188984/VivaArg/Alerts/passagerAlert_hxpidz.png",
+      imageWidth: 350,
+      imageHeight: 300,
+      confirmButtonColor: "#C49D48",
+      imageAlt: "Custom image",
+    });
+  }
+
+  const handleChangeBlock = async (e)=>{
+    const response = await dispatch(softDelete({token, userId: e.target.name}))
+    Swal.fire({
+      title: response+"!",
+      imageUrl: "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663371555/VivaArg/Alerts/passagerAlert_4_orw614.png",
+      imageWidth: 350,
+      imageHeight: 300,
+      confirmButtonColor: "#C49D48",
+      imageAlt: "Custom image",
+    });
+  }
+
+  const handleChangeAdmin = async (e)=>{
+    const response = await dispatch(shiftAdmin({token, userId: e.target.name}))
+    Swal.fire({
+      title: response+"!",
+      imageUrl: "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663371555/VivaArg/Alerts/passagerAlert_4_orw614.png",
       imageWidth: 350,
       imageHeight: 300,
       confirmButtonColor: "#C49D48",
@@ -66,9 +89,17 @@ export default function UsersTable() {
                     <tbody className="table-body">
                       <tr className="cell-1">
                         <td>
-                          <div className="toggle-btn">
-                            <div className="inner-circle"></div>
-                            {/* <input type="checkbox" className="custom-control-input" id="customSwitches"></input> */}
+                          <div className="buttonblock">
+                            <div className="form-check form-switch">
+                              <input 
+                                className="form-check-input" 
+                                onChange={(e)=>handleChangeBlock(e)} 
+                                type="checkbox" 
+                                role="switch" 
+                                defaultChecked={u.disabled ? true : false} 
+                                name={u.id} 
+                                id="flexSwitchCheckDefault" />
+                            </div>
                           </div>
                         </td>
                         <td>{u.email.substring(0, 6) === 'google' ? u.email.slice(7)+" (Google)" : u.email}</td>
@@ -76,7 +107,10 @@ export default function UsersTable() {
                         <td className="text-center">
                           <input
                             className="form-check-input"
-                            type="checkbox"
+                            type="checkbox" 
+                            name={u.id}
+                            onChange={(e)=>handleChangeAdmin(e)}
+                            defaultChecked={u.administrator ? true : false}
                           ></input>
                         </td>
                         <td className="text-center">

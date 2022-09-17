@@ -6,6 +6,7 @@ import {
   GET_ALL_PACKAGES,
   GET_ALL_CATEGORIES,
   GET_ALL_REGIONS,
+  GET_ALL_REVIEWS,
   GET_CITIES_BY_NAME,
   GET_PACKAGES_BY_NAME,
   GET_PACKAGE_BY_ID,
@@ -36,6 +37,7 @@ const initialState = {
   allCategories: [],
   allExperiences: [],
   allRegions: [],
+  allReviews:[],
   userAuth: false,
   userBasicInfo: {},
   token: "",
@@ -296,6 +298,11 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
         allRegions: action.payload,
+      };
+    case GET_ALL_REVIEWS:
+      return {
+        ...state,
+        allReviews: action.payload,
       };
     case GET_ALL_CITIES:
       return {

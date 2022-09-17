@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom"
 import { gapi } from 'gapi-script';
 import { GoogleLogin } from 'react-google-login';
+import Swal from "sweetalert2";
 
 import styles from '../User.module.css'
 import './Login.css'
@@ -54,8 +55,6 @@ export default function Login2() {
     }, []);
 
     const onSuccess = async (res) => {
-        console.log('success:', res);
-        console.log(res.profileObj.email);
         const newUser = {
             first_name: res.profileObj.givenName,
             last_name: res.profileObj.familyName,
@@ -63,9 +62,18 @@ export default function Login2() {
             photo: res.profileObj.imageUrl,
             password: res.googleId
         }
-        console.log(newUser)
-        await dispatch(googleLogin(newUser))
-        window.location.reload(false);
+        const response = await dispatch(googleLogin(newUser))
+        console.log(response)
+        const image = typeof response === "string"? "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663190222/VivaArg/Alerts/passagerAlert_1_nejegh.png" : "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663188984/VivaArg/Alerts/passagerAlert_hxpidz.png"
+        const message = typeof response === "string"? response : "User successfully logged"
+        Swal.fire({
+            title: message+"!",
+            imageUrl: image,
+            imageWidth: 350,
+            imageHeight: 300,
+            confirmButtonColor: "#C49D48",
+            imageAlt: "Custom image",
+          });
     };
 
     const onFailure = (err) => {
@@ -101,10 +109,19 @@ export default function Login2() {
             e.stopPropagation()
             errorMessagesArray.forEach(e => e.hidden = false)
         }
-        console.log(newUser)
         const response = await dispatch(getUserLogin({ email: newUser.email, password: newUser.password }))
         console.log(response)
-        window.location.reload(false);
+        const image = typeof response === "string"? "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663190222/VivaArg/Alerts/passagerAlert_1_nejegh.png" : "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663188984/VivaArg/Alerts/passagerAlert_hxpidz.png"
+        const message = typeof response === "string"? response : "User successfully logged"
+        Swal.fire({
+            title: message+"!",
+            imageUrl: image,
+            imageWidth: 350,
+            imageHeight: 300,
+            confirmButtonColor: "#C49D48",
+            imageAlt: "Custom image",
+          });
+        // window.location.reload(false);
     };
 
 
