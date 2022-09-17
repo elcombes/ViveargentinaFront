@@ -8,6 +8,7 @@ import SalesTable from '../Sales/SalesTable';
 import ExperiencesTable from '../Experiences/ExperiencesTable.jsx';
 import PackagesTable from '../Packages/PackagesTable.jsx';
 import styles from './NavBarAdmin.css';
+import ReviewsTable from '../Reviews/ReviewsTable.jsx';
 
 
 //componente Admin Dashboard - Ruta en App.js --> "/admin"  
@@ -34,7 +35,7 @@ export default function AdminDashboard() {
                                     <Route exact path='/admin/experiences' component={ExperiencesTable}/>
                                     <Route exact path='/admin/sales' component={SalesTable} />
                                     <Route exact path='/admin/users' component={UsersTable}/>
-                                    <Route exact path='/admin/reviews'/>
+                                    <Route exact path='/admin/reviews' component={ReviewsTable} />
                                 </div>
                             </div>
                         </div>
