@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import NavBarAdmin from './NavBarAdmin.jsx';
 import SideBar from './SideBar.jsx';
@@ -11,8 +12,19 @@ import styles from './NavBarAdmin.css';
 import ReviewsTable from '../Reviews/ReviewsTable.jsx';
 
 
+
 //componente Admin Dashboard - Ruta en App.js --> "/admin"  
 export default function AdminDashboard() {
+const history = useHistory();
+const admin = JSON.parse(window.localStorage.getItem('user'));
+console.log('admin', admin.user)
+
+
+    if(admin.user.administrator === false) {
+        history.push('/home')
+    }
+
+
 
     return (
         <BrowserRouter>

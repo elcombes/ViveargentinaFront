@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllReviews, deleteReview } from "../../redux/action";
 
@@ -7,13 +8,14 @@ export default function ReviewsTable() {
   const dispatch = useDispatch();
   const allReviews = useSelector((state) => state.allReviews);
   const [state, setState] = React.useState({ change: false });
+  const history = useHistory()
 
   useEffect(() => {
     dispatch(getAllReviews());
   }, []);
 
-  function handleDelete(reviewId) {
-    console.log('reviewId', reviewId)
+    async function  handleDelete(reviewId) {
+    
     if (state.change === true) {
       setState({ change: false });
       console.log(state);
@@ -22,8 +24,8 @@ export default function ReviewsTable() {
       console.log(state);
     }
     
-    dispatch(deleteReview(reviewId));
-  
+    await dispatch(deleteReview(reviewId));
+    history.go(0);
   }
 
   return (
@@ -53,7 +55,7 @@ export default function ReviewsTable() {
                   return (
                     <tbody class="table-body" key={r.id}>
                       <tr class="cell-1 vertalign">
-                        <td className="datesale" >{r.createdAt.slice(0, 9)}</td>
+                        <td className="datesale" >{r.createdAt.slice(0, 10)}</td>
                         <td>{r.date}</td>
                         <td className="text-center">{r.text}</td>
                         <td className="text-center controlbuttonsexp">
