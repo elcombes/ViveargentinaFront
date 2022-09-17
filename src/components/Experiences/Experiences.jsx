@@ -322,6 +322,7 @@ export default function Experiences(props) {
                                 className="modal modal-lg fade"
                                 id={e.name.toLowerCase().split(" ").join("")}
                                 tabindex="-1"
+                                data-bs-backdrop="static"
                                 aria-labelledby={`${e.id}label`}
                                 aria-hidden="true"
                               >
@@ -539,7 +540,36 @@ export default function Experiences(props) {
                                   </div>
                                 </div>
                               </div>
-                              {/* Fin Modal */}
+                            </div>
+
+                            {/* Footer Modal */}
+                            <div className="modal-footer">
+                              <button
+                                type="button"
+                                className="btn btn-secondary"
+                                data-bs-dismiss="modal"
+                              >
+                                Cancel
+                              </button>
+                              <button
+                                onClick={(event) => {
+                                  handleClick(event);
+                                }}
+                                type="button"
+                                className="btn btn-primary"
+                                style={{
+                                  backgroundColor: "#C49D48",
+                                  borderColor: "#C49D48",
+                                  fontSize: "1.5vh",
+                                }}
+                                data-bs-dismiss="modal"
+                              >
+                                <i
+                                  className="bi bi-cart-check"
+                                  style={{ color: "white" }}
+                                ></i>{" "}
+                                ADD TO CART!
+                              </button>
                             </div>
                           </div>
                           <div className="col-md-6 mb-5">

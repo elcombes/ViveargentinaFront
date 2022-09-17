@@ -250,6 +250,49 @@ export default function Card(props) {
                               </p>
                             </div>
 
+                        {/* Inicio Modal */}
+                        <div
+                          className="modal modal-lg fade"
+                          id={e.name.split(" ").join("")}
+                          data-bs-backdrop="static" 
+                          tabindex="-1"
+                          aria-labelledby={`${e.id}label`}
+                          aria-hidden="true"
+                        >
+                          <div className="modal-dialog">
+                            <div className="modal-content">
+                              {/* Body Modal */}
+                              <div className="modal-body">
+                                <img
+                                  className={`img-fluid ${styles.imgmodalpackages}`}
+                                  src={e.image}
+                                  alt=""
+                                  style={{
+                                    borderRadius: "8px",
+                                    boxShadow:
+                                      "0 8px 8px 0 rgba(0, 0, 0, 0.15)",
+                                  }}
+                                />
+                                <div>
+                                  <button
+                                    style={{
+                                      marginTop: "10px",
+                                      borderColor: "transparent",
+                                    }}
+                                    onClick={() => addPackagesFavorites(e.id)}
+                                  >
+                                    <i
+                                      class="bi bi-heart-fill"
+                                      style={{
+                                        fontSize: "20px",
+                                      }}
+                                    ></i>
+                                  </button>
+                                </div>
+                                <div className="mt-5">
+                                  <h2
+                                    className="modal-title"
+                                    id={`${e.id}label`}
                             <div className={`row ${styles.pricelist}`}>
                               <div className={`col-md-6 ${styles.citybuttons}`}>
                                 <ul className={styles.iconscity}>

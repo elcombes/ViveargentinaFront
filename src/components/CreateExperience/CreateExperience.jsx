@@ -182,6 +182,7 @@ export default function Experiences() {
               className="modal modal-lg fade"
               id="cexampleModal"
               tabIndex="-1"
+              data-bs-backdrop="static"
               aria-labelledby="cexampleModalLabel"
               aria-hidden="true"
             >

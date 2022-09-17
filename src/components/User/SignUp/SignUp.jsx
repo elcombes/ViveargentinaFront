@@ -114,7 +114,7 @@ export default function SignUp() {
                     {/* Fin boton para abrir el modal */}
 
                     {/* Inicio modal */}
-                    <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div className="modal fade" id="exampleModal" data-bs-backdrop="static" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div className="modal-dialog" style={{
                             borderRadius: "10px",
                             boxShadow: "0px 0px 8px 5px rgba(0, 0, 0, .4)"
