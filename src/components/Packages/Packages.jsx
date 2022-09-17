@@ -148,11 +148,19 @@ export default function Card(props) {
   const addPackagesFavorites = (packageId) => {
     let user = JSON.parse(localStorage.getItem("user"));
     let userId = user.user.id;
-
-    let heartbut = document.getElementById('heartbut');
-    heartbut.style.color = '#e91e63';
-
     dispatch(addPackageFavorite(packageId, userId));
+    Swal.fire({
+      title: "ADDED TO FAVORITES SUCCESSFULLY!",
+      text: item.name,
+      imageUrl: item.image,
+      imageWidth: 400,
+      imageHeight: 200,
+      confirmButtonColor: "#C49D48",
+      imageAlt: "Custom image",
+      showClass: {
+        popup: 'animate__animated animate__flipInY'
+      },
+    });
   };
 
   //   Fin Precart

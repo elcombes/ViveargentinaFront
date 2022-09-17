@@ -401,7 +401,8 @@ export default function Packages() {
                               marginRight: "0px",
                             }}
                             type="submit"
-                          >
+                            id="closemodal"
+                            >
                             CREATE PACKAGE
                           </button>
                         </div>

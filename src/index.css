@@ -58,16 +58,23 @@ button{
 .carousel-control-next, .carousel-control-prev {
   height: auto;
 }
-.modal-backdrop {
-  z-index: -1;
+
+.swal2-container {
+  z-index: 99999999999;
 }
-.nav__menu{
+
+/* .modal-backdrop.show {
+  display: none;
+} */
+
+/* .nav__menu{
   z-index:1;
 }
 .nav__toggler{
   z-index: 1;
 
-}
+} */
+
 form#formFilter {
 
   display: flex;

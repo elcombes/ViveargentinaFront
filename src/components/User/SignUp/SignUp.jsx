@@ -214,7 +214,7 @@ export default function SignUp() {
                                         </div>
                                         <div class="row">
                                             <div class="column">
-                                                <button className="btn btn-outline-secondary" style={{ fontSize: "15px", fontFamily: "Raleway", backgroundColor: "#C49D48", borderColor: "#C49D48", borderRadius: "5px", width: "100%" }} type="submit" >SIGN UP</button>
+                                                <button className="btn btn-outline-secondary" style={{ fontSize: "15px", fontFamily: "Raleway", backgroundColor: "#C49D48", borderColor: "#C49D48", borderRadius: "5px", width: "100%" }} type="submit"  data-bs-dismiss="modal" aria-label="Close">SIGN UP</button>
                                             </div>
                                         </div>
                                     </form>

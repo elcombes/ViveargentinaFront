@@ -169,6 +169,18 @@ export default function Experiences(props) {
     let userId = user.user.id;
 
     dispatch(addExperienceFavorite(experienceId, userId));
+    Swal.fire({
+      title: "ADDED TO FAVORITES SUCCESSFULLY!",
+      text: item.name,
+      imageUrl: item.image,
+      imageWidth: 400,
+      imageHeight: 200,
+      confirmButtonColor: "#C49D48",
+      imageAlt: "Custom image",
+      showClass: {
+        popup: 'animate__animated animate__flipInY'
+      },
+    });
   };
 
   //   Fin Precart
