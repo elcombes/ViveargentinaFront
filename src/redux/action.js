@@ -36,6 +36,45 @@ export const VERIFY_USER = "VERIFY_USER";
 export const CONTACTUS = "CONTACTUS";
 export const FILTER_SALES_STATUS = "FILTER_SALES_STATUS";
 export const GET_CART_BY_USER = "GET_CART_BY_USER";
+export const GET_ALL_SALES = "GET_ALL_SALES";
+export const GET_SALES_BY_USER = "GET_SALES_BY_USER";
+
+// Esta ruta trae un array con todas las compras de un usuario.
+export function getSalesByUser(userId) {
+  console.log(userId);
+  return async function (dispatch) {
+    let salesByUser = await axios.get(
+      `https://viveargentina.herokuapp.com/sales/${userId}`
+    );
+    return dispatch({
+      type: GET_SALES_BY_USER,
+      payload: salesByUser.data,
+    });
+  };
+}
+
+//Esta action cambia el estado de una venta de Experiencias
+export function updateSaleStatus(newStatus) {
+  return async function () {
+    let response = await axios.put(
+      "https://viveargentina.herokuapp.com/sales",
+      newStatus
+    );
+    console.log(response);
+    return;
+  };
+}
+
+// Esta ruta trae un array con todas las ventas.
+export function getAllSales() {
+  return async function (dispatch) {
+    let allSales = await axios.get(`https://viveargentina.herokuapp.com/sales`);
+    return dispatch({
+      type: GET_ALL_SALES,
+      payload: allSales.data,
+    });
+  };
+}
 
 // Esta ruta añade un una nueva compra con sus items
 export function addNewSale(userId, arrayItems) {
@@ -77,30 +116,9 @@ export function deleteReview(reviewId) {
 
 //Filtra las ventas por Status
 export function filterSalesStatus(payload) {
-  console.log("payload en action", payload);
   return {
     type: FILTER_SALES_STATUS,
     payload,
-  };
-}
-
-//Esta action cambia el estado de una venta de Experiencias
-export function putExperiencesStatus(status) {
-  return async function (dispatch) {
-    await axios.put(
-      "https://viveargentina.herokuapp.com/bought/experiences",
-      status
-    );
-  };
-}
-
-//Esta action cambia el estado de una venta de Paquetes
-export function putPackagesStatus(status) {
-  return async function (dispatch) {
-    await axios.put(
-      "https://viveargentina.herokuapp.com/bought/packages",
-      status
-    );
   };
 }
 
