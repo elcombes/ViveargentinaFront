@@ -25,9 +25,11 @@ import {
   GET_USER_BY_ID,
   GET_ALL_USERS,
   FILTER_SALES_STATUS,
+  GET_CART_BY_USER,
 } from "./action";
 
 const initialState = {
+  cartByUser: [],
   boughtUsers: [],
   allUsers: [],
   userById: {},
@@ -56,6 +58,11 @@ export default function rootReducer(state = initialState, action) {
   let userExperiencesFavorite;
   let userPackagesFavorite;
   switch (action.type) {
+    case GET_CART_BY_USER:
+      return {
+        ...state,
+        cartByUser: action.payload,
+      };
     case GET_ALL_USERS:
       const boughtUsers = action.payload.filter((u) => {
         return u.experiences.length >= 1 || u.packages.length >= 1;

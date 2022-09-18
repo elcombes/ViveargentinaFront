@@ -1,12 +1,12 @@
 import Dropdown from "react-bootstrap/Dropdown";
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ItemCart from "./ItemCart";
 import MercadoPago from "./MercadoPago";
 import {
   buyInMercadoPago,
-  addExperienceBought,
-  addPackageBought,
+  addNewSale,
+  getCartByUser,
 } from "./../../redux/action.js";
 import styles from "./Cart.module.css";
 
@@ -14,11 +14,34 @@ import Button from "react-bootstrap/Button";
 import Overlay from "react-bootstrap/Overlay";
 import Popover from "react-bootstrap/Popover";
 
+const makeCart = async (itemsFromStore, cartByUser) => {
+  let user = JSON.parse(localStorage.getItem("user"));
+  if (user.user) {
+    let userId = user.user.id;
+    await dispatch(getCartByUser(userId));
+    itemsFromStore = JSON.parse(localStorage.getItem("items"));
+    for (let i = 0; i < itemsFromStore.length; i++) {
+      for (let j = 0; i < cartByUser.length; i++) {
+        if (
+          itemsFromStore[i].packageId === cartByUser[j].packageId ||
+          itemsFromStore[i].experienceId === cartByUser[j].experienceId
+        ) {
+          return;
+        }
+      }
+      itemsFromStore.push();
+    }
+  } else {
+    itemsFromStore = JSON.parse(localStorage.getItem("items"));
+  }
+};
+
 export default function Cart() {
   // Para limpiar todo el localStorage
   // localStorage.clear();
 
   let totalcart = 0;
+  const cartByUser = useSelector((state) => state.cartByUser);
   const [state, setState] = useState(true);
   const [buy, setBuy] = useState(false);
 
@@ -59,13 +82,7 @@ export default function Cart() {
     let userId = user.user.id;
     itemsFromStore = JSON.parse(localStorage.getItem("items"));
 
-    itemsFromStore.forEach((i) => {
-      if (i.tipe === "package") {
-        dispatch(addPackageBought(userId, i));
-      } else if (i.tipe === "experience") {
-        dispatch(addExperienceBought(userId, i));
-      }
-    });
+    dispatch(addNewSale(userId, itemsFromStore));
     dispatch(buyInMercadoPago(itemsFromStore));
   }
 

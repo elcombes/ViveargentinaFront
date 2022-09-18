@@ -35,6 +35,20 @@ export const BUY_IN_MERCADOPAGO = "BUY_IN_MERCADOPAGO";
 export const VERIFY_USER = "VERIFY_USER";
 export const CONTACTUS = "CONTACTUS";
 export const FILTER_SALES_STATUS = "FILTER_SALES_STATUS";
+export const GET_CART_BY_USER = "GET_CART_BY_USER";
+
+// Esta ruta trae el carrito de un usuario por ID
+export function getCartByUser(userId) {
+  return async function (dispatch) {
+    let cartByUser = await axios.get(
+      `https://viveargentina.herokuapp.com/cart/${userId}`
+    );
+    return dispatch({
+      type: GET_CART_BY_USER,
+      payload: cartByUser.data,
+    });
+  };
+}
 
 export function deleteReview(reviewId) {
   return async function () {
@@ -86,8 +100,8 @@ export function getAllUsers() {
 }
 
 // Esta ruta trae un array con todas las reviews.
+
 export function getAllReviews() {
-  
   return async function (dispatch) {
     let allReviews = await axios.get(
       `https://viveargentina.herokuapp.com/reviews`
@@ -277,28 +291,13 @@ export function removeExperienceFavorite(experienceId, userId) {
   };
 }
 
-// Esta ruta añade un paquete a comprados del usuario
-export function addPackageBought(userId, package1) {
+// Esta ruta añade un una nueva compra con sus items
+export function addNewSale(userId, arrayItems) {
   return async function () {
     try {
       let response = await axios.post(
-        `http://viveargentina.herokuapp.com/bought/packages?userId=${userId}`,
-        package1
-      );
-      return console.log(response.data);
-    } catch (e) {
-      console.log(e);
-    }
-  };
-}
-
-// Esta ruta añade una experiencia a comprados del usuario
-export function addExperienceBought(userId, experience) {
-  return async function () {
-    try {
-      let response = await axios.post(
-        `http://viveargentina.herokuapp.com/bought/experiences?userId=${userId}`,
-        experience
+        `http://viveargentina.herokuapp.com/sales?userId=${userId}`,
+        arrayItems
       );
       return console.log(response.data);
     } catch (e) {
