@@ -71,8 +71,7 @@ export default function Packages() {
       image: "",
       duration: "",
       dates: "",
-      categoryId: "",
-      packageId: "",
+      cityId: "",
     })
     setErrors(validate({
       name: "",
@@ -82,12 +81,12 @@ export default function Packages() {
       image: "",
       duration: "",
       dates: "",
-      categoryId: "",
-      packageId: "",
+      cityId: "",
     }));
     let errorMessagesNodeList = document.querySelectorAll("#errors");
     let errorMessagesArray = Array.from(errorMessagesNodeList);
     errorMessagesArray.forEach((e) => {return (e.hidden = true)});
+    document.getElementById('select').value = 'select'
   }
 
   useEffect(() => {
@@ -376,17 +375,18 @@ export default function Packages() {
                           <select
                             onChange={(e) => handleChange(e)}
                             name="cityId"
+                            id="select"
                             // value={newPackage.packageId}
                             class="form-select form-select-lg mb-3"
                           >
-                            <option selected>SELECT A CITY</option>
+                            <option value='select' disabled selected>Select a City</option>
                             {allCities?.map((e) => {
                               return <option value={e.id}>{e.name}</option>;
                             })}
                           </select>
-                          {errors.packageId ? (
+                          {errors.cityId ? (
                             <p id="errors" hidden>
-                              {errors.packageId}
+                              {errors.cityId}
                             </p>
                           ) : (
                             <p className="validMessage">Looks Good!</p>

@@ -93,7 +93,8 @@ function clearState() {
   let errorMessagesNodeList = document.querySelectorAll("#errors");
   let errorMessagesArray = Array.from(errorMessagesNodeList);
   errorMessagesArray.forEach((e) => {return (e.hidden = true)});
-  console.log(errorMessagesArray)
+  document.getElementById('select1').value = 'select'
+  document.getElementById('select2').value = 'select'
 
 }
 
@@ -404,12 +405,13 @@ function clearState() {
                       <div class="row">
                         <div class="col-md-6">
                           <select
+                            id="select1"
                             onChange={(e) => handleChange(e)}
                             name="packageId"
                             // value={newExperience.packageId}
                             class="form-select form-select-lg mb-3"
                           >
-                            <option selected>Select a Package</option>
+                            <option value='select' disabled selected>Select a Package</option>
                             {allPackages?.map(e => {
                               return <option value={e.id}>{e.name}</option>
 
@@ -427,10 +429,11 @@ function clearState() {
                           <select
                             onChange={(e) => handleChange(e)}
                             name="categoryId"
+                            id="select2"
                             // value={newExperience.categoryId}
                             class="form-select form-select-lg mb-3"
                           >
-                            <option selected>Select a Category</option>
+                            <option value='select' disabled selected>Select a Category</option>
                             {allCategories?.map(e => {
                               return <option value={e.id}>{e.name}</option>
 
