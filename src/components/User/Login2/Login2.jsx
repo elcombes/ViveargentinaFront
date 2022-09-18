@@ -124,9 +124,9 @@ export default function Login2() {
     const image = typeof response === "string" ? "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663190222/VivaArg/Alerts/passagerAlert_1_nejegh.png" : "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663188984/VivaArg/Alerts/passagerAlert_hxpidz.png"
     const message = typeof response === "string" ? response : "User successfully logged"
     const user = JSON.parse(window.localStorage.getItem('user'))
-    console.log('user', user.user)
+    console.log('user', user?.user)
 
-    if (user.user.administrator) {
+    if (user?.user.administrator) {
       history.push('/admin')
     }
 

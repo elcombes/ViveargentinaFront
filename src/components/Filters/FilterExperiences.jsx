@@ -1,10 +1,8 @@
-
 import React, { Fragment } from 'react';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './Filter.module.css'
-import { getAllExperiences, getAllPackages, getAllCategories, filterExperiences, orderExperiences } from '../../redux/action';
-
+import { getAllPackages, getAllCategories, filterExperiences } from '../../redux/action';
 
 export default function FilterExperiencies({ handleOrder }) {
 
@@ -15,17 +13,12 @@ export default function FilterExperiencies({ handleOrder }) {
         selectedCategory: false
     })
 
-
-
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getAllPackages())
         dispatch(getAllCategories())
     }, [dispatch]);
-
-
-
 
     function handleFilterByCategory(e) {
         if (e.target.value === 'all') {
