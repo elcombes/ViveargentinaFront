@@ -185,6 +185,7 @@ export default function Experiences(props) {
   //   Fin Precart
 
   function handleOrder(e) {
+    setPage(1)
     setOrder(e.target.value);
     console.log(Order);
     dispatch(orderExperiences(e.target.value));
@@ -210,7 +211,7 @@ export default function Experiences(props) {
           {userAuth === false ? <NavBar /> : <NavBarUser />}
           <SearchBar setPage={setPage} />
           <div>
-            <FilterExperiences handleOrder={handleOrder} />
+            <FilterExperiences setPage={setPage} handleOrder={handleOrder} />
           </div>
           <Paged
             experiencesPage={experiencesPage}

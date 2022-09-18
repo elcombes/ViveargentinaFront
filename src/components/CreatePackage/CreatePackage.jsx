@@ -62,6 +62,33 @@ export default function Packages() {
   });
   const [errors, setErrors] = useState({});
 
+  function clearState() {
+    setNewPackage({
+      name: "",
+      subTitle: "",
+      price: 0,
+      description: "",
+      image: "",
+      duration: "",
+      dates: "",
+      cityId: "",
+    })
+    setErrors(validate({
+      name: "",
+      subTitle: "",
+      price: 0,
+      description: "",
+      image: "",
+      duration: "",
+      dates: "",
+      cityId: "",
+    }));
+    let errorMessagesNodeList = document.querySelectorAll("#errors");
+    let errorMessagesArray = Array.from(errorMessagesNodeList);
+    errorMessagesArray.forEach((e) => {return (e.hidden = true)});
+    document.getElementById('select').value = 'select'
+  }
+
   useEffect(() => {
     dispatch(getAllCities());
     setErrors(validate(newPackage));
@@ -165,7 +192,7 @@ export default function Packages() {
                     <h5 className="modal-title" id="cexampleModalLabel">
                       CREATE A NEW PACKAGE
                     </h5>
-                    <button
+                    <button onClick={() => clearState()}
                       type="button"
                       className="btn-close"
                       data-bs-dismiss="modal"
@@ -348,17 +375,18 @@ export default function Packages() {
                           <select
                             onChange={(e) => handleChange(e)}
                             name="cityId"
+                            id="select"
                             // value={newPackage.packageId}
                             class="form-select form-select-lg mb-3"
                           >
-                            <option selected>SELECT A CITY</option>
+                            <option value='select' disabled selected>Select a City</option>
                             {allCities?.map((e) => {
                               return <option value={e.id}>{e.name}</option>;
                             })}
                           </select>
-                          {errors.packageId ? (
+                          {errors.cityId ? (
                             <p id="errors" hidden>
-                              {errors.packageId}
+                              {errors.cityId}
                             </p>
                           ) : (
                             <p className="validMessage">Looks Good!</p>

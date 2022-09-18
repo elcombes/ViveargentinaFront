@@ -21,7 +21,7 @@ export default function NavBarAdmin() {
                             <img className='nav-item-img'src={user.photo} alt="" />
                         </div>
                         <div className="collapse navbar-collapse">
-                            <span className='nav-item'> {user.first_name} {user.last_name} DASHBBOARD</span>
+                            <span className='nav-item'> {user.first_name} {user.last_name} DASHBOARD</span>
                         </div>
                     </nav>
                 </div>
