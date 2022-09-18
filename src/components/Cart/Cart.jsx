@@ -3,11 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import ItemCart from "./ItemCart";
 import MercadoPago from "./MercadoPago";
-import {
-  buyInMercadoPago,
-  addExperienceBought,
-  addPackageBought,
-} from "./../../redux/action.js";
+import { buyInMercadoPago, addNewSale } from "./../../redux/action.js";
 import styles from "./Cart.module.css";
 
 import Button from "react-bootstrap/Button";
@@ -59,14 +55,8 @@ export default function Cart() {
     let userId = user.user.id;
     itemsFromStore = JSON.parse(localStorage.getItem("items"));
 
-    itemsFromStore.forEach((i) => {
-      if (i.tipe === "package") {
-        dispatch(addPackageBought(userId, i));
-      } else if (i.tipe === "experience") {
-        dispatch(addExperienceBought(userId, i));
-      }
-    });
-    dispatch(buyInMercadoPago(itemsFromStore));
+    dispatch(addNewSale(userId, itemsFromStore));
+    // dispatch(buyInMercadoPago(itemsFromStore));
   }
 
   if (!itemsFromStore || itemsFromStore.length === 0) {

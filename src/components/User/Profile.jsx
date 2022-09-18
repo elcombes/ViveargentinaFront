@@ -40,14 +40,14 @@ export default function Profile() {
         }}
       >
         <div className="container py-5 h-50">
-        <div style={{float:"inline-start", botton:"0"}}>
-        <Link to="/home">
-          <button  className="btn btn-outline-secondary">
-            {" "}
-            <a href="#myfavs"> HOME</a>
-          </button>
-        </Link>
-        </div>
+          <div style={{ float: "inline-start", botton: "0" }}>
+            <Link to="/home">
+              <button className="btn btn-outline-secondary">
+                {" "}
+                <a href="#myfavs"> HOME</a>
+              </button>
+            </Link>
+          </div>
           <div className="row d-flex justify-content-center align-items-center h-90">
             <div className="col col-lg-5 mb-4 mb-lg-0">
               <div
@@ -172,10 +172,7 @@ export default function Profile() {
       </section>
 
       <div id="mytrips">
-        <MyTrips
-          packages={userById.packages}
-          experiences={userById.experiences}
-        />
+        <MyTrips />
       </div>
 
       <div id="myfavs">
