@@ -185,6 +185,7 @@ export default function Experiences(props) {
   //   Fin Precart
 
   function handleOrder(e) {
+    setPage(1)
     setOrder(e.target.value);
     console.log(Order);
     dispatch(orderExperiences(e.target.value));
