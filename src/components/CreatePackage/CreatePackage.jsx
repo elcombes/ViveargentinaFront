@@ -62,6 +62,34 @@ export default function Packages() {
   });
   const [errors, setErrors] = useState({});
 
+  function clearState() {
+    setNewPackage({
+      name: "",
+      subTitle: "",
+      price: 0,
+      description: "",
+      image: "",
+      duration: "",
+      dates: "",
+      categoryId: "",
+      packageId: "",
+    })
+    setErrors(validate({
+      name: "",
+      subTitle: "",
+      price: 0,
+      description: "",
+      image: "",
+      duration: "",
+      dates: "",
+      categoryId: "",
+      packageId: "",
+    }));
+    let errorMessagesNodeList = document.querySelectorAll("#errors");
+    let errorMessagesArray = Array.from(errorMessagesNodeList);
+    errorMessagesArray.forEach((e) => {return (e.hidden = true)});
+  }
+
   useEffect(() => {
     dispatch(getAllCities());
     setErrors(validate(newPackage));
@@ -165,7 +193,7 @@ export default function Packages() {
                     <h5 className="modal-title" id="cexampleModalLabel">
                       CREATE A NEW PACKAGE
                     </h5>
-                    <button
+                    <button onClick={() => clearState()}
                       type="button"
                       className="btn-close"
                       data-bs-dismiss="modal"
