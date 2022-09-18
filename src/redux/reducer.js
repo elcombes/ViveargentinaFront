@@ -29,7 +29,6 @@ import {
 } from "./action";
 
 const initialState = {
-  cartByUser: [],
   boughtUsers: [],
   allUsers: [],
   userById: {},
@@ -57,12 +56,28 @@ export default function rootReducer(state = initialState, action) {
   let userPackagesBought;
   let userExperiencesFavorite;
   let userPackagesFavorite;
+
   switch (action.type) {
     case GET_CART_BY_USER:
-      return {
-        ...state,
-        cartByUser: action.payload,
-      };
+      let itemsFromDb = action.payload;
+      if (itemsFromDb === "There is no cart to this user") {
+        return;
+      } else {
+        itemsFromStore = JSON.parse(localStorage.getItem("items"));
+
+        for (let i = 0; i < itemsFromStore.length; i++) {
+          let repeatedItem = itemsFromDb.find((i) => {
+            i.name === itemsFromStore[i].name;
+          });
+          cartByUser = cartByUser.filter((i) => {
+            i.name !== repeatedItem.name;
+          });
+        }
+        itemsFromStore = itemsFromStore.concat(itemsFromDb);
+        localStorage.setItem("items", JSON.stringify(itemsFromStore));
+        return;
+      }
+
     case GET_ALL_USERS:
       const boughtUsers = action.payload.filter((u) => {
         return u.experiences.length >= 1 || u.packages.length >= 1;
