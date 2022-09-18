@@ -6,6 +6,7 @@ import {
   updateSaleStatus,
 } from "../../redux/action";
 import "./SalesTable.css";
+import MyTripDetail from "./../User/MyTripDetail";
 
 export default function SalesTable() {
   const dispatch = useDispatch();
@@ -78,7 +79,13 @@ export default function SalesTable() {
                           <td className="datesale">
                             {s.createdAt.slice(0, 9)}
                           </td>
-                          <td>Detail</td>
+                          <td>
+                            <MyTripDetail
+                              packages={s.packages}
+                              experiences={s.experiences}
+                              saleId={s.id}
+                            />
+                          </td>
                           <td className="text-center">{s.total}</td>
                           <td className="text-center paymentstyle">
                             {s.status.toUpperCase()}

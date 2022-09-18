@@ -56,7 +56,7 @@ export default function Cart() {
     itemsFromStore = JSON.parse(localStorage.getItem("items"));
 
     dispatch(addNewSale(userId, itemsFromStore));
-    // dispatch(buyInMercadoPago(itemsFromStore));
+    dispatch(buyInMercadoPago(itemsFromStore));
   }
 
   if (!itemsFromStore || itemsFromStore.length === 0) {
