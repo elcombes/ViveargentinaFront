@@ -43,7 +43,7 @@ export default function Card(props) {
       name,
       price,
       image,
-      tipe: "package",
+      type: "package",
     });
   };
 
@@ -54,7 +54,7 @@ export default function Card(props) {
       name: name,
       image: image,
       price: price,
-      tipe: "package",
+      type: "package",
     });
   };
 
@@ -126,7 +126,7 @@ export default function Card(props) {
         dates: "",
         image: "",
         packageId: "",
-        tipe: "package",
+        type: "package",
       });
       return Swal.fire({
         title: "ADDED TO CART SUCCESSFULLY!",

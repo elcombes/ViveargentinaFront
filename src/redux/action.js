@@ -37,6 +37,22 @@ export const CONTACTUS = "CONTACTUS";
 export const FILTER_SALES_STATUS = "FILTER_SALES_STATUS";
 export const GET_CART_BY_USER = "GET_CART_BY_USER";
 
+// Esta ruta añade un una nueva compra con sus items
+export function addNewSale(userId, arrayItems) {
+  console.log(arrayItems);
+  return async function () {
+    try {
+      let response = await axios.post(
+        `http://viveargentina.herokuapp.com/sales?userId=${userId}`,
+        arrayItems
+      );
+      return console.log(response.data);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+}
+
 // Esta ruta trae el carrito de un usuario por ID
 export function getCartByUser(userId) {
   return async function (dispatch) {
@@ -288,21 +304,6 @@ export function removeExperienceFavorite(experienceId, userId) {
       `https://viveargentina.herokuapp.com/favorites/experiences?userId=${userId}&experienceId=${experienceId}`
     );
     console.log(response);
-  };
-}
-
-// Esta ruta añade un una nueva compra con sus items
-export function addNewSale(userId, arrayItems) {
-  return async function () {
-    try {
-      let response = await axios.post(
-        `http://viveargentina.herokuapp.com/sales?userId=${userId}`,
-        arrayItems
-      );
-      return console.log(response.data);
-    } catch (e) {
-      console.log(e);
-    }
   };
 }
 

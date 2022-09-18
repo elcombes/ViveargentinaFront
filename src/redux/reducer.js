@@ -63,14 +63,14 @@ export default function rootReducer(state = initialState, action) {
       if (itemsFromDb === "There is no cart to this user") {
         return;
       } else {
-        itemsFromStore = JSON.parse(localStorage.getItem("items"));
+        let itemsFromStore = JSON.parse(localStorage.getItem("items"));
 
         for (let i = 0; i < itemsFromStore.length; i++) {
           let repeatedItem = itemsFromDb.find((i) => {
-            i.name === itemsFromStore[i].name;
+            return i.name === itemsFromStore[i].name;
           });
-          cartByUser = cartByUser.filter((i) => {
-            i.name !== repeatedItem.name;
+          itemsFromDb = itemsFromDb.filter((i) => {
+            return i.name !== repeatedItem.name;
           });
         }
         itemsFromStore = itemsFromStore.concat(itemsFromDb);

@@ -72,7 +72,7 @@ export default function Experiences(props) {
       name: name,
       image: image,
       price: price,
-      tipe: "experience",
+      type: "experience",
     });
   };
 
@@ -145,7 +145,7 @@ export default function Experiences(props) {
         dates: "",
         image: "",
         experienceId: "",
-        tipe: "experience",
+        type: "experience",
       });
       return Swal.fire({
         title: "ADDED TO CART SUCCESSFULLY!",
@@ -184,7 +184,7 @@ export default function Experiences(props) {
   //   Fin Precart
 
   function handleOrder(e) {
-    setPage(1)
+    setPage(1);
     setOrder(e.target.value);
     console.log(Order);
     dispatch(orderExperiences(e.target.value));
