@@ -27,39 +27,28 @@ function Navbar() {
         </a>
         <ul className={active}>
           <li className="nav__item">
-            <a href="/home" className="nav__link">
-              HOME
-            </a>
+            <a href="/home" className="nav__link">HOME</a>
           </li>
           <li className="nav__item">
-            <a href="/cities" className="nav__link">
-              CITIES
-            </a>
+            <a href="/cities" className="nav__link">CITIES</a>
           </li>
           <li className="nav__item">
-            <a href="/packages" className="nav__link">
-              PACKAGES
-            </a>
+            <a href="/packages" className="nav__link">PACKAGES</a>
           </li>
           <li className="nav__item">
-            <a href="/experiences" className="nav__link">
-              EXPERIENCES
-            </a>
+            <a href="/experiences" className="nav__link">EXPERIENCES</a>
           </li>
           <li className="nav__item">
-            <a href="/contact_us" className="nav__link">
-              CONTACT 
-            </a>
+            <a href="/contact_us" className="nav__link">CONTACT</a>
           </li>
           <li>
             <SignUp/>
           </li>
           <li>
-
             <Login2 />
           </li>
-          <li>
-          <a class="btn btn-outline-secondary btn-lg" style={{ borderColor: "#c49d48e3", borderRadius: "2vh" }}href="/home#reviews"><i class="bi bi-pencil"></i></a>
+          <li class="nav-item active">
+            <a class="nav-link" href="" style={{ width: "90px", borderColor: "#C49D48", color: "#C49D48", fontSize: "15px", textAlign:"center" }}>MY TRIPS</a>
           </li>
           <li>
             <Cart/>

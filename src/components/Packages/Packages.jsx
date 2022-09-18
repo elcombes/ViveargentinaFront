@@ -148,8 +148,19 @@ export default function Card(props) {
   const addPackagesFavorites = (packageId) => {
     let user = JSON.parse(localStorage.getItem("user"));
     let userId = user.user.id;
-
     dispatch(addPackageFavorite(packageId, userId));
+    Swal.fire({
+      title: "ADDED TO FAVORITES SUCCESSFULLY!",
+      text: item.name,
+      imageUrl: item.image,
+      imageWidth: 400,
+      imageHeight: 200,
+      confirmButtonColor: "#C49D48",
+      imageAlt: "Custom image",
+      showClass: {
+        popup: 'animate__animated animate__flipInY'
+      },
+    });
   };
 
   //   Fin Precart
@@ -176,6 +187,8 @@ export default function Card(props) {
     }
     setData(aux)
   }, [dispatch]);
+
+  const btn = document.getElementById('btn');
 
   return (
     <Fragment>
@@ -321,7 +334,7 @@ export default function Card(props) {
                                 <div
                                   className="modal modal-lg fade"
                                   id={e.name.split(" ").join("")}
-                                  data-bs-backdrop="static"
+                                  
                                   tabindex="-1"
                                   aria-labelledby={`${e.id}label`}
                                   aria-hidden="true"
@@ -341,22 +354,12 @@ export default function Card(props) {
                                           }}
                                         />
                                         <div>
-                                          <button
-                                            style={{
-                                              marginTop: "10px",
-                                              borderColor: "transparent",
-                                            }}
-                                            onClick={() => addPackagesFavorites(e.id)}
-                                          >
-                                            <i
-                                              class="bi bi-heart-fill"
-                                              style={{
-                                                fontSize: "20px",
-                                              }}
-                                            ></i>
-                                          </button>
+                                          <button style={{ marginTop: "10px", borderColor: "transparent", }}
+                                            onClick={() => addPackagesFavorites(e.id)} >
+                                            <i id="heartbut" className="bi bi-heart-fill" style={{ fontSize: "20px" }}></i>
+                                          </button> <div id="textfav"></div>
                                         </div>
-                                        <div className="mt-5">
+                                        <div className="mt-1">
                                           <h2
                                             className="modal-title"
                                             id={`${e.id}label`}

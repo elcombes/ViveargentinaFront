@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllReviews, deleteReview } from "../../redux/action";
+import "../User/UsersTable.css";
 
 
 export default function ReviewsTable() {
@@ -14,8 +15,8 @@ export default function ReviewsTable() {
     dispatch(getAllReviews());
   }, []);
 
-    async function  handleDelete(reviewId) {
-    
+  async function handleDelete(reviewId) {
+
     if (state.change === true) {
       setState({ change: false });
       console.log(state);
@@ -23,7 +24,7 @@ export default function ReviewsTable() {
       setState({ change: true });
       console.log(state);
     }
-    
+
     await dispatch(deleteReview(reviewId));
     history.go(0);
   }
@@ -35,7 +36,7 @@ export default function ReviewsTable() {
           <div class="rounded">
             <div class="table-responsive table-borderless">
               <div class="table-create">
-                
+
               </div>
               <br />
               <table class="table table-bordered">
@@ -59,7 +60,7 @@ export default function ReviewsTable() {
                         <td>{r.date}</td>
                         <td className="text-center">{r.text}</td>
                         <td className="text-center controlbuttonsexp">
-                          <button className="btn btn-outline-secondary" onClick={()=> handleDelete(r.id)}>
+                          <button className="btn btn-outline-secondary" onClick={() => handleDelete(r.id)}>
                             <span class="bi bi-sign-stop-fill"></span>
                           </button>
                         </td>

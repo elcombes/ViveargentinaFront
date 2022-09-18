@@ -1,6 +1,6 @@
 .navbar {
     position: fixed;
-    z-index: 99999;
+    /* z-index: 99999; */
 }
 .nav-item {
     width: 100%;
