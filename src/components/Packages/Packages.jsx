@@ -71,7 +71,7 @@ export default function Card(props) {
         confirmButtonColor: "#C49D48",
         imageAlt: "Custom image",
         showClass: {
-          popup: 'animate__animated animate__flipInY'
+          popup: 'animate_animated animate_flipInY'
         },
       });
     }
@@ -84,7 +84,7 @@ export default function Card(props) {
         imageHeight: 300,
         confirmButtonColor: "#C49D48",
         showClass: {
-          popup: 'animate__animated animate__flipInY'
+          popup: 'animate_animated animate_flipInY'
         },
         imageAlt: "Custom image",
         
@@ -109,7 +109,7 @@ export default function Card(props) {
         confirmButtonColor: "#C49D48",
         imageAlt: "Custom image", 
         showClass: {
-          popup: 'animate__animated animate__flipInY'
+          popup: 'animate_animated animate_flipInY'
         },
       });
     }
@@ -140,7 +140,7 @@ export default function Card(props) {
         confirmButtonColor: "#C49D48",
         imageAlt: "Custom image",
         showClass: {
-          popup: 'animate__animated animate__flipInY'
+          popup: 'animate_animated animate_flipInY'
         },
       });
     }
@@ -334,6 +334,7 @@ export default function Card(props) {
                                 <div
                                   className="modal modal-lg fade"
                                   id={e.name.split(" ").join("")}
+                                  
                                   tabindex="-1"
                                   aria-labelledby={`${e.id}label`}
                                   aria-hidden="true"

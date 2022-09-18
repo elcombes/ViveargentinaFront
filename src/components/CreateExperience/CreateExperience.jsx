@@ -3,11 +3,8 @@ import styles from "../CreateExperience/CreateExperience.module.css";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Axios from 'axios';
-import {Image} from 'cloudinary-react'
-import Button from "react-bootstrap/Button";
-import Col from "react-bootstrap/Col";
-import Form from "react-bootstrap/Form";
-import Row from "react-bootstrap/Row";
+import Swal from "sweetalert2";
+
 import { useHistory } from "react-router-dom";
 import {
   createNewExperience,
@@ -106,12 +103,34 @@ export default function Experiences() {
     e.preventDefault()
     let errorMessagesNodeList = document.querySelectorAll("#errors")
     let errorMessagesArray = Array.from(errorMessagesNodeList)
+
     if (Object.entries(errors).length > 0) {
       e.preventDefault();
       e.stopPropagation();
       errorMessagesArray.forEach((e) => (e.hidden = false));
     } else {
       dispatch(createNewExperience(newExperience));
+      setNewExperience({
+        name: "",
+        subTitle: "",
+        price: 0,
+        description: "",
+        image: "",
+        duration: "",
+        dates: "",
+        categoryId: "",
+        packageId: "",
+      })
+      setTimeout(() => {
+        return Swal.fire({
+          title: "NEW EXPERIENCE CREATED!",
+          confirmButtonColor: "#C49D48",
+          showClass: {
+            popup: 'animate__animated animate__flipInY'
+          },
+        });  
+      }, 500);
+      
     }
   };
 
@@ -163,6 +182,7 @@ export default function Experiences() {
               className="modal modal-lg fade"
               id="cexampleModal"
               tabIndex="-1"
+              data-bs-backdrop="static"
               aria-labelledby="cexampleModalLabel"
               aria-hidden="true"
             >
@@ -431,6 +451,7 @@ export default function Experiences() {
                               marginTop: "8px",
                               marginRight: "0px",
                             }}
+                            data-bs-dismiss="modal"
                             type="submit"
                           >
                             Create Experience

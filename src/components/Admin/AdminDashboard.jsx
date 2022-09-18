@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import NavBarAdmin from './NavBarAdmin.jsx';
 import SideBar from './SideBar.jsx';
@@ -8,10 +9,22 @@ import SalesTable from '../Sales/SalesTable';
 import ExperiencesTable from '../Experiences/ExperiencesTable.jsx';
 import PackagesTable from '../Packages/PackagesTable.jsx';
 import styles from './NavBarAdmin.css';
+import ReviewsTable from '../Reviews/ReviewsTable.jsx';
+
 
 
 //componente Admin Dashboard - Ruta en App.js --> "/admin"  
 export default function AdminDashboard() {
+const history = useHistory();
+const admin = JSON.parse(window.localStorage.getItem('user'));
+console.log('admin', admin.user)
+
+
+    if(admin.user.administrator === false) {
+        history.push('/home')
+    }
+
+
 
     return (
         <BrowserRouter>
@@ -34,7 +47,7 @@ export default function AdminDashboard() {
                                     <Route exact path='/admin/experiences' component={ExperiencesTable}/>
                                     <Route exact path='/admin/sales' component={SalesTable} />
                                     <Route exact path='/admin/users' component={UsersTable}/>
-                                    <Route exact path='/admin/reviews'/>
+                                    <Route exact path='/admin/reviews' component={ReviewsTable} />
                                 </div>
                             </div>
                         </div>

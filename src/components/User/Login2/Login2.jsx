@@ -66,6 +66,14 @@ export default function Login2() {
     console.log(response)
     const image = typeof response === "string" ? "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663190222/VivaArg/Alerts/passagerAlert_1_nejegh.png" : "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663188984/VivaArg/Alerts/passagerAlert_hxpidz.png"
     const message = typeof response === "string" ? response : "User successfully logged"
+
+    const user = JSON.parse(window.localStorage.getItem('user'))
+
+
+    if (user.user.administrator) {
+      history.push('/admin')
+    }
+
     Swal.fire({
       title: message + "!",
       imageUrl: image,
@@ -76,6 +84,7 @@ export default function Login2() {
     });
 
   };
+
 
   const onFailure = (err) => {
     console.log('failed:', err);
@@ -110,11 +119,17 @@ export default function Login2() {
       e.stopPropagation()
       errorMessagesArray.forEach(e => e.hidden = false)
     }
-    
     const response = await dispatch(getUserLogin({ email: newUser.email, password: newUser.password }))
 
     const image = typeof response === "string" ? "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663190222/VivaArg/Alerts/passagerAlert_1_nejegh.png" : "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663188984/VivaArg/Alerts/passagerAlert_hxpidz.png"
     const message = typeof response === "string" ? response : "User successfully logged"
+    const user = JSON.parse(window.localStorage.getItem('user'))
+    console.log('user', user.user)
+
+    if (user.user.administrator) {
+      history.push('/admin')
+    }
+
     Swal.fire({
       title: message + "!",
       imageUrl: image,
@@ -122,118 +137,111 @@ export default function Login2() {
       imageHeight: 300,
       confirmButtonColor: "#C49D48",
       imageAlt: "Custom image",
-      target: document.getElementById('form-modal')
+      
     });
-    
     // window.location.reload(false);
   };
 
 
 
-
   return (
-    
-      
-        <div>
 
-          {/* Inicio boton para abrir el modal */}
-          <div>
-            <button
-              type="button"
-              className={`btn btn-outline-secondary btn-lg ${styles.registerbutton}`}
-              data-bs-toggle="modal"
-              data-bs-target="#loginModal">
-              Log In <i class="bi bi-person-lines-fill"></i>
-            </button>
-          </div>
-          {/* Fin boton para abrir el modal */}
 
-          {/* Inicio modal */}
-          <div
-            className="modal fade"
-            id="loginModal"
-            tabIndex="-1"
-            aria-labelledby="loginModalLabel"
-            aria-hidden="true"
-          >
-            <div className="modal-dialog">
-              <div className="modal-content" style={{
-                borderRadius: "10px",
-                boxShadow: "0px 0px 8px 5px rgba(0, 0, 0, .4)"
-              }}>
+    <div>
 
-                <div style={{ background: "white" }} className="modal-header">
-                  <h5 style={{ fontSize: "15px", color: "#C49D48" }} className="modal-title" id="exampleModalLabel">Hello! To continue, enter your email and password</h5>
-                  <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      {/* Inicio boton para abrir el modal */}
+      <div>
+        <button
+          type="button"
+          className={`btn btn-outline-secondary btn-lg ${styles.registerbutton}`}
+          data-bs-toggle="modal"
+          data-bs-target="#loginModal">
+          Log In <i class="bi bi-person-lines-fill"></i>
+        </button>
+      </div>
+      {/* Fin boton para abrir el modal */}
+
+      {/* Inicio modal */}
+      <div className="modal fade" id="loginModal" aria-labelledby="loginModalLabel" aria-hidden="true">
+
+        <div className="modal-dialog">
+          <div className="modal-content" style={{
+            borderRadius: "10px",
+            boxShadow: "0px 0px 8px 5px rgba(0, 0, 0, .4)"
+          }}>
+
+            <div style={{ background: "white" }} className="modal-header">
+              <h5 style={{ fontSize: "15px", color: "#C49D48" }} className="modal-title" id="exampleModalLabel">Hello! To continue, enter your email and password</h5>
+              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div className="modal-body">
+              <form class="row g-3" onSubmit={(e) => handleSubmit(e)}>
+                <div class="row">
+                  <div class="col">
+                    <label className="infoLabel"> <i class="bi bi-envelope"></i> E-MAIL</label>
+                    <input
+                      class="form-control form-inputContact"
+                      type="text"
+                      value={newUser.email}
+                      name="email"
+                      placeholder="johnwick@gmail.com"
+                      onChange={(e) => handleChange(e)} />
+                    {errors.email &&
+                      <p id="errors" hidden>{errors.email}</p>
+                      // <p className="validMessage">Looks Good!</p>
+                    }
+                  </div>
                 </div>
-
-                <div className="modal-body">
-                  <form class="row g-3" onSubmit={(e) => handleSubmit(e)}>
-                    <div class="row">
-                      <div class="col">
-                        <label className="infoLabel"> <i class="bi bi-envelope"></i> E-MAIL</label>
-                        <input
-                          class="form-control form-inputContact"
-                          type="text"
-                          value={newUser.email}
-                          name="email"
-                          placeholder="johnwick@gmail.com"
-                          onChange={(e) => handleChange(e)} />
-                        {errors.email &&
-                          <p id="errors" hidden>{errors.email}</p>
-                          // <p className="validMessage">Looks Good!</p>
-                        }
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col">
-                        <label className="infoLabel"> <i class="bi bi-key"></i> PASSWORD</label>
-                        <input
-                          class="form-control form-inputContact"
-                          type="password"
-                          value={newUser.password}
-                          name="password"
-                          placeholder="8-20 characters long"
-                          onChange={(e) => handleChange(e)} />
-                        {errors.password &&
-                          <p qqqqqq="errors" hidden>{errors.password}</p>
-                          // <p className="validMessage">Looks Good!</p>
-                        }
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="column">
-                        <a className="forgotButton" onClick={() => requestPasswordChange()}>{forgot}</a>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <button className="btn btn-outline-secondary" style={{
-                          fontSize: "15px", fontFamily: "Raleway",
-                          background: "#C49D48",
-                          borderColor: "transparent"
-                        }} type="submit" data-backdrop="false" >LOG IN</button>
-                      </div>
-                      <div class="col-md-6">
-                        <GoogleLogin
-                          clientId={clientId}
-                          buttonText="LOG IN WITH GOOGLE"
-                          onSuccess={onSuccess}
-                          onFailure={onFailure}
-                          cookiePolicy={'none'}
-                          isSignedIn={false}
-                          prompt="select_account"
-                        />
-                      </div>
-                    </div>
-                  </form>
+                <div class="row">
+                  <div class="col">
+                    <label className="infoLabel"> <i class="bi bi-key"></i> PASSWORD</label>
+                    <input
+                      class="form-control form-inputContact"
+                      type="password"
+                      value={newUser.password}
+                      name="password"
+                      placeholder="8-20 characters long"
+                      onChange={(e) => handleChange(e)} />
+                    {errors.password &&
+                      <p qqqqqq="errors" hidden>{errors.password}</p>
+                      // <p className="validMessage">Looks Good!</p>
+                    }
+                  </div>
                 </div>
-              </div>
+                <div class="row">
+                  <div class="column">
+                    <a className="forgotButton" onClick={() => requestPasswordChange()}>{forgot}</a>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <button className="btn btn-outline-secondary" style={{
+                      fontSize: "15px", fontFamily: "Raleway",
+                      background: "#C49D48",
+                      borderColor: "transparent"
+                    }} type="submit">LOG IN</button>
+                  </div>
+                  <div class="col-md-6">
+                    <GoogleLogin
+                      clientId={clientId}
+                      buttonText="LOG IN WITH GOOGLE"
+                      onSuccess={onSuccess}
+                      onFailure={onFailure}
+                      cookiePolicy={'none'}
+                      isSignedIn={false}
+                      prompt="select_account"
+                    />
+                  </div>
+                </div>
+              </form>
             </div>
           </div>
         </div>
-      
-    
+      </div>
+    </div>
+
+
   )
 
 }

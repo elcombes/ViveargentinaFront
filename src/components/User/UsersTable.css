@@ -58,3 +58,7 @@ a:hover{
   background-color: #630544;
   border-color: #630544;
 }
+.bi.bi-sign-stop-fill {
+  font-size: 20px;
+  color: #C49D48;
+}

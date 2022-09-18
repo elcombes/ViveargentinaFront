@@ -36,6 +36,15 @@ export const VERIFY_USER = "VERIFY_USER";
 export const CONTACTUS = "CONTACTUS";
 export const FILTER_SALES_STATUS = "FILTER_SALES_STATUS";
 
+export function deleteReview(reviewId) {
+  return async function () {
+    let response = await axios.delete(
+      `https://viveargentina.herokuapp.com/reviews/${reviewId}`
+    );
+    //console.log('response action deleteReview', response.data);
+  };
+}
+
 //Filtra las ventas por Status
 export function filterSalesStatus(payload) {
   console.log("payload en action", payload);
@@ -75,10 +84,10 @@ export function getAllUsers() {
     });
   };
 }
-// Esta ruta trae un array con todas las reviews.
 
+// Esta ruta trae un array con todas las reviews.
 export function getAllReviews() {
-  console.log("entre");
+  
   return async function (dispatch) {
     let allReviews = await axios.get(
       `https://viveargentina.herokuapp.com/reviews`
@@ -187,8 +196,8 @@ export function changePassword({ token, password, newPassword }) {
       { password, newPassword },
       { headers }
     );
-    console.log("response: " + response);
-    return response;
+    console.log("response: " + response.data);
+    return response.data;
   };
 }
 
