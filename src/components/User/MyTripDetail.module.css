@@ -1,0 +1,90 @@
+
+.offcanvas-title .mycartName{
+    font-size: 30px;
+}
+.itemcart {
+    
+    padding: 5px 20px;
+    background: white;
+    border-radius: 10px;
+    min-height: 180px;
+}
+.buttonitemcart {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+}
+
+.buttonitemcart li button {
+    border-color: transparent; 
+}
+
+.buttonitemcart li button i {
+    color: black;
+    font-size: 25px;
+    line-height: 1rem;
+}
+
+.pricecart {
+    text-align: center;
+    font-family: Roboto;
+    font-size: 2rem;
+    font-weight: 500;
+    color: black;
+    min-width: 170px;
+}
+
+.enditemscart {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.itempax {
+    font-family: Roboto;
+    color: black;
+    width: 30px;
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 400;
+}
+
+h4.titlecart {
+    font-size: 1.5rem;
+    color: #C49D48;
+    text-transform: uppercase;
+    display: flex;
+    font-weight: 500;
+
+}
+
+h4.datescart {
+    font-Family:"Roboto";
+    font-Size: 1.5rem;
+}
+
+.rowimgtitle {
+    display: inline-flex;
+    width: 100%;
+    align-items: center;
+}
+
+.imgitemcart {
+    padding: 0;
+    object-fit: cover;
+    object-position: center;
+    height: 70px;
+    width: 90% !important;
+    border-radius: 8px;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
+}
+
+.buttonmercadopago {
+    width: 100%;
+    color: white;
+    background-color: grey;
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
