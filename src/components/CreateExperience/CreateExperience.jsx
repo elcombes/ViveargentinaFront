@@ -66,6 +66,37 @@ export default function Experiences() {
     categoryId: "",
     packageId: "",
   });
+
+function clearState() {
+  setNewExperience({
+    name: "",
+    subTitle: "",
+    price: 0,
+    description: "",
+    image: "",
+    duration: "",
+    dates: "",
+    categoryId: "",
+    packageId: "",
+  })
+  setErrors(validate({
+    name: "",
+    subTitle: "",
+    price: 0,
+    description: "",
+    image: "",
+    duration: "",
+    dates: "",
+    categoryId: "",
+    packageId: "",
+  }));
+  let errorMessagesNodeList = document.querySelectorAll("#errors");
+  let errorMessagesArray = Array.from(errorMessagesNodeList);
+  errorMessagesArray.forEach((e) => {return (e.hidden = true)});
+  console.log(errorMessagesArray)
+
+}
+
   const [errors, setErrors] = useState({});
 
   useEffect(() => {
@@ -192,7 +223,7 @@ export default function Experiences() {
                     <h5 className="modal-title" id="cexampleModalLabel">
                       CREATE A NEW EXPERIENCE
                     </h5>
-                    <button
+                    <button onClick={() => clearState()}
                       type="button"
                       className="btn-close"
                       data-bs-dismiss="modal"
