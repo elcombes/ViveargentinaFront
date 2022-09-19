@@ -145,6 +145,7 @@ export default function Login2() {
     if (user?.user.administrator) {
       history.push("/admin");
     }
+    
 
     Swal.fire({
       title: message + "!",
