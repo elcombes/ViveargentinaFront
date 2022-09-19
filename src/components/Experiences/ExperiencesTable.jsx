@@ -48,8 +48,10 @@ export default function ExperiencesTable() {
       imageHeight: 300,
       confirmButtonColor: "#C49D48",
       imageAlt: "Custom image",
+    })
+    .then (()=>{
+      history.go(0)
     });
-    history.go(0)
   }
   
 
@@ -73,6 +75,7 @@ export default function ExperiencesTable() {
                     <th>DATES</th>
                     <th>PRICE</th>
                     <th>SCORE</th>
+                    <th>AVAILABLE</th>
                     <th>ACTIONS</th>
                   </tr>
                 </thead>
@@ -93,6 +96,11 @@ export default function ExperiencesTable() {
                         </td>
                         <td className="text-center">${e.price}</td>
                         <td className="text-center">{e.score}</td>
+                        {e.available ? 
+                        <td className="text-center"><i class="bi bi-eye"></i></td>
+                        : 
+                        <td className="text-center"><i class="bi bi-eye-slash-fill"></i></td>
+                        }
                         <td className="text-center controlbuttonsexp">
                           <div>
                             <UpdateExperience

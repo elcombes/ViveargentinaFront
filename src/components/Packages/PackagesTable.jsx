@@ -12,6 +12,7 @@ import Swal from "sweetalert2";
 export default function PackagesTable() {
   const dispatch = useDispatch();
   const allPackages = useSelector((state) => state.allPackages);
+  const history = useHistory()
 
   const orderPackages = allPackages.sort(function (a, b) {
     if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
@@ -42,6 +43,7 @@ export default function PackagesTable() {
     
     const response = await dispatch(updatePackage(newAvailable, id))
     console.log('response', response)
+
     Swal.fire({
       title: response.data+"!",
       imageUrl: "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663188984/VivaArg/Alerts/passagerAlert_hxpidz.png",
@@ -49,6 +51,9 @@ export default function PackagesTable() {
       imageHeight: 300,
       confirmButtonColor: "#C49D48",
       imageAlt: "Custom image",
+    })
+    .then (()=>{
+      history.go(0)
     });
   }
 
@@ -73,6 +78,7 @@ export default function PackagesTable() {
                     <th>DAYS</th>
                     <th>PRICE</th>
                     <th>SCORE</th>
+                    <th>AVAILABLE</th>
                     <th>ACTIONS</th>
                   </tr>
                 </thead>
@@ -93,6 +99,11 @@ export default function PackagesTable() {
                         <td>{p.duration}</td>
                         <td>${p.price}</td>
                         <td className="text-center">{p.score}</td>
+                        {p.available ? 
+                        <td className="text-center"><i class="bi bi-eye"></i></td>
+                        : 
+                        <td className="text-center"><i class="bi bi-eye-slash-fill"></i></td>
+                        }
                         <td className="text-center">
                           <div>
                             <UpdatePackage
