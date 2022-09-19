@@ -3,11 +3,11 @@
     font-size: 30px;
 }
 .itemcart {
-    
+    margin: 0 0 3% 0;
     padding: 5px 20px;
     background: white;
     border-radius: 10px;
-    min-height: 180px;
+    min-height: 145px;
 }
 .buttonitemcart {
     display: inline-flex;
@@ -36,6 +36,7 @@
 }
 
 .enditemscart {
+    width: 100%;
     display: inline-flex;
     align-items: center;
     justify-content: space-around;

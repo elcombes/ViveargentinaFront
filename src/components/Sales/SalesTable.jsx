@@ -79,7 +79,7 @@ export default function SalesTable() {
                           <td className="datesale">
                             {s.createdAt.slice(0, 9)}
                           </td>
-                          <td>
+                          <td className="text-center">
                             <MyTripDetail
                               packages={s.packages}
                               experiences={s.experiences}
