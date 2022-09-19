@@ -174,7 +174,7 @@ export default function Login2() {
       history.go(0);
       //  component.forceUpdate(callback);
     });
-    // window.location.reload(false);
+    // window.location.reload(false);  
   };
 
   return (
