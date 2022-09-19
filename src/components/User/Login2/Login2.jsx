@@ -145,7 +145,6 @@ export default function Login2() {
         imageAlt: "Custom image",
       });
     }
-<<<<<<< HEAD
     const response = await dispatch(
       getUserLogin({ email: newUser.email, password: newUser.password })
     );
@@ -175,10 +174,7 @@ export default function Login2() {
       history.go(0);
       //  component.forceUpdate(callback);
     });
-
     // window.location.reload(false);
-=======
->>>>>>> 619e5fdbb0a4ca605968ef209f3cbd2651d5f4f5
   };
 
   return (
