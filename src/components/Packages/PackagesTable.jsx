@@ -58,8 +58,10 @@ export default function PackagesTable() {
         <div class="col-md-10">
           <div class="rounded">
             <div class="table-responsive table-borderless">
-              <CreatePackage />
+            <div class="table-create">
 
+              <CreatePackage />
+              </div>
               <br />
               <table class="table table-bordered">
                 {/* Encabezado de columnas */}

@@ -16,7 +16,7 @@
 .notfoundstyle2 {
    
     color: white;
-    font-size: 2.7rem;
+    font-size: 20px;
 }
 
 .notfoundstyletxt {
@@ -25,9 +25,11 @@
     text-transform: uppercase;
     color: white;
     margin: 20px;
-    font-size: 2rem;
+    font-size: 20px;
 }
 .citybuttons{
     font-size: 40px;
     text-transform: uppercase;
+    float:inline-start;
+    top: 0%;
 }
