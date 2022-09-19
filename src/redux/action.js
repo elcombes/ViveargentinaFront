@@ -97,7 +97,7 @@ export function addNewCart(userId, arrayItems) {
   return async function () {
     try {
       let response = await axios.post(
-        `http://viveargentina.herokuapp.com/cart?userId=${userId}`,
+        `https://viveargentina.herokuapp.com/cart?userId=${userId}`,
         arrayItems
       );
       return console.log(response.data);

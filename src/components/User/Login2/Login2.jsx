@@ -140,7 +140,7 @@ export default function Login2() {
       typeof response === "string" ? response : "User successfully logged";
     const user = JSON.parse(window.localStorage.getItem("user"));
 
-    dispatch(getCartByUser(user.user.id));
+    await dispatch(getCartByUser(user.user.id));
 
     if (user?.user.administrator) {
       history.push("/admin");
@@ -153,7 +153,11 @@ export default function Login2() {
       imageHeight: 300,
       confirmButtonColor: "#C49D48",
       imageAlt: "Custom image",
+    }).then(() => {
+      history.go(0);
+      //  component.forceUpdate(callback);
     });
+
     // window.location.reload(false);
   };
 
