@@ -56,3 +56,6 @@
 select.form-select.selectBtn {
     max-width: 200px;
 }
+.table-create span{
+  padding: 5px;
+}

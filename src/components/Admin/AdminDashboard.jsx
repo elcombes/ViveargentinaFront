@@ -10,18 +10,22 @@ import ExperiencesTable from '../Experiences/ExperiencesTable.jsx';
 import PackagesTable from '../Packages/PackagesTable.jsx';
 import styles from './NavBarAdmin.css';
 import ReviewsTable from '../Reviews/ReviewsTable.jsx';
+import Error404 from '../Error404/Error404.jsx';
 
 
 
 //componente Admin Dashboard - Ruta en App.js --> "/admin"  
 export default function AdminDashboard() {
 const history = useHistory();
-const admin = JSON.parse(window.localStorage.getItem('user'));
-console.log('admin', admin.user)
+const user = JSON.parse(window.localStorage.getItem('user'));
+console.log('user', user?.user)
 
 
-    if(admin.user.administrator === false) {
-        history.push('/home')
+    if(user?.user?.administrator === false || !user) {
+        // history.push('/home')
+        return (
+            <Error404></Error404>
+        )
     }
 
 

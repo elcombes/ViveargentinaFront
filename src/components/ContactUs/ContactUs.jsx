@@ -80,7 +80,7 @@ export default function ContactUs() {
         <small></small>
       </p>
       <p class="full-width">
-        <input type="checkbox" id="checkbox" name="checkbox"/> Yes, I would like to receive information about discounts, promotions, packages and experiences available..
+        <input type="checkbox" id="checkbox" name="checkbox"/> Yes, I would like to receive information about discounts, promotions, packages and experiences available.
       </p>
       <p class="full-width">
         <input type="submit" class="form-control form-inputContact" value="SEND" onClick={(e)=>handleSubmit(e)}/>

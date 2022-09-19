@@ -6,7 +6,7 @@ import './NavBarAdmin.css';
 
 export default function NavBarAdmin() {
     let userFromStorage = JSON.parse(localStorage.getItem("user"));
-    let user = userFromStorage.user;
+    let user = userFromStorage?.user;
 
     useEffect(() => {
       userFromStorage = JSON.parse(localStorage.getItem("user"));
@@ -18,10 +18,10 @@ export default function NavBarAdmin() {
                 <div className="row">
                     <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
                         <div className="collapse navbar-collapse">
-                            <img className='nav-item-img'src={user.photo} alt="" />
+                            <img className='nav-item-img'src={user?.photo} alt="" />
                         </div>
                         <div className="collapse navbar-collapse">
-                            <span className='nav-item'> {user.first_name} {user.last_name} DASHBOARD</span>
+                            <span className='nav-item'> {user?.first_name} {user?.last_name} DASHBOARD</span>
                         </div>
                     </nav>
                 </div>

@@ -43,6 +43,8 @@ export default function SalesTable() {
           <div class="rounded">
             <div class="table-responsive table-borderless">
               {/* Filtro de  Status */}
+              <div class="table-create">
+
               <span> FILTER </span>
               <select
                 onChange={(e) => handleFilterStatus(e)}
@@ -55,6 +57,7 @@ export default function SalesTable() {
                 <option value="cancelled">CANCELLED</option>
                 <option value="done">DONE</option>
               </select>
+              </div>
               <br />
               <table class="table table-bordered ">
                 {/* Encabezado de columnas */}
