@@ -485,7 +485,7 @@ function clearState() {
                               marginTop: "8px",
                               marginRight: "0px",
                             }}
-                            data-bs-dismiss="modal"
+                            id="closemodal"
                             type="submit"
                           >
                             Create Experience

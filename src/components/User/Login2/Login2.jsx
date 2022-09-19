@@ -5,30 +5,20 @@ import { useHistory } from "react-router-dom";
 import { gapi } from "gapi-script";
 import { GoogleLogin } from "react-google-login";
 import Swal from "sweetalert2";
-import $ from "jquery";
 import styles from "../User.module.css";
 import "./Login.css";
 import "../SignUp/SignUp.css";
-
-import {
-  getUserLogin,
-  resetPasswordRequest,
-  googleLogin,
-  getCartByUser,
-} from "../../../redux/action";
+import { getUserLogin, resetPasswordRequest, googleLogin, getCartByUser, getAllUsers } from "../../../redux/action";
 
 function validate(newUser) {
   const emailVerification =
     /^(([^<>()\[\]\\.,;:\s@”]+(\.[^<>()\[\]\\.,;:\s@”]+)*)|(“.+”))@((\[[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}])|(([a-zA-Z\-0–9]+\.)+[a-zA-Z]{2,}))$/;
   let errors = {};
-  if (!newUser.email) {
-    errors.email = "Email is required";
-  }
   if (!emailVerification.test(newUser.email)) {
     errors.email = "Invalid email";
   }
-  if (!newUser.password) {
-    errors.password = "Password is required";
+  if (newUser.password.length < 8 || newUser.password.length > 20 || !newUser.password) {
+    errors.password = "Invalid password";
   }
   return errors;
 }
@@ -42,6 +32,7 @@ export default function Login2() {
   const dispatch = useDispatch();
   let userBasicInfo = useSelector((state) => state.userBasicInfo);
   let userAuth = useSelector((state) => state.userAuth);
+  let allUsers = useSelector((state) => state.allUsers);
   const [newUser, setNewUser] = useState({
     email: "",
     password: "",
@@ -58,6 +49,7 @@ export default function Login2() {
     };
     gapi.load("client:auth2", initClient);
     setErrors(validate(newUser));
+    dispatch(getAllUsers())
   }, []);
 
   const onSuccess = async (res) => {
@@ -119,43 +111,40 @@ export default function Login2() {
     );
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     let errorMessagesNodeList = document.querySelectorAll("#errors");
     let errorMessagesArray = Array.from(errorMessagesNodeList);
+    let mailExists = allUsers.find(u => u.email === newUser.email);
     if (Object.entries(errors).length > 0) {
       e.preventDefault();
       e.stopPropagation();
       errorMessagesArray.forEach((e) => (e.hidden = false));
+    } else if (mailExists) {
+      const response = dispatch(getUserLogin({ email: newUser.email, password: newUser.password }));
+      const image = typeof response === "string" ? "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663190222/VivaArg/Alerts/passagerAlert_1_nejegh.png" : "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663188984/VivaArg/Alerts/passagerAlert_hxpidz.png"
+      const message = typeof response === "string" ? response : "User successfully logged";
+      const user = JSON.parse(window.localStorage.getItem("user"));
+      dispatch(getCartByUser(user?.user?.id));
+      if (user?.user.administrator) history.push("/admin");
+      Swal.fire({
+        title: message + "!",
+        imageUrl: image,
+        imageWidth: 350,
+        imageHeight: 300,
+        confirmButtonColor: "#C49D48",
+        imageAlt: "Custom image",
+      });
+    } else {
+      return Swal.fire({
+        title: 'This email is not registered',
+        imageUrl: 'https://res.cloudinary.com/dblc1bzmx/image/upload/v1663190222/VivaArg/Alerts/passagerAlert_1_nejegh.png',
+        imageWidth: 350,
+        imageHeight: 300,
+        confirmButtonColor: "#C49D48",
+        imageAlt: "Custom image",
+      });
     }
-    const response = await dispatch(
-      getUserLogin({ email: newUser.email, password: newUser.password })
-    );
-
-    const image =
-      typeof response === "string"
-        ? "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663190222/VivaArg/Alerts/passagerAlert_1_nejegh.png"
-        : "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663188984/VivaArg/Alerts/passagerAlert_hxpidz.png";
-    const message =
-      typeof response === "string" ? response : "User successfully logged";
-    const user = JSON.parse(window.localStorage.getItem("user"));
-
-    dispatch(getCartByUser(user.user.id));
-
-    if (user?.user.administrator) {
-      history.push("/admin");
-    }
-    
-
-    Swal.fire({
-      title: message + "!",
-      imageUrl: image,
-      imageWidth: 350,
-      imageHeight: 300,
-      confirmButtonColor: "#C49D48",
-      imageAlt: "Custom image",
-    });
-    // window.location.reload(false);
   };
 
   return (
@@ -179,6 +168,7 @@ export default function Login2() {
         id="loginModal"
         aria-labelledby="loginModalLabel"
         aria-hidden="true"
+        data-bs-backdrop="static"
       >
         <div className="modal-dialog">
           <div
@@ -246,7 +236,7 @@ export default function Login2() {
                     />
                     {
                       errors.password && (
-                        <p qqqqqq="errors" hidden>
+                        <p id="errors" hidden>
                           {errors.password}
                         </p>
                       )
@@ -275,6 +265,7 @@ export default function Login2() {
                         borderColor: "transparent",
                       }}
                       type="submit"
+                      id="closemodal"
                     >
                       LOG IN
                     </button>
