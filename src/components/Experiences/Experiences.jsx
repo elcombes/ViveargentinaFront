@@ -118,7 +118,8 @@ export default function Experiences(props) {
       document.getElementById(`${item.name} dates`).value = "select";
       return Swal.fire({
         title: "YOU ALREADY HAVE THIS ITEM IN YOUR CART",
-        imageUrl: "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663003831/VivaArg/Alerts/3_zmfk4m.png",
+        imageUrl:
+          "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663003831/VivaArg/Alerts/3_zmfk4m.png",
         imageWidth: 350,
         imageHeight: 300,
         confirmButtonColor: "#C49D48",
@@ -168,18 +169,6 @@ export default function Experiences(props) {
     let userId = user.user.id;
 
     dispatch(addExperienceFavorite(experienceId, userId));
-    Swal.fire({
-      title: "ADDED TO FAVORITES SUCCESSFULLY!",
-      text: item.name,
-      imageUrl: item.image,
-      imageWidth: 400,
-      imageHeight: 200,
-      confirmButtonColor: "#C49D48",
-      imageAlt: "Custom image",
-      showClass: {
-        popup: 'animate__animated animate__flipInY'
-      },
-    });
   };
 
   //   Fin Precart
@@ -526,7 +515,7 @@ export default function Experiences(props) {
                                         className="btn btn-secondary"
                                         data-bs-dismiss="modal"
                                       >
-                                        Cancel
+                                        CANCEL
                                       </button>
                                       <button
                                         onClick={(event) => {
@@ -551,8 +540,8 @@ export default function Experiences(props) {
                                   </div>
                                 </div>
                               </div>
+                              {/* Fin Modal */}
                             </div>
-                            {/* Footer Modal */}
                           </div>
                           <div className="col-md-6 mb-5">
                             <img
