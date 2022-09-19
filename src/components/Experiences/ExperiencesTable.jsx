@@ -26,34 +26,36 @@ export default function ExperiencesTable() {
     event.preventDefault()
     let id
     let newAvailable
-   
-    if(event.target.name) {
+
+    if (event.target.name) {
       id = event.target.name;
       newAvailable = {
-        available: event.target.value === true ? false : true}
+        available: event.target.value === true ? false : true
+      }
     } else {
       id = JSON.stringify(event.target.outerHTML).split('\\"')[1];
       newAvailable = {
-        available: JSON.stringify(event.target.outerHTML).split('\\"')[3] === 'true' ? false : true}
+        available: JSON.stringify(event.target.outerHTML).split('\\"')[3] === 'true' ? false : true
+      }
     }
     console.log('id', id)
     console.log('newAvailable', newAvailable)
-    
+
     const response = await dispatch(updateExperience(newAvailable, id))
-    
+
     Swal.fire({
-      title: response.data+"!",
+      title: response.data + "!",
       imageUrl: "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663188984/VivaArg/Alerts/passagerAlert_hxpidz.png",
       imageWidth: 350,
       imageHeight: 300,
       confirmButtonColor: "#C49D48",
       imageAlt: "Custom image",
     })
-    .then (()=>{
-      history.go(0)
-    });
+      .then(() => {
+        history.go(0)
+      });
   }
-  
+
 
   return (
     <div class="container mt-5">
@@ -76,7 +78,7 @@ export default function ExperiencesTable() {
                     <th>PRICE</th>
                     <th>SCORE</th>
                     <th>AVAILABLE</th>
-                    <th>ACTIONS</th>
+                    <th>UPDATE</th>
                   </tr>
                 </thead>
 
@@ -96,11 +98,25 @@ export default function ExperiencesTable() {
                         </td>
                         <td className="text-center">${e.price}</td>
                         <td className="text-center">{e.score}</td>
-                        {e.available ? 
-                        <td className="text-center"><i class="bi bi-eye"></i></td>
-                        : 
-                        <td className="text-center"><i class="bi bi-eye-slash-fill"></i></td>
+                        <td className="text-center">
+                        {e.available ?
+                          <button
+                            className="btn"
+                            onClick={(event) => handleChangeAvailable(event)}
+                            name={e.id}
+                            value={e.available} >
+                            <i name={e.id} value={e.available} class="bi bi-eye"></i>
+                          </button>
+                          :
+                          <button
+                            className="btn"
+                            onClick={(event) => handleChangeAvailable(event)}
+                            name={e.id}
+                            value={e.available} >
+                            <i name={e.id} value={e.available} class="bi bi-eye-slash-fill" style={{color:"black"}}></i>
+                          </button>
                         }
+                        </td>
                         <td className="text-center controlbuttonsexp">
                           <div>
                             <UpdateExperience
@@ -116,13 +132,6 @@ export default function ExperiencesTable() {
                               image={e.image}
                             />
                           </div>
-                          <button 
-                          className="btn" 
-                          onClick={(event) => handleChangeAvailable(event)}
-                          name={e.id} 
-                          value={e.available} >
-                            <i name={e.id} value={e.available} class="bi bi-sign-stop-fill"></i>
-                          </button>
                         </td>
                       </tr>
                     </tbody>
