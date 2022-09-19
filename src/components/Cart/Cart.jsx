@@ -1,6 +1,6 @@
 import Dropdown from "react-bootstrap/Dropdown";
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ItemCart from "./ItemCart";
 import MercadoPago from "./MercadoPago";
 import { buyInMercadoPago, addNewSale } from "./../../redux/action.js";
@@ -11,6 +11,9 @@ import Overlay from "react-bootstrap/Overlay";
 import Popover from "react-bootstrap/Popover";
 
 export default function Cart() {
+  const cartRecharge = useSelector((state) => state.cartRecharge);
+
+  console.log(cartRecharge);
   // Para limpiar todo el localStorage
   // localStorage.clear();
 
@@ -25,7 +28,7 @@ export default function Cart() {
 
   useEffect(() => {
     itemsFromStore = JSON.parse(localStorage.getItem("items"));
-  }, [JSON.parse(localStorage.getItem("items"))]);
+  }, [JSON.parse(localStorage.getItem("items")), cartRecharge]);
 
   function changeState() {
     if (state) {
@@ -59,10 +62,17 @@ export default function Cart() {
     dispatch(buyInMercadoPago(itemsFromStore));
   }
 
+  /* function handleClickForce() {
+    this.forceUpdate();
+  }*/
+
   if (!itemsFromStore || itemsFromStore.length === 0) {
     return (
       <div>
         <button
+          /* onClick={() => {
+            handleClickForce();
+          }}*/
           class="btn btn-outline-secondary btn-lg"
           type="button"
           data-bs-toggle="offcanvas"
