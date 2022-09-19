@@ -8,7 +8,13 @@ import Swal from "sweetalert2";
 import styles from "../User.module.css";
 import "./Login.css";
 import "../SignUp/SignUp.css";
-import { getUserLogin, resetPasswordRequest, googleLogin, getCartByUser, getAllUsers } from "../../../redux/action";
+import {
+  getUserLogin,
+  resetPasswordRequest,
+  googleLogin,
+  getCartByUser,
+  getAllUsers,
+} from "../../../redux/action";
 
 function validate(newUser) {
   const emailVerification =
@@ -17,7 +23,11 @@ function validate(newUser) {
   if (!emailVerification.test(newUser.email)) {
     errors.email = "Invalid email";
   }
-  if (newUser.password.length < 8 || newUser.password.length > 20 || !newUser.password) {
+  if (
+    newUser.password.length < 8 ||
+    newUser.password.length > 20 ||
+    !newUser.password
+  ) {
     errors.password = "Invalid password";
   }
   return errors;
@@ -49,7 +59,7 @@ export default function Login2() {
     };
     gapi.load("client:auth2", initClient);
     setErrors(validate(newUser));
-    dispatch(getAllUsers())
+    dispatch(getAllUsers());
   }, []);
 
   const onSuccess = async (res) => {
@@ -111,19 +121,25 @@ export default function Login2() {
     );
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     let errorMessagesNodeList = document.querySelectorAll("#errors");
     let errorMessagesArray = Array.from(errorMessagesNodeList);
-    let mailExists = allUsers.find(u => u.email === newUser.email);
+    let mailExists = allUsers.find((u) => u.email === newUser.email);
     if (Object.entries(errors).length > 0) {
       e.preventDefault();
       e.stopPropagation();
       errorMessagesArray.forEach((e) => (e.hidden = false));
     } else if (mailExists) {
-      const response = dispatch(getUserLogin({ email: newUser.email, password: newUser.password }));
-      const image = typeof response === "string" ? "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663190222/VivaArg/Alerts/passagerAlert_1_nejegh.png" : "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663188984/VivaArg/Alerts/passagerAlert_hxpidz.png"
-      const message = typeof response === "string" ? response : "User successfully logged";
+      const response = dispatch(
+        getUserLogin({ email: newUser.email, password: newUser.password })
+      );
+      const image =
+        typeof response === "string"
+          ? "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663190222/VivaArg/Alerts/passagerAlert_1_nejegh.png"
+          : "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663188984/VivaArg/Alerts/passagerAlert_hxpidz.png";
+      const message =
+        typeof response === "string" ? response : "User successfully logged";
       const user = JSON.parse(window.localStorage.getItem("user"));
       dispatch(getCartByUser(user?.user?.id));
       if (user?.user.administrator) history.push("/admin");
@@ -137,14 +153,45 @@ export default function Login2() {
       });
     } else {
       return Swal.fire({
-        title: 'This email is not registered',
-        imageUrl: 'https://res.cloudinary.com/dblc1bzmx/image/upload/v1663190222/VivaArg/Alerts/passagerAlert_1_nejegh.png',
+        title: "This email is not registered",
+        imageUrl:
+          "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663190222/VivaArg/Alerts/passagerAlert_1_nejegh.png",
         imageWidth: 350,
         imageHeight: 300,
         confirmButtonColor: "#C49D48",
         imageAlt: "Custom image",
       });
     }
+    const response = await dispatch(
+      getUserLogin({ email: newUser.email, password: newUser.password })
+    );
+
+    const image =
+      typeof response === "string"
+        ? "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663190222/VivaArg/Alerts/passagerAlert_1_nejegh.png"
+        : "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663188984/VivaArg/Alerts/passagerAlert_hxpidz.png";
+    const message =
+      typeof response === "string" ? response : "User successfully logged";
+    const user = JSON.parse(window.localStorage.getItem("user"));
+
+    await dispatch(getCartByUser(user.user.id));
+
+    if (user?.user.administrator) {
+      history.push("/admin");
+    }
+
+    Swal.fire({
+      title: message + "!",
+      imageUrl: image,
+      imageWidth: 350,
+      imageHeight: 300,
+      confirmButtonColor: "#C49D48",
+      imageAlt: "Custom image",
+    }).then(() => {
+      history.go(0);
+      //  component.forceUpdate(callback);
+    });
+    // window.location.reload(false);
   };
 
   return (

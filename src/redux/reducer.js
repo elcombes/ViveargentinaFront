@@ -51,6 +51,7 @@ const initialState = {
   userExperiencesFavorite: [],
   userPackagesFavorite: [],
   preferenceMercadoPagoId: "",
+  cartRecharge: false,
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -78,32 +79,36 @@ export default function rootReducer(state = initialState, action) {
 
     case GET_CART_BY_USER:
       let itemsFromDb = action.payload;
-      console.log(itemsFromDb);
+
       if (itemsFromDb === "There is no cart to this user") {
         return;
       } else {
         let itemsFromStore = JSON.parse(localStorage.getItem("items"));
-        console.log(itemsFromStore);
+
         if (itemsFromStore) {
+          let itemsFromDb2 = action.payload;
           for (let i = 0; i < itemsFromStore.length; i++) {
-            let repeatedItem = itemsFromDb.find((item) => {
+            let repeatedItem = itemsFromDb2.find((item) => {
               return item.name === itemsFromStore[i].name;
             });
             if (repeatedItem) {
-              itemsFromDb = itemsFromDb.filter((item) => {
+              itemsFromDb2 = itemsFromDb2.filter((item) => {
                 return item.name !== repeatedItem.name;
               });
-            } else {
-              return;
             }
           }
-          let finalItems = itemsFromStore.concat(itemsFromDb);
+
+          let finalItems = itemsFromStore.concat(itemsFromDb2);
+
           localStorage.setItem("items", JSON.stringify(finalItems));
-          return;
         } else {
           localStorage.setItem("items", JSON.stringify(itemsFromDb));
         }
       }
+      return {
+        ...state,
+        cartRecharge: true ? false : true,
+      };
 
     case GET_ALL_USERS:
       return {
