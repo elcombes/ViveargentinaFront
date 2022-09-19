@@ -92,6 +92,21 @@ export function addNewSale(userId, arrayItems) {
   };
 }
 
+// Esta ruta añade un una nueva compra con sus items
+export function addNewCart(userId, arrayItems) {
+  return async function () {
+    try {
+      let response = await axios.post(
+        `http://viveargentina.herokuapp.com/cart?userId=${userId}`,
+        arrayItems
+      );
+      return console.log(response.data);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+}
+
 // Esta ruta trae el carrito de un usuario por ID
 export function getCartByUser(userId) {
   return async function (dispatch) {
@@ -365,7 +380,7 @@ export function getUserLogin({ email, password }) {
       "https://viveargentina.herokuapp.com/users/login",
       { email, password }
     );
-    console.log(response.data);
+
     if (response.data === "not allowed") {
       return "Incorrect password";
     }

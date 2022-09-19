@@ -132,7 +132,6 @@ export default function Experiences(props) {
         (e) => e.name === item.name && e.dates === item.dates
       )
     ) {
-      console.log(document.getElementById(`${item.name} dates`).value);
       arrayItemsStore.push(item);
       localStorage.setItem("items", JSON.stringify(arrayItemsStore));
       // Alert
@@ -482,7 +481,6 @@ export default function Experiences(props) {
                                             <i className="bi bi-currency-dollar"></i>{" "}
                                             ARS {e.price}
                                           </li>
-                                          {console.log(e.experiences)}
                                         </ul>
                                       </div>
                                     </div>
