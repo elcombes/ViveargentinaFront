@@ -1,12 +1,10 @@
-
 import React, { Fragment } from 'react';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './Filter.module.css'
-import { getAllExperiences, getAllPackages, getAllCategories, filterExperiences, orderExperiences } from '../../redux/action';
+import { getAllPackages, getAllCategories, filterExperiences } from '../../redux/action';
 
-
-export default function FilterExperiencies({ handleOrder }) {
+export default function FilterExperiencies({ handleOrder, setPage }) {
 
     const allCategories = useSelector(state => state.allCategories);
     const allPackages = useSelector(state => state.allPackages);
@@ -15,8 +13,6 @@ export default function FilterExperiencies({ handleOrder }) {
         selectedCategory: false
     })
 
-
-
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -24,10 +20,8 @@ export default function FilterExperiencies({ handleOrder }) {
         dispatch(getAllCategories())
     }, [dispatch]);
 
-
-
-
     function handleFilterByCategory(e) {
+        // setPage(1);
         if (e.target.value === 'all') {
             setState({
                 ...state,
@@ -42,6 +36,7 @@ export default function FilterExperiencies({ handleOrder }) {
     }
 
     function handleFilterByPackage(e) {
+        // setPage(1);
         if (e.target.value === 'all') {
             setState({
                 ...state,
@@ -57,11 +52,12 @@ export default function FilterExperiencies({ handleOrder }) {
 
     function handleChange(e) {
         e.preventDefault();
-        document.getElementById("alphabeticOrder").value = "sort"
-        document.getElementById("priceOrder").value = "sort"
-        document.getElementById("scoreOrder").value = "sort"
-        document.getElementById("categoryFilter").value = "all"
-        document.getElementById("packageFilter").value = "all"
+        setPage(1);
+        // document.getElementById("alphabeticOrder").value = "sort"
+        // document.getElementById("priceOrder").value = "sort"
+        // document.getElementById("scoreOrder").value = "sort"
+        // document.getElementById("categoryFilter").value = "all"
+        // document.getElementById("packageFilter").value = "all"
         dispatch(filterExperiences({ categoryId: state.selectedCategory, packageId: state.selectedPackage }))
     }
 

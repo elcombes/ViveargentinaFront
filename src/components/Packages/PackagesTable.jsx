@@ -1,10 +1,14 @@
 import React, { useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { getAllPackages } from "../../redux/action";
+import { getAllPackages, updatePackage } from "../../redux/action";
 import "./PackagesTable.css";
 import CreatePackage from "../CreatePackage/CreatePackage";
 import UpdatePackage from "../UpdatePackage/UpdatePackage";
-//Ruta de prueba agregar en App => '/table'
+import Swal from "sweetalert2";
+
+
+
 export default function PackagesTable() {
   const dispatch = useDispatch();
   const allPackages = useSelector((state) => state.allPackages);
@@ -18,6 +22,35 @@ export default function PackagesTable() {
   useEffect(() => {
     dispatch(getAllPackages());
   }, []);
+
+  const handleChangeAvailable = async (event) => {
+    
+    let id
+    let newAvailable
+
+    if(event.target.name) {
+      id = event.target.name;
+      newAvailable = {
+        available: event.target.value === true ? false : true}
+    } else {
+      id = JSON.stringify(event.target.outerHTML).split('\\"')[1];
+      newAvailable = {
+        available: JSON.stringify(event.target.outerHTML).split('\\"')[3] === 'true' ? false : true}
+    }
+    console.log('id', id)
+    console.log('newAvailable', newAvailable)
+    
+    const response = await dispatch(updatePackage(newAvailable, id))
+    console.log('response', response)
+    Swal.fire({
+      title: response.data+"!",
+      imageUrl: "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663188984/VivaArg/Alerts/passagerAlert_hxpidz.png",
+      imageWidth: 350,
+      imageHeight: 300,
+      confirmButtonColor: "#C49D48",
+      imageAlt: "Custom image",
+    });
+  }
 
   return (
     <div class="container mt-5">
@@ -73,8 +106,12 @@ export default function PackagesTable() {
                             />
                           </div>
 
-                          <button className="btn">
-                            <i class="bi bi-sign-stop-fill"></i>
+                          <button 
+                          className="btn" 
+                          onClick={(event) => handleChangeAvailable(event)}
+                          name={p.id} 
+                          value={p.available} >
+                           <i name={p.id} value={p.available} class="bi bi-sign-stop-fill"></i>
                           </button>
                         </td>
                       </tr>

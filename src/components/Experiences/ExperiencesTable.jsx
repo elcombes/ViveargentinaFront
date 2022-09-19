@@ -1,13 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { getAllExperiences } from "../../redux/action";
+import { getAllExperiences, updateExperience } from "../../redux/action";
 import "./ExperiencesTable.css";
 import CreateExperience from "../CreateExperience/CreateExperience";
 import UpdateExperience from "../UpdateExperience/UpdateExperience";
+import Swal from "sweetalert2";
 
 export default function ExperiencesTable() {
   const dispatch = useDispatch();
   const allExperiences = useSelector((state) => state.allExperiences);
+  const history = useHistory()
 
   const orderExperiences = allExperiences.sort(function (a, b) {
     if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
@@ -18,6 +21,37 @@ export default function ExperiencesTable() {
   useEffect(() => {
     dispatch(getAllExperiences());
   }, []);
+
+  const handleChangeAvailable = async (event) => {
+    event.preventDefault()
+    let id
+    let newAvailable
+   
+    if(event.target.name) {
+      id = event.target.name;
+      newAvailable = {
+        available: event.target.value === true ? false : true}
+    } else {
+      id = JSON.stringify(event.target.outerHTML).split('\\"')[1];
+      newAvailable = {
+        available: JSON.stringify(event.target.outerHTML).split('\\"')[3] === 'true' ? false : true}
+    }
+    console.log('id', id)
+    console.log('newAvailable', newAvailable)
+    
+    const response = await dispatch(updateExperience(newAvailable, id))
+    
+    Swal.fire({
+      title: response.data+"!",
+      imageUrl: "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663188984/VivaArg/Alerts/passagerAlert_hxpidz.png",
+      imageWidth: 350,
+      imageHeight: 300,
+      confirmButtonColor: "#C49D48",
+      imageAlt: "Custom image",
+    });
+    history.go(0)
+  }
+  
 
   return (
     <div class="container mt-5">
@@ -47,7 +81,7 @@ export default function ExperiencesTable() {
 
                 {orderExperiences?.map((e) => {
                   return (
-                    <tbody class="table-body">
+                    <tbody class="table-body" key={e.id} >
                       <tr class="cell-1 vertalign">
                         {/* <td>CITY</td> */}
                         <td>{e.package?.name}</td>
@@ -74,8 +108,12 @@ export default function ExperiencesTable() {
                               image={e.image}
                             />
                           </div>
-                          <button className="btn">
-                            <i class="bi bi-sign-stop-fill"></i>
+                          <button 
+                          className="btn" 
+                          onClick={(event) => handleChangeAvailable(event)}
+                          name={e.id} 
+                          value={e.available} >
+                            <i name={e.id} value={e.available} class="bi bi-sign-stop-fill"></i>
                           </button>
                         </td>
                       </tr>

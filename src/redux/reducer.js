@@ -25,10 +25,15 @@ import {
   GET_USER_BY_ID,
   GET_ALL_USERS,
   FILTER_SALES_STATUS,
+  GET_CART_BY_USER,
+  GET_ALL_SALES,
+  GET_SALES_BY_USER,
 } from "./action";
 
 const initialState = {
-  boughtUsers: [],
+  salesByUser: [],
+  filteredSales: [],
+  allSales: [],
   allUsers: [],
   userById: {},
   cityById: {},
@@ -55,115 +60,85 @@ export default function rootReducer(state = initialState, action) {
   let userPackagesBought;
   let userExperiencesFavorite;
   let userPackagesFavorite;
+
   switch (action.type) {
+    case GET_SALES_BY_USER:
+      console.log(action.payload);
+      return {
+        ...state,
+        salesByUser: action.payload,
+      };
+
+    case GET_ALL_SALES:
+      return {
+        ...state,
+        allSales: action.payload,
+        filteredSales: action.payload,
+      };
+
+    case GET_CART_BY_USER:
+      let itemsFromDb = action.payload;
+      console.log(itemsFromDb);
+      if (itemsFromDb === "There is no cart to this user") {
+        return;
+      } else {
+        let itemsFromStore = JSON.parse(localStorage.getItem("items"));
+        console.log(itemsFromStore);
+        if (itemsFromStore) {
+          for (let i = 0; i < itemsFromStore.length; i++) {
+            let repeatedItem = itemsFromDb.find((item) => {
+              return item.name === itemsFromStore[i].name;
+            });
+            if (repeatedItem) {
+              itemsFromDb = itemsFromDb.filter((item) => {
+                return item.name !== repeatedItem.name;
+              });
+            } else {
+              return;
+            }
+          }
+          let finalItems = itemsFromStore.concat(itemsFromDb);
+          localStorage.setItem("items", JSON.stringify(finalItems));
+          return;
+        } else {
+          localStorage.setItem("items", JSON.stringify(itemsFromDb));
+        }
+      }
+
     case GET_ALL_USERS:
-      const boughtUsers = action.payload.filter((u) => {
-        return u.experiences.length >= 1 || u.packages.length >= 1;
-      });
-
-      boughtUsers.forEach((u) => {
-        let boughtExperiences = u.experiences.filter((e) => {
-          return e.reservation_experience.bought === true;
-        });
-
-        let boughtPackages = u.packages.filter((e) => {
-          return e.reservation_package.bought === true;
-        });
-        let allBoughtItems = boughtExperiences.concat(boughtPackages);
-        u.allBoughtItems = allBoughtItems;
-      });
       return {
         ...state,
         allUsers: action.payload,
-        boughtUsers: boughtUsers,
       };
     case FILTER_SALES_STATUS:
-      console.log("payload en reducer", action.payload);
-      state.boughtUsers.forEach((u) => {
-        if (action.payload === "all") {
-          let boughtExperiences = u.experiences.filter((e) => {
-            return e.reservation_experience.bought === true;
-          });
+      let filteredSales;
+      console.log(action.payload);
+      console.log(state.allSales);
+      if (action.payload === "all") {
+        filteredSales = state.allSales;
+      } else if (action.payload === "Pending payment") {
+        filteredSales = state.allSales.filter((s) => {
+          return s.status === "Pending payment";
+        });
+      } else if (action.payload === "confirmed") {
+        filteredSales = state.allSales.filter((s) => {
+          return s.status === "confirmed";
+        });
+      } else if (action.payload === "cancelled") {
+        filteredSales = state.allSales.filter((s) => {
+          return s.status === "cancelled";
+        });
+      } else if (action.payload === "done") {
+        filteredSales = state.allSales.filter((s) => {
+          return s.status === "done";
+        });
+      }
+      console.log(filteredSales);
+      return {
+        ...state,
+        filteredSales: filteredSales,
+      };
 
-          let boughtPackages = u.packages.filter((e) => {
-            return e.reservation_package.bought === true;
-          });
-
-          let allBoughtItems = boughtExperiences.concat(boughtPackages);
-          u.allBoughtItems = allBoughtItems;
-        } else if (action.payload === "Pending payment") {
-          let boughtExperiences = u.experiences.filter((e) => {
-            return (
-              e.reservation_experience.bought === true &&
-              e.reservation_experience.status === action.payload
-            );
-          });
-
-          let boughtPackages = u.packages.filter((e) => {
-            return (
-              e.reservation_package.bought === true &&
-              e.reservation_package.status === action.payload
-            );
-          });
-          let allBoughtItems = boughtExperiences.concat(boughtPackages);
-          u.allBoughtItems = allBoughtItems;
-        } else if (action.payload === "confirmed") {
-          let boughtExperiences = u.experiences.filter((e) => {
-            return (
-              e.reservation_experience.bought === true &&
-              e.reservation_experience.status === action.payload
-            );
-          });
-
-          let boughtPackages = u.packages.filter((e) => {
-            return (
-              e.reservation_package.bought === true &&
-              e.reservation_package.status === action.payload
-            );
-          });
-
-          let allBoughtItems = boughtExperiences.concat(boughtPackages);
-          u.allBoughtItems = allBoughtItems;
-        } else if (action.payload === "cancelled") {
-          let boughtExperiences = u.experiences.filter((e) => {
-            return (
-              e.reservation_experience.bought === true &&
-              e.reservation_experience.status === action.payload
-            );
-          });
-
-          let boughtPackages = u.packages.filter((e) => {
-            return (
-              e.reservation_package.bought === true &&
-              e.reservation_package.status === action.payload
-            );
-          });
-
-          let allBoughtItems = boughtExperiences.concat(boughtPackages);
-          u.allBoughtItems = allBoughtItems;
-        } else if (action.payload === "done") {
-          let boughtExperiences = u.experiences.filter((e) => {
-            return (
-              e.reservation_experience.bought === true &&
-              e.reservation_experience.status === action.payload
-            );
-          });
-
-          let boughtPackages = u.packages.filter((e) => {
-            return (
-              e.reservation_package.bought === true &&
-              e.reservation_package.status === action.payload
-            );
-          });
-
-          let allBoughtItems = boughtExperiences.concat(boughtPackages);
-          u.allBoughtItems = allBoughtItems;
-        }
-        return {
-          ...state,
-          boughtUsers: state.boughtUsers,
-        };
-      });
       break;
     case GET_USER_BY_ID:
       return {

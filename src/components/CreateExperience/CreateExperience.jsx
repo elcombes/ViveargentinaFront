@@ -66,6 +66,38 @@ export default function Experiences() {
     categoryId: "",
     packageId: "",
   });
+
+function clearState() {
+  setNewExperience({
+    name: "",
+    subTitle: "",
+    price: 0,
+    description: "",
+    image: "",
+    duration: "",
+    dates: "",
+    categoryId: "",
+    packageId: "",
+  })
+  setErrors(validate({
+    name: "",
+    subTitle: "",
+    price: 0,
+    description: "",
+    image: "",
+    duration: "",
+    dates: "",
+    categoryId: "",
+    packageId: "",
+  }));
+  let errorMessagesNodeList = document.querySelectorAll("#errors");
+  let errorMessagesArray = Array.from(errorMessagesNodeList);
+  errorMessagesArray.forEach((e) => {return (e.hidden = true)});
+  document.getElementById('select1').value = 'select'
+  document.getElementById('select2').value = 'select'
+
+}
+
   const [errors, setErrors] = useState({});
 
   useEffect(() => {
@@ -192,7 +224,7 @@ export default function Experiences() {
                     <h5 className="modal-title" id="cexampleModalLabel">
                       CREATE A NEW EXPERIENCE
                     </h5>
-                    <button
+                    <button onClick={() => clearState()}
                       type="button"
                       className="btn-close"
                       data-bs-dismiss="modal"
@@ -373,12 +405,13 @@ export default function Experiences() {
                       <div class="row">
                         <div class="col-md-6">
                           <select
+                            id="select1"
                             onChange={(e) => handleChange(e)}
                             name="packageId"
                             // value={newExperience.packageId}
                             class="form-select form-select-lg mb-3"
                           >
-                            <option selected>Select a Package</option>
+                            <option value='select' disabled selected>Select a Package</option>
                             {allPackages?.map(e => {
                               return <option value={e.id}>{e.name}</option>
 
@@ -396,10 +429,11 @@ export default function Experiences() {
                           <select
                             onChange={(e) => handleChange(e)}
                             name="categoryId"
+                            id="select2"
                             // value={newExperience.categoryId}
                             class="form-select form-select-lg mb-3"
                           >
-                            <option selected>Select a Category</option>
+                            <option value='select' disabled selected>Select a Category</option>
                             {allCategories?.map(e => {
                               return <option value={e.id}>{e.name}</option>
 
