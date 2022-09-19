@@ -20,8 +20,6 @@ import Footer from '../Footer/Footer.jsx';
 function HomePage() {
   const [offSetY, setOffSetY] = useState(0);
   const handleScrollY = () => setOffSetY(window.pageYOffset)
-  const defaultProfilePicture = 'https://lh3.googleusercontent.com/a-/AFdZucos_7TuriZhUv-v4dTAbmhxctPDsQZ3X9Gln9C8=s96-c'
-
 
 
   const [newReview, setNewReview] = useState({
@@ -55,6 +53,20 @@ function HomePage() {
         title: "PLEASE COMPLETE ALL FIELDS",
         imageUrl:
           "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663366330/VivaArg/Alerts/passagerAlert_2_ojtdhi.png",
+        imageWidth: 350,
+        imageHeight: 300,
+        confirmButtonColor: "#C49D48",
+        imageAlt: "Custom image",
+      });
+      ;
+    }
+    if (newReview.date.length < 7 || newReview.text.length < 15) {
+      e.preventDefault();
+      e.stopPropagation();
+      return Swal.fire({
+        title: "A LITTLE MORE ENTHUSIASTIC, your review should be longer ",
+        imageUrl:
+          "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663614396/VivaArg/Alerts/passagerAlert_5_qcbtcx.png",
         imageWidth: 350,
         imageHeight: 300,
         confirmButtonColor: "#C49D48",
@@ -231,7 +243,7 @@ function HomePage() {
               ) : (
                   <article class="reviewReviews">
                     <div class="img-container">
-                      <img src={r.user ? r.user.photo : defaultProfilePicture} alt="person-1" id="person-img" />
+                      <img src={r.user ? r.user.photo : "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663613676/VivaArg/unnamed_m8fjgl.gif"} alt="-1" id="person-img" />
                     </div>
                     <h4 id="authorReviews"> {r.user ? r.user.first_name + " " + r.user.last_name : "Anonymous"}</h4>
                     <p id="job">{r.date}

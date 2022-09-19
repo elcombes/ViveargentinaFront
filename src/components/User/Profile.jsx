@@ -5,7 +5,7 @@ import perfil_user from "../../assets/perfil_user.png";
 import MyTrips from "../User/MyTrips";
 import MyFavs from "../User/MyFavs";
 import NavBarUser from "../NavBarUser/NavBarUser"
-import { getUserById } from "./../../redux/action.js";
+import { getUserById, getLsUser } from "./../../redux/action.js";
 import ChangePassword from "../User/ChangePassword";
 import styles from '../User/User.module.css'
 
@@ -20,6 +20,7 @@ export default function Profile() {
   const [changePassword, setChangePassword] = useState(false);
 
   useEffect(() => {
+    dispatch(getLsUser())
     userFromStorage = JSON.parse(localStorage.getItem("user"));
     let userId = userFromStorage.user.id;
     dispatch(getUserById(userId));

@@ -1,8 +1,8 @@
 import React, { Fragment, useState } from "react";
+import { Link } from "react-router-dom";
 import "./NavBarUser.css";
 
 import { logout, addNewCart } from "../../redux/action";
-import { Link } from "react-router-dom";
 import logo from "../../assets/vive argentina.png";
 import { useSelector, useDispatch } from "react-redux";
 import Cart from "../Cart/Cart";
@@ -18,6 +18,7 @@ function NavBarUser() {
     localStorage.removeItem("items");
 
     dispatch(logout());
+
   };
   const [active, setActive] = useState("nav__menu");
   const [icon, setIcon] = useState("nav__toggler");
@@ -107,14 +108,16 @@ function NavBarUser() {
                     MY PROFILE
                   </a>
                   <li>
+                    <Link to="/home">
                     <button
                       class="dropdown-item"
                       type="button"
                       style={{ color: "#C49D48", fontSize: "15px" }}
                       onClick={() => userLogout()}
-                    >
+                      >
                       LOGOUT
                     </button>
+                      </Link>
                   </li>
                 </li>
               </ul>
