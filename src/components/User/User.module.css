@@ -1,5 +1,6 @@
 .itemmytrips {
-    display: inline-flex;
+    align-items: center;
+    justify-content: space-around;
 }
 
 .date {
@@ -18,9 +19,21 @@
 }
 
 .itemmyfavs {
-    display: inline-flex;
     align-items: center;
     justify-content: space-around;
+}
+
+.imgfavprofile {
+  width: 100%;
+  height: 59px;
+  object-fit: cover;
+  object-position: center;
+}
+.imgtripprofile {
+  width: 100%;
+  height: 59px;
+  object-fit:contain;
+  object-position: center;
 }
 
 .tripicon {
@@ -106,4 +119,8 @@
 }
 .noFound svg {
 margin: 20px;
+}
+
+.navuserprofile {
+  background-image: linear-gradient(#220f00, #00000000);
 }

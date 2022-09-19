@@ -4,8 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import perfil_user from "../../assets/perfil_user.png";
 import MyTrips from "../User/MyTrips";
 import MyFavs from "../User/MyFavs";
+import NavBarUser from "../NavBarUser/NavBarUser"
 import { getUserById } from "./../../redux/action.js";
 import ChangePassword from "../User/ChangePassword";
+import styles from '../User/User.module.css'
 
 // Ruta agregada en App. js --> Route path="/userprofile"
 // Agrego un Link de Prueba en NavBar.jsx para entrar a Profile y probar el state de User Info
@@ -39,15 +41,11 @@ export default function Profile() {
           backgroundRepeat: "no-repeat",
         }}
       >
+        <div className={`container-fluid ${styles.navuserprofile}`}>
+          <NavBarUser />
+        </div>
         <div className="container py-5 h-50">
-          <div style={{ float: "inline-start", botton: "0" }}>
-            <Link to="/home">
-              <button className="btn btn-outline-secondary">
-                {" "}
-                <a href="#myfavs"> HOME</a>
-              </button>
-            </Link>
-          </div>
+
           <div className="row d-flex justify-content-center align-items-center h-90">
             <div className="col col-lg-5 mb-4 mb-lg-0">
               <div

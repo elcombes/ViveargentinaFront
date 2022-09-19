@@ -80,38 +80,40 @@ export default function MyTrips({ userId }) {
             salesByUser?.map((s) => {
               return (
                 <div className={`row ${styles.itemmytrips}`}>
-                  <div className="col-md-6">
-                    <div className="row mt-3 mb-3">
-                      <div className="col-sm-2">
-                        <img src="" alt="" className="img-fluid" />
+                  <div className="col-md-12">
+                    <div className={`row mt-3 mb-3 ${styles.itemmytrips}`}>
+                      <div className="col-md-1">
+                        <img src="https://res.cloudinary.com/dblc1bzmx/image/upload/v1663182507/VivaArg/Logo_Joyeri%CC%81a_Minimalista_Simple_Blanco_y_Negro_1_pldegi.png" alt="" className={`img-fluid ${styles.imgtripprofile}`} />
                       </div>
-                      <div className="col-sm-6">
+                      {/* <div className="col-md-4">
                         <h2 className="titlepackages">Vacio</h2>
                         <h4>Vacio</h4>
+                      </div> */}
+                      <div className="col-md-3">
+                        <div className={`text-center ${styles.date}`}>
+                          <p>{s.createdAt.slice(0, 9)}</p>
+                        </div>
                       </div>
-                      <div className={`col-md-3 text-center ${styles.date}`}>
-                        <p>{s.createdAt.slice(0, 9)}</p>
+                      <div className="col-md-3">
+                        <div className={`text-center ${styles.price}`}>
+                          <p>$ {s.total}</p>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <div className="row mt-3 mb-6">
-                      <div className={`col-md-3 text-center ${styles.price}`}>
-                        <p>$ {s.total}</p>
+                      <div className="col-md-2">
+                        <div className={`text-center ${styles.status}`}>
+                          <p>{s.status}</p>
+                        </div>
                       </div>
-                      <div className={`col-md-3 text-center ${styles.status}`}>
-                        <p>{s.status}</p>
-                      </div>
-                      <div className="col-md-6 text-center">
+                      <div className="col-md-3 text-end">
                         <MyTripDetail
                           packages={s.packages}
                           experiences={s.experiences}
                           saleId={s.id}
                         />
                       </div>
+                      <hr />
                     </div>
                   </div>
-                  <hr />
                 </div>
               );
             })
