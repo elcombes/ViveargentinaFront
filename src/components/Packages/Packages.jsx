@@ -1,27 +1,55 @@
 import React, { useState, Fragment, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import Swal from "sweetalert2";
-import Animate from "animate.css";
 import styles from "../Packages/Packages.module.css";
-import NavBar from "../NavBar/NavBar";
+import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 import NavBarUser from "../NavBarUser/NavBarUser";
-import SearchBar from "../SearchBar/SearchBar";
+import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer/Footer";
+import SearchBar from "../SearchBar/SearchBar";
+
 import FilterPackages from "../../components/Filters/FilterPackages";
-import { getAllPackages, getCityById, orderPackages } from "../../redux/action";
+import PagedPackages from "../Paged/PagedPackages";
+import { 
+  getAllPackages, 
+  getCityById, 
+  orderPackages,
+  getLsUser,
+  addPackageFavorite } 
+  from "../../redux/action";
+
 import { useHistory } from "react-router-dom";
-import { getLsUser, addPackageFavorite } from "./../../redux/action.js";
+
 
 export default function Card(props) {
   let prevId = 1;
-  const history = useHistory();
-  let pathName = history.location.pathname;
   const dispatch = useDispatch();
   const allPackages = useSelector((state) => state.allPackages);
-
+  const history = useHistory();
+  let pathName = history.location.pathname;
   const [Order, setOrder] = useState("");
   const { cityId } = props.match.params;
+
+  const [page, setPage] = useState(1);
+  const [packagesPage /* setPackagesPage */] = useState(6);
+  const lastPackagePage = page * packagesPage;
+  const firstPackagePage = lastPackagePage - packagesPage;
+
+  const showPackagesPage = allPackages.slice(
+    firstPackagePage,
+    lastPackagePage
+  );
+
+  const paged = function (pageNumber) {
+    if (pageNumber !== page) {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
+    setPage(pageNumber);
+  };
+
 
   // Precart
 
@@ -190,8 +218,19 @@ export default function Card(props) {
         <div className="container-fluid">
           {userAuth === false ? <NavBar /> : <NavBarUser />}
           <SearchBar />
+          <div>
           <FilterPackages handleOrder={handleOrder} />
+          </div>
+          
+            
+          <PagedPackages
+            packagesPage={packagesPage}
+            allPackages={allPackages.length}
+            paged={paged}
+            currentPage={page}
+          />
           <br />
+          
 
           {data === null ? (
             <div className={styles.loading}>
@@ -200,7 +239,7 @@ export default function Card(props) {
                 alt="Loading"
               />
             </div>
-          ) : allPackages.length === 0 ? (
+          ) : showPackagesPage.length === 0 ? (
             <div className={styles.noFound}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -258,7 +297,7 @@ export default function Card(props) {
             </div>
           ) : (
             <div>
-              {allPackages?.map((e) => {
+              {showPackagesPage?.map((e) => {
                 return (
                   <div className="container" key={prevId++}>
                     <div className="row">
@@ -338,21 +377,10 @@ export default function Card(props) {
                             style={{ fontWeight: "400", fontFamily: "Roboto" }}
                           >
                             <ul className={styles.iconsexp}>
-                              <li className={styles.exptitle}>
-                                <i className="bi bi-compass"></i>{" "}
-                                {e.experiences ? e.experiences[0]?.name : null}{" "}
-                                <br />
-                              </li>
-                              <li className={styles.exptitle}>
-                                <i className="bi bi-compass"></i>{" "}
-                                {e.experiences ? e.experiences[1]?.name : null}
-                                <br />
-                              </li>
-                              <li className={styles.exptitle}>
-                                <i className="bi bi-compass"></i>{" "}
-                                {e.experiences ? e.experiences[2]?.name : null}
-                                <br />
-                              </li>
+                              {
+                              e.experiences?.map((e) => {
+                                return <li className={styles.exptitle}><i className="bi bi-compass"></i>{e.name}<br/></li>
+                              })}
                             </ul>
                           </div>
                         </div>
@@ -670,6 +698,12 @@ export default function Card(props) {
           )}
         </div>
         <br />
+        <PagedPackages
+            packagesPage={packagesPage}
+            allPackages={allPackages.length}
+            paged={paged}
+            currentPage={page}
+          />
       </div>
       <Footer />
     </Fragment>

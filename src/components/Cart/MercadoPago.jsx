@@ -15,7 +15,6 @@ export default function MercadoPago() {
   );
 
   if (mercadopago && preferenceMercadoPagoId) {
-    console.log(preferenceMercadoPagoId);
     const checkout = mercadopago.checkout({
       preference: {
         id: preferenceMercadoPagoId,

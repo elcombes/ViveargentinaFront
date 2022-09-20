@@ -110,6 +110,36 @@ export default function PackagesTable() {
                           </td>
                         )}
                         <td className="text-center">
+                          {p.available ? (
+                            <button
+                              className="btn"
+                              onClick={(event) => handleChangeAvailable(event)}
+                              name={p.id}
+                              value={p.available}
+                            >
+                              <i
+                                name={p.id}
+                                value={p.available}
+                                class="bi bi-eye"
+                              ></i>
+                            </button>
+                          ) : (
+                            <button
+                              className="btn"
+                              onClick={(event) => handleChangeAvailable(event)}
+                              name={p.id}
+                              value={p.available}
+                            >
+                              <i
+                                name={p.id}
+                                value={p.available}
+                                class="bi bi-eye-slash-fill"
+                                style={{ color: "black" }}
+                              ></i>
+                            </button>
+                          )}
+                        </td>
+                        <td className="text-center">
                           <div>
                             <UpdatePackage
                               id={p.id}
