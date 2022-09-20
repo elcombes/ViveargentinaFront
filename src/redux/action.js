@@ -188,8 +188,8 @@ export function buyInMercadoPago(itemsFromStore) {
     });
   };
 }
-// Esta ruta crea una nueva review
 
+// Esta ruta crea una nueva review
 export function createNewReview(newReview) {
   return async function (dispatch) {
     let response = await axios.post(
