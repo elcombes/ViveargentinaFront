@@ -67,6 +67,8 @@ export function updateSaleStatus(newStatus) {
 
 export function approveSaleStatus(token, newStatus) {
   return async function () {
+    console.log("token: "+ token)
+    console.log("newStatus: "+ newStatus.status)
     const headers = {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -74,10 +76,10 @@ export function approveSaleStatus(token, newStatus) {
     };
     let response = await axios.put(
       "https://viveargentina.herokuapp.com/sales/approved",
-      {newStatus}, {headers}
+      newStatus, {headers}
     );
-    console.log(response);
-    return;
+    console.log(response.data);
+    return response.data;
   };
 }
 

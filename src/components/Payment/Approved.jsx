@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 
 function Verify() {
     const history = useHistory();
-    let user = window.localStorage.getItem("user")
+    let user = JSON.parse(window.localStorage.getItem("user"))
     if(!user){
         history.push("/home")
     }
@@ -16,9 +16,10 @@ function Verify() {
     const dispatch = useDispatch()
     let response;
     useEffect(async()=>{
-        response = dispatch(approveSaleStatus(token, {status: "confirmed"}))
+        console.log(token)
+        response = await dispatch(approveSaleStatus(token, {status: "confirmed"}))
         Swal.fire({
-            title: response.data+"!",
+            title: response+"!",
             imageUrl: "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663190222/VivaArg/Alerts/passagerAlert_1_nejegh.png",
             imageWidth: 350,
             imageHeight: 300,
@@ -26,7 +27,7 @@ function Verify() {
             imageAlt: "Custom image",
         })
         .then (()=>{
-            history.go("/home")
+            history.push("/home")
         });
     },[])
     return (
