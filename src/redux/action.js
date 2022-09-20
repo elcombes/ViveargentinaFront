@@ -380,7 +380,9 @@ export function getUserLogin({ email, password }) {
       "https://viveargentina.herokuapp.com/users/login",
       { email, password }
     );
-
+    if (response.data === 'Please confirm your email to login') {
+      return 'Please confirm your email to login'
+    }
     if (response.data === "not allowed") {
       return "Incorrect password";
     }
