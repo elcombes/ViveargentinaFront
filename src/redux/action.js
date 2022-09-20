@@ -98,7 +98,7 @@ export function addNewSale(userId, arrayItems) {
   return async function () {
     try {
       let response = await axios.post(
-        `http://viveargentina.herokuapp.com/sales?userId=${userId}`,
+        `https://viveargentina.herokuapp.com/sales?userId=${userId}`,
         arrayItems
       );
       return console.log(response.data);

@@ -9,8 +9,8 @@ import Swal from "sweetalert2";
 
 export default function ExperiencesTable() {
   const dispatch = useDispatch();
-  const allExperiences = useSelector((state) => state.allExperiences);
-  const history = useHistory()
+  const allExperiences = useSelector((state) => state.allExperiencesToAdmin);
+  const history = useHistory();
 
   const orderExperiences = allExperiences.sort(function (a, b) {
     if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
@@ -23,39 +23,41 @@ export default function ExperiencesTable() {
   }, []);
 
   const handleChangeAvailable = async (event) => {
-    event.preventDefault()
-    let id
-    let newAvailable
+    event.preventDefault();
+    let id;
+    let newAvailable;
 
     if (event.target.name) {
       id = event.target.name;
       newAvailable = {
-        available: event.target.value === true ? false : true
-      }
+        available: event.target.value === true ? false : true,
+      };
     } else {
       id = JSON.stringify(event.target.outerHTML).split('\\"')[1];
       newAvailable = {
-        available: JSON.stringify(event.target.outerHTML).split('\\"')[3] === 'true' ? false : true
-      }
+        available:
+          JSON.stringify(event.target.outerHTML).split('\\"')[3] === "true"
+            ? false
+            : true,
+      };
     }
-    console.log('id', id)
-    console.log('newAvailable', newAvailable)
+    console.log("id", id);
+    console.log("newAvailable", newAvailable);
 
-    const response = await dispatch(updateExperience(newAvailable, id))
+    const response = await dispatch(updateExperience(newAvailable, id));
 
     Swal.fire({
       title: response.data + "!",
-      imageUrl: "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663188984/VivaArg/Alerts/passagerAlert_hxpidz.png",
+      imageUrl:
+        "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663188984/VivaArg/Alerts/passagerAlert_hxpidz.png",
       imageWidth: 350,
       imageHeight: 300,
       confirmButtonColor: "#C49D48",
       imageAlt: "Custom image",
-    })
-      .then(() => {
-        history.go(0)
-      });
-  }
-
+    }).then(() => {
+      history.go(0);
+    });
+  };
 
   return (
     <div class="container mt-5">
@@ -86,7 +88,7 @@ export default function ExperiencesTable() {
 
                 {orderExperiences?.map((e) => {
                   return (
-                    <tbody class="table-body" key={e.id} >
+                    <tbody class="table-body" key={e.id}>
                       <tr class="cell-1 vertalign">
                         {/* <td>CITY</td> */}
                         <td>{e.package?.name}</td>
@@ -99,23 +101,34 @@ export default function ExperiencesTable() {
                         <td className="text-center">${e.price}</td>
                         <td className="text-center">{e.score}</td>
                         <td className="text-center">
-                        {e.available ?
-                          <button
-                            className="btn"
-                            onClick={(event) => handleChangeAvailable(event)}
-                            name={e.id}
-                            value={e.available} >
-                            <i name={e.id} value={e.available} class="bi bi-eye"></i>
-                          </button>
-                          :
-                          <button
-                            className="btn"
-                            onClick={(event) => handleChangeAvailable(event)}
-                            name={e.id}
-                            value={e.available} >
-                            <i name={e.id} value={e.available} class="bi bi-eye-slash-fill" style={{color:"black"}}></i>
-                          </button>
-                        }
+                          {e.available ? (
+                            <button
+                              className="btn"
+                              onClick={(event) => handleChangeAvailable(event)}
+                              name={e.id}
+                              value={e.available}
+                            >
+                              <i
+                                name={e.id}
+                                value={e.available}
+                                class="bi bi-eye"
+                              ></i>
+                            </button>
+                          ) : (
+                            <button
+                              className="btn"
+                              onClick={(event) => handleChangeAvailable(event)}
+                              name={e.id}
+                              value={e.available}
+                            >
+                              <i
+                                name={e.id}
+                                value={e.available}
+                                class="bi bi-eye-slash-fill"
+                                style={{ color: "black" }}
+                              ></i>
+                            </button>
+                          )}
                         </td>
                         <td className="text-center controlbuttonsexp">
                           <div>

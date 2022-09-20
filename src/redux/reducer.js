@@ -39,8 +39,10 @@ const initialState = {
   cityById: {},
   allCities: [],
   allPackages: [],
+  allPackagesToAdmin: [],
   allCategories: [],
   allExperiences: [],
+  allExperiencesToAdmin: [],
   allRegions: [],
   allReviews: [],
   userAuth: false,
@@ -246,26 +248,38 @@ export default function rootReducer(state = initialState, action) {
         allCities: action.payload,
       };
     case GET_PACKAGES_BY_NAME:
+      let allPackages3 = action.payload;
       return {
         ...state,
-        allPackages: action.payload,
+        allPackages: allPackages3.filter((p) => {
+          return p.available === true;
+        }),
       };
     case GET_PACKAGE_BY_ID:
+      let experiences = action.payload.experiences;
       return {
         ...state,
-        allExperiences: action.payload.experiences,
+        allExperiences: experiences.filter((e) => {
+          return e.available === true;
+        }),
       };
 
     case GET_EXPERIENCES_BY_NAME:
+      let allExperiences3 = action.payload;
       return {
         ...state,
-        allExperiences: action.payload,
+        allExperiences: allExperiences3.filter((e) => {
+          return e.available === true;
+        }),
       };
     case GET_CITY_BY_ID:
+      let packages = action.payload.packages;
       return {
         ...state,
         cityById: action.payload,
-        allPackages: action.payload.packages,
+        allPackages: packages.filter((p) => {
+          return p.available === true;
+        }),
       };
     case GET_REGION_BY_ID:
       return {
@@ -288,9 +302,13 @@ export default function rootReducer(state = initialState, action) {
         allCities: action.payload,
       };
     case GET_ALL_PACKAGES:
+      let allPackages2 = action.payload;
       return {
         ...state,
-        allPackages: action.payload,
+        allPackagesToAdmin: allPackages2,
+        allPackages: allPackages2.filter((p) => {
+          return p.available === true;
+        }),
       };
     case GET_ALL_CATEGORIES:
       return {
@@ -298,9 +316,13 @@ export default function rootReducer(state = initialState, action) {
         allCategories: action.payload,
       };
     case GET_ALL_EXPERIENCES:
+      let allExperiences2 = action.payload;
       return {
         ...state,
-        allExperiences: action.payload,
+        allExperiencesToAdmin: allExperiences2,
+        allExperiences: allExperiences2.filter((e) => {
+          return e.available === true;
+        }),
       };
     case FILTER_EXPERIENCES:
       return {
