@@ -157,19 +157,18 @@ export default function rootReducer(state = initialState, action) {
         preferenceMercadoPagoId: action.payload,
       };
     case GET_USER_LOGIN:
-      allExperiences = action.payload.user.experiences;
-      allPackages = action.payload.user.packages;
-
-      userExperiencesBought = allExperiences.map((e) => {
+      allExperiences = action.payload?.user?.experiences;
+      allPackages = action.payload?.user?.packages;
+      userExperiencesBought = allExperiences?.map((e) => {
         return e.bought === true;
       });
-      userPackagesBought = allPackages.map((p) => {
+      userPackagesBought = allPackages?.map((p) => {
         return p.bought === true;
       });
-      userExperiencesFavorite = allExperiences.map((e) => {
+      userExperiencesFavorite = allExperiences?.map((e) => {
         return e.favorite === true;
       });
-      userPackagesFavorite = allPackages.map((p) => {
+      userPackagesFavorite = allPackages?.map((p) => {
         return p.favorite === true;
       });
       return {

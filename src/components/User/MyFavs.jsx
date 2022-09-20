@@ -2,6 +2,7 @@ import React, { Fragment, useState } from "react";
 import styles from "./User.module.css";
 import Footer from "../Footer/Footer.jsx";
 import { useDispatch } from "react-redux";
+import Swal from "sweetalert2";
 import {
   removeExperienceFavorite,
   removePackageFavorite,

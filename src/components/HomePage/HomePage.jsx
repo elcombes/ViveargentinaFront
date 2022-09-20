@@ -171,7 +171,7 @@ function HomePage() {
           <div className="col-md-12">
             <div className='experiences' id='experiences'>
               <div class="experiencesHeader">
-                <span style={{ transform: `translate(${offSetY * 0.01}px)` }}>top experiences</span>
+                <span style={{ transform: `translate(${offSetY * 0.07}px)` }}>top experiences</span>
                 <h1 style={{ transform: `translate(${offSetY * 0.02}px)` }}>Our popular experiences</h1>
                 <p style={{ transform: `translate(${offSetY * 0.1}px)` }}>Choose a city, we organize the rest of your trip.</p>
               </div>
