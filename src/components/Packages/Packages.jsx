@@ -339,32 +339,9 @@ export default function Card(props) {
                           >
                             <ul className={styles.iconsexp}>
                               {
-                              // {console.log(e.experiences)}
                               e.experiences?.map((e) => {
-                                console.log(e)
-                                return (
-                                  <li className={styles.exptitle}>
-                                  <i className="bi bi-compass"></i>
-                                  {e.name}
-                                  <br />
-                                  </li>
-                                )
+                                return <li className={styles.exptitle}><i className="bi bi-compass"></i>{e.name}<br/></li>
                               })}
-                              {/* <li className={styles.exptitle}>
-                                <i className="bi bi-compass"></i>{" "}
-                                {e.experiences ? e.experiences[0]?.name : null}{" "}
-                                <br />
-                              </li>
-                              <li className={styles.exptitle}>
-                                <i className="bi bi-compass"></i>{" "}
-                                {e.experiences ? e.experiences[1]?.name : null}
-                                <br />
-                              </li>
-                              <li className={styles.exptitle}>
-                                <i className="bi bi-compass"></i>{" "}
-                                {e.experiences ? e.experiences[2]?.name : null}
-                                <br />
-                              </li> */}
                             </ul>
                           </div>
                         </div>
