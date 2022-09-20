@@ -1,19 +1,17 @@
 import Dropdown from "react-bootstrap/Dropdown";
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import ItemCart from "./ItemCart";
 import MercadoPago from "./MercadoPago";
 import { buyInMercadoPago, addNewSale } from "./../../redux/action.js";
 import styles from "./Cart.module.css";
+import Swal from "sweetalert2";
 
 import Button from "react-bootstrap/Button";
 import Overlay from "react-bootstrap/Overlay";
 import Popover from "react-bootstrap/Popover";
 
 export default function Cart() {
-  const cartRecharge = useSelector((state) => state.cartRecharge);
-
-  console.log(cartRecharge);
   // Para limpiar todo el localStorage
   // localStorage.clear();
 
@@ -28,7 +26,7 @@ export default function Cart() {
 
   useEffect(() => {
     itemsFromStore = JSON.parse(localStorage.getItem("items"));
-  }, [JSON.parse(localStorage.getItem("items")), cartRecharge]);
+  }, [JSON.parse(localStorage.getItem("items"))]);
 
   function changeState() {
     if (state) {
@@ -55,16 +53,26 @@ export default function Cart() {
   function onClickBuy() {
     setBuy(true);
     let user = JSON.parse(localStorage.getItem("user"));
+    if (!user) {
+      return Swal.fire({
+        title: "YOU HAVE TO LOGIN ",
+        imageUrl:
+          "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663003831/VivaArg/Alerts/3_zmfk4m.png",
+        imageWidth: 350,
+        imageHeight: 300,
+        confirmButtonColor: "#C49D48",
+        imageAlt: "Custom image",
+        showClass: {
+          popup: "animate_animated animate_flipInY",
+        },
+      });
+    }
     let userId = user.user.id;
     itemsFromStore = JSON.parse(localStorage.getItem("items"));
 
     dispatch(addNewSale(userId, itemsFromStore));
     dispatch(buyInMercadoPago(itemsFromStore));
   }
-
-  /* function handleClickForce() {
-    this.forceUpdate();
-  }*/
 
   if (!itemsFromStore || itemsFromStore.length === 0) {
     return (
