@@ -47,7 +47,9 @@ export default function ItemCart({
 
   function onRemove() {
     setBuyInFalse();
-    if (remove) setRemove(false);
+    if (remove) setRemove(false)
+    
+    ;
     if (!remove) setRemove(true);
     itemsFromStore = JSON.parse(localStorage.getItem("items"));
     console.log(itemsFromStore);
@@ -56,6 +58,7 @@ export default function ItemCart({
     );
     localStorage.setItem("items", JSON.stringify(newItemsFromStore));
     changeState();
+    
   }
 
   return (
