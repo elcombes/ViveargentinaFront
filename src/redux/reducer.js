@@ -51,7 +51,6 @@ const initialState = {
   userExperiencesFavorite: [],
   userPackagesFavorite: [],
   preferenceMercadoPagoId: "",
-  cartRecharge: false,
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -107,7 +106,6 @@ export default function rootReducer(state = initialState, action) {
       }
       return {
         ...state,
-        cartRecharge: true ? false : true,
       };
 
     case GET_ALL_USERS:
