@@ -131,16 +131,25 @@ export default function Login2() {
       e.stopPropagation();
       errorMessagesArray.forEach((e) => (e.hidden = false));
     } else if (mailExists) {
-      const response = dispatch(
-        getUserLogin({ email: newUser.email, password: newUser.password })
-      );
-      const image =
-        typeof response === "string"
-          ? "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663190222/VivaArg/Alerts/passagerAlert_1_nejegh.png"
-          : "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663188984/VivaArg/Alerts/passagerAlert_hxpidz.png";
-      const message =
-        typeof response === "string" ? response : "User successfully logged";
+      const response = await dispatch(getUserLogin({ email: newUser.email, password: newUser.password }));
       const user = JSON.parse(window.localStorage.getItem("user"));
+      if (response === 'Incorrect password') {
+        return Swal.fire({
+          title: "Incorrect password",
+          imageUrl:
+            "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663190222/VivaArg/Alerts/passagerAlert_1_nejegh.png",
+          imageWidth: 350,
+          imageHeight: 300,
+          confirmButtonColor: "#C49D48",
+          imageAlt: "Custom image",
+        });
+      }
+      const image = typeof response === "string"
+        ? "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663190222/VivaArg/Alerts/passagerAlert_1_nejegh.png"
+        : "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663188984/VivaArg/Alerts/passagerAlert_hxpidz.png"
+      const message = typeof response === "string" 
+        ? response 
+        : "User successfully logged"
       dispatch(getCartByUser(user?.user?.id));
       if (user?.user.administrator) history.push("/admin");
       Swal.fire({
@@ -161,37 +170,7 @@ export default function Login2() {
         confirmButtonColor: "#C49D48",
         imageAlt: "Custom image",
       });
-    }
-    const response = await dispatch(
-      getUserLogin({ email: newUser.email, password: newUser.password })
-    );
-
-    const image =
-      typeof response === "string"
-        ? "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663190222/VivaArg/Alerts/passagerAlert_1_nejegh.png"
-        : "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663188984/VivaArg/Alerts/passagerAlert_hxpidz.png";
-    const message =
-      typeof response === "string" ? response : "User successfully logged";
-    const user = JSON.parse(window.localStorage.getItem("user"));
-
-    await dispatch(getCartByUser(user.user.id));
-
-    if (user?.user.administrator) {
-      history.push("/admin");
-    }
-
-    Swal.fire({
-      title: message + "!",
-      imageUrl: image,
-      imageWidth: 350,
-      imageHeight: 300,
-      confirmButtonColor: "#C49D48",
-      imageAlt: "Custom image",
-    }).then(() => {
-      history.go(0);
-      //  component.forceUpdate(callback);
-    });
-    // window.location.reload(false);
+    } 
   };
 
   return (
