@@ -24,7 +24,7 @@ export default function Search({ setPage }) {
 
 
     function handleReload(e) {
-        if (pathName.includes("/cities")) setPage(1);
+        if (pathName.includes("/cities") || pathName.includes('/packages')) setPage(1);
         if (document.getElementById("alphabeticOrder")) {
             document.getElementById("alphabeticOrder").value = "sort"
         }
