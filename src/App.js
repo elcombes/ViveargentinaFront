@@ -15,6 +15,7 @@ import Verify from "./components/User/Verify";
 import AdminDashboard from './components/Admin/AdminDashboard.jsx';
 import UsersTable from "./components/User/UsersTable";
 import ResetPassword from "./components/User/ResetPassword";
+import Approved from "./components/Payment/Approved";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/packages/:cityId" component={Packages} />
           <Route exact path="/packages" component={Packages} />
           <Route path="/verify/:token" component={Verify} />
+          <Route path="/approved" component={Approved} />
           <Route path="/reset_password/:token" component={ResetPassword} />
           <Route path="/experiences/:packageId" component={Experiences} />
           <Route exact path="/experiences" component={Experiences} />

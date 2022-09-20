@@ -65,6 +65,22 @@ export function updateSaleStatus(newStatus) {
   };
 }
 
+export function approveSaleStatus(token, newStatus) {
+  return async function () {
+    const headers = {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    };
+    let response = await axios.put(
+      "https://viveargentina.herokuapp.com/sales/approved",
+      {newStatus}, {headers}
+    );
+    console.log(response);
+    return;
+  };
+}
+
 // Esta ruta trae un array con todas las ventas.
 export function getAllSales() {
   return async function (dispatch) {
