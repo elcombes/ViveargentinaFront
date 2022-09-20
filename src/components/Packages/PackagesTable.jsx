@@ -99,11 +99,25 @@ export default function PackagesTable() {
                         <td>{p.duration}</td>
                         <td>${p.price}</td>
                         <td className="text-center">{p.score}</td>
-                        {p.available ? 
-                        <td className="text-center"><i class="bi bi-eye"></i></td>
-                        : 
-                        <td className="text-center"><i class="bi bi-eye-slash-fill"></i></td>
+                        <td className="text-center">
+                        {p.available ?
+                          <button
+                            className="btn"
+                            onClick={(event) => handleChangeAvailable(event)}
+                            name={p.id}
+                            value={p.available} >
+                            <i name={p.id} value={p.available} class="bi bi-eye"></i>
+                          </button>
+                          :
+                          <button
+                            className="btn"
+                            onClick={(event) => handleChangeAvailable(event)}
+                            name={p.id}
+                            value={p.available} >
+                            <i name={p.id} value={p.available} class="bi bi-eye-slash-fill" style={{color:"black"}}></i>
+                          </button>
                         }
+                        </td>
                         <td className="text-center">
                           <div>
                             <UpdatePackage
@@ -118,14 +132,6 @@ export default function PackagesTable() {
                               image={p.image}
                             />
                           </div>
-
-                          <button 
-                          className="btn" 
-                          onClick={(event) => handleChangeAvailable(event)}
-                          name={p.id} 
-                          value={p.available} >
-                           <i name={p.id} value={p.available} class="bi bi-sign-stop-fill"></i>
-                          </button>
                         </td>
                       </tr>
                     </tbody>
