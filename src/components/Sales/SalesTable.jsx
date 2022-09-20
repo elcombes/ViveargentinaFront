@@ -45,17 +45,17 @@ export default function SalesTable() {
               {/* Filtro de  Status */}
               <div class="table-create">
 
-              <span> FILTER </span>
+              <span> Filter </span>
               <select
                 onChange={(e) => handleFilterStatus(e)}
                 className="form-select selectBtn"
               >
-                <option disable>Select Status</option>
-                <option value="all">ALL</option>
-                <option value="Pending payment">PENDING PAYMENT</option>
-                <option value="confirmed">CONFIRMED</option>
-                <option value="cancelled">CANCELLED</option>
-                <option value="done">DONE</option>
+                <option disabled selected>Select Status</option>
+                <option value="all">All</option>
+                <option value="Pending payment">Pending payment</option>
+                <option value="confirmed">Confirmed</option>
+                <option value="cancelled">Cancelled</option>
+                <option value="done">Done</option>
               </select>
               </div>
               <br />
@@ -101,13 +101,13 @@ export default function SalesTable() {
                               className="form-select statusChange"
                             >
                               {/* Change Status */}
-                              <option disable>Select Status</option>
+                              <option disabled selected >Select Status</option>
                               <option value="Pending payment">
-                                PENDING PAYMENT
+                                Pending payment
                               </option>
-                              <option value="confirmed">CONFIRMED</option>
-                              <option value="cancelled">CANCELLED</option>
-                              <option value="done">DONE</option>
+                              <option value="confirmed">Confirmed</option>
+                              <option value="cancelled">Cancelled</option>
+                              <option value="done">Done</option>
                             </select>
                           </td>
                         </tr>

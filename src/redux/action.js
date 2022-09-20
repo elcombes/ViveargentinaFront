@@ -188,8 +188,8 @@ export function buyInMercadoPago(itemsFromStore) {
     });
   };
 }
-// Esta ruta crea una nueva review
 
+// Esta ruta crea una nueva review
 export function createNewReview(newReview) {
   return async function (dispatch) {
     let response = await axios.post(
@@ -380,7 +380,9 @@ export function getUserLogin({ email, password }) {
       "https://viveargentina.herokuapp.com/users/login",
       { email, password }
     );
-
+    if (response.data === 'Please confirm your email to login') {
+      return 'Please confirm your email to login'
+    }
     if (response.data === "not allowed") {
       return "Incorrect password";
     }

@@ -130,14 +130,44 @@ export default function Login2() {
       e.preventDefault();
       e.stopPropagation();
       errorMessagesArray.forEach((e) => (e.hidden = false));
-    } else if (mailExists) {
+    } else if (!mailExists) {
+      return Swal.fire({
+        title: "This email is not registered",
+        imageUrl:
+          "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663190222/VivaArg/Alerts/passagerAlert_1_nejegh.png",
+        imageWidth: 350,
+        imageHeight: 300,
+        confirmButtonColor: "#C49D48",
+        imageAlt: "Custom image",
+      });
+    }
+    else {
       const response = await dispatch(getUserLogin({ email: newUser.email, password: newUser.password }));
       const user = JSON.parse(window.localStorage.getItem("user"));
+      console.log(response)
+      console.log(user)
       if (response === 'Incorrect password') {
         return Swal.fire({
           title: "Incorrect password",
-          imageUrl:
-            "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663190222/VivaArg/Alerts/passagerAlert_1_nejegh.png",
+          imageUrl: "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663190222/VivaArg/Alerts/passagerAlert_1_nejegh.png",
+          imageWidth: 350,
+          imageHeight: 300,
+          confirmButtonColor: "#C49D48",
+          imageAlt: "Custom image",
+        });
+      } else if (response === 'Please confirm your email to login') {
+        return Swal.fire({
+          title: 'Please validate your account to log in',
+          imageUrl: "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663190222/VivaArg/Alerts/passagerAlert_1_nejegh.png",
+          imageWidth: 350,
+          imageHeight: 300,
+          confirmButtonColor: "#C49D48",
+          imageAlt: "Custom image",
+        });
+      } else if (response === 'User not allowed, please contact the administrator') {
+        return Swal.fire({
+          title: 'User not allowed, please contact the administrator',
+          imageUrl: "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663190222/VivaArg/Alerts/passagerAlert_1_nejegh.png",
           imageWidth: 350,
           imageHeight: 300,
           confirmButtonColor: "#C49D48",
@@ -147,8 +177,8 @@ export default function Login2() {
       const image = typeof response === "string"
         ? "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663190222/VivaArg/Alerts/passagerAlert_1_nejegh.png"
         : "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663188984/VivaArg/Alerts/passagerAlert_hxpidz.png"
-      const message = typeof response === "string" 
-        ? response 
+      const message = typeof response === "string"
+        ? response
         : "User successfully logged"
       dispatch(getCartByUser(user?.user?.id));
       if (user?.user.administrator) history.push("/admin");
@@ -160,17 +190,7 @@ export default function Login2() {
         confirmButtonColor: "#C49D48",
         imageAlt: "Custom image",
       });
-    } else {
-      return Swal.fire({
-        title: "This email is not registered",
-        imageUrl:
-          "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663190222/VivaArg/Alerts/passagerAlert_1_nejegh.png",
-        imageWidth: 350,
-        imageHeight: 300,
-        confirmButtonColor: "#C49D48",
-        imageAlt: "Custom image",
-      });
-    } 
+    }
   };
 
   return (
