@@ -377,21 +377,10 @@ export default function Card(props) {
                             style={{ fontWeight: "400", fontFamily: "Roboto" }}
                           >
                             <ul className={styles.iconsexp}>
-                              <li className={styles.exptitle}>
-                                <i className="bi bi-compass"></i>{" "}
-                                {e.experiences ? e.experiences[0]?.name : null}{" "}
-                                <br />
-                              </li>
-                              <li className={styles.exptitle}>
-                                <i className="bi bi-compass"></i>{" "}
-                                {e.experiences ? e.experiences[1]?.name : null}
-                                <br />
-                              </li>
-                              <li className={styles.exptitle}>
-                                <i className="bi bi-compass"></i>{" "}
-                                {e.experiences ? e.experiences[2]?.name : null}
-                                <br />
-                              </li>
+                              {
+                              e.experiences?.map((e) => {
+                                return <li className={styles.exptitle}><i className="bi bi-compass"></i>{e.name}<br/></li>
+                              })}
                             </ul>
                           </div>
                         </div>

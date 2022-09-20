@@ -26,7 +26,6 @@ function validate(newUser) {
     if (!newUser.password) {
         errors.password = "Password is required"
     }
-
     if (!newUser.repeatedPassword) {
         errors.repeatedPassword = "Password do not much"
     }
@@ -39,8 +38,6 @@ function validate(newUser) {
 export default function SignUp() {
 
     let allUsers = useSelector((state) => state.allUsers);
-    
-    const history = useHistory()
     const dispatch = useDispatch()
     const [newUser, setNewUser] = useState({
         first_name: "",
@@ -107,7 +104,7 @@ export default function SignUp() {
             setTimeout(() => {
                 return Swal.fire({
                     title: "THANKS FOR SIGNING UP!",
-                    text: 'Check your mail to validate your account',
+                    text: 'Check your email to validate your account',
                     imageUrl: "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663188984/VivaArg/Alerts/passagerAlert_hxpidz.png",
                     imageWidth: 350,
                     imageHeight: 300,
@@ -122,11 +119,11 @@ export default function SignUp() {
             })
             setErrors(validate({
                 ...newUser,
-                email: ""}));
+                email: ""}
+                ));
             let errorMessagesNodeList = document.querySelectorAll("#errors");
             let errorMessagesArray = Array.from(errorMessagesNodeList);
             errorMessagesArray.forEach((e) => {return (e.hidden = true)});
-
             return Swal.fire({
                 title: 'This email is already in use',
                 imageUrl: 'https://res.cloudinary.com/dblc1bzmx/image/upload/v1663190222/VivaArg/Alerts/passagerAlert_1_nejegh.png',
