@@ -31,7 +31,6 @@ export default function Experiences(props) {
   const firstExperiencePage = lastExperiencePage - experiencesPage;
 
   const showExperiencesPage = allExperiences.slice(
-    //.slice sirve para cortar un array y mostrar solo una cantidad de elementos determinada por el parametro que le pasemos (9)
     firstExperiencePage,
     lastExperiencePage
   );

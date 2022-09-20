@@ -1,3 +1,7 @@
+.col-md.titleh2 {
+    font-size: 7vh;
+}
+
 ul.iconscity {
     padding-left: 0;
 }
@@ -25,7 +29,7 @@ ul.iconscity {
     padding: 0;
 }
 
-.itinerary {
+/* .itinerary {
     background-image: url('https://images.unsplash.com/photo-1539635278303-d4002c07eae3?auto=format&fit=crop&w=1170&q=80');
     height: 150px;
     width: 100%;
@@ -36,7 +40,7 @@ ul.iconscity {
     justify-content: center;
     align-items: center;
     margin: 40px 0;
-}
+} */
 
 .citybuttons {
     display: flex;
