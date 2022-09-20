@@ -35,7 +35,7 @@ export default function FilterPackages({ handleOrder }) {
                     <div className="container">
                         <div className="row mt-5">
                             <div className="col-md-6">
-                                <h4 className="text-center mb-3"><i class="bi bi-filter-square-fill"style={{color:"#C49D48"}}></i> ORDER PACKAGES BY</h4>
+                                <h4 className="text-center mb-3"><i class="bi bi-filter-square-fill"style={{color:"#C49D48"}}></i> SORT PACKAGES BY</h4>
                                 <ul className={styles.filterstyle}>
                                     <li>
                                         <h5><i class="bi bi-sort-alpha-down"style={{color:"#C49D48"}}></i> ALFABETIC</h5>
