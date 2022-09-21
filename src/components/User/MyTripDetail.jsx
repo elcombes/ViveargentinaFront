@@ -26,10 +26,7 @@ export default function MyTripDetail({ packages, experiences, saleId }) {
         <div class="offcanvas-header">
           <h5 class="offcanvas-title" id="offcanvasRightLabel">
             <h4 style={{ fontSize: "30px", color: "white" }}>
-              <i
-                class="bi bi-cart"
-                style={{ fontSize: "30px", margin: "20px" }}
-              ></i>{" "}
+              {" "}
               DETAIL
             </h4>
           </h5>
