@@ -337,7 +337,7 @@ export default function Packages() {
                               className="form-control form-inputContact"
                               value={newPackage.dates}
                               name="dates"
-                              placeholder="23/05/2023, 08/03/2023"
+                              placeholder="23-may-23, 08-mar-23"
                               onChange={(e) => handleChange(e)}
                             />
                             {errors.dates ? (

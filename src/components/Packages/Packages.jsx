@@ -206,6 +206,7 @@ export default function Card(props) {
   //   Fin Precart
 
   function handleOrder(e) {
+    setPage(1)
     setOrder(e.target.value);
     console.log(Order);
     dispatch(orderPackages(e.target.value));
