@@ -71,7 +71,7 @@ export default function Cart() {
     itemsFromStore = JSON.parse(localStorage.getItem("items"));
 
     const saleId = await dispatch(addNewSale(userId, itemsFromStore));
-
+    console.log("saleId en cart");
     dispatch(buyInMercadoPago(saleId, itemsFromStore));
   }
 
