@@ -5,10 +5,14 @@ import Login from "../User/Login";
 import logo from "../../assets/vive argentina.png";
 import Cart from "../Cart/Cart"
 import SignUp from "../User/SignUp/SignUp";
+import {useHistory} from "react-router-dom";
+import Swal from "sweetalert2";
+
 
 function Navbar() {
   const [active, setActive] = useState("nav__menu");
   const [icon, setIcon] = useState("nav__toggler");
+  const history = useHistory()
   const navToggle = () => {
     if (active === "nav__menu") {
       setActive("nav__menu nav__active");
@@ -19,6 +23,26 @@ function Navbar() {
       setIcon("nav__toggler toggle");
     } else setIcon("nav__toggler");
   };
+
+  function handleBtnClick() {
+    let user = JSON.parse(localStorage.getItem("user"));
+    if(user) {
+      window.location.href='/profile#myfavs'
+    } else {
+      return Swal.fire({
+        title: "Please log in to see your favorites",
+        imageUrl: 'https://res.cloudinary.com/dblc1bzmx/image/upload/v1663190222/VivaArg/Alerts/passagerAlert_1_nejegh.png',
+        imageWidth: 350,
+        imageHeight: 300,
+        confirmButtonColor: "#C49D48",
+        imageAlt: "Custom image",
+        showClass: {
+          popup: "animate_animated animate_flipInY",
+        },
+      });
+    }
+  }
+
   return (
     <Fragment>
       <nav className="nav">
@@ -57,13 +81,14 @@ function Navbar() {
             </a>
           </li>
           <li>
-            <a
+            <button
               class="btn btn-outline-secondary btn-lg"
               style={{ borderColor: "#c49d48e3", borderRadius: "2vh" }}
-              href="/profile#myfavs"
+              onClick={handleBtnClick}
+              // href="/profile#myfavs"
             >
               <i class="bi bi-heart"></i>
-            </a>
+            </button>
           </li>
           <li>
             <Cart/>
