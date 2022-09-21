@@ -103,7 +103,7 @@ export default function FilterExperiencies({ handleOrder, setPage }) {
                                     <li>
                                         <h5><i class="bi bi-bookmarks-fill"style={{color:"#C49D48"}}></i> CATEGORIES</h5>
                                         <select id="categoryFilter" onChange={e => handleFilterByCategory(e)}>
-                                            <option value='all'>ALL</option>
+                                            <option value='all'>All</option>
                                             {allCategories && allCategories.sort((a, b) => {
                                                 if (a.name < b.name) return -1;
                                                 if (a.name > b.name) return 1;
@@ -121,7 +121,7 @@ export default function FilterExperiencies({ handleOrder, setPage }) {
                                     <li>
                                         <h5><i class="bi bi-box-seam-fill"style={{color:"#C49D48"}}></i> PACKAGES</h5>
                                         <select id="packageFilter" onChange={e => handleFilterByPackage(e)}>
-                                            <option value='all'>ALL</option>
+                                            <option value='all'>All</option>
                                             {allPackages && allPackages.sort((a, b) => {
                                                 if (a.name < b.name) return -1;
                                                 if (a.name > b.name) return 1;

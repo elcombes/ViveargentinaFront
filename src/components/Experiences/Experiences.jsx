@@ -196,7 +196,7 @@ export default function Experiences(props) {
           {userAuth === false ? <NavBar /> : <NavBarUser />}
           <SearchBar setPage={setPage} />
           <div>
-            <FilterExperiences handleOrder={handleOrder} />
+            <FilterExperiences setPage={setPage} handleOrder={handleOrder} />
           </div>
           <Paged
             experiencesPage={experiencesPage}

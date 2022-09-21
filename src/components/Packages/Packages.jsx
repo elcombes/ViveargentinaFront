@@ -217,7 +217,7 @@ export default function Card(props) {
       <div>
         <div className="container-fluid">
           {userAuth === false ? <NavBar /> : <NavBarUser />}
-          <SearchBar />
+          <SearchBar setPage={setPage} />
           <div>
           <FilterPackages handleOrder={handleOrder} />
           </div>
