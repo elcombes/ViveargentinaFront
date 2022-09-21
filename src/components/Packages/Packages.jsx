@@ -298,6 +298,7 @@ export default function Card(props) {
           ) : (
             <div>
               {showPackagesPage?.map((e) => {
+                console.log(allPackages)
                 return (
                   <div className="container" key={prevId++}>
                     <div className="row">

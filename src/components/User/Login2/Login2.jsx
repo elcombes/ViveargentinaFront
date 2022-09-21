@@ -272,7 +272,7 @@ export default function Login2() {
                       type="password"
                       value={newUser.password}
                       name="password"
-                      placeholder="At least a lowercase, an uppercase, a number and 8 characters"
+                      placeholder="Please insert your password"
                       onChange={(e) => handleChange(e)}
                     />
                     {
