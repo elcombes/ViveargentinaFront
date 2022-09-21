@@ -101,6 +101,7 @@ function HomePage() {
 
   /* reviews */
 
+  let prevId = 1;
 
   return (
     <Fragment>
@@ -207,7 +208,7 @@ function HomePage() {
 
                 <span style={{ transform: `translate(${offSetY * 0.09}px)` }}>EXPLORE</span>
                 <h1 style={{ transform: `translate(${offSetY * 0.08}px)` }}>Our cities</h1>
-                <p style={{ transform: `translate(${offSetY * 0.08}px)` }}>Play me <i class="bi bi-play" style={{height:"50px"}}></i></p>
+                <p style={{ transform: `translate(${offSetY * 0.08}px)` }}>Play me <i class="bi bi-play" style={{ height: "50px" }}></i></p>
 
               </div>
 
@@ -230,51 +231,73 @@ function HomePage() {
         {/* REVIEWS */}
         <div>
           {/* RENDERIZADO REVIEWS */}
-                <section class="containerReviews" id='reviews'>
-                  <div class="titleReviews">
-                    <h2>our reviews</h2>
-                  </div>
-          {
-            allReviews?.map((r) => {
-              return allReviews === [] ? (
-                <div className="noReviews">
-                  <img src="https://res.cloudinary.com/dblc1bzmx/image/upload/v1663366880/VivaArg/Alerts/passagerAlert_3_jprokc.png" alt="Loading..." />
-                </div>
-              ) : (
-                  <article class="reviewReviews">
-                    <div class="img-container">
-                      <img src={r.user ? r.user.photo : "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663613676/VivaArg/unnamed_m8fjgl.gif"} alt="-1" id="person-img" />
-                    </div>
-                    <h4 id="authorReviews"> {r.user ? r.user.first_name + " " + r.user.last_name : "Anonymous"}</h4>
-                    <p id="job">{r.date}
-                    </p>
-                    <p id="info">
-                      "{r.text}"
-                    </p>
-                    {/*   <!-- prev next buttons --> */}
-                    <div class="button-container">
-                      <button class="prev-btn">
-                        <i class="bi bi-arrow-left-short"></i>
-                      </button>
-                      <button class="next-btn">
-                        <i class="bi bi-arrow-right-short"></i>
-                      </button>
-                    </div>
-                    {/*    */}
-                    <div class="quote"><i class="fa-solid fa-quote-right" id="quote"></i></div>
-                    <div class="underline"></div>
+          <section className="containerReviews" id='reviews'>
 
 
-                    {/* CREATE REVIEW */}
+            <div class="titleReviews">
+              <h2>our reviews</h2>
+            </div>
 
-                  </article>
-              );
-            })
-          }
+            <div id="carouselReviews" className="carousel slide" data-bs-ride="carousel">
+              <div className="carousel-inner">
+
+                {
+                  allReviews?.map((r) => {
+                    return allReviews === [] ? (
+                      <div className="noReviews">
+                        <img src="https://res.cloudinary.com/dblc1bzmx/image/upload/v1663366880/VivaArg/Alerts/passagerAlert_3_jprokc.png" alt="Loading..." />
+                      </div>
+                    ) : (
+                      <div className="carousel-item active" key={prevId++}>
+                        <article class="reviewReviews">
+                          <div class="img-container">
+                            <img src={r.user ? r.user.photo : "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663613676/VivaArg/unnamed_m8fjgl.gif"} alt="-1" id="person-img" />
+                          </div>
+                          <h4 id="authorReviews"> {r.user ? r.user.first_name + " " + r.user.last_name : "Anonymous"}</h4>
+                          <p id="job">{r.date}
+                          </p>
+                          <p id="info">
+                            "{r.text}"
+                          </p>
+                          <div class="quote"><i class="fa-solid fa-quote-right" id="quote"></i></div>
+                          <div class="underline"></div>
+
+
+                          {/* CREATE REVIEW */}
+
+                        </article>
+                      </div>
+                    );
+                  })
+                }
+
+              </div>
+
+              <button className="carousel-control-prev" type="button" data-bs-target="#carouselReviews" data-bs-slide="prev">
+                <span className="carousel-control-prev-icon" aria-hidden="true"><i class="bi bi-arrow-left-short" style={{fontSize:"30px"}}></i></span>
+                <span className="visually-hidden">Prev</span>
+              </button>
+
+              <button className="carousel-control-next" type="button" data-bs-target="#carouselReviews" data-bs-slide="next">
+                <span className="carousel-control-next-icon" aria-hidden="true"><i class="bi bi-arrow-right-short" style={{fontSize:"30px"}}></i></span>
+                <span className="visually-hidden">Next</span>
+              </button>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
           </section>
 
           {/* FORMULARIO DE CREACION DE REVIEW */}
-          <section className='reviewSection'id="reviews">
+          <section className='reviewSection' id="reviews">
             <div>
               <div >
                 <h1>Share your experience, write a review.</h1>
@@ -347,7 +370,7 @@ function HomePage() {
                     <small></small>
                   </p>
                   <p class="full-width">
-                    <input type="checkbox" id="checkbox" name="checkbox"/> Yes, I would like to receive information about discounts, promotions, packages and experiences available.
+                    <input type="checkbox" id="checkbox" name="checkbox" /> Yes, I would like to receive information about discounts, promotions, packages and experiences available.
                   </p>
                   <p class="full-width">
                     <input type="submit" class="btn btn-outline-secondary btn-lg " value="SEND" onclick="checkValidations()" />
