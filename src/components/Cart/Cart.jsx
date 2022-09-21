@@ -189,30 +189,42 @@ export default function Cart() {
             <div>
               {/* Total: {totalcart} */}
 
-              <button
-                id="mercadoPago"
-                onClick={onClickBuy}
-                className={`btn btn-outline-secondary btn-lg ${styles.buttonmercadopago}`}
-              >
-                BUY
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="30"
-                  height="25"
-                  fill="currentColor"
-                  class="bi bi-credit-card"
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1H2zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7z" />
-                  <path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1z" />
-                </svg>
-              </button>
-              <button
-                onClick={clearCart}
-                className="btn btn-outline-secondary btn-lg"
-              >
-                CLEAR <i class="bi bi-cart" />
-              </button>
+              <div className="row mb-3">
+                <div className="col-md-8 text-start">
+                  <h4 className={`text-start ${styles.pricecart}`}>$ 00000</h4>
+                  <h5>TOTAL CART </h5>
+                </div>
+                <div className="col-md-4 text-end">
+                  <button
+                    onClick={clearCart}
+                    className="btn btn-outline-secondary btn-lg"
+                  >
+                    CLEAR <i class="bi bi-cart" />
+                  </button>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-md-12">
+                  <button
+                    id="mercadoPago"
+                    onClick={onClickBuy}
+                    className={`btn btn-outline-secondary btn-lg ${styles.buttonmercadopago}`}
+                  >
+                    BUY 
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="30"
+                      height="25"
+                      fill="currentColor"
+                      class="bi bi-credit-card"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1H2zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7z" />
+                      <path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1z" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
               {buy ? <MercadoPago /> : null}
             </div>
           </div>
