@@ -17,17 +17,15 @@ import {
 } from "../../../redux/action";
 
 function validate(newUser) {
-  const emailVerification =
-    /^(([^<>()\[\]\\.,;:\s@”]+(\.[^<>()\[\]\\.,;:\s@”]+)*)|(“.+”))@((\[[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}])|(([a-zA-Z\-0–9]+\.)+[a-zA-Z]{2,}))$/;
+  const emailVerification = /^(([^<>()\[\]\\.,;:\s@”]+(\.[^<>()\[\]\\.,;:\s@”]+)*)|(“.+”))@((\[[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}])|(([a-zA-Z\-0–9]+\.)+[a-zA-Z]{2,}))$/;
+  let passwordLowerCases = /[a-z]/g;
+  let passwordUpperCases = /[A-Z]/g;
+  let passwordNumbers = /[0-9]/g;
   let errors = {};
   if (!emailVerification.test(newUser.email)) {
     errors.email = "Invalid email";
   }
-  if (
-    newUser.password.length < 8 ||
-    newUser.password.length > 20 ||
-    !newUser.password
-  ) {
+  if (!newUser.password.match(passwordLowerCases) || !newUser.password.match(passwordUpperCases) || !newUser.password.match(passwordNumbers) || newUser.password.length < 8) {
     errors.password = "Invalid password";
   }
   return errors;
@@ -277,7 +275,7 @@ export default function Login2() {
                       type="password"
                       value={newUser.password}
                       name="password"
-                      placeholder="8-20 characters long"
+                      placeholder="At least a lowercase, an uppercase, a number and 8 characters"
                       onChange={(e) => handleChange(e)}
                     />
                     {

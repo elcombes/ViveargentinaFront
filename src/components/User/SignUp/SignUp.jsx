@@ -10,6 +10,9 @@ import { registerUser } from "../../../redux/action.js";
 function validate(newUser) {
     let emailVerification = /^(([^<>()\[\]\\.,;:\s@”]+(\.[^<>()\[\]\\.,;:\s@”]+)*)|(“.+”))@((\[[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}])|(([a-zA-Z\-0–9]+\.)+[a-zA-Z]{2,}))$/
     // let strongPasswordVerification = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+    let passwordLowerCases = /[a-z]/g;
+    let passwordUpperCases = /[A-Z]/g;
+    let passwordNumbers = /[0-9]/g;
     let errors = {};
     if (!newUser.first_name) {
         errors.first_name = "Firstname is required"
@@ -24,7 +27,10 @@ function validate(newUser) {
         errors.email = "Invalid email"
     }
     if (!newUser.password) {
-        errors.password = "Password is required"
+        errors.password = "Invalid password"
+    }
+    if (!newUser.password.match(passwordLowerCases) || !newUser.password.match(passwordUpperCases) || !newUser.password.match(passwordNumbers) || newUser.password.length < 8) {
+        errors.password = "Invalid password"
     }
     if (!newUser.repeatedPassword) {
         errors.repeatedPassword = "Password do not much"
@@ -218,7 +224,7 @@ export default function SignUp() {
                                                     type="password"
                                                     value={newUser.password}
                                                     name="password"
-                                                    placeholder="8-20 characters long"
+                                                    placeholder="At least a lowercase, an uppercase, a number and 8 characters"
                                                     onChange={(e) => handleChange(e)} />
                                                 {errors.password ?
                                                     <p id="errors" hidden>{errors.password}</p> :
