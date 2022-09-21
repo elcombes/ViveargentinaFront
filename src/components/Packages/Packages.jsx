@@ -172,6 +172,7 @@ export default function Card(props) {
   };
   const addPackagesFavorites = (packageId) => {
     let user = JSON.parse(localStorage.getItem("user"));
+    if(user) {
     let userId = user.user.id;
     dispatch(addPackageFavorite(packageId, userId));
     Swal.fire({
@@ -186,6 +187,20 @@ export default function Card(props) {
         popup: "animate__animated animate__flipInY",
       },
     });
+  }
+  else {
+      Swal.fire({
+        title: "Please login to add to favorites",
+        imageUrl: "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663190222/VivaArg/Alerts/passagerAlert_1_nejegh.png",
+        imageWidth: 400,
+        imageHeight: 200,
+        confirmButtonColor: "#C49D48",
+        imageAlt: "Custom image",
+        showClass: {
+          popup: "animate__animated animate__flipInY",
+        },
+      });
+  }
   };
 
   //   Fin Precart
