@@ -82,19 +82,15 @@ export default function MyTrips({ userId }) {
                 <div className={`row ${styles.itemmytrips}`}>
                   <div className="col-md-12">
                     <div className={`row mt-3 mb-3 ${styles.itemmytrips}`}>
-                      <div className="col-md-1">
+                      <div className="col-md-2">
                         <img src="https://res.cloudinary.com/dblc1bzmx/image/upload/v1663182507/VivaArg/Logo_Joyeri%CC%81a_Minimalista_Simple_Blanco_y_Negro_1_pldegi.png" alt="" className={`img-fluid ${styles.imgtripprofile}`} />
                       </div>
-                      {/* <div className="col-md-4">
-                        <h2 className="titlepackages">Vacio</h2>
-                        <h4>Vacio</h4>
-                      </div> */}
-                      <div className="col-md-3">
+                      <div className="col-md-2">
                         <div className={`text-center ${styles.date}`}>
                           <p>{s.createdAt.slice(0, 9)}</p>
                         </div>
                       </div>
-                      <div className="col-md-3">
+                      <div className="col-md-2">
                         <div className={`text-center ${styles.price}`}>
                           <p>$ {s.total}</p>
                         </div>
@@ -104,12 +100,20 @@ export default function MyTrips({ userId }) {
                           <p>{s.status}</p>
                         </div>
                       </div>
-                      <div className="col-md-3 text-end">
+                      <div className="col-md-2 text-end">
                         <MyTripDetail
                           packages={s.packages}
                           experiences={s.experiences}
                           saleId={s.id}
                         />
+                      </div>
+                      <div className="col-md-2 text-end">
+                        <button
+                          type="button"
+                          className="btn btn-outline-secondary"
+                        >
+                          <i class="bi bi-x-circle-fill"></i> CANCEL PURCHASE
+                        </button>
                       </div>
                       <hr />
                     </div>
