@@ -208,7 +208,7 @@ function HomePage() {
 
                 <span style={{ transform: `translate(${offSetY * 0.09}px)` }}>EXPLORE</span>
                 <h1 style={{ transform: `translate(${offSetY * 0.08}px)` }}>Our cities</h1>
-                <p style={{ transform: `translate(${offSetY * 0.08}px)` }}>Play me <i class="bi bi-play" style={{ height: "50px" }}></i></p>
+                {/* <p style={{ transform: `translate(${offSetY * 0.08}px)` }}>Play me <i class="bi bi-play" style={{ height: "50px" }}></i></p> */}
 
               </div>
 
