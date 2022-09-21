@@ -57,7 +57,6 @@ export default function UpdatePackage({
   cityId,
   image,
 }) {
-  console.log(image)
   const history = useHistory();
   const dispatch = useDispatch();
   const allCities = useSelector((state) => state.allCities);

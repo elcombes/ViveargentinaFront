@@ -27,11 +27,14 @@ export default function PackagesTable() {
     let newAvailable;
 
     if (event.target.name) {
+      console.log("if")
+      console.log(event)
       id = event.target.name;
       newAvailable = {
-        available: event.target.value === true ? false : true,
+        available: event.target.value === "true" ? false : true,
       };
     } else {
+      console.log("else")
       id = JSON.stringify(event.target.outerHTML).split('\\"')[1];
       newAvailable = {
         available:
