@@ -453,9 +453,131 @@
 }
 
 
-@media screen and (max-width: 940px) {
+@media only screen and (min-width:320px)and (max-width: 768px) {
     .form input[type=text] {
         max-width: 275px;
     }
+
+    .blockYScroll{
+        transform: none !important;
+    }    
+    .containerHome {
+
+        max-width: 100vh;
+        height: 100vh;
+        background-size: cover;
+        background-position: center;
+    }
+
+
+    .mainTitle {
+        margin-top: 10vh;
+        margin-left: 7vh;
+        font-size: 5vh;
+        font-weight: 700;
+    }
+
+    .subTitle {
+        margin-top: 4vh;
+        margin-left: 7vh;
+        margin-right: 4vh;
+        font-size: 2vh;
+        font-weight: 400;
+    }
+
+    /* cities */
+
+    .cities {
+        display: flex;
+        width: min(980px, 85%);
+        margin: 0 auto;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-block: min(20vh, 5em);
+    
+    }
+    
+    .citiesHeader {
+        margin-bottom: 55px;
+        overflow: hidden;
+    
+    }
+    
+    .citiesHeader h1 {
+        font-weight: 500;
+        font-size: 2rem;
+        font-family: Raleway;
+        margin: 0px -5px 15px;
+        color: #634100;
+    
+    }
+    
+    .citiesHeader span {
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        display: inline-block;
+        font-weight: 700;
+        font-size: 50px;
+        color: #C49D48;
+        
+    }
+        /* REVIEWS */
+
+
+    .containerReviews{
+        max-width: fit-content;
+    }
+    .form-group{
+        margin-top: 4px;
+        font-size: 13px;
+    }
+
+        /* CONTACTUS */
+
+    .formContact h2{
+        font-size: 15px;
+        margin-bottom: 30px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    .formContact h4{
+        font-size: 15px;
+        margin-top: -40px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .full-width{
+        font-size: 12px;
+    }
+
+    .col-md-4 p {
+        font-size: 12px;
+        font-weight: 700;
+    }
+
+    .contactUs {
+        display: flex;
+        width: min(100%);
+        min-height: 100vh;
+        display: flex;
+        font-size: 10px;
+        flex-direction: column;
+        justify-content: center;
+        background-image: url('../../assets/vive\ argentina.png');
+        background-color: #dedcd9;
+        background-repeat: no-repeat;
+        background-position: left;
+    }
+    
+    .wrapperContact {
+        font-size: x-large;
+    
+    }
+    
 
 }

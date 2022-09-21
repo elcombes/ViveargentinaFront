@@ -139,9 +139,9 @@ function HomePage() {
           <div className="col-md-12">
             <div className='cities' id='cities'>
               <div class="citiesHeader">
-                <span style={{ transform: `translate(${offSetY * 0.2}px)` }}>top Packages</span>
-                <h1 style={{ transform: `translate(${offSetY * 0.2}px)` }}>Our popular packages</h1>
-                <p style={{ transform: `translate(${offSetY * 0.1}px)` }}>We are a team of humans with the strategy, the tools and the solutions for you to travel as you deserve.</p>
+                <span className="blockYScroll" style={{ transform: `translate(${offSetY * 0.2}px)` }}>top Packages</span>
+                <h1 className="blockYScroll" style={{ transform: `translate(${offSetY * 0.2}px)` }}>Our popular packages</h1>
+                <p className="blockYScroll" style={{ transform: `translate(${offSetY * 0.1}px)` }}>We are a team of humans with the strategy, the tools and the solutions for you to travel as you deserve.</p>
               </div>
               <Link to="/packages/e1fa7baf-6de2-4e58-abfa-129d3269cc6e">
                 <div class="owl-carousel owl-theme">
@@ -172,9 +172,9 @@ function HomePage() {
           <div className="col-md-12">
             <div className='experiences' id='experiences'>
               <div class="experiencesHeader">
-                <span style={{ transform: `translate(${offSetY * 0.07}px)` }}>top experiences</span>
-                <h1 style={{ transform: `translate(${offSetY * 0.02}px)` }}>Our popular experiences</h1>
-                <p style={{ transform: `translate(${offSetY * 0.1}px)` }}>Choose a city, we organize the rest of your trip.</p>
+                <span className="blockYScroll" style={{ transform: `translate(${offSetY * 0.07}px)` }}>top experiences</span>
+                <h1 className="blockYScroll" style={{ transform: `translate(${offSetY * 0.02}px)` }}>Our popular experiences</h1>
+                <p className="blockYScroll" style={{ transform: `translate(${offSetY * 0.1}px)` }}>Choose a city, we organize the rest of your trip.</p>
               </div>
               <Link to="/experiences">
                 <div class="owl-carousel owl-theme">
@@ -206,9 +206,9 @@ function HomePage() {
             <div className='videos' id='videos'>
               <div class="videosHeader">
 
-                <span style={{ transform: `translate(${offSetY * 0.09}px)` }}>EXPLORE</span>
-                <h1 style={{ transform: `translate(${offSetY * 0.08}px)` }}>Our cities</h1>
-                <p style={{ transform: `translate(${offSetY * 0.08}px)` }}>Play me <i class="bi bi-play" style={{ height: "50px" }}></i></p>
+                <span className="blockYScroll" style={{ transform: `translate(${offSetY * 0.09}px)` }}>EXPLORE</span>
+                <h1 className="blockYScroll" style={{ transform: `translate(${offSetY * 0.08}px)` }}>Our cities</h1>
+                <p className="blockYScroll" style={{ transform: `translate(${offSetY * 0.08}px)` }}>Play me <i class="bi bi-play" style={{ height: "50px" }}></i></p>
 
               </div>
 
@@ -274,12 +274,12 @@ function HomePage() {
               </div>
 
               <button className="carousel-control-prev" type="button" data-bs-target="#carouselReviews" data-bs-slide="prev">
-                <span className="carousel-control-prev-icon" aria-hidden="true"><i class="bi bi-arrow-left-short" style={{fontSize:"30px"}}></i></span>
+                <span className="carousel-control-prev-icon" aria-hidden="true"><i class="bi bi-arrow-left-short" style={{ fontSize: "30px" }}></i></span>
                 <span className="visually-hidden">Prev</span>
               </button>
 
               <button className="carousel-control-next" type="button" data-bs-target="#carouselReviews" data-bs-slide="next">
-                <span className="carousel-control-next-icon" aria-hidden="true"><i class="bi bi-arrow-right-short" style={{fontSize:"30px"}}></i></span>
+                <span className="carousel-control-next-icon" aria-hidden="true"><i class="bi bi-arrow-right-short" style={{ fontSize: "30px" }}></i></span>
                 <span className="visually-hidden">Next</span>
               </button>
             </div>

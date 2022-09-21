@@ -26,3 +26,40 @@
     font-size: 1rem;
     text-align: center;
 }
+
+@media only screen and (min-width:320px)and (max-width: 768px) {
+    .imgfooter {
+        max-width: 100px;
+    }
+    .footerstyle{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-top: 10px;
+    }
+    .descriptionfooter {
+        font-size: 1.4rem;
+    }
+    
+    .authorsfooter {
+        font-size: 1.2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .footerelemalign {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .copyr {
+        margin-top: 10px;
+        font-size: 1rem;
+        text-align: center;
+    }
+
+}

@@ -28,25 +28,30 @@
 @media screen and (max-width: 768px) {
   .nav__toggler {
     display: block;
-    margin-top: 8vh;
+    margin-top: 2vh;
     cursor: pointer;
   }
   .nav__menu {
     position: fixed;
-    top: 7vh;
+    top: 0vh;
     right: 0;
-    height: 93vh;
+    height: 100vh;
     width: 50vw;
     background: grey;
     flex-direction: column;
     transform: translateX(100%);
     transition: 0.5s ease-in;
   }
+  .nav__active {
+    transform: translateX(0%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 }
 /* Active Class */
-.nav__active {
-  transform: translateX(0%);
-}
+
+
 
 /* Toggle Icon Animation */
 

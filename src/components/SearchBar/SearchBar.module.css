@@ -2,3 +2,18 @@
     display: flex;
     justify-content: center;
 }
+
+
+@media only screen and (min-width:320px)and (max-width: 768px) {
+    .searchbarstyle button {
+        font-size: 6px;
+    }
+    .searchbarstyle ::placeholder {
+        font-size: 10px;
+
+    }
+    .searchbarstyle i {
+        font-size: 10px;
+
+    }
+}

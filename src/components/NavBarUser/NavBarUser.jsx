@@ -69,6 +69,7 @@ function NavBarUser() {
             </a>
           </li>
           <li
+            className="nav__item"
             class="nav-item dropdown"
             style={{
               textTransform: "uppercase",
@@ -83,11 +84,10 @@ function NavBarUser() {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
                 style={{
-                  backgroundImage: `url(${
-                    infoUser?.photo !== null
+                  backgroundImage: `url(${infoUser?.photo !== null
                       ? infoUser.photo
                       : defaultProfilePicture
-                  })`,
+                    })`,
                   backgroundColor: "transparent",
                   backgroundPosition: "center",
                   backgroundSize: "cover",
@@ -99,7 +99,7 @@ function NavBarUser() {
               {infoUser.first_name}
 
               <ul class="dropdown-menu">
-                <li>
+                <li >
                   <a
                     class="dropdown-item"
                     href="/profile"
@@ -109,22 +109,22 @@ function NavBarUser() {
                   </a>
                   <li>
                     <Link to="/home">
-                    <button
-                      class="dropdown-item"
-                      type="button"
-                      style={{ color: "#C49D48", fontSize: "15px" }}
-                      onClick={() => userLogout()}
+                      <button
+                        class="dropdown-item"
+                        type="button"
+                        style={{ color: "#C49D48", fontSize: "15px" }}
+                        onClick={() => userLogout()}
                       >
-                      LOGOUT
-                    </button>
-                      </Link>
+                        LOGOUT
+                      </button>
+                    </Link>
                   </li>
                 </li>
               </ul>
             </div>
           </li>
 
-          <li class="nav-item active">
+          <li className="nav__item" class="nav-item active">
             <a
               class="nav-link"
               href="/profile#mytrips"
@@ -139,7 +139,7 @@ function NavBarUser() {
             </a>
           </li>
 
-          <li>
+          <li className="nav__item">
             <a
               class="btn btn-outline-secondary btn-lg"
               style={{ borderColor: "#c49d48e3", borderRadius: "2vh" }}
@@ -148,7 +148,7 @@ function NavBarUser() {
               <i class="bi bi-pencil"></i>
             </a>
           </li>
-          <li>
+          <li className="nav__item">
             <a
               class="btn btn-outline-secondary btn-lg"
               style={{ borderColor: "#c49d48e3", borderRadius: "2vh" }}
@@ -157,7 +157,7 @@ function NavBarUser() {
               <i class="bi bi-heart"></i>
             </a>
           </li>
-          <li>
+          <li className="nav__item">
             <Cart />
           </li>
         </ul>

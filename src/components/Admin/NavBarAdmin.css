@@ -1,3 +1,5 @@
+
+
 .navbar {
     position: fixed;
     /* z-index: 99999; */
@@ -5,14 +7,9 @@
 .nav-item {
     width: 100%;
     color: white;
-    display: flex;
-    justify-content: left;
     text-transform: uppercase;
     font-size: large;
     font-weight: 400;
-
-    margin-top: 20px;
-    margin-bottom: 20px;
 }
 
 .nav-item-img{
