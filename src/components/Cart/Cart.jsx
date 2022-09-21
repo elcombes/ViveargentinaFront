@@ -191,7 +191,7 @@ export default function Cart() {
 
               <div className="row mb-3">
                 <div className="col-md-8 text-start">
-                  <h4 className={`text-start ${styles.pricecart}`}>$ 00000</h4>
+                  <h4 className={`text-start ${styles.pricecart}`}>{`$${totalcart}`}</h4>
                   <h5>TOTAL CART </h5>
                 </div>
                 <div className="col-md-4 text-end">
