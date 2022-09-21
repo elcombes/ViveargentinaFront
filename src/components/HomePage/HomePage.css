@@ -177,8 +177,11 @@
     justify-content: center;
     align-items: center;
     align-self: center;
-    margin-top: 30px;
+    margin-top: 20px;
     overflow: hidden;
+}
+.explore{
+    margin-bottom:10px;
 }
 
 .experiences {
@@ -274,7 +277,7 @@
 
 /* REVIEWS----------------------- */
 .containerReviews {
-    
+
     width: 500px;
     margin: 50px auto;
     text-align: center;
@@ -287,7 +290,7 @@
     width: 180px;
     text-transform: capitalize;
     margin-top: 25px;
-    margin-left: 110px;
+    margin-left: 170px;
     margin-bottom: 45px;
     border-bottom: 5px solid #C49D48;
     padding-bottom: 10px;
@@ -295,12 +298,12 @@
 }
 
 .reviewReviews {
-  margin: 2%;
-  height: 440px;
-  padding: 10%;
-  background-color: white;
-  border-radius: 7px;
-  box-shadow: 0px 0px 10px 0px rgb(189, 189, 190);
+    margin: 2%;
+    height: 440px;
+    padding: 10%;
+    background-color: white;
+    border-radius: 7px;
+    box-shadow: 0px 0px 10px 0px rgb(189, 189, 190);
 }
 
 #person-img {
@@ -458,9 +461,15 @@
         max-width: 275px;
     }
 
-    .blockYScroll{
+    .expExplore {
+        margin-top: 10px;
+
+    }
+
+    .blockYScroll {
         transform: none !important;
-    }    
+    }
+
     .containerHome {
 
         max-width: 100vh;
@@ -481,7 +490,7 @@
         margin-top: 4vh;
         margin-left: 7vh;
         margin-right: 4vh;
-        font-size: 2vh;
+        font-size: 2.5vh;
         font-weight: 400;
     }
 
@@ -492,58 +501,89 @@
         width: min(980px, 85%);
         margin: 0 auto;
         min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        padding-block: min(20vh, 5em);
-    
     }
-    
+
     .citiesHeader {
         margin-bottom: 55px;
         overflow: hidden;
-    
+
     }
-    
+
     .citiesHeader h1 {
+        font-size: 2rem;
+        margin: 0px;
+    }
+
+    .citiesHeader span {
+        font-size: 50px;
+    }
+
+    /* EXPERIENCES */
+    .experiences {
+        padding-block: min(0vh, 0em);
+        padding-block-start: min(0vh, 0em);
+        padding-block-end: min(0vh, 0em);
+    }
+
+    .experiencesHeader h1 {
         font-weight: 500;
+        margin: 0;
+        font-size: 2rem;
+
+    }
+
+    .experiencesHeader span {
+        font-weight: 700;
+        font-size: 35px;
+    }
+
+    /* VIDEOS----------------------- */
+
+
+    .videos {
+        min-height: 100vh;
+
+        padding-block: min(0vh, 0em);
+        overflow: hidden;
+    }
+
+    .videosHeader h1 {
+
         font-size: 2rem;
         font-family: Raleway;
-        margin: 0px -5px 15px;
+        margin: 0;
+    }
+
+    .videosHeader span {
+
+        font-size: 60px;
         color: #634100;
-    
     }
-    
-    .citiesHeader span {
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        display: inline-block;
-        font-weight: 700;
-        font-size: 50px;
-        color: #C49D48;
-        
-    }
-        /* REVIEWS */
+
+    /* REVIEWS */
 
 
-    .containerReviews{
+
+    .containerReviews {
         max-width: fit-content;
     }
-    .form-group{
+
+    .form-group {
         margin-top: 4px;
         font-size: 13px;
     }
 
-        /* CONTACTUS */
+    /* CONTACTUS */
 
-    .formContact h2{
+    .formContact h2 {
         font-size: 15px;
         margin-bottom: 30px;
         display: flex;
         flex-direction: row;
         justify-content: center;
     }
-    .formContact h4{
+
+    .formContact h4 {
         font-size: 15px;
         margin-top: -40px;
         display: flex;
@@ -551,7 +591,7 @@
         justify-content: center;
     }
 
-    .full-width{
+    .full-width {
         font-size: 12px;
     }
 
@@ -573,11 +613,11 @@
         background-repeat: no-repeat;
         background-position: left;
     }
-    
+
     .wrapperContact {
         font-size: x-large;
-    
+
     }
-    
+
 
 }

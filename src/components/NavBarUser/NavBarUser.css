@@ -28,7 +28,7 @@
 @media screen and (max-width: 768px) {
   .nav__toggler {
     display: block;
-    margin-top: 2vh;
+    margin-top: 7vh;
     cursor: pointer;
   }
   .nav__menu {
