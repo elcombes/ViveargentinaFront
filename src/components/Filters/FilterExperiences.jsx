@@ -21,7 +21,6 @@ export default function FilterExperiencies({ handleOrder, setPage }) {
     }, [dispatch]);
 
     function handleFilterByCategory(e) {
-        // setPage(1);
         if (e.target.value === 'all') {
             setState({
                 ...state,
@@ -36,7 +35,6 @@ export default function FilterExperiencies({ handleOrder, setPage }) {
     }
 
     function handleFilterByPackage(e) {
-        // setPage(1);
         if (e.target.value === 'all') {
             setState({
                 ...state,
