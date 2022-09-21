@@ -5,7 +5,7 @@ import styles from './Filter.module.css'
 import { getAllCities, getCityById, getAllPackages } from '../../redux/action';
 
 
-export default function FilterPackages({ handleOrder }) {
+export default function FilterPackages({ handleOrder, setPage }) {
 
     const allCities = useSelector(state => state.allCities);
 
