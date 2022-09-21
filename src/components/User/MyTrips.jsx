@@ -83,7 +83,11 @@ export default function MyTrips({ userId }) {
                   <div className="col-md-12">
                     <div className={`row mt-3 mb-3 ${styles.itemmytrips}`}>
                       <div className="col-md-2">
-                        <img src="https://res.cloudinary.com/dblc1bzmx/image/upload/v1663182507/VivaArg/Logo_Joyeri%CC%81a_Minimalista_Simple_Blanco_y_Negro_1_pldegi.png" alt="" className={`img-fluid ${styles.imgtripprofile}`} />
+                        <img
+                          src="https://res.cloudinary.com/dblc1bzmx/image/upload/v1663182507/VivaArg/Logo_Joyeri%CC%81a_Minimalista_Simple_Blanco_y_Negro_1_pldegi.png"
+                          alt=""
+                          className={`img-fluid ${styles.imgtripprofile}`}
+                        />
                       </div>
                       <div className="col-md-2">
                         <div className={`text-center ${styles.date}`}>
@@ -109,6 +113,7 @@ export default function MyTrips({ userId }) {
                       </div>
                       <div className="col-md-2 text-end">
                         <button
+                          value={s.id}
                           type="button"
                           className="btn btn-outline-secondary"
                         >

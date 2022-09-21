@@ -129,9 +129,9 @@ export default function rootReducer(state = initialState, action) {
         filteredSales = state.allSales.filter((s) => {
           return s.status === "confirmed";
         });
-      } else if (action.payload === "cancelled") {
+      } else if (action.payload === "canceled") {
         filteredSales = state.allSales.filter((s) => {
-          return s.status === "cancelled";
+          return s.status === "canceled";
         });
       } else if (action.payload === "done") {
         filteredSales = state.allSales.filter((s) => {
