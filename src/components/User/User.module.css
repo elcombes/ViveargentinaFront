@@ -124,3 +124,13 @@ margin: 20px;
 .navuserprofile {
   background-image: linear-gradient(#220f00, #00000000);
 }
+.formchangepass {
+  font-size: 1.2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 15px;
+  align-items: end;
+}
+.chngpassinput {
+  font-size: 1.1rem !important;
+}
