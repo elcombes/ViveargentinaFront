@@ -369,7 +369,7 @@ function clearState() {
                               className="form-control infoInput"
                               value={newExperience.dates}
                               name="dates"
-                              placeholder="23/05/2023, 08/03/2023"
+                              placeholder="23-may-23, 08-mar-23"
                               onChange={(e) => handleChange(e)}
                             />
                             {errors.dates ? (
