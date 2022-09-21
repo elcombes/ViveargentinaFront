@@ -30,7 +30,7 @@ export default function ExperiencesTable() {
     if (event.target.name) {
       id = event.target.name;
       newAvailable = {
-        available: event.target.value === true ? false : true,
+        available: event.target.value === "true" ? false : true,
       };
     } else {
       id = JSON.stringify(event.target.outerHTML).split('\\"')[1];
@@ -41,9 +41,6 @@ export default function ExperiencesTable() {
             : true,
       };
     }
-    console.log("id", id);
-    console.log("newAvailable", newAvailable);
-
     const response = await dispatch(updateExperience(newAvailable, id));
 
     Swal.fire({
