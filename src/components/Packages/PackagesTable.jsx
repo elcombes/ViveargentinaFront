@@ -29,7 +29,7 @@ export default function PackagesTable() {
     if (event.target.name) {
       id = event.target.name;
       newAvailable = {
-        available: event.target.value === true ? false : true,
+        available: event.target.value === "true" ? false : true,
       };
     } else {
       id = JSON.stringify(event.target.outerHTML).split('\\"')[1];
@@ -40,11 +40,7 @@ export default function PackagesTable() {
             : true,
       };
     }
-    console.log("id", id);
-    console.log("newAvailable", newAvailable);
-
     const response = await dispatch(updatePackage(newAvailable, id));
-    console.log("response", response);
 
     Swal.fire({
       title: response.data + "!",

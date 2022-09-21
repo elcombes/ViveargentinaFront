@@ -50,7 +50,7 @@ export default function Cart() {
     setBuy(false);
   }
 
-  function onClickBuy() {
+  async function onClickBuy() {
     setBuy(true);
     let user = JSON.parse(localStorage.getItem("user"));
     if (!user) {
@@ -70,8 +70,9 @@ export default function Cart() {
     let userId = user.user.id;
     itemsFromStore = JSON.parse(localStorage.getItem("items"));
 
-    dispatch(addNewSale(userId, itemsFromStore));
-    dispatch(buyInMercadoPago(itemsFromStore));
+    const saleId = await dispatch(addNewSale(userId, itemsFromStore));
+    console.log("saleId en cart");
+    dispatch(buyInMercadoPago(saleId, itemsFromStore));
   }
 
   if (!itemsFromStore || itemsFromStore.length === 0) {
@@ -191,7 +192,9 @@ export default function Cart() {
 
               <div className="row mb-3">
                 <div className="col-md-8 text-start">
-                  <h4 className={`text-start ${styles.pricecart}`}>$ 00000</h4>
+                  <h4
+                    className={`text-start ${styles.pricecart}`}
+                  >{`$${totalcart}`}</h4>
                   <h5>TOTAL CART </h5>
                 </div>
                 <div className="col-md-4 text-end">
@@ -210,7 +213,7 @@ export default function Cart() {
                     onClick={onClickBuy}
                     className={`btn btn-outline-secondary btn-lg ${styles.buttonmercadopago}`}
                   >
-                    BUY 
+                    BUY
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="30"

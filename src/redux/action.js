@@ -67,8 +67,8 @@ export function updateSaleStatus(newStatus) {
 
 export function approveSaleStatus(token, newStatus) {
   return async function () {
-    console.log("token: "+ token)
-    console.log("newStatus: "+ newStatus.status)
+    console.log("token: " + token);
+    console.log("newStatus: " + newStatus.status);
     const headers = {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -76,7 +76,8 @@ export function approveSaleStatus(token, newStatus) {
     };
     let response = await axios.put(
       "https://viveargentina.herokuapp.com/sales/approved",
-      newStatus, {headers}
+      newStatus,
+      { headers }
     );
     console.log(response.data);
     return response.data;
@@ -103,7 +104,7 @@ export function addNewSale(userId, arrayItems) {
         `https://viveargentina.herokuapp.com/sales?userId=${userId}`,
         arrayItems
       );
-      return console.log(response.data);
+      return response.data;
     } catch (e) {
       console.log(e);
     }
@@ -194,10 +195,10 @@ export function getUserById(userId) {
 }
 
 // Esta ruta envía una compra a la pasarela de mercadopago
-export function buyInMercadoPago(itemsFromStore) {
+export function buyInMercadoPago(saleId, itemsFromStore) {
   return async function (dispatch) {
     let response = await axios.post(
-      "https://viveargentina.herokuapp.com/mercadopago",
+      `https://viveargentina.herokuapp.com/mercadopago?saleId=${saleId}`,
       itemsFromStore
     );
     return dispatch({
@@ -398,8 +399,8 @@ export function getUserLogin({ email, password }) {
       "https://viveargentina.herokuapp.com/users/login",
       { email, password }
     );
-    if (response.data === 'Please confirm your email to login') {
-      return 'Please confirm your email to login'
+    if (response.data === "Please confirm your email to login") {
+      return "Please confirm your email to login";
     }
     if (response.data === "not allowed") {
       return "Incorrect password";

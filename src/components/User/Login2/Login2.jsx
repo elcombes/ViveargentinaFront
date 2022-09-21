@@ -272,7 +272,9 @@ export default function Login2() {
                       type="password"
                       value={newUser.password}
                       name="password"
-                      placeholder="Insert your password"
+
+                      placeholder="Please insert your password"
+
                       onChange={(e) => handleChange(e)}
                     />
                     {

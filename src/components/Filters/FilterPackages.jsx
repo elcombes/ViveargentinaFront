@@ -20,6 +20,7 @@ export default function FilterPackages({ handleOrder, setPage }) {
 
 
     function handleFilterByCity(e) {
+        setPage(1)
         if (e.target.value === 'all') {
             dispatch(getAllPackages())
         } else {

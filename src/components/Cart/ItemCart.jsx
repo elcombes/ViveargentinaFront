@@ -11,54 +11,47 @@ export default function ItemCart({
   index,
   setBuyInFalse,
 }) {
-  const [itemPax, setItemPax] = useState(pax);
+  // const [itemPax, setItemPax] = useState(pax);
   const [remove, setRemove] = useState(true);
 
   let itemsFromStore = JSON.parse(localStorage.getItem("items"));
 
-  // useEffect(() => {
-  //   itemsFromStore = JSON.parse(localStorage.getItem("items"));
-  // }, [JSON.parse(localStorage.getItem("items"))]);
 
   const onClickNeg = async () => {
-    // console.log(itemsFromStore)
     setBuyInFalse();
-    if (itemPax !== 1) {
-      setItemPax(parseInt(itemPax - 1));
-      console.log(itemPax);
+    if (pax !== 1) {
+      // setItemPax(parseInt(itemPax - 1));
+      // console.log(itemPax);
       itemsFromStore = JSON.parse(localStorage.getItem("items"));
       itemsFromStore[index].pax = parseInt(itemsFromStore[index].pax) - 1;
-      // console.log(itemsFromStore[index].pax)
-      // console.log(itemsFromStore)
+      changeState()      
       localStorage.setItem("items", JSON.stringify(itemsFromStore));
     }
   };
 
   function onClickPos() {
-    // console.log(itemsFromStore)
     setBuyInFalse();
-    setItemPax(parseInt(itemPax) + 1);
+    // setItemPax(parseInt(itemPax) + 1);
+    // console.log(itemPax);
     itemsFromStore = JSON.parse(localStorage.getItem("items"));
     itemsFromStore[index].pax = parseInt(itemsFromStore[index].pax) + 1;
-    // console.log(itemsFromStore[index].pax)
-    // console.log(itemsFromStore)
+    changeState()
     localStorage.setItem("items", JSON.stringify(itemsFromStore));
   }
 
   function onRemove() {
     setBuyInFalse();
-    if (remove) setRemove(false)
-    
-    ;
-    if (!remove) setRemove(true);
     itemsFromStore = JSON.parse(localStorage.getItem("items"));
     console.log(itemsFromStore);
+    // console.log(itemPax);
     let newItemsFromStore = itemsFromStore.filter(
       (i) => i.name !== name || i.dates !== dates
-    );
-    localStorage.setItem("items", JSON.stringify(newItemsFromStore));
+      );
+      localStorage.setItem("items", JSON.stringify(newItemsFromStore));
+      console.log(localStorage)
+    if (remove) setRemove(false);
+    if (!remove) setRemove(true);
     changeState();
-    
   }
 
   return (
@@ -100,7 +93,7 @@ export default function ItemCart({
         </div>
 
         <div className="col-md-4 text-center">
-          <h4 className={styles.pricecart}>ARS$ {price * itemPax}</h4>
+          <h4 className={styles.pricecart}>ARS$ {price * pax}</h4>
         </div>
 
         <div className="col-md-4 text-end">
