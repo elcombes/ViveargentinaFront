@@ -219,7 +219,7 @@ export default function Card(props) {
           {userAuth === false ? <NavBar /> : <NavBarUser />}
           <SearchBar setPage={setPage} />
           <div>
-          <FilterPackages handleOrder={handleOrder} />
+          <FilterPackages setPage={setPage} handleOrder={handleOrder} />
           </div>
           
             
