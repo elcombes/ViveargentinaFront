@@ -10,12 +10,13 @@ import SearchBar from "../SearchBar/SearchBar";
 
 import FilterPackages from "../../components/Filters/FilterPackages";
 import PagedPackages from "../Paged/PagedPackages";
-import { 
-  getAllPackages, 
-  getCityById, 
+import {
+  getAllPackages,
+  getCityById,
   orderPackages,
   getLsUser,
-  addPackageFavorite } 
+  addPackageFavorite
+}
   from "../../redux/action";
 
 import { useHistory } from "react-router-dom";
@@ -161,7 +162,7 @@ export default function Card(props) {
         text: item.name,
         imageUrl: item.image,
         imageWidth: 400,
-        imageHeight: 200,
+        imageHeight: 300,
         confirmButtonColor: "#C49D48",
         imageAlt: "Custom image",
         showClass: {
@@ -172,35 +173,35 @@ export default function Card(props) {
   };
   const addPackagesFavorites = (packageId) => {
     let user = JSON.parse(localStorage.getItem("user"));
-    if(user) {
-    let userId = user.user.id;
-    dispatch(addPackageFavorite(packageId, userId));
-    Swal.fire({
-      title: "ADDED TO FAVORITES SUCCESSFULLY!",
-      text: item.name,
-      imageUrl: item.image,
-      imageWidth: 400,
-      imageHeight: 200,
-      confirmButtonColor: "#C49D48",
-      imageAlt: "Custom image",
-      showClass: {
-        popup: "animate__animated animate__flipInY",
-      },
-    });
-  }
-  else {
+    if (user) {
+      let userId = user.user.id;
+      dispatch(addPackageFavorite(packageId, userId));
       Swal.fire({
-        title: "Please login to add to favorites",
-        imageUrl: "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663190222/VivaArg/Alerts/passagerAlert_1_nejegh.png",
+        title: "ADDED TO FAVORITES SUCCESSFULLY!",
+        text: item.name,
+        imageUrl: item.image,
         imageWidth: 400,
-        imageHeight: 200,
+        imageHeight: 300,
         confirmButtonColor: "#C49D48",
         imageAlt: "Custom image",
         showClass: {
           popup: "animate__animated animate__flipInY",
         },
       });
-  }
+    }
+    else {
+      Swal.fire({
+        title: "Please login to add to favorites",
+        imageUrl: "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663190222/VivaArg/Alerts/passagerAlert_1_nejegh.png",
+        imageWidth: 400,
+        imageHeight: 300,
+        confirmButtonColor: "#C49D48",
+        imageAlt: "Custom image",
+        showClass: {
+          popup: "animate__animated animate__flipInY",
+        },
+      });
+    }
   };
 
   //   Fin Precart
@@ -235,10 +236,10 @@ export default function Card(props) {
           {userAuth === false ? <NavBar /> : <NavBarUser />}
           <SearchBar setPage={setPage} />
           <div>
-          <FilterPackages setPage={setPage} handleOrder={handleOrder} />
+            <FilterPackages setPage={setPage} handleOrder={handleOrder} />
           </div>
-          
-            
+
+
           <PagedPackages
             packagesPage={packagesPage}
             allPackages={allPackages.length}
@@ -246,7 +247,7 @@ export default function Card(props) {
             currentPage={page}
           />
           <br />
-          
+
 
           {data === null ? (
             <div className={styles.loading}>
@@ -320,6 +321,24 @@ export default function Card(props) {
                     <div className="row">
                       <div className="col-md-6">
                         <div>
+                          <div>
+                            <button
+                              style={{
+                                marginBottom:"15px",
+                                borderColor: "transparent",
+                              }}
+                              onClick={() =>
+                                addPackagesFavorites(e.id)
+                              }
+                            >
+                              <i
+                                id="heartbut"
+                                className="bi bi-heart-fill"
+                                style={{ fontSize: "20px" }}
+                              ></i>
+                            </button>{" "}
+                            <div id="textfav"></div>
+                          </div>
                           <h2
                             style={{
                               textTransform: "uppercase",
@@ -395,11 +414,11 @@ export default function Card(props) {
                           >
                             <ul className={styles.iconsexp}>
                               {
-                              e.experiences?.map((e) => {
-                                if(e.available === true) {
-                                  return <li className={styles.exptitle}><i className="bi bi-compass"></i>{e.name}<br/></li>
-                                }
-                              })}
+                                e.experiences?.map((e) => {
+                                  if (e.available === true) {
+                                    return <li className={styles.exptitle}><i className="bi bi-compass"></i>{e.name}<br /></li>
+                                  }
+                                })}
                             </ul>
                           </div>
                         </div>
@@ -453,24 +472,7 @@ export default function Card(props) {
                                           "0 8px 8px 0 rgba(0, 0, 0, 0.15)",
                                       }}
                                     />
-                                    <div>
-                                      <button
-                                        style={{
-                                          marginTop: "10px",
-                                          borderColor: "transparent",
-                                        }}
-                                        onClick={() =>
-                                          addPackagesFavorites(e.id)
-                                        }
-                                      >
-                                        <i
-                                          id="heartbut"
-                                          className="bi bi-heart-fill"
-                                          style={{ fontSize: "20px" }}
-                                        ></i>
-                                      </button>{" "}
-                                      <div id="textfav"></div>
-                                    </div>
+
                                     <div className="mt-1">
                                       <h2
                                         className="modal-title"
@@ -718,11 +720,11 @@ export default function Card(props) {
         </div>
         <br />
         <PagedPackages
-            packagesPage={packagesPage}
-            allPackages={allPackages.length}
-            paged={paged}
-            currentPage={page}
-          />
+          packagesPage={packagesPage}
+          allPackages={allPackages.length}
+          paged={paged}
+          currentPage={page}
+        />
       </div>
       <Footer />
     </Fragment>
