@@ -11,10 +11,21 @@ import Swal from "sweetalert2";
 function validate(state) {
     // let strongPasswordVerification = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
     let errors = {};
-    if (!state.newPassword) errors.newPassword = "Password is required"
-    if (state.newPassword.length < 8) errors.newPassword = "The password must have at least 8 characters"
-    if (!state.repeatPassword) errors.repeatPassword = "Passwords do not much"
-    if (state.newPassword !== state.repeatPassword) errors.repeatPassword = "Passwords do not much"
+    let passwordLowerCases = /[a-z]/g;
+    let passwordUpperCases = /[A-Z]/g;
+    let passwordNumbers = /[0-9]/g;
+    if (!state.newPassword) {
+        errors.newPassword = "Invalid password"
+    }
+    if (!state.newPassword.match(passwordLowerCases) || !state.newPassword.match(passwordUpperCases) || !state.newPassword.match(passwordNumbers) || state.newPassword.length < 8) {
+        errors.newPassword = "Invalid password"
+    }
+    if (!state.repeatPassword) {
+        errors.repeatPassword = "Passwords do not much"
+    }
+    if (state.repeatPassword !== state.newPassword) {
+        errors.repeatPassword = "Passwords do not much"
+    }
     return errors
 }
 
@@ -87,25 +98,25 @@ function ResetPassword() {
         if (viewNewPassword) {
             document.getElementById("newPassword2").type = "password"
             setViewNewPassword(false)
-            
-          } 
-          if (!viewNewPassword) { 
+
+        }
+        if (!viewNewPassword) {
             document.getElementById("newPassword2").type = "text"
             setViewNewPassword(true)
-          } 
+        }
     }
-    
+
     const handleViewNewRepeatPassword = (e) => {
         e.preventDefault()
         if (viewNewRepeatPassword) {
             document.getElementById("newRepeatPassword2").type = "password"
             setViewNewRepeatPassword(false)
-            
-          } 
-          if (!viewNewRepeatPassword) { 
+
+        }
+        if (!viewNewRepeatPassword) {
             document.getElementById("newRepeatPassword2").type = "text"
             setViewNewRepeatPassword(true)
-          } 
+        }
     }
 
 

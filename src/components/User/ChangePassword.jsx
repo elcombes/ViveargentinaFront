@@ -77,10 +77,10 @@ function ChangePassword() {
       errors.newPassword = "Invalid password"
     }
     if (!state.repeatPassword) {
-      errors.repeatPassword = "Password do not much"
+      errors.repeatPassword = "Passwords do not much"
     }
     if (state.repeatPassword !== state.newPassword) {
-      errors.repeatPassword = "Password do not much"
+      errors.repeatPassword = "Passwords do not much"
     }
     return errors
   }
