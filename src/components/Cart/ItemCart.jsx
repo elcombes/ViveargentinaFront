@@ -20,8 +20,6 @@ export default function ItemCart({
   const onClickNeg = async () => {
     setBuyInFalse();
     if (pax !== 1) {
-      // setItemPax(parseInt(itemPax - 1));
-      // console.log(itemPax);
       itemsFromStore = JSON.parse(localStorage.getItem("items"));
       itemsFromStore[index].pax = parseInt(itemsFromStore[index].pax) - 1;
       changeState()      
@@ -31,12 +29,12 @@ export default function ItemCart({
 
   function onClickPos() {
     setBuyInFalse();
-    // setItemPax(parseInt(itemPax) + 1);
-    // console.log(itemPax);
+    if (pax !== 20) {
     itemsFromStore = JSON.parse(localStorage.getItem("items"));
     itemsFromStore[index].pax = parseInt(itemsFromStore[index].pax) + 1;
     changeState()
     localStorage.setItem("items", JSON.stringify(itemsFromStore));
+    }
   }
 
   function onRemove() {
