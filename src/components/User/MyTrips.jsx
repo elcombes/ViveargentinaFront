@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getSalesByUser } from "../../redux/action";
 import styles from "./User.module.css";
 import MyTripDetail from "./MyTripDetail";
+import Swal from "sweetalert2";
 
 export default function MyTrips({ userId }) {
   const dispatch = useDispatch();
@@ -14,6 +15,24 @@ export default function MyTrips({ userId }) {
     let userId = userFromStorage.user.id;
     dispatch(getSalesByUser(userId));
   }, []);
+
+  const sendCancelation = () => {
+    return Swal.fire({
+      title:
+        "Are you sure do you want to cancel this purchase? We will contact you ",
+      imageUrl:
+        "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663003831/VivaArg/Alerts/3_zmfk4m.png",
+      imageWidth: 350,
+      imageHeight: 300,
+      confirmButtonColor: "#C49D48",
+      imageAlt: "Custom image",
+      showCancelButton: true,
+      cancelButtonText: "CANCEL",
+      showClass: {
+        popup: "animate_animated animate_flipInY",
+      },
+    }).then();
+  };
 
   return (
     <Fragment>
@@ -113,6 +132,7 @@ export default function MyTrips({ userId }) {
                       </div>
                       <div className="col-md-2 text-end">
                         <button
+                          onClick={sendCancelation}
                           value={s.id}
                           type="button"
                           className="btn btn-outline-secondary"
