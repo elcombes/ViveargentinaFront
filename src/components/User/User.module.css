@@ -127,10 +127,16 @@ margin: 20px;
 .formchangepass {
   font-size: 1.2rem;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-gap: 15px;
   align-items: end;
 }
 .chngpassinput {
   font-size: 1.1rem !important;
+}
+.eyepass {
+  border: none;
+    color: #C49D48;
+    font-size: 1.8rem;
+    vertical-align: middle;
 }

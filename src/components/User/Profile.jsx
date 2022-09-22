@@ -51,7 +51,7 @@ export default function Profile() {
         <div className="container py-5 h-50">
 
           <div className="row d-flex justify-content-center align-items-center h-90">
-            <div className="col col-lg-7 mb-4 mb-lg-0">
+            <div className="col col-lg-8 mb-4 mb-lg-0">
               <div
                 className="card mb-3"
                 style={{
@@ -155,6 +155,7 @@ export default function Profile() {
 
                         {userFromStorage.user.birth_date === "active" ? (
                           <button
+                           style={{margin: "0 5%"}}
                             onClick={() => toggleCP()}
                             className="btn btn-outline-secondary"
                           >
