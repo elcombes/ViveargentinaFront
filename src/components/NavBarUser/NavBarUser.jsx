@@ -85,8 +85,8 @@ function NavBarUser() {
                 aria-expanded="false"
                 style={{
                   backgroundImage: `url(${infoUser?.photo !== null
-                      ? infoUser.photo
-                      : defaultProfilePicture
+                    ? infoUser.photo
+                    : defaultProfilePicture
                     })`,
                   backgroundColor: "transparent",
                   backgroundPosition: "center",
@@ -99,28 +99,63 @@ function NavBarUser() {
               {infoUser.first_name}
 
               <ul class="dropdown-menu">
-                <li >
-                  <a
-                    class="dropdown-item"
-                    href="/profile"
-                    style={{ color: "#c49d48e3", fontSize: "15px" }}
-                  >
-                    MY PROFILE
-                  </a>
-                  <li>
-                    <Link to="/home">
-                      <button
-                        class="dropdown-item"
-                        type="button"
-                        style={{ color: "#C49D48", fontSize: "15px" }}
-                        onClick={() => userLogout()}
-                      >
-                        LOGOUT
-                      </button>
-                    </Link>
+                {infoUser.administrator ?
+                  <li >
+                    <a
+                      class="dropdown-item"
+                      href="/profile"
+                      style={{ color: "#c49d48e3", fontSize: "15px" }}
+                    >
+                      MY PROFILE
+                    </a>
+                    <li>
+
+                      <Link to="/admin">
+                        <button
+                          class="dropdown-item"
+                          type="button"
+                          style={{ color: "#C49D48", fontSize: "15px" }}
+                        >
+                          DASHBOARD
+                        </button>
+                      </Link>
+                      <Link to="/home">
+                        <button
+                          class="dropdown-item"
+                          type="button"
+                          style={{ color: "#C49D48", fontSize: "15px" }}
+                          onClick={() => userLogout()}
+                        >
+                          LOGOUT
+                        </button>
+                      </Link>
+                    </li>
                   </li>
-                </li>
+                  :
+                  <li >
+                    <a
+                      class="dropdown-item"
+                      href="/profile"
+                      style={{ color: "#c49d48e3", fontSize: "15px" }}
+                    >
+                      MY PROFILE
+                    </a>
+                    <li>
+                      <Link to="/home">
+                        <button
+                          class="dropdown-item"
+                          type="button"
+                          style={{ color: "#C49D48", fontSize: "15px" }}
+                          onClick={() => userLogout()}
+                        >
+                          LOGOUT
+                        </button>
+                      </Link>
+                    </li>
+                  </li>
+                }
               </ul>
+
             </div>
           </li>
 
@@ -160,6 +195,9 @@ function NavBarUser() {
           <li className="nav__item">
             <Cart />
           </li>
+
+
+
         </ul>
         <div onClick={navToggle} className={icon}>
           <div className="line1"></div>

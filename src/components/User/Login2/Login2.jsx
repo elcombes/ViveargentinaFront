@@ -76,9 +76,7 @@ export default function Login2() {
 
     const user = JSON.parse(window.localStorage.getItem("user"));
 
-    if (user.user.administrator) {
-      history.push("/admin");
-    }
+
 
     Swal.fire({
       title: message + "!",
