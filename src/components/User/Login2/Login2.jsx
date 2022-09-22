@@ -186,7 +186,6 @@ export default function Login2() {
       const message =
         typeof response === "string" ? response : "User successfully logged";
       await dispatch(getCartByUser(user?.user?.id));
-      if (user?.user.administrator) history.push("/admin");
       Swal.fire({
         title: message + "!",
         imageUrl: image,
