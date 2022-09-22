@@ -17,7 +17,7 @@ function Approved() {
   if (!user) {
     history.push("/home");
   }
-  console.log("user: " + user);
+  
   let token = user.accessToken;
   const dispatch = useDispatch();
   let response;
@@ -27,10 +27,23 @@ function Approved() {
     response = await dispatch(
       approveSaleStatus(token, { status: status, saleId: saleId })
     );
+    {response==="Time to travel!"?
     Swal.fire({
-      title: response + "!",
+      title: response,
       imageUrl:
-        "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663190222/VivaArg/Alerts/passagerAlert_1_nejegh.png",
+        "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663806094/VivaArg/Alerts/passagerAlert_8_zhqpyt.png",
+      imageWidth: 350,
+      imageHeight: 300,
+      confirmButtonColor: "#C49D48",
+      imageAlt: "Custom image",
+    }).then(() => {
+      history.push("/home");
+    })
+    :
+    Swal.fire({
+      title: response,
+      imageUrl:
+        "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663003831/VivaArg/Alerts/2_wsn0oa.png",
       imageWidth: 350,
       imageHeight: 300,
       confirmButtonColor: "#C49D48",
@@ -38,11 +51,13 @@ function Approved() {
     }).then(() => {
       history.push("/home");
     });
+  }
+
   }, []);
 
   return (
     <div>
-      <h1>Payment Approval</h1>
+
     </div>
   );
 }
