@@ -145,10 +145,10 @@ export default function Profile() {
                       <hr className="mt-0 mb-4" />
 
                       <div className="column-2">
-                        <button className="btn btn-outline-secondary">
-                          {" "}
-                          <a href="#mytrips">MY HISTORY</a>
-                        </button>
+                        
+                          {""}
+                          <a href="#mytrips" class="btn btn-outline-secondary" role="button" style={{height:"40px", paddingTop:"11px"}} >MY HISTORY</a>
+                        
 
                         {userFromStorage.user.birth_date === "active" ? (
                           <button
