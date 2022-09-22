@@ -75,7 +75,7 @@ export default function Login2() {
       typeof response === "string" ? response : "User successfully logged";
 
     const user = JSON.parse(window.localStorage.getItem("user"));
-
+    await dispatch(getCartByUser(user?.user?.id));
     if (user.user.administrator) {
       history.push("/admin");
     }
@@ -87,6 +87,8 @@ export default function Login2() {
       imageHeight: 300,
       confirmButtonColor: "#C49D48",
       imageAlt: "Custom image",
+    }).then(() => {
+      history.go(0);
     });
   };
 
@@ -175,7 +177,8 @@ export default function Login2() {
       const message = typeof response === "string"
         ? response
         : "User successfully logged"
-      dispatch(getCartByUser(user?.user?.id));
+        console.log('user.user', user.user)
+      await dispatch(getCartByUser(user?.user?.id));
       if (user?.user.administrator) history.push("/admin");
       Swal.fire({
         title: message + "!",
@@ -184,6 +187,8 @@ export default function Login2() {
         imageHeight: 300,
         confirmButtonColor: "#C49D48",
         imageAlt: "Custom image",
+      }).then(() => {
+        history.go(0);
       });
     }
   };
