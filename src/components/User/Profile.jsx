@@ -14,10 +14,13 @@ import styles from '../User/User.module.css'
 export default function Profile() {
   const userById = useSelector((state) => state.userById);
   const dispatch = useDispatch();
+  const defaultProfilePicture =
+  "https://lh3.googleusercontent.com/a-/AFdZucos_7TuriZhUv-v4dTAbmhxctPDsQZ3X9Gln9C8=s96-c";
 
   let userFromStorage = JSON.parse(localStorage.getItem("user"));
 
   const [changePassword, setChangePassword] = useState(false);
+  
 
   useEffect(() => {
     dispatch(getLsUser())
@@ -48,7 +51,7 @@ export default function Profile() {
         <div className="container py-5 h-50">
 
           <div className="row d-flex justify-content-center align-items-center h-90">
-            <div className="col col-lg-5 mb-4 mb-lg-0">
+            <div className="col col-lg-7 mb-4 mb-lg-0">
               <div
                 className="card mb-3"
                 style={{
@@ -71,7 +74,7 @@ export default function Profile() {
                       src={
                         userFromStorage.user.photo
                           ? userFromStorage.user.photo
-                          : perfil_user
+                          : defaultProfilePicture
                       }
                       alt="user photo"
                       className="img-fluid my-5"
