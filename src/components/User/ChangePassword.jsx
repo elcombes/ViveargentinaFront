@@ -66,11 +66,22 @@ function ChangePassword() {
 
   function validate(state) {
     let errors = {};
+    let passwordLowerCases = /[a-z]/g;
+    let passwordUpperCases = /[A-Z]/g;
+    let passwordNumbers = /[0-9]/g;
     // if (!state.currentPassword) errors.currentPassword = "Current password is required"
-    if (!state.newPassword) errors.newPassword = "New password is required"
-    if (state.newPassword.length < 8) errors.newPassword = "The password must have at least 8 characters"
-    if (!state.repeatPassword) errors.repeatPassword = "Passwords do not much"
-    if (state.newPassword !== state.repeatPassword) errors.repeatPassword = "Passwords do not much"
+    if (!state.newPassword) {
+      errors.newPassword = "Invalid password"
+    }
+    if (!state.newPassword.match(passwordLowerCases) || !state.newPassword.match(passwordUpperCases) || !state.newPassword.match(passwordNumbers) || state.newPassword.length < 8) {
+      errors.newPassword = "Invalid password"
+    }
+    if (!state.repeatPassword) {
+      errors.repeatPassword = "Passwords do not much"
+    }
+    if (state.repeatPassword !== state.newPassword) {
+      errors.repeatPassword = "Passwords do not much"
+    }
     return errors
   }
 
@@ -94,12 +105,12 @@ function ChangePassword() {
     if (viewCurrentPassword) {
       document.getElementById("currentPassword").type = "password"
       setViewCurrentPassword(false)
-      
-    } 
-    if (!viewCurrentPassword) { 
+
+    }
+    if (!viewCurrentPassword) {
       document.getElementById("currentPassword").type = "text"
       setViewCurrentPassword(true)
-    } 
+    }
   }
 
   const handleViewNewPassword = (e) => {
@@ -107,12 +118,12 @@ function ChangePassword() {
     if (viewNewPassword) {
       document.getElementById("newPassword").type = "password"
       setViewNewPassword(false)
-      
-    } 
-    if (!viewNewPassword) { 
+
+    }
+    if (!viewNewPassword) {
       document.getElementById("newPassword").type = "text"
       setViewNewPassword(true)
-    } 
+    }
   }
 
   const handleViewNewRepeatPassword = (e) => {
@@ -120,12 +131,12 @@ function ChangePassword() {
     if (viewNewRepeatPassword) {
       document.getElementById("newRepeatPassword").type = "password"
       setviewNewRepeatPassword(false)
-      
-    } 
-    if (!viewNewRepeatPassword) { 
+
+    }
+    if (!viewNewRepeatPassword) {
       document.getElementById("newRepeatPassword").type = "text"
       setviewNewRepeatPassword(true)
-    } 
+    }
   }
 
 
