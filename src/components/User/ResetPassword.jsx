@@ -134,22 +134,24 @@ function ResetPassword() {
                     <div>
                         <form onSubmit={handleSubmit}>
                             <div>
-                                <label>NEW PASSWORD</label>
-                                <input className="form-control form-inputContact" id="newPassword2" type="password" name="newPassword" value={state.newPassword} onChange={(e) => handleChange(e)} placeholder="Enter password" />
+                                <label>NEW PASSWORD
                                 {
-                                    viewNewPassword ? <button onClick={(e) => handleViewNewPassword(e)} class="bi bi-eye-slash-fill"></button> : <button onClick={(e) => handleViewNewPassword(e)} class="bi bi-eye-fill"></button>
+                                    viewNewPassword ? <button onClick={(e) => handleViewNewPassword(e)} class="bi bi-eye-slash-fill"style={{borderColor:"transparent", color:"#C49D48"}}></button> : <button onClick={(e) => handleViewNewPassword(e)} class="bi bi-eye-fill" style={{borderColor:"transparent", color:"#C49D48"}}></button>
                                 }
+                                </label>
+                                <input className="form-control form-inputContact" id="newPassword2" type="password" name="newPassword" value={state.newPassword} onChange={(e) => handleChange(e)} placeholder="Enter password" />
                                 {errors.newPassword ?
                                     <p id="errors" hidden>{errors.newPassword}</p> :
                                     <p className="validMessage">Looks Good!</p>
                                 }
                             </div>
                             <div>
-                                <label>REPEAT NEW PASSWORD</label>
-                                <input className="form-control form-inputContact" id="newRepeatPassword2" type="password" name="repeatPassword" value={state.repeatPassword} onChange={(e) => handleChange(e)} placeholder="Enter password" />
+                                <label>REPEAT NEW PASSWORD
                                 {
-                                    viewNewRepeatPassword ? <button onClick={(e) => handleViewNewRepeatPassword(e)} class="bi bi-eye-slash-fill"></button> : <button onClick={(e) => handleViewNewRepeatPassword(e)} class="bi bi-eye-fill"></button>
+                                    viewNewRepeatPassword ? <button onClick={(e) => handleViewNewRepeatPassword(e)} class="bi bi-eye-slash-fill"style={{borderColor:"transparent", color:"#C49D48"}}></button> : <button onClick={(e) => handleViewNewRepeatPassword(e)} class="bi bi-eye-fill" style={{borderColor:"transparent", color:"#C49D48"}}></button>
                                 }
+                                </label>
+                                <input className="form-control form-inputContact" id="newRepeatPassword2" type="password" name="repeatPassword" value={state.repeatPassword} onChange={(e) => handleChange(e)} placeholder="Enter password" />
                                 {errors.repeatPassword ?
                                     <p id="errors" hidden>{errors.repeatPassword}</p> :
                                     <p className="validMessage">Looks Good!</p>
