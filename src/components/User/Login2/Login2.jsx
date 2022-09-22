@@ -288,10 +288,12 @@ export default function Login2() {
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col">
+                  <div class="col-md-12-signup">
                     <label className="infoLabel">
                       {" "}
-                      <i class="bi bi-key"></i> PASSWORD
+                      <i class="bi bi-key"></i> PASSWORD {
+                        viewPassword ? <button onClick={(e) => handleViewPassword(e)} class="bi bi-eye-slash-fill"></button> : <button onClick={(e) => handleViewPassword(e)} class="bi bi-eye-fill"></button>
+                      }
                     </label>
                     <input
                       id = "password1"
@@ -301,9 +303,7 @@ export default function Login2() {
                       name="password"
                       placeholder="Please insert your password"
                       onChange={(e) => handleChange(e)}/>
-                      {
-                        viewPassword ? <button onClick={(e) => handleViewPassword(e)} class="bi bi-eye-slash-fill"></button> : <button onClick={(e) => handleViewPassword(e)} class="bi bi-eye-fill"></button>
-                      }
+                      
                     {
                       errors.password && (
                         <p id="errors" hidden>
