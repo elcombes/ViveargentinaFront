@@ -179,7 +179,7 @@ export default function Card(props) {
       Swal.fire({
         title: "ADDED TO FAVORITES SUCCESSFULLY!",
         text: item.name,
-        imageUrl: item.image,
+        imageUrl: "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663850651/VivaArg/Alerts/passagerAlert_so3lbs.png",
         imageWidth: 400,
         imageHeight: 300,
         confirmButtonColor: "#C49D48",
