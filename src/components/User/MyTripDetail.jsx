@@ -58,15 +58,25 @@ export default function MyTripDetail({ packages, experiences, saleId }) {
                   </div>
                 </div>
                 <div className={`row mb-3 mt-3 ${styles.enditemscart}`}>
-                  <div className="col-md-6 text-center">
-                    <ul className={styles.buttonitemcart}>
+                  <div className="col-md-6 text-start">
+                    {/* <ul className={styles.buttonitemcart}>
                       <li>
                         <div className={styles.itempax}>
                           {" "}
                           {p.sale_package.passengers}{" "}
                         </div>
                       </li>
-                    </ul>
+                    </ul> */}
+
+                    <select id="scoreOrder" className={styles.scoreselectdetailtrips}>
+                      <option value='sort' disabled selected>Select Score</option>
+                      <option value='1'>★</option>
+                      <option value='2'>★★</option>
+                      <option value='3'>★★★</option>
+                      <option value='4'>★★★★</option>
+                      <option value='5'>★★★★★</option>
+                    </select>
+
                   </div>
                   <div className="col-md-6 text-start">
                     <h4 className={styles.pricecart}>
@@ -81,7 +91,7 @@ export default function MyTripDetail({ packages, experiences, saleId }) {
             return (
               <div className={`"container" ${styles.itemcart}`}>
                 <div className={`"row mt-3 mb-4" ${styles.rowimgtitle}`}>
-                  <div className="col-md-4 mb-1">
+                  <div className="col-md-4 mb-1 text-start">
                     <img
                       className={`"img-fluid" ${styles.imgitemcart}`}
                       src={p.image}
@@ -90,24 +100,35 @@ export default function MyTripDetail({ packages, experiences, saleId }) {
                   </div>
                   <div className="col-md-8 mb-1">
                     <h4 className={styles.titlecart}>{p.name} </h4>
-                    <h4 className={styles.datescart}>
+                    <h4 className={`text-start ${styles.datescart}`}>
                       {" "}
                       {p.sale_experience.dates}{" "}
                     </h4>
                   </div>
                 </div>
                 <div className={`row mb-3 mt-3 ${styles.enditemscart}`}>
-                  <div className="col-md-4 text-center">
-                    <ul className={styles.buttonitemcart}>
+                  <div className="col-md-6 text-start">
+
+                    {/* <ul className={styles.buttonitemcart}>
                       <li>
                         <div className={styles.itempax}>
                           {" "}
                           {p.sale_experience.passengers}{" "}
                         </div>
                       </li>
-                    </ul>
+                    </ul> */}
+
+                    <select id="scoreOrder" className={styles.scoreselectdetailtrips}>
+                      <option value='sort' disabled selected>Select Score</option>
+                      <option value='1'>★</option>
+                      <option value='2'>★★</option>
+                      <option value='3'>★★★</option>
+                      <option value='4'>★★★★</option>
+                      <option value='5'>★★★★★</option>
+                    </select>
+
                   </div>
-                  <div className="col-md-4 text-center">
+                  <div className="col-md-6 text-start">
                     <h4 className={styles.pricecart}>
                       ARS$ {p.sale_experience.total}
                     </h4>

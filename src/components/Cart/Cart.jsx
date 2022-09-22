@@ -69,10 +69,11 @@ export default function Cart() {
     }
     let userId = user.user.id;
     itemsFromStore = JSON.parse(localStorage.getItem("items"));
-
-    const saleId = await dispatch(addNewSale(userId, itemsFromStore));
-    console.log("saleId en cart");
-    dispatch(buyInMercadoPago(saleId, itemsFromStore));
+    if (itemsFromStore) {
+      const saleId = await dispatch(addNewSale(userId, itemsFromStore));
+      console.log("saleId en cart");
+      dispatch(buyInMercadoPago(saleId, itemsFromStore));
+    }
   }
 
   if (!itemsFromStore || itemsFromStore.length === 0) {
