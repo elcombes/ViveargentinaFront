@@ -144,30 +144,37 @@ function ChangePassword() {
     <div>
       <div>
         <form className={`${styles.formchangepass} mt-5`} onSubmit={handleSubmit}>
+
           <div>
-            <label>Current password: </label>
+            <label>Current password:
+              {
+                viewCurrentPassword ? <button onClick={(e) => handleViewCurrentPassword(e)} className={`bi bi-eye-slash-fill ${styles.eyepass}`}></button> : <button onClick={(e) => handleViewCurrentPassword(e)} className={`bi bi-eye-fill ${styles.eyepass}`}></button>
+              }
+            </label>
             <input className={`form-control ${styles.chngpassinput}`} id="currentPassword" type="password" name="currentPassword" value={state.currentPassword} onChange={(e) => handleChange(e)} placeholder="Enter current password" />
-            {
-              viewCurrentPassword ? <button onClick={(e) => handleViewCurrentPassword(e)} class="bi bi-eye-slash-fill"></button> : <button onClick={(e) => handleViewCurrentPassword(e)} class="bi bi-eye-fill"></button>
-            }
+
           </div>
           <div>
-            <label>New password: </label>
+            <label>New password:
+              {
+                viewNewPassword ? <button onClick={(e) => handleViewNewPassword(e)} className={`bi bi-eye-slash-fill ${styles.eyepass}`}></button> : <button onClick={(e) => handleViewNewPassword(e)} className={`bi bi-eye-fill ${styles.eyepass}`}></button>
+              }
+            </label>
             <input className={`form-control ${styles.chngpassinput}`} id="newPassword" type="password" name="newPassword" value={state.newPassword} onChange={(e) => handleChange(e)} placeholder="Enter new password" />
-            {
-              viewNewPassword ? <button onClick={(e) => handleViewNewPassword(e)} class="bi bi-eye-slash-fill"></button> : <button onClick={(e) => handleViewNewPassword(e)} class="bi bi-eye-fill"></button>
-            }
+
             {errors.newPassword ?
               <p id="errors" hidden>{errors.newPassword}</p> :
               <p className="validMessage">Looks Good!</p>
             }
           </div>
           <div>
-            <label>Repeat New password: </label>
+            <label>Repeat New password:
+              {
+                viewNewRepeatPassword ? <button onClick={(e) => handleViewNewRepeatPassword(e)} className={`bi bi-eye-slash-fill ${styles.eyepass}`}></button> : <button onClick={(e) => handleViewNewRepeatPassword(e)} className={`bi bi-eye-fill ${styles.eyepass}`}></button>
+              }
+            </label>
             <input className={`form-control ${styles.chngpassinput}`} id="newRepeatPassword" type="password" name="repeatPassword" value={state.repeatPassword} onChange={(e) => handleChange(e)} placeholder="Repeat new password" />
-            {
-              viewNewRepeatPassword ? <button onClick={(e) => handleViewNewRepeatPassword(e)} class="bi bi-eye-slash-fill"></button> : <button onClick={(e) => handleViewNewRepeatPassword(e)} class="bi bi-eye-fill"></button>
-            }
+
             {errors.repeatPassword ?
               <p id="errors" hidden>{errors.repeatPassword}</p> :
               <p className="validMessage">Looks Good!</p>
