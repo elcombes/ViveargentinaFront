@@ -149,12 +149,12 @@ export default function SignUp() {
         if (viewPassword) {
             document.getElementById("password").type = "password"
             setViewPassword(false)
-            
-          } 
-          if (!viewPassword) { 
+
+        }
+        if (!viewPassword) {
             document.getElementById("password").type = "text"
             setViewPassword(true)
-          } 
+        }
     }
 
     const handleViewRepeatedPassword = (e) => {
@@ -162,12 +162,12 @@ export default function SignUp() {
         if (viewRepeatedPassword) {
             document.getElementById("repeatedPassword").type = "password"
             setviewRepeatedPassword(false)
-            
-          } 
-          if (!viewRepeatedPassword) { 
+
+        }
+        if (!viewRepeatedPassword) {
             document.getElementById("repeatedPassword").type = "text"
             setviewRepeatedPassword(true)
-          } 
+        }
     }
 
     return (
@@ -246,8 +246,10 @@ export default function SignUp() {
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col">
-                                                <label className="infoLabel">PASSWORD</label>
+                                            <div class="col-md-12-signup">
+                                                <label className="infoLabel">PASSWORD                                                 {
+                                                    viewPassword ? <button onClick={(e) => handleViewPassword(e)} class="bi bi-eye-slash-fill"></button> : <button onClick={(e) => handleViewPassword(e)} class="bi bi-eye-fill"></button>
+                                                }</label>
                                                 <input
                                                     id="password"
                                                     class="form-control form-inputContact"
@@ -256,9 +258,7 @@ export default function SignUp() {
                                                     name="password"
                                                     placeholder="At least a lowercase, an uppercase, a number and 8 characters"
                                                     onChange={(e) => handleChange(e)} />
-                                                {
-                                                    viewPassword ? <button onClick={(e) => handleViewPassword(e)} class="bi bi-eye-slash-fill"></button> : <button onClick={(e) => handleViewPassword(e)} class="bi bi-eye-fill"></button>
-                                                }
+
                                                 {errors.password ?
                                                     <p id="errors" hidden>{errors.password}</p> :
                                                     <p className="validMessage">Looks Good!</p>
@@ -266,8 +266,10 @@ export default function SignUp() {
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-12">
-                                                <label className="infoLabel">REPEAT PASSWORD</label>
+                                            <div class="col-md-12-signup">
+                                                <label className="infoLabel">REPEAT PASSWORD {
+                                                    viewRepeatedPassword ? <button onClick={(e) => handleViewRepeatedPassword(e)} class="bi bi-eye-slash-fill"></button> : <button onClick={(e) => handleViewRepeatedPassword(e)} class="bi bi-eye-fill"></button>
+                                                }</label>
                                                 <input
                                                     id="repeatedPassword"
                                                     class="form-control form-inputContact"
@@ -276,9 +278,7 @@ export default function SignUp() {
                                                     name="repeatedPassword"
                                                     placeholder="Repeat your Password"
                                                     onChange={(e) => handleChange(e)} />
-                                                {
-                                                    viewRepeatedPassword ? <button onClick={(e) => handleViewRepeatedPassword(e)} class="bi bi-eye-slash-fill"></button> : <button onClick={(e) => handleViewRepeatedPassword(e)} class="bi bi-eye-fill"></button>
-                                                }
+                                                
                                                 {errors.repeatedPassword ?
                                                     <p id="errors" hidden>{errors.repeatedPassword}</p> :
                                                     <p className="validMessage">Looks Good!</p>
