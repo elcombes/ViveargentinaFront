@@ -69,9 +69,9 @@ export default function FilterExperiencies({ handleOrder, setPage }) {
                                 <h4 className="text-center mb-3"><i class="bi bi-filter-square-fill"style={{color:"#C49D48"}}></i> SORT EXPERIENCES BY</h4>
                                 <ul className={styles.filterstyle}>
                                     <li>
-                                        <h5><i class="bi bi-sort-alpha-down"style={{color:"#C49D48"}}></i> ALFABETIC</h5>
+                                        <h5><i class="bi bi-sort-alpha-down"style={{color:"#C49D48"}}></i> ALPHABETIC</h5>
                                         <select id="alphabeticOrder" onChange={e => handleOrder(e)}>
-                                            <option value='sort'>Sort</option>
+                                            <option value='sort' disabled selected>Sort</option>
                                             <option value='ascendant by name'>A - Z</option>
                                             <option value='descendant by name'>Z - A</option>
                                         </select>
@@ -79,7 +79,7 @@ export default function FilterExperiencies({ handleOrder, setPage }) {
                                     <li>
                                         <h5><i class="bi bi-tags-fill"style={{color:"#C49D48"}}></i> PRICE</h5>
                                         <select id="priceOrder" onChange={e => handleOrder(e)}>
-                                            <option value='sort'>Sort</option>
+                                            <option value='sort' disabled selected>Sort</option>
                                             <option value='ascendant by price'>$</option>
                                             <option value='descendant by price'>$$$</option>
                                         </select>
@@ -87,7 +87,7 @@ export default function FilterExperiencies({ handleOrder, setPage }) {
                                     <li>
                                         <h5><i class="bi bi-star-half"style={{color:"#C49D48"}}></i> SCORE</h5>
                                         <select id="scoreOrder" onChange={e => handleOrder(e)}>
-                                            <option value='sort'>Sort</option>
+                                            <option value='sort' disabled selected>Sort</option>
                                             <option value='ascendant by score'>★</option>
                                             <option value='descendant by score'>★★★</option>
                                         </select>

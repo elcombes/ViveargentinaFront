@@ -233,7 +233,6 @@ function HomePage() {
           {/* RENDERIZADO REVIEWS */}
           <section className="containerReviews" id='reviews'>
 
-
             <div class="titleReviews">
               <h2>our reviews</h2>
             </div>
@@ -283,16 +282,6 @@ function HomePage() {
                 <span className="visually-hidden">Next</span>
               </button>
             </div>
-
-
-
-
-
-
-
-
-
-
 
           </section>
 
