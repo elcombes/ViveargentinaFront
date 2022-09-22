@@ -15,7 +15,7 @@ export default function Profile() {
   const userById = useSelector((state) => state.userById);
   const dispatch = useDispatch();
   const defaultProfilePicture =
-  "https://lh3.googleusercontent.com/a-/AFdZucos_7TuriZhUv-v4dTAbmhxctPDsQZ3X9Gln9C8=s96-c";
+  "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663875422/VivaArg/Alerts/vive_argentina_r3uban.gif";
 
   let userFromStorage = JSON.parse(localStorage.getItem("user"));
 
