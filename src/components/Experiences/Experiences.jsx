@@ -222,7 +222,7 @@ export default function Experiences(props) {
     window.scrollTo({ top: 0, behavior: "smooth" });
     dispatch(getLsUser());
     let aux = null;
-    if (packageId.length === 36) {
+    if (packageId?.length === 36) {
       aux = await dispatch(getPackageById(packageId));
     } else {
       aux = await dispatch(getAllExperiences());
