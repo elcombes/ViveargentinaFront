@@ -17,7 +17,8 @@ import {
 } from "../../../redux/action";
 
 function validate(newUser) {
-  const emailVerification = /^(([^<>()\[\]\\.,;:\s@”]+(\.[^<>()\[\]\\.,;:\s@”]+)*)|(“.+”))@((\[[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}])|(([a-zA-Z\-0–9]+\.)+[a-zA-Z]{2,}))$/;
+  const emailVerification =
+    /^(([^<>()\[\]\\.,;:\s@”]+(\.[^<>()\[\]\\.,;:\s@”]+)*)|(“.+”))@((\[[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}])|(([a-zA-Z\-0–9]+\.)+[a-zA-Z]{2,}))$/;
   let errors = {};
   if (!emailVerification.test(newUser.email)) {
     errors.email = "Invalid email";
@@ -42,6 +43,8 @@ export default function Login2() {
     email: "",
     password: "",
   });
+  // const [viewPassword, setViewPassword] = useState(false)
+  const [viewPassword, setViewPassword] = useState(false)
   const [errors, setErrors] = useState({});
   const [forgot, setForgot] = useState("Forgot your Password?");
 
@@ -75,6 +78,7 @@ export default function Login2() {
       typeof response === "string" ? response : "User successfully logged";
 
     const user = JSON.parse(window.localStorage.getItem("user"));
+    await dispatch(getCartByUser(user?.user?.id));
 
 
 
@@ -85,6 +89,8 @@ export default function Login2() {
       imageHeight: 300,
       confirmButtonColor: "#C49D48",
       imageAlt: "Custom image",
+    }).then(() => {
+      history.go(0);
     });
   };
 
@@ -133,47 +139,53 @@ export default function Login2() {
         confirmButtonColor: "#C49D48",
         imageAlt: "Custom image",
       });
-    }
-    else {
-      const response = await dispatch(getUserLogin({ email: newUser.email, password: newUser.password }));
+    } else {
+      const response = await dispatch(
+        getUserLogin({ email: newUser.email, password: newUser.password })
+      );
       const user = JSON.parse(window.localStorage.getItem("user"));
-      console.log(response)
-      console.log(user)
-      if (response === 'Incorrect password') {
+      console.log(response);
+      console.log(user);
+      if (response === "Incorrect password") {
         return Swal.fire({
           title: "Incorrect password",
-          imageUrl: "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663190222/VivaArg/Alerts/passagerAlert_1_nejegh.png",
+          imageUrl:
+            "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663190222/VivaArg/Alerts/passagerAlert_1_nejegh.png",
           imageWidth: 350,
           imageHeight: 300,
           confirmButtonColor: "#C49D48",
           imageAlt: "Custom image",
         });
-      } else if (response === 'Please confirm your email to login') {
+      } else if (response === "Please confirm your email to login") {
         return Swal.fire({
-          title: 'Please validate your account to log in',
-          imageUrl: "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663190222/VivaArg/Alerts/passagerAlert_1_nejegh.png",
+          title: "Please validate your account to log in",
+          imageUrl:
+            "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663190222/VivaArg/Alerts/passagerAlert_1_nejegh.png",
           imageWidth: 350,
           imageHeight: 300,
           confirmButtonColor: "#C49D48",
           imageAlt: "Custom image",
         });
-      } else if (response === 'User not allowed, please contact the administrator') {
+      } else if (
+        response === "User not allowed, please contact the administrator"
+      ) {
         return Swal.fire({
-          title: 'User not allowed, please contact the administrator',
-          imageUrl: "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663190222/VivaArg/Alerts/passagerAlert_1_nejegh.png",
+          title: "User not allowed, please contact the administrator",
+          imageUrl:
+            "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663190222/VivaArg/Alerts/passagerAlert_1_nejegh.png",
           imageWidth: 350,
           imageHeight: 300,
           confirmButtonColor: "#C49D48",
           imageAlt: "Custom image",
         });
       }
-      const image = typeof response === "string"
-        ? "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663190222/VivaArg/Alerts/passagerAlert_1_nejegh.png"
-        : "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663188984/VivaArg/Alerts/passagerAlert_hxpidz.png"
-      const message = typeof response === "string"
-        ? response
-        : "User successfully logged"
-      dispatch(getCartByUser(user?.user?.id));
+      const image =
+        typeof response === "string"
+          ? "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663190222/VivaArg/Alerts/passagerAlert_1_nejegh.png"
+          : "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663188984/VivaArg/Alerts/passagerAlert_hxpidz.png";
+      const message =
+        typeof response === "string" ? response : "User successfully logged";
+      await dispatch(getCartByUser(user?.user?.id));
       if (user?.user.administrator) history.push("/admin");
       Swal.fire({
         title: message + "!",
@@ -182,9 +194,25 @@ export default function Login2() {
         imageHeight: 300,
         confirmButtonColor: "#C49D48",
         imageAlt: "Custom image",
+      }).then(() => {
+        history.go(0);
       });
     }
   };
+
+  const handleViewPassword = (e) => {
+    e.preventDefault()
+    if (viewPassword) {
+      document.getElementById("password1").type = "password"
+      setViewPassword(false)
+      
+    } 
+    if (!viewPassword) { 
+      document.getElementById("password1").type = "text"
+      setViewPassword(true)
+    } 
+
+  }
 
   return (
     <div>
@@ -266,15 +294,16 @@ export default function Login2() {
                       <i class="bi bi-key"></i> PASSWORD
                     </label>
                     <input
+                      id = "password1"
                       class="form-control form-inputContact"
                       type="password"
                       value={newUser.password}
                       name="password"
-
                       placeholder="Please insert your password"
-
-                      onChange={(e) => handleChange(e)}
-                    />
+                      onChange={(e) => handleChange(e)}/>
+                      {
+                        viewPassword ? <button onClick={(e) => handleViewPassword(e)} class="bi bi-eye-slash-fill"></button> : <button onClick={(e) => handleViewPassword(e)} class="bi bi-eye-fill"></button>
+                      }
                     {
                       errors.password && (
                         <p id="errors" hidden>

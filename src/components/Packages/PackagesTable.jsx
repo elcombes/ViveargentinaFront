@@ -76,7 +76,7 @@ export default function PackagesTable() {
                     <th>PRICE</th>
                     <th>SCORE</th>
                     <th>AVAILABLE</th>
-                    <th>ACTIONS</th>
+                    <th>UPDATE</th>
                   </tr>
                 </thead>
 
@@ -96,15 +96,7 @@ export default function PackagesTable() {
                         <td>{p.duration}</td>
                         <td>${p.price}</td>
                         <td className="text-center">{p.score}</td>
-                        {p.available ? (
-                          <td className="text-center">
-                            <i class="bi bi-eye"></i>
-                          </td>
-                        ) : (
-                          <td className="text-center">
-                            <i class="bi bi-eye-slash-fill"></i>
-                          </td>
-                        )}
+                        
                         <td className="text-center">
                           {p.available ? (
                             <button
@@ -150,18 +142,7 @@ export default function PackagesTable() {
                             />
                           </div>
 
-                          <button
-                            className="btn"
-                            onClick={(event) => handleChangeAvailable(event)}
-                            name={p.id}
-                            value={p.available}
-                          >
-                            <i
-                              name={p.id}
-                              value={p.available}
-                              class="bi bi-sign-stop-fill"
-                            ></i>
-                          </button>
+                          
                         </td>
                       </tr>
                     </tbody>

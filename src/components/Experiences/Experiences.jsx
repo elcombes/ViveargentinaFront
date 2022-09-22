@@ -151,7 +151,7 @@ export default function Experiences(props) {
         text: item.name,
         imageUrl: item.image,
         imageWidth: 400,
-        imageHeight: 200,
+        imageHeight: 300,
         confirmButtonColor: "#C49D48",
         imageAlt: "Custom image",
         showClass: {
@@ -163,35 +163,35 @@ export default function Experiences(props) {
 
   const addExperiencesFavorites = (experienceId) => {
     let user = JSON.parse(localStorage.getItem("user"));
-    if(user) {
-    let userId = user.user.id;
-    dispatch(addExperienceFavorite(experienceId, userId));
-    Swal.fire({
-      title: "ADDED TO FAVORITES SUCCESSFULLY!",
-      text: item.name,
-      imageUrl: item.image,
-      imageWidth: 400,
-      imageHeight: 200,
-      confirmButtonColor: "#C49D48",
-      imageAlt: "Custom image",
-      showClass: {
-        popup: "animate__animated animate__flipInY",
-      },
-    });
-  }
-  else {
-    Swal.fire({
-      title: "Please login to add to favorites",
-      imageUrl: "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663190222/VivaArg/Alerts/passagerAlert_1_nejegh.png",
-      imageWidth: 400,
-      imageHeight: 200,
-      confirmButtonColor: "#C49D48",
-      imageAlt: "Custom image",
-      showClass: {
-        popup: "animate__animated animate__flipInY",
-      },
-    });
-  }
+    if (user) {
+      let userId = user.user.id;
+      dispatch(addExperienceFavorite(experienceId, userId));
+      Swal.fire({
+        title: "ADDED TO FAVORITES SUCCESSFULLY!",
+        text: item.name,
+        imageUrl: "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663850651/VivaArg/Alerts/passagerAlert_so3lbs.png",
+        imageWidth: 400,
+        imageHeight: 300,
+        confirmButtonColor: "#C49D48",
+        imageAlt: "Custom image",
+        showClass: {
+          popup: "animate__animated animate__flipInY",
+        },
+      });
+    }
+    else {
+      Swal.fire({
+        title: "Please login to add to favorites",
+        imageUrl: "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663190222/VivaArg/Alerts/passagerAlert_1_nejegh.png",
+        imageWidth: 400,
+        imageHeight: 300,
+        confirmButtonColor: "#C49D48",
+        imageAlt: "Custom image",
+        showClass: {
+          popup: "animate__animated animate__flipInY",
+        },
+      });
+    }
   };
 
   //   Fin Precart
@@ -303,6 +303,25 @@ export default function Experiences(props) {
                   <div className="container">
                     <div className="row">
                       <div className="col-md-6">
+                        <div>
+                          <button
+                            onClick={() =>
+                              addExperiencesFavorites(e.id)
+                            }
+                            style={{
+                              marginBottom: "15px",
+                              borderColor: "transparent",
+                            }}
+                          >
+                            <i
+                              class="bi bi-heart-fill"
+                              style={{
+                                fontSize: "20px",
+                                paddingTop: "2vh",
+                              }}
+                            ></i>
+                          </button>
+                        </div>
                         <h2
                           style={{
                             textTransform: "uppercase",
@@ -420,25 +439,7 @@ export default function Experiences(props) {
                                     src={e.image}
                                     alt=""
                                   />
-                                  <div>
-                                    <button
-                                      onClick={() =>
-                                        addExperiencesFavorites(e.id)
-                                      }
-                                      style={{
-                                        marginTop: "10px",
-                                        borderColor: "transparent",
-                                      }}
-                                    >
-                                      <i
-                                        class="bi bi-heart-fill"
-                                        style={{
-                                          fontSize: "20px",
-                                          paddingTop: "2vh",
-                                        }}
-                                      ></i>
-                                    </button>
-                                  </div>
+
                                   <div className="mt-5">
                                     <h2
                                       className="modal-title"
