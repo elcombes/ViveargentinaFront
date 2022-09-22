@@ -33,10 +33,10 @@ function validate(newUser) {
         errors.password = "Invalid password"
     }
     if (!newUser.repeatedPassword) {
-        errors.repeatedPassword = "Password do not much"
+        errors.repeatedPassword = "Passwords do not much"
     }
     if (newUser.password !== newUser.repeatedPassword) {
-        errors.repeatedPassword = "Password do not much"
+        errors.repeatedPassword = "Passwords do not much"
     }
     return errors
 }

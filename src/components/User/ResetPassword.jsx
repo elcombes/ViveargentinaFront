@@ -11,10 +11,21 @@ import Swal from "sweetalert2";
 function validate(state) {
     // let strongPasswordVerification = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
     let errors = {};
-    if (!state.newPassword) errors.newPassword = "Password is required"
-    if (state.newPassword.length < 8) errors.newPassword = "The password must have at least 8 characters"
-    if (!state.repeatPassword) errors.repeatPassword = "Passwords do not much"
-    if (state.newPassword !== state.repeatPassword) errors.repeatPassword = "Passwords do not much"
+    let passwordLowerCases = /[a-z]/g;
+    let passwordUpperCases = /[A-Z]/g;
+    let passwordNumbers = /[0-9]/g;
+    if (!state.newPassword) {
+        errors.newPassword = "Invalid password"
+    }
+    if (!state.newPassword.match(passwordLowerCases) || !state.newPassword.match(passwordUpperCases) || !state.newPassword.match(passwordNumbers) || state.newPassword.length < 8) {
+        errors.newPassword = "Invalid password"
+    }
+    if (!state.repeatPassword) {
+        errors.repeatPassword = "Passwords do not much"
+    }
+    if (state.repeatPassword !== state.newPassword) {
+        errors.repeatPassword = "Passwords do not much"
+    }
     return errors
 }
 
@@ -32,6 +43,8 @@ function ResetPassword() {
     })
 
     const [errors, setErrors] = useState({})
+    const [viewNewPassword, setViewNewPassword] = useState(false)
+    const [viewNewRepeatPassword, setViewNewRepeatPassword] = useState(false)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -80,6 +93,32 @@ function ResetPassword() {
         setErrors(validate(state))
     }, [])
 
+    const handleViewNewPassword = (e) => {
+        e.preventDefault()
+        if (viewNewPassword) {
+            document.getElementById("newPassword2").type = "password"
+            setViewNewPassword(false)
+
+        }
+        if (!viewNewPassword) {
+            document.getElementById("newPassword2").type = "text"
+            setViewNewPassword(true)
+        }
+    }
+
+    const handleViewNewRepeatPassword = (e) => {
+        e.preventDefault()
+        if (viewNewRepeatPassword) {
+            document.getElementById("newRepeatPassword2").type = "password"
+            setViewNewRepeatPassword(false)
+
+        }
+        if (!viewNewRepeatPassword) {
+            document.getElementById("newRepeatPassword2").type = "text"
+            setViewNewRepeatPassword(true)
+        }
+    }
+
 
     return (
         <>
@@ -96,7 +135,10 @@ function ResetPassword() {
                         <form onSubmit={handleSubmit}>
                             <div>
                                 <label>NEW PASSWORD</label>
-                                <input className="form-control form-inputContact" type="password" name="newPassword" value={state.newPassword} onChange={(e) => handleChange(e)} placeholder="Enter password" />
+                                <input className="form-control form-inputContact" id="newPassword2" type="password" name="newPassword" value={state.newPassword} onChange={(e) => handleChange(e)} placeholder="Enter password" />
+                                {
+                                    viewNewPassword ? <button onClick={(e) => handleViewNewPassword(e)} class="bi bi-eye-slash-fill"></button> : <button onClick={(e) => handleViewNewPassword(e)} class="bi bi-eye-fill"></button>
+                                }
                                 {errors.newPassword ?
                                     <p id="errors" hidden>{errors.newPassword}</p> :
                                     <p className="validMessage">Looks Good!</p>
@@ -104,7 +146,10 @@ function ResetPassword() {
                             </div>
                             <div>
                                 <label>REPEAT NEW PASSWORD</label>
-                                <input className="form-control form-inputContact" type="password" name="repeatPassword" value={state.repeatPassword} onChange={(e) => handleChange(e)} placeholder="Enter password" />
+                                <input className="form-control form-inputContact" id="newRepeatPassword2" type="password" name="repeatPassword" value={state.repeatPassword} onChange={(e) => handleChange(e)} placeholder="Enter password" />
+                                {
+                                    viewNewRepeatPassword ? <button onClick={(e) => handleViewNewRepeatPassword(e)} class="bi bi-eye-slash-fill"></button> : <button onClick={(e) => handleViewNewRepeatPassword(e)} class="bi bi-eye-fill"></button>
+                                }
                                 {errors.repeatPassword ?
                                     <p id="errors" hidden>{errors.repeatPassword}</p> :
                                     <p className="validMessage">Looks Good!</p>

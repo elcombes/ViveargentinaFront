@@ -20,6 +20,10 @@ function ChangePassword() {
   })
 
   const [errors, setErrors] = useState({})
+  const [viewCurrentPassword, setViewCurrentPassword] = useState(false)
+  const [viewNewPassword, setViewNewPassword] = useState(false)
+  const [viewNewRepeatPassword, setviewNewRepeatPassword] = useState(false)
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -62,11 +66,22 @@ function ChangePassword() {
 
   function validate(state) {
     let errors = {};
+    let passwordLowerCases = /[a-z]/g;
+    let passwordUpperCases = /[A-Z]/g;
+    let passwordNumbers = /[0-9]/g;
     // if (!state.currentPassword) errors.currentPassword = "Current password is required"
-    if (!state.newPassword) errors.newPassword = "New password is required"
-    if (state.newPassword.length < 8) errors.newPassword = "The password must have at least 8 characters"
-    if (!state.repeatPassword) errors.repeatPassword = "Passwords do not much"
-    if (state.newPassword !== state.repeatPassword) errors.repeatPassword = "Passwords do not much"
+    if (!state.newPassword) {
+      errors.newPassword = "Invalid password"
+    }
+    if (!state.newPassword.match(passwordLowerCases) || !state.newPassword.match(passwordUpperCases) || !state.newPassword.match(passwordNumbers) || state.newPassword.length < 8) {
+      errors.newPassword = "Invalid password"
+    }
+    if (!state.repeatPassword) {
+      errors.repeatPassword = "Passwords do not much"
+    }
+    if (state.repeatPassword !== state.newPassword) {
+      errors.repeatPassword = "Passwords do not much"
+    }
     return errors
   }
 
@@ -85,21 +100,63 @@ function ChangePassword() {
     setErrors(validate(state))
   }, [])
 
+  const handleViewCurrentPassword = (e) => {
+    e.preventDefault()
+    if (viewCurrentPassword) {
+      document.getElementById("currentPassword").type = "password"
+      setViewCurrentPassword(false)
+
+    }
+    if (!viewCurrentPassword) {
+      document.getElementById("currentPassword").type = "text"
+      setViewCurrentPassword(true)
+    }
+  }
+
+  const handleViewNewPassword = (e) => {
+    e.preventDefault()
+    if (viewNewPassword) {
+      document.getElementById("newPassword").type = "password"
+      setViewNewPassword(false)
+
+    }
+    if (!viewNewPassword) {
+      document.getElementById("newPassword").type = "text"
+      setViewNewPassword(true)
+    }
+  }
+
+  const handleViewNewRepeatPassword = (e) => {
+    e.preventDefault()
+    if (viewNewRepeatPassword) {
+      document.getElementById("newRepeatPassword").type = "password"
+      setviewNewRepeatPassword(false)
+
+    }
+    if (!viewNewRepeatPassword) {
+      document.getElementById("newRepeatPassword").type = "text"
+      setviewNewRepeatPassword(true)
+    }
+  }
+
+
   return (
     <div>
       <div>
         <form className={`${styles.formchangepass} mt-5`} onSubmit={handleSubmit}>
           <div>
             <label>Current password: </label>
-            <input className={`form-control ${styles.chngpassinput}`} type="password" name="currentPassword" value={state.currentPassword} onChange={(e) => handleChange(e)} placeholder="Enter current password" />
-            {/* {errors.currentPassword ?
-                            <p id="errors" hidden>{errors.newPassword}</p> :
-                            <p className="validMessage">Looks Good!</p>
-                        } */}
+            <input className={`form-control ${styles.chngpassinput}`} id="currentPassword" type="password" name="currentPassword" value={state.currentPassword} onChange={(e) => handleChange(e)} placeholder="Enter current password" />
+            {
+              viewCurrentPassword ? <button onClick={(e) => handleViewCurrentPassword(e)} class="bi bi-eye-slash-fill"></button> : <button onClick={(e) => handleViewCurrentPassword(e)} class="bi bi-eye-fill"></button>
+            }
           </div>
           <div>
             <label>New password: </label>
-            <input className={`form-control ${styles.chngpassinput}`} type="password" name="newPassword" value={state.newPassword} onChange={(e) => handleChange(e)} placeholder="Enter new password" />
+            <input className={`form-control ${styles.chngpassinput}`} id="newPassword" type="password" name="newPassword" value={state.newPassword} onChange={(e) => handleChange(e)} placeholder="Enter new password" />
+            {
+              viewNewPassword ? <button onClick={(e) => handleViewNewPassword(e)} class="bi bi-eye-slash-fill"></button> : <button onClick={(e) => handleViewNewPassword(e)} class="bi bi-eye-fill"></button>
+            }
             {errors.newPassword ?
               <p id="errors" hidden>{errors.newPassword}</p> :
               <p className="validMessage">Looks Good!</p>
@@ -107,7 +164,10 @@ function ChangePassword() {
           </div>
           <div>
             <label>Repeat New password: </label>
-            <input className={`form-control ${styles.chngpassinput}`} type="password" name="repeatPassword" value={state.repeatPassword} onChange={(e) => handleChange(e)} placeholder="Repeat new password" />
+            <input className={`form-control ${styles.chngpassinput}`} id="newRepeatPassword" type="password" name="repeatPassword" value={state.repeatPassword} onChange={(e) => handleChange(e)} placeholder="Repeat new password" />
+            {
+              viewNewRepeatPassword ? <button onClick={(e) => handleViewNewRepeatPassword(e)} class="bi bi-eye-slash-fill"></button> : <button onClick={(e) => handleViewNewRepeatPassword(e)} class="bi bi-eye-fill"></button>
+            }
             {errors.repeatPassword ?
               <p id="errors" hidden>{errors.repeatPassword}</p> :
               <p className="validMessage">Looks Good!</p>
