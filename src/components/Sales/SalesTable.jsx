@@ -79,9 +79,9 @@ export default function SalesTable() {
                     return (
                       <Fragment>
                         <tr class="cell-1 vertalign">
-                          <td>{s.user.first_name + " " + s.user.last_name}</td>
+                          <td>{s.user?.first_name + " " + s.user?.last_name}</td>
                           <td className="datesale">
-                            {s.createdAt.slice(0, 9)}
+                            {s.createdAt.slice(0, 10)}
                           </td>
                           <td className="text-center">
                             <MyTripDetail
