@@ -90,6 +90,20 @@ export default function Experiences(props) {
         },
       });
     }
+    if (document.getElementById(`${item.name} passengers`).value >= 20) {
+      return Swal.fire({
+        title: "IF YOU WANT TO PURCHASE MORE THAN 20 PASSENGERS FOR THIS TRIP, PLEASE CONTACT US",
+        imageUrl:
+          "https://res.cloudinary.com/dblc1bzmx/image/upload/v1663003831/VivaArg/Alerts/2_wsn0oa.png",
+        imageWidth: 350,
+        imageHeight: 300,
+        confirmButtonColor: "#C49D48",
+        imageAlt: "Custom image",
+        showClass: {
+          popup: "animate__animated animate__flipInY",
+        },
+      });
+    }
     if (document.getElementById(`${item.name} dates`).value === "select") {
       return Swal.fire({
         title: "YOU MUST SELECT A DATE TO CONTINUE",
@@ -521,6 +535,7 @@ export default function Experiences(props) {
                                           className={styles.cantpackages}
                                           name="pax"
                                           min="1"
+                                          max="20"
                                           id={`${item.name} passengers`}
                                           type="number"
                                           value={item.pax}
@@ -597,6 +612,13 @@ export default function Experiences(props) {
                                         </div>
                                       </div>
                                     </div>
+                                    {item.pax > 20 ?
+                                    <div className="row">
+                                      <div class="text-center">
+                                         <p style={{color:"red"}}>To purchase more than 20 passengers for this trip, please <a style={{color:"red", textDecoration:"underline"}} href="/contact_us">contact us</a></p> 
+                                      </div> 
+                                    </div> : <div/>
+                                  }
                                   </div>
                                 </div>
 
