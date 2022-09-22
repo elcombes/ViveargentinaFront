@@ -85,7 +85,7 @@ function NavBarUser() {
                 aria-expanded="false"
                 style={{
                   backgroundImage: `url(${infoUser?.photo !== null
-                    ? infoUser.photo
+                    ? infoUser?.photo
                     : defaultProfilePicture
                     })`,
                   backgroundColor: "transparent",

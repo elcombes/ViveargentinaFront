@@ -247,7 +247,7 @@ export default function Card(props) {
   useEffect(async () => {
     dispatch(getLsUser());
     let aux = null;
-    if (cityId) {
+    if (cityId?.length === 36) {
       aux = await dispatch(getCityById(cityId));
     } else {
       aux = await dispatch(getAllPackages());

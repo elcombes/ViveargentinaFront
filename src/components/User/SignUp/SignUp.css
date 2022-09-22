@@ -1,3 +1,7 @@
+.col-md-12-signup button{
+    border-color:transparent;
+    color: #C49D48;
+}
 #errors {
     font-size: 16px;
     padding-left: 3px;
