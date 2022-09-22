@@ -204,16 +204,13 @@ export default function Login2() {
 
   const handleViewPassword = (e) => {
     e.preventDefault()
-    // let input = document.getElementById("password").type
-    console.log(document.getElementById("password").type)
-    // console.log(viewPassword)
     if (viewPassword) {
-      document.getElementById("password").type = "password"
+      document.getElementById("password1").type = "password"
       setViewPassword(false)
       
     } 
     if (!viewPassword) { 
-      document.getElementById("password").type = "text"
+      document.getElementById("password1").type = "text"
       setViewPassword(true)
     } 
 
@@ -299,7 +296,7 @@ export default function Login2() {
                       <i class="bi bi-key"></i> PASSWORD
                     </label>
                     <input
-                      id = "password"
+                      id = "password1"
                       class="form-control form-inputContact"
                       type="password"
                       value={newUser.password}
@@ -307,7 +304,7 @@ export default function Login2() {
                       placeholder="Please insert your password"
                       onChange={(e) => handleChange(e)}/>
                       {
-                        viewPassword ? <button onClick={(e) => handleViewPassword(e)} class="bi bi-eye-slash-fill"></button> : <button onClick={handleViewPassword}class="bi bi-eye-fill"></button>
+                        viewPassword ? <button onClick={(e) => handleViewPassword(e)} class="bi bi-eye-slash-fill"></button> : <button onClick={(e) => handleViewPassword(e)} class="bi bi-eye-fill"></button>
                       }
                     {
                       errors.password && (

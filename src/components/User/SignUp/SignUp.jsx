@@ -53,11 +53,13 @@ export default function SignUp() {
         repeatedPassword: ""
     })
     const [errors, setErrors] = useState({})
-    
+    const [viewPassword, setViewPassword] = useState(false)
+    const [viewRepeatedPassword, setviewRepeatedPassword] = useState(false)
+
     useEffect(() => {
         setErrors(validate(newUser))
     }, [])
-    
+
     function clearState() {
         setNewUser({
             first_name: "",
@@ -75,8 +77,8 @@ export default function SignUp() {
         }));
         let errorMessagesNodeList = document.querySelectorAll("#errors");
         let errorMessagesArray = Array.from(errorMessagesNodeList);
-        errorMessagesArray.forEach((e) => {return (e.hidden = true)});
-      }
+        errorMessagesArray.forEach((e) => { return (e.hidden = true) });
+    }
 
     const handleChange = (e) => {
         setNewUser({
@@ -117,7 +119,7 @@ export default function SignUp() {
                     confirmButtonColor: "#C49D48",
                     imageAlt: "Custom image",
                 });
-            }, 500) 
+            }, 500)
         } else {
             setNewUser({
                 ...newUser,
@@ -125,11 +127,12 @@ export default function SignUp() {
             })
             setErrors(validate({
                 ...newUser,
-                email: ""}
-                ));
+                email: ""
+            }
+            ));
             let errorMessagesNodeList = document.querySelectorAll("#errors");
             let errorMessagesArray = Array.from(errorMessagesNodeList);
-            errorMessagesArray.forEach((e) => {return (e.hidden = true)});
+            errorMessagesArray.forEach((e) => { return (e.hidden = true) });
             return Swal.fire({
                 title: 'This email is already in use',
                 imageUrl: 'https://res.cloudinary.com/dblc1bzmx/image/upload/v1663190222/VivaArg/Alerts/passagerAlert_1_nejegh.png',
@@ -137,8 +140,34 @@ export default function SignUp() {
                 imageHeight: 300,
                 confirmButtonColor: "#C49D48",
                 imageAlt: "Custom image",
-              });
+            });
         }
+    }
+
+    const handleViewPassword = (e) => {
+        e.preventDefault()
+        if (viewPassword) {
+            document.getElementById("password").type = "password"
+            setViewPassword(false)
+            
+          } 
+          if (!viewPassword) { 
+            document.getElementById("password").type = "text"
+            setViewPassword(true)
+          } 
+    }
+
+    const handleViewRepeatedPassword = (e) => {
+        e.preventDefault()
+        if (viewRepeatedPassword) {
+            document.getElementById("repeatedPassword").type = "password"
+            setviewRepeatedPassword(false)
+            
+          } 
+          if (!viewRepeatedPassword) { 
+            document.getElementById("repeatedPassword").type = "text"
+            setviewRepeatedPassword(true)
+          } 
     }
 
     return (
@@ -173,7 +202,7 @@ export default function SignUp() {
                                             <div class="col-md-6">
                                                 <label className="infoLabel">FIRSTNAME </label>
                                                 <input
-                                                    class="form-control form-inputContact"                                                 
+                                                    class="form-control form-inputContact"
                                                     type="text"
                                                     value={newUser.first_name}
                                                     name="first_name"
@@ -220,12 +249,16 @@ export default function SignUp() {
                                             <div class="col">
                                                 <label className="infoLabel">PASSWORD</label>
                                                 <input
+                                                    id="password"
                                                     class="form-control form-inputContact"
                                                     type="password"
                                                     value={newUser.password}
                                                     name="password"
                                                     placeholder="At least a lowercase, an uppercase, a number and 8 characters"
                                                     onChange={(e) => handleChange(e)} />
+                                                {
+                                                    viewPassword ? <button onClick={(e) => handleViewPassword(e)} class="bi bi-eye-slash-fill"></button> : <button onClick={(e) => handleViewPassword(e)} class="bi bi-eye-fill"></button>
+                                                }
                                                 {errors.password ?
                                                     <p id="errors" hidden>{errors.password}</p> :
                                                     <p className="validMessage">Looks Good!</p>
@@ -236,16 +269,16 @@ export default function SignUp() {
                                             <div class="col-md-12">
                                                 <label className="infoLabel">REPEAT PASSWORD</label>
                                                 <input
-                                                    
+                                                    id="repeatedPassword"
                                                     class="form-control form-inputContact"
                                                     type="password"
                                                     value={newUser.repeatedPassword}
                                                     name="repeatedPassword"
                                                     placeholder="Repeat your Password"
                                                     onChange={(e) => handleChange(e)} />
-                                                {/* <div class="progress" style={{height: '1px'}}>
-                                                    <div class="progress-bar" role="progressbar" aria-label="Example 1px high" style={{width: "25%"}} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div> */}
+                                                {
+                                                    viewRepeatedPassword ? <button onClick={(e) => handleViewRepeatedPassword(e)} class="bi bi-eye-slash-fill"></button> : <button onClick={(e) => handleViewRepeatedPassword(e)} class="bi bi-eye-fill"></button>
+                                                }
                                                 {errors.repeatedPassword ?
                                                     <p id="errors" hidden>{errors.repeatedPassword}</p> :
                                                     <p className="validMessage">Looks Good!</p>
