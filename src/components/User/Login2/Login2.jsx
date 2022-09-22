@@ -43,6 +43,8 @@ export default function Login2() {
     email: "",
     password: "",
   });
+  // const [viewPassword, setViewPassword] = useState(false)
+  const [viewPassword, setViewPassword] = useState(false)
   const [errors, setErrors] = useState({});
   const [forgot, setForgot] = useState("Forgot your Password?");
 
@@ -200,6 +202,20 @@ export default function Login2() {
     }
   };
 
+  const handleViewPassword = (e) => {
+    e.preventDefault()
+    if (viewPassword) {
+      document.getElementById("password1").type = "password"
+      setViewPassword(false)
+      
+    } 
+    if (!viewPassword) { 
+      document.getElementById("password1").type = "text"
+      setViewPassword(true)
+    } 
+
+  }
+
   return (
     <div>
       {/* Inicio boton para abrir el modal */}
@@ -280,13 +296,16 @@ export default function Login2() {
                       <i class="bi bi-key"></i> PASSWORD
                     </label>
                     <input
+                      id = "password1"
                       class="form-control form-inputContact"
                       type="password"
                       value={newUser.password}
                       name="password"
                       placeholder="Please insert your password"
-                      onChange={(e) => handleChange(e)}
-                    />
+                      onChange={(e) => handleChange(e)}/>
+                      {
+                        viewPassword ? <button onClick={(e) => handleViewPassword(e)} class="bi bi-eye-slash-fill"></button> : <button onClick={(e) => handleViewPassword(e)} class="bi bi-eye-fill"></button>
+                      }
                     {
                       errors.password && (
                         <p id="errors" hidden>
