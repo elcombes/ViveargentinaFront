@@ -20,3 +20,31 @@ E-Commerce created with React and Node JS. Dedicated to connect with tourist age
 <p align="center">
   <img height="auto" width="100%" src="https://res.cloudinary.com/dcglbszrc/image/upload/v1664802334/VA-Front/chrome_2022-10-03_09-55-25_tsvcx0.png" />
 </p>
+
+## CITIES
+
+<p align="center">
+  <img height="auto" width="100%" src="https://res.cloudinary.com/dcglbszrc/image/upload/v1664802346/VA-Front/chrome_2022-10-03_09-56-16_w52pe1.png" />
+</p>
+
+## PACKAGES
+
+<p align="center">
+  <img height="auto" width="100%" src="https://res.cloudinary.com/dcglbszrc/image/upload/v1664802334/VA-Front/chrome_2022-10-03_09-56-36_uy1vnd.png" />
+</p>
+
+<p align="center">
+  <img height="auto" width="100%" src="https://res.cloudinary.com/dcglbszrc/image/upload/v1664802334/VA-Front/chrome_2022-10-03_09-56-46_qwrthi.png" />
+</p>
+
+## FAVORITES
+
+<p align="center">
+  <img height="auto" width="100%" src="https://res.cloudinary.com/dcglbszrc/image/upload/v1664802333/VA-Front/chrome_2022-10-03_10-04-11_cmcb5z.png" />
+</p>
+
+## CART
+
+<p align="center">
+  <img height="auto" width="100%" src="https://res.cloudinary.com/dcglbszrc/image/upload/v1664802333/VA-Front/chrome_2022-10-03_10-00-17_sard8f.png" />
+</p>
